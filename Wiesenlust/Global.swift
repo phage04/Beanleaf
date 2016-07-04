@@ -35,3 +35,7 @@ let menuLblText3 = "Rewards"
 let menuLblText4 = "Reservations"
 let menuLblText5 = "Locations"
 let menuLblText6 = "Feedback"
+
+let socialURLApp = "yelp4:///biz/wiesenlust-frankfurt-am-main"
+let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
+let socialButtonTitle = "VISIT US ON YELP!"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70005441DED3A73640C6D7F /* Pods_Wiesenlust.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEED3D205E922959B9AF071 /* Pods_Wiesenlust.framework */; };
 		DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */; };
 		DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* Home.swift */; };
 		DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACB61D26BB08006C3C7C /* Main.storyboard */; };
@@ -14,9 +15,13 @@
 		DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */; };
 		DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */; };
 		DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DC5CE1D2A78DC002871B9 /* Global.swift */; };
+		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DEED3D205E922959B9AF071 /* Pods_Wiesenlust.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiesenlust.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		501A21F414F51528B351A9CB /* Pods-Wiesenlust.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiesenlust.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wiesenlust/Pods-Wiesenlust.debug.xcconfig"; sourceTree = "<group>"; };
+		C27940224B6E464AB8F7B938 /* Pods-Wiesenlust.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiesenlust.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wiesenlust/Pods-Wiesenlust.release.xcconfig"; sourceTree = "<group>"; };
 		DE5BACAF1D26BB07006C3C7C /* Wiesenlust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiesenlust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -26,6 +31,7 @@
 		DE5BACBF1D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE5BACC11D26BB08006C3C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5DC5CE1D2A78DC002871B9 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A70005441DED3A73640C6D7F /* Pods_Wiesenlust.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0959CEED770E5F1D073DEC39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DEED3D205E922959B9AF071 /* Pods_Wiesenlust.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D4A3F28CB55C207DE4075AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				501A21F414F51528B351A9CB /* Pods-Wiesenlust.debug.xcconfig */,
+				C27940224B6E464AB8F7B938 /* Pods-Wiesenlust.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DE5BACA61D26BB07006C3C7C = {
 			isa = PBXGroup;
 			children = (
 				DE5BACB11D26BB08006C3C7C /* Wiesenlust */,
 				DE5BACB01D26BB07006C3C7C /* Products */,
+				1D4A3F28CB55C207DE4075AE /* Pods */,
+				0959CEED770E5F1D073DEC39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +120,7 @@
 		DE5DC5CD1D2A77C3002871B9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */,
 				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
 				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
@@ -109,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Wiesenlust" */;
 			buildPhases = (
+				B77AD5788142497553332291 /* Check Pods Manifest.lock */,
 				DE5BACAB1D26BB07006C3C7C /* Sources */,
 				DE5BACAC1D26BB07006C3C7C /* Frameworks */,
 				DE5BACAD1D26BB07006C3C7C /* Resources */,
+				ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */,
+				8083EE9F2B77758080E953AC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +198,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8083EE9F2B77758080E953AC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wiesenlust/Pods-Wiesenlust-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B77AD5788142497553332291 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wiesenlust/Pods-Wiesenlust-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE5BACAB1D26BB07006C3C7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +255,7 @@
 				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
 				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
+				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +368,7 @@
 		};
 		DE5BACC51D26BB08006C3C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 501A21F414F51528B351A9CB /* Pods-Wiesenlust.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wiesenlust/Info.plist;
@@ -301,6 +381,7 @@
 		};
 		DE5BACC61D26BB08006C3C7C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C27940224B6E464AB8F7B938 /* Pods-Wiesenlust.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wiesenlust/Info.plist;

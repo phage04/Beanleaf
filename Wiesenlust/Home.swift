@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class Home: UIViewController {
 
     @IBOutlet var backgroundView: UIView!    
@@ -37,9 +40,12 @@ class Home: UIViewController {
     
     @IBOutlet weak var menuLbl6: UILabel!
     
+    @IBOutlet weak var socialButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         backgroundView.backgroundColor = COLOR1
         
         var image = menuIcon1!
@@ -117,12 +123,30 @@ class Home: UIViewController {
         menuLbl5.text = menuLblText5
         menuLbl6.text = menuLblText6
         
+        socialButton.backgroundColor = UIColor.clearColor()
+        socialButton.layer.cornerRadius = 5
+        socialButton.layer.borderWidth = 1
+        socialButton.layer.borderColor = COLOR2.CGColor
+        socialButton.setTitle(socialButtonTitle, forState: .Normal)
+        socialButton.setTitleColor(COLOR2, forState: .Normal)
+        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 12)
         
         
 
         
     }
 
+    @IBAction func socialBtnPressed(sender: AnyObject) {
+        if let appURL = NSURL(string: socialURLApp) {
+            let canOpen = UIApplication.sharedApplication().canOpenURL(appURL)
+            
+            if canOpen {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLApp)!)
+            } else {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+            }
+        }
+    }
    
     @IBAction func menuItem1Pressed(sender: AnyObject) {
         
