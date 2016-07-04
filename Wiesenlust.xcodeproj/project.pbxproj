@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */; };
-		DE5BACB51D26BB08006C3C7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* ViewController.swift */; };
+		DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* Home.swift */; };
 		DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACB61D26BB08006C3C7C /* Main.storyboard */; };
 		DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */; };
 		DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */; };
 		DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */; };
+		DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DC5CE1D2A78DC002871B9 /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE5BACAF1D26BB07006C3C7C /* Wiesenlust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiesenlust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE5BACB41D26BB08006C3C7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DE5BACB71D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE5BACBA1D26BB08006C3C7C /* Wiesenlust.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wiesenlust.xcdatamodel; sourceTree = "<group>"; };
 		DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE5BACBF1D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE5BACC11D26BB08006C3C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5DC5CE1D2A78DC002871B9 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		DE5BACB11D26BB08006C3C7C /* Wiesenlust */ = {
 			isa = PBXGroup;
 			children = (
-				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
-				DE5BACB41D26BB08006C3C7C /* ViewController.swift */,
+				DE5DC5CA1D2A77A9002871B9 /* Model */,
+				DE5DC5CB1D2A77B0002871B9 /* View */,
+				DE5DC5CC1D2A77BC002871B9 /* Controller */,
+				DE5DC5CD1D2A77C3002871B9 /* Utilities */,
+			);
+			path = Wiesenlust;
+			sourceTree = "<group>";
+		};
+		DE5DC5CA1D2A77A9002871B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DE5DC5CB1D2A77B0002871B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				DE5BACB61D26BB08006C3C7C /* Main.storyboard */,
-				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
 				DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */,
+				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DE5DC5CC1D2A77BC002871B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE5BACB41D26BB08006C3C7C /* Home.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DE5DC5CD1D2A77C3002871B9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
+				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
 				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
 			);
-			path = Wiesenlust;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +173,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE5BACB51D26BB08006C3C7C /* ViewController.swift in Sources */,
+				DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */,
+				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
 				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 			);
@@ -294,6 +330,7 @@
 				DE5BACC61D26BB08006C3C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
