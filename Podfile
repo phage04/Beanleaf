@@ -6,6 +6,7 @@ use_frameworks!
 target 'Wiesenlust' do
 
 pod 'OAuthSwift', '~> 0.5.0'
+pod 'Auk', '~> 2.1'
 
 end
 

@@ -1,10 +1,16 @@
 PODS:
+  - Auk (2.1.5):
+    - moa (~> 3.0)
+  - moa (3.0.0)
   - OAuthSwift (0.5.2)
 
 DEPENDENCIES:
+  - Auk (~> 2.1)
   - OAuthSwift (~> 0.5.0)
 
 SPEC CHECKSUMS:
+  Auk: 25fe0c1ac0d22b387eca4c5ea9de48c9caea5c05
+  moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
 
 COCOAPODS: 0.39.0
