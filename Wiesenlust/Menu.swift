@@ -10,13 +10,19 @@ import UIKit
 import Auk
 import moa
 
-class Menu: UIViewController, UIScrollViewDelegate {
+class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var categories: [String] = ["Burgers", "Appetizers", "Salads", "Soups", "Sweets", "Drinks"]
+    static var imageCache = NSCache()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
@@ -24,7 +30,6 @@ class Menu: UIViewController, UIScrollViewDelegate {
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
         scrollView.delegate = self
-        Moa.logger = MoaConsoleLogger
         scrollView.auk.settings.contentMode = .ScaleAspectFill
         scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.30)
         scrollView.auk.settings.pageControl.marginToScrollViewBottom = 4.0
@@ -36,8 +41,43 @@ class Menu: UIViewController, UIScrollViewDelegate {
         scrollView.auk.show(url: "http://eatburgerburger.com/wp-content/uploads/2016/01/burger-slide-1.jpg")
         scrollView.auk.startAutoScroll(delaySeconds: 2)
         
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.collectionViewLayout = CustomImageFlowLayout.init()
+        self.collectionView.backgroundColor = COLOR1
+        
 
     
+    }
+    
+    override func viewWillLayoutSubviews() {
+     collectionView.collectionViewLayout.invalidateLayout()    
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //SEGUE HERE
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MenuCategoryCell", forIndexPath: indexPath) as? MenuCategoryCell {
+            
+            cell.configureCell("\(categories[indexPath.row])", imgURL: "http://eblogfa.com/wp-content/uploads/2014/01/burger-chesseburger-fastfood.jpg")
+    
+            return cell
+        } else {
+            
+            return UICollectionViewCell()
+            
+        }
     }
     
     

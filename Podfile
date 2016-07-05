@@ -7,6 +7,7 @@ target 'Wiesenlust' do
 
 pod 'OAuthSwift', '~> 0.5.0'
 pod 'Auk', '~> 2.1'
+pod 'Alamofire', '~> 3.4'
 
 end
 
