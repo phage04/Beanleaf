@@ -26,13 +26,47 @@ class CategoryCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(dishName: String, dishImg: String) {
+        
+        foodLbl.text = dishName
+        foodImg.image = UIImage(named: dishImg)
+        price.text = "4€"
+        starCount.text = "326"
+        
+        
+        
+        
+        //        if let profileImageURLVal = imgURL {
+        //            profileImageURL = profileImageURLVal
+        //            img = Menu.imageCache.objectForKey(profileImageURL) as? UIImage
+        //
+        //            if img != nil {
+        //                self.categoryImg.image = img
+        //            }  else {
+        //
+        //                request = Alamofire.request(.GET, profileImageURL!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+        //
+        //                    if err == nil {
+        //                        let img = UIImage(data: data!)!
+        //                        self.categoryImg.image = img
+        //
+        //                        Menu.imageCache.setObject(img, forKey: self.profileImageURL!)
+        //                    }
+        //                    
+        //                })
+        //            }
+        //            
+        //        }
+        
     }
 
 }

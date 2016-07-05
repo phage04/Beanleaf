@@ -366,7 +366,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="264" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Wiesenlust" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="264" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Wiesenlust" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="264"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="cF3-jT-lYy" id="cb6-o0-x7A">
@@ -484,6 +484,9 @@
                             <constraint firstItem="M09-ZT-gLo" firstAttribute="leading" secondItem="NLZ-q8-iES" secondAttribute="leadingMargin" constant="-20" id="g2g-de-yDB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="M09-ZT-gLo" id="CRS-m5-iqi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rel-0z-XwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
