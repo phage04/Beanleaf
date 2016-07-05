@@ -10,6 +10,8 @@
 		A70005441DED3A73640C6D7F /* Pods_Wiesenlust.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEED3D205E922959B9AF071 /* Pods_Wiesenlust.framework */; };
 		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
 		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
+		DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */; };
+		DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E41D2C0F3F005780BE /* CategoryView.swift */; };
 		DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */; };
 		DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* Home.swift */; };
 		DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACB61D26BB08006C3C7C /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		C27940224B6E464AB8F7B938 /* Pods-Wiesenlust.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiesenlust.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wiesenlust/Pods-Wiesenlust.release.xcconfig"; sourceTree = "<group>"; };
 		DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
 		DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
+		DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		DE27E5E41D2C0F3F005780BE /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		DE5BACAF1D26BB07006C3C7C /* Wiesenlust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiesenlust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */,
 				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
 				DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */,
+				DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			children = (
 				DE5BACB41D26BB08006C3C7C /* Home.swift */,
 				DEB470741D2BA9B300218AE1 /* Menu.swift */,
+				DE27E5E41D2C0F3F005780BE /* CategoryView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,7 +270,9 @@
 				DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */,
 				DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */,
 				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
+				DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */,
 				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
+				DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */,
 				DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,
