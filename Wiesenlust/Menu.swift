@@ -27,7 +27,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
         
         scrollView.delegate = self
         scrollView.auk.settings.contentMode = .ScaleAspectFill
@@ -63,7 +63,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //SEGUE HERE
+        performSegueWithIdentifier("categorySegue", sender: "\(categories[indexPath.row])")
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -83,6 +83,16 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "categorySegue" {
+            if let selectedCategory = segue.destinationViewController as? CategoryView{
+                if let catSelect = sender as? String {
+                    selectedCategory.categorySelected = catSelect
+                }
+            }
+        }
     }
 
 }

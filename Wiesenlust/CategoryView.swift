@@ -14,12 +14,17 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     let dishes:[String] = ["Awesome Burger", "Cool Burger", "Tasty Burger", "Big Burger"]
     let images:[String] = ["Awesome", "Cool", "Tasty", "Big"]
+    var categorySelected = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        navigationItem.title = categorySelected
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
     }
 
 
@@ -38,7 +43,9 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? CategoryCell {
 
-            cell.selectionStyle = .None            
+            cell.selectionStyle = .None
+            //cell.separatorInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+            
             cell.configureCell(dishes[indexPath.row],dishImg: images[indexPath.row])
             return cell
             

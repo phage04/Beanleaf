@@ -27,6 +27,18 @@ class CategoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        circleView.backgroundColor = COLOR2
+        barView.backgroundColor = COLOR1
+        star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        star.tintColor = COLOR_YELLOW
+        starCount.font = UIFont(name: font1Light, size: 12)
+        starCount.textColor = UIColor.whiteColor()
+        price.textColor = UIColor.whiteColor()
+        price.font = UIFont(name: font1Light, size: 24)
+        foodLbl.textColor = COLOR2
+        foodLbl.font = UIFont(name: font1Light, size: 20)
+        
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
