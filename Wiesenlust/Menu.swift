@@ -9,6 +9,8 @@
 import UIKit
 import Auk
 import moa
+import Contentful
+
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -16,13 +18,22 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var categories: [String] = ["Burgers", "Appetizers", "Salads", "Soups", "Sweets", "Drinks"]
+    var categories = [String]()
     static var imageCache = NSCache()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+        client.fetchEntries(["content_type": "category"]).1.next {
+            self.categories.removeAll()
+            for entry in $0.items{
+                self.categories.append("\(entry.fields["categoryName"]!)")
+
+            }
+           self.collectionView.reloadData()
+        }
 
         
         navigationItem.leftBarButtonItem =

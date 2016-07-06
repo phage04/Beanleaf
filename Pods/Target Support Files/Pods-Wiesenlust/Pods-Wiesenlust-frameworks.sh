@@ -86,12 +86,20 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Wiesenlust/Alamofire.framework"
   install_framework "Pods-Wiesenlust/Auk.framework"
+  install_framework "Pods-Wiesenlust/Contentful.framework"
+  install_framework "Pods-Wiesenlust/Decodable.framework"
+  install_framework "Pods-Wiesenlust/Interstellar.framework"
   install_framework "Pods-Wiesenlust/OAuthSwift.framework"
   install_framework "Pods-Wiesenlust/moa.framework"
+  install_framework "Pods-Wiesenlust/Clock.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wiesenlust/Alamofire.framework"
   install_framework "Pods-Wiesenlust/Auk.framework"
+  install_framework "Pods-Wiesenlust/Contentful.framework"
+  install_framework "Pods-Wiesenlust/Decodable.framework"
+  install_framework "Pods-Wiesenlust/Interstellar.framework"
   install_framework "Pods-Wiesenlust/OAuthSwift.framework"
   install_framework "Pods-Wiesenlust/moa.framework"
+  install_framework "Pods-Wiesenlust/Clock.framework"
 fi

@@ -2,18 +2,35 @@ PODS:
   - Alamofire (3.4.1)
   - Auk (2.1.5):
     - moa (~> 3.0)
+  - Contentful (0.2.1):
+    - Decodable (~> 0.4.2)
+    - Interstellar (~> 1.4.0)
+    - "\U0001F555 (= 0.0.1)"
+  - Decodable (0.4.3)
+  - Interstellar (1.4.0):
+    - Interstellar/Core (= 1.4.0)
+    - Interstellar/Warpdrive (= 1.4.0)
+  - Interstellar/Core (1.4.0)
+  - Interstellar/Warpdrive (1.4.0):
+    - Interstellar/Core
   - moa (3.0.0)
   - OAuthSwift (0.5.2)
+  - "\U0001F555 (0.0.1)"
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - Auk (~> 2.1)
+  - Contentful
   - OAuthSwift (~> 0.5.0)
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Auk: 25fe0c1ac0d22b387eca4c5ea9de48c9caea5c05
+  Contentful: de96c3cdf1af4ae28828851a18f95cb2b502f8b8
+  Decodable: ab6c7d02a5df949d3ab16b2696528a3241e37c76
+  Interstellar: 40fc666872436d6c1b3524c59437ebdb5dec1c6a
   moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
+  "\U0001F555": 2a41c1f9b76698cb697b8ec9a1db1087f5621187
 
 COCOAPODS: 0.39.0

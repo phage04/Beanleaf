@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import SystemConfiguration
+import Contentful
 
 let COLOR1 = UIColor(red: CGFloat(188.0 / 255.0), green: CGFloat(208.0 / 255.0), blue: CGFloat(24.0 / 255.0), alpha: 1.0)
 let COLOR2 = UIColor(red: CGFloat(146.0 / 255.0), green: CGFloat(20.0 / 255.0), blue: CGFloat(114.0 / 255.0), alpha: 1.0)
@@ -40,3 +41,9 @@ let menuLblText6 = "Feedback"
 let socialURLApp = "yelp4:///biz/wiesenlust-frankfurt-am-main"
 let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
 let socialButtonTitle = "VISIT US ON YELP!"
+
+//CONTENTFUL
+let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
+let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"
+let CFId = "cvjq6nv76z9n"
+let client = Client(spaceIdentifier: CFId, accessToken: CFTokenProduction)
