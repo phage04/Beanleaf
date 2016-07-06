@@ -22,6 +22,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));

@@ -25,6 +25,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         
         navigationItem.title = categorySelected
+
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
     }
@@ -34,7 +35,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //SEGUES GOES HERE
+        performSegueWithIdentifier("itemSegue", sender: ["\(dishes[indexPath.row])", "\(images[indexPath.row])"])
     }
     
     
@@ -54,6 +55,18 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "itemSegue" {
+            if let selectedItem = segue.destinationViewController as? ItemView{
+                if let itemSelect = sender as? [String] {
+                    selectedItem.dishName = itemSelect[0]
+                    selectedItem.dishImgName = itemSelect[1]
+                }
+            }
+        }
+    }
+
     
 
 }
