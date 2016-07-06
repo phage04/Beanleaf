@@ -28,9 +28,7 @@ class CategoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        clipsToBounds = false
-        
+     
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = COLOR2
         
@@ -53,7 +51,7 @@ class CategoryCell: UITableViewCell {
         foodLbl.textColor = COLOR2
         foodLbl.font = UIFont(name: font1Light, size: 20)
         
-        
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -67,9 +65,7 @@ class CategoryCell: UITableViewCell {
         foodLbl.text = dishName
         foodImg.image = UIImage(named: dishImg)
         price.text = "4€"
-        starCount.text = "326"
-        
-        
+        starCount.text = "326"       
         
         
         //        if let profileImageURLVal = imgURL {

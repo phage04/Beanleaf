@@ -21,12 +21,13 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = COLOR1
+        
         
         navigationItem.title = categorySelected
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
     }
-
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
@@ -36,19 +37,14 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         //SEGUES GOES HERE
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 264
-    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? CategoryCell {
-
+            cell.contentView.clipsToBounds = false
+            cell.clipsToBounds = false
             cell.selectionStyle = .None
-            //cell.separatorInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-            
             cell.configureCell(dishes[indexPath.row],dishImg: images[indexPath.row])
             return cell
-            
             
         } else {
             return UITableViewCell()
