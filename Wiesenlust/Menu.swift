@@ -12,6 +12,7 @@ import moa
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -46,6 +47,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = CustomImageFlowLayout.init()
         self.collectionView.backgroundColor = COLOR1
+        mainView.backgroundColor = COLOR1
         
 
     
