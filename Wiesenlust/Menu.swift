@@ -22,7 +22,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     var categoriesData = [NSManagedObject]()
     var categories = [Category]()
-    var imgData: UIImage!
+
     var imgURL: NSURL!
     static var imageCache = NSCache()
 
@@ -31,7 +31,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         super.viewDidLoad()
 
         
-        downloadCategories()
+        
 
         
         navigationItem.leftBarButtonItem =
@@ -58,8 +58,9 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.backgroundColor = COLOR1
         mainView.backgroundColor = COLOR1
         
-
-    
+        
+        //deleteIncidents()
+        downloadCategories()
     }
     
     override func viewWillLayoutSubviews() {
@@ -68,65 +69,139 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     func downloadCategories() {
         
+        fetchCategories()
+    
         let myGroupCat = dispatch_group_create()
         
-        fetchCategories()
         
         client.fetchEntries(["content_type": "category"]).1.next {
             
             self.categories.removeAll()
             
             for entry in $0.items{
-                
                 dispatch_group_enter(myGroupCat)
-                
                 if let data = entry.fields["image"] as? Asset{
                  
                     do {
                         self.imgURL = try data.URL()
+                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
                         
-                     Alamofire.request(.GET, self.imgURL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                        if self.categoriesData.count > 0 {
                             
-                            if err == nil {
-                                self.imgData = UIImage(data: data!)!
-    
-                            } else {
-                                self.imgData = UIImage()
+                            for item in self.categoriesData {
+                       
+                                if item.valueForKey("name")! as? String == "\(entry.fields["categoryName"]!)" {
+                                    print(item.valueForKey("name")!)
+                                    print("\(entry.fields["categoryName"]!)")
+                                    print((item.valueForKey("imageURL")!))
+                                    print("\(self.imgURL)")
+                                    print(item.valueForKey("order")!)
+                                    print("\(entry.fields["order"]!)")
+             
+                                    if "\(item.valueForKey("imageURL")!)" != "\(self.imgURL)" ||
+                                        "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" {
+                                    
+                                    //If data in client is not updated
+                                    
+                                        dispatch_group_enter(myGroupCat)
+      
+                                        self.downloadImage(self.imgURL, completionHandler: { (isResponse) in
+                                            
+                                            self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            dispatch_group_leave(myGroupCat)
+                                            
+                                        })
+                                    }
+                                }
+               
                             }
-                        
-                            self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: self.imgData, imgURL: "\(self.imgURL)"))
-                            dispatch_group_leave(myGroupCat)
-                        
                             
-                        })
-
+                            dispatch_group_leave(myGroupCat)
+                        }
+                        
+                        else if self.categoriesData.count == 0{
+                            //If zero data yet saved in client
+                            self.downloadImage(self.imgURL, completionHandler: { (isResponse) in
+                                
+                                self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                              dispatch_group_leave(myGroupCat)
+                            })
+                        }
+            
                         
                     } catch {
                         print("Error Code: FJ3D85")
+                        dispatch_group_leave(myGroupCat)
                     }
                     
+                } else {
+                    //If no image is uploaded for this item, user default or blank
+                    self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                    dispatch_group_leave(myGroupCat)
                 }
- 
                 
+
                 
             }
             
             dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
+  
                 
-                print("Finished downloading and updating category images.")
+                    print("Finished downloading and updating category images.")
+                    self.categories.sortInPlace({ $0.order < $1.order })
+                    
+                    for cat in self.categories {
+                        self.saveCategory(cat)
+                    }
                 
-                self.categories.sortInPlace({ $0.order < $1.order })
-                
-                for cat in self.categories {
-                    self.saveCategory(cat)
-                }
-                
-                self.collectionView.reloadData()
-                
+                    self.collectionView.reloadData()
             })
+
+
         }
         
 
+    }
+    
+    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+        
+        var imgData: UIImage!
+        let myGroupImg = dispatch_group_create()
+        dispatch_group_enter(myGroupImg)
+        
+        Alamofire.request(.GET, URL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+            
+            if err == nil {
+                imgData = UIImage(data: data!)!
+                
+            } else {
+                imgData = UIImage()
+            }
+            dispatch_group_leave(myGroupImg)
+  
+        })
+        
+        dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+            
+       
+        completionHandler(isResponse : (imgData, "\(URL)"))
+            
+        })
+    }
+    
+    func deleteIncidents() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
     
     func saveCategory(category: Category) {
@@ -168,7 +243,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return categoriesData.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
