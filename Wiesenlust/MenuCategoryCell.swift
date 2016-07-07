@@ -18,7 +18,6 @@ class MenuCategoryCell: UICollectionViewCell {
     
     var profileImageURL: String!
     var img: UIImage?
-    var request: Request?
 
     
     override func awakeFromNib() {
@@ -34,33 +33,10 @@ class MenuCategoryCell: UICollectionViewCell {
     }
     
 
-    func configureCell(catName: String, imgURL: String?) {
+    func configureCell(catName: String, imgData: NSData) {
         
         categoryName.text = catName
-        categoryImg.image = UIImage(named: "\(catName).jpg")
-        
-//        if let profileImageURLVal = imgURL {
-//            profileImageURL = profileImageURLVal 
-//            img = Menu.imageCache.objectForKey(profileImageURL) as? UIImage
-//            
-//            if img != nil {
-//                self.categoryImg.image = img
-//            }  else {
-//                
-//                request = Alamofire.request(.GET, profileImageURL!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-//                    
-//                    if err == nil {
-//                        let img = UIImage(data: data!)!
-//                        self.categoryImg.image = img
-//                        
-//                        Menu.imageCache.setObject(img, forKey: self.profileImageURL!)
-//                    }
-//                    
-//                })
-//            }
-//            
-//        }
-        
+        categoryImg.image = UIImage(data:imgData)
         
     }
     

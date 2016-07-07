@@ -23,6 +23,7 @@
 		DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DC5CE1D2A78DC002871B9 /* Global.swift */; };
 		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
 		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
+		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		DE5DC5CE1D2A78DC002871B9 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
 		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		DE5DC5CA1D2A77A9002871B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DEB4DFE91D2E782500816A2F /* Category.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
 				DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */,
 				DE27E5E91D2D3A65005780BE /* ItemCell.swift in Sources */,
+				DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */,
 				DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,

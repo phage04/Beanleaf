@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 import Auk
 import moa
 import Contentful
+import Alamofire
 
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -18,8 +20,10 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var categoriesTemp = Dictionary<String, String>()
-    var categories = [String]()
+    var categoriesData = [NSManagedObject]()
+    var categories = [Category]()
+    var imgData: UIImage!
+    var imgURL: NSURL!
     static var imageCache = NSCache()
 
     
@@ -63,37 +67,104 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func downloadCategories() {
+        
+        let myGroupCat = dispatch_group_create()
+        
+        fetchCategories()
+        
         client.fetchEntries(["content_type": "category"]).1.next {
+            
             self.categories.removeAll()
             
             for entry in $0.items{
-            
-                self.categoriesTemp.updateValue("\(entry.fields["categoryName"]!)", forKey: "\(entry.fields["order"]!)")
                 
-    
+                dispatch_group_enter(myGroupCat)
+                
                 if let data = entry.fields["image"] as? Asset{
                  
                     do {
-                        try print(data.URL())
-                    } catch {
+                        self.imgURL = try data.URL()
                         
+                     Alamofire.request(.GET, self.imgURL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                            
+                            if err == nil {
+                                self.imgData = UIImage(data: data!)!
+    
+                            } else {
+                                self.imgData = UIImage()
+                            }
+                        
+                            self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: self.imgData, imgURL: "\(self.imgURL)"))
+                            dispatch_group_leave(myGroupCat)
+                        
+                            
+                        })
+
+                        
+                    } catch {
+                        print("Error Code: FJ3D85")
                     }
                     
                 }
+ 
+                
                 
             }
             
-            
-            
-            let sortedCat = self.categoriesTemp.sort{ $0.0 < $1.0 }
-            
-            for cat in sortedCat {
-                self.categories.append(cat.1)
-            }
-            self.collectionView.reloadData()
+            dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
+                
+                print("Finished downloading and updating category images.")
+                
+                self.categories.sortInPlace({ $0.order < $1.order })
+                
+                for cat in self.categories {
+                    self.saveCategory(cat)
+                }
+                
+                self.collectionView.reloadData()
+                
+            })
         }
         
 
+    }
+    
+    func saveCategory(category: Category) {
+        
+        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        categoryTemp.setValue(category.name, forKey: "name")
+        categoryTemp.setValue(category.order, forKey: "order")
+        categoryTemp.setValue(category.img, forKey: "image")
+        categoryTemp.setValue(category.imgURL, forKey: "imageURL")
+        
+   
+        do {
+            try managedContext.save()
+            categoriesData.append(categoryTemp)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func fetchCategories () {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            categoriesData = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,14 +176,19 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("categorySegue", sender: "\(categories[indexPath.row])")
+        
+        let catItem = categoriesData[indexPath.row]
+        
+        performSegueWithIdentifier("categorySegue", sender: catItem.valueForKey("name"))
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MenuCategoryCell", forIndexPath: indexPath) as? MenuCategoryCell {
+
+            let catItem = categoriesData[indexPath.row]
             
-            cell.configureCell("\(categories[indexPath.row])", imgURL: "http://eblogfa.com/wp-content/uploads/2014/01/burger-chesseburger-fastfood.jpg")
+            cell.configureCell("\(catItem.valueForKey("name")!)", imgData: catItem.valueForKey("image") as! NSData)
     
             return cell
         } else {
@@ -121,7 +197,6 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             
         }
     }
-    
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)

@@ -67,28 +67,7 @@ class CategoryCell: UITableViewCell {
         price.text = "4€"
         starCount.text = "326"       
         
-        
-        //        if let profileImageURLVal = imgURL {
-        //            profileImageURL = profileImageURLVal
-        //            img = Menu.imageCache.objectForKey(profileImageURL) as? UIImage
-        //
-        //            if img != nil {
-        //                self.categoryImg.image = img
-        //            }  else {
-        //
-        //                request = Alamofire.request(.GET, profileImageURL!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-        //
-        //                    if err == nil {
-        //                        let img = UIImage(data: data!)!
-        //                        self.categoryImg.image = img
-        //
-        //                        Menu.imageCache.setObject(img, forKey: self.profileImageURL!)
-        //                    }
-        //                    
-        //                })
-        //            }
-        //            
-        //        }
+    
         
     }
 
