@@ -225,6 +225,38 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         }
     }
     
+    func updateCategory(category: Category) {
+        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        
+        fetchRequest.predicate = NSPredicate(format: "name = %@", category.name)
+        do {
+            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    let managedObject = fetchResults[0]
+                    managedObject.setValue(category.order, forKey: "order")
+                    managedObject.setValue(category.imgURL, forKey: "imageURL")
+                    
+                    try managedContext.save()
+                } else {
+                    
+                    categoryTemp.setValue(category.name, forKey: "name")
+                    categoryTemp.setValue(category.order, forKey: "order")
+                    categoryTemp.setValue(category.img, forKey: "image")
+                    categoryTemp.setValue(category.imgURL, forKey: "imageURL")
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+
+    }
+    
     func fetchCategories () {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
