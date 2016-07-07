@@ -27,20 +27,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         super.viewDidLoad()
 
         
-        client.fetchEntries(["content_type": "category"]).1.next {
-           self.categories.removeAll()
-            
-           for entry in $0.items{
-                self.categoriesTemp.updateValue("\(entry.fields["categoryName"]!)", forKey: "\(entry.fields["order"]!)")
-                
-           }
-            
-           let sortedCat = self.categoriesTemp.sort{ $0.0 < $1.0 }
-            for cat in sortedCat {
-                self.categories.append(cat.1)
-            }
-           self.collectionView.reloadData()
-        }
+        downloadCategories()
 
         
         navigationItem.leftBarButtonItem =
@@ -73,6 +60,40 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     override func viewWillLayoutSubviews() {
      collectionView.collectionViewLayout.invalidateLayout()    
+    }
+    
+    func downloadCategories() {
+        client.fetchEntries(["content_type": "category"]).1.next {
+            self.categories.removeAll()
+            
+            for entry in $0.items{
+            
+                self.categoriesTemp.updateValue("\(entry.fields["categoryName"]!)", forKey: "\(entry.fields["order"]!)")
+                
+    
+                if let data = entry.fields["image"] as? Asset{
+                 
+                    do {
+                        try print(data.URL())
+                    } catch {
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            
+            
+            let sortedCat = self.categoriesTemp.sort{ $0.0 < $1.0 }
+            
+            for cat in sortedCat {
+                self.categories.append(cat.1)
+            }
+            self.collectionView.reloadData()
+        }
+        
+
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
