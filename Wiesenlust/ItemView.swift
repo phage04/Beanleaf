@@ -85,8 +85,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: self.tableView.bounds.width, height: kTableHeaderHeight)
-        print("CO: \(self.tableView.contentOffset.y)")
-        print("kHeight: \(-kTableHeaderHeight)")
+  
         if self.tableView.contentOffset.y < -kTableHeaderHeight {
             headerRect.origin.y = self.tableView.contentOffset.y
             headerRect.size.height = -self.tableView.contentOffset.y

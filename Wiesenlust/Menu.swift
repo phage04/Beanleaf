@@ -18,6 +18,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var categoriesTemp = Dictionary<String, String>()
     var categories = [String]()
     static var imageCache = NSCache()
 
@@ -27,10 +28,16 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
 
         
         client.fetchEntries(["content_type": "category"]).1.next {
-            self.categories.removeAll()
-            for entry in $0.items{
-                self.categories.append("\(entry.fields["categoryName"]!)")
-
+           self.categories.removeAll()
+            
+           for entry in $0.items{
+                self.categoriesTemp.updateValue("\(entry.fields["categoryName"]!)", forKey: "\(entry.fields["order"]!)")
+                
+           }
+            
+           let sortedCat = self.categoriesTemp.sort{ $0.0 < $1.0 }
+            for cat in sortedCat {
+                self.categories.append(cat.1)
             }
            self.collectionView.reloadData()
         }
