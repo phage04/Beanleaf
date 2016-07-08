@@ -23,7 +23,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     @IBOutlet weak var starCount: UILabel!
     
     var starCountVal = 453
-    let dish: FoodItem
+    var dish: FoodItem!
 
     
     private let kTableHeaderHeight: CGFloat = 300.0
@@ -50,7 +50,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
         
-        if let image = dish.img {
+        if let image = dish.img as NSData? {
             dishImg.image = UIImage(data: image)
         } else {
             dishImg.hidden = true
@@ -105,7 +105,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
             cell.contentView.clipsToBounds = false
             cell.clipsToBounds = false
             cell.selectionStyle = .None
-            cell.configureCell(dishName, dishDesc: dishDesc)
+            cell.configureCell(dish.name, dishDesc: dish.descriptionInfo)
             return cell
             
         } else {

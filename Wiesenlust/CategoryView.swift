@@ -28,7 +28,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         for each in foodItemsData {
             if "\(each.valueForKey("category")!)" == categorySelected {
-                dishes.append(FoodItem(cat: each.valueForKey("category")!, name: each.valueForKey("name")!, desc: each.valueForKey("descriptionInfo")?, price: each.valueForKey("price")!, image: each.valueForKey("image")?, imgURL: each.valueForKey("imageURL")?))
+                dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")?, price: each.valueForKey("price")!, image: each.valueForKey("image")?, imgURL: each.valueForKey("imageURL")?))
             }
         }
 
@@ -50,7 +50,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell.contentView.clipsToBounds = false
             cell.clipsToBounds = false
             cell.selectionStyle = .None
-            cell.configureCell(dishes[indexPath.row].name, price: dishes[indexPath.row].price, dishImg: dishes[indexPath.row].img?)
+            cell.configureCell(dishes[indexPath.row].name, price: dishes[indexPath.row].price, dishImg: dishes[indexPath.row].img)
             return cell
             
         } else {

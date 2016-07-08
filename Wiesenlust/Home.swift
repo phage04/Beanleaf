@@ -157,7 +157,8 @@ class Home: UIViewController {
                     SwiftSpinner.hide()
                     }, subtitle: LoadingMsgTapToExit)
                 didLoad = true
-            }    
+            }
+            
             downloadCategories()
             
             
@@ -200,7 +201,7 @@ class Home: UIViewController {
     
     func downloadCategories() {
         
-        fetchCategories()
+        fetchDataCat()
         
         let myGroupCat = dispatch_group_create()
         
@@ -235,7 +236,7 @@ class Home: UIViewController {
                                         self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
-                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0!, imgURL: "\(isResponse.1)"))
                                             dispatch_group_leave(myGroupCat)
                                             
                                         })
@@ -251,7 +252,7 @@ class Home: UIViewController {
                             //If zero data yet saved in client
                             self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                 
-                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0!, imgURL: "\(isResponse.1)"))
                                 dispatch_group_leave(myGroupCat)
                             })
                         }
@@ -280,6 +281,97 @@ class Home: UIViewController {
                 for cat in categories {
                     self.saveCategory(cat)
                 }
+                self.downloadFoodItems()
+                SwiftSpinner.hide()
+            })
+            
+            
+        }
+        
+        
+    }
+    
+    func downloadFoodItems() {
+        fetchDataFood()
+        let myGroupFood = dispatch_group_create()
+        
+        
+        client.fetchEntries(["content_type": "menuItem"]).1.next {
+            
+            foodItems.removeAll()
+            
+            for entry in $0.items{
+                dispatch_group_enter(myGroupFood)
+                if let data = entry.fields["image"] as? Asset{
+                    
+                    do {
+                        imgURL = try data.URL()
+                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
+                        if foodItemsData.count > 0 {
+                            
+                            for item in foodItemsData {
+                                
+                                if let _ = item.valueForKey("name"), _ = entry.fields["itemName"] where "\(item.valueForKey("name"))" == "\(entry.fields["itemName"])" {
+                                    
+                                    
+                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                        "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
+                                        "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" {
+                                        
+                                        print("Did detect change")
+                                        
+                                        //If data in client is not updated
+                                        
+                                        dispatch_group_enter(myGroupFood)
+                                        
+                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                            
+                                            print("Did download the update")
+                                            foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            dispatch_group_leave(myGroupFood)
+                                            
+                                        })
+                                    }
+                                }
+                                
+                            }
+                            
+                            dispatch_group_leave(myGroupFood)
+                        }
+                            
+                        else if foodItemsData.count == 0{
+                            //If zero data yet saved in client
+                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                
+                                foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                dispatch_group_leave(myGroupFood)
+                            })
+                        }
+                        
+                        
+                    } catch {
+                        print("Error Code: KF2048J")
+                        dispatch_group_leave(myGroupFood)
+                    }
+                    
+                } else {
+                    //If no image is uploaded for this item, user default or blank
+                    foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil))
+                    dispatch_group_leave(myGroupFood)
+                }
+                
+                
+                
+            }
+            
+            dispatch_group_notify(myGroupFood, dispatch_get_main_queue(), {
+                
+                
+                foodItems.sortInPlace({ $0.price < $1.price })
+                
+                for food in foodItems {
+                    self.saveFood(food)
+                }
                 
                 SwiftSpinner.hide()
             })
@@ -290,7 +382,7 @@ class Home: UIViewController {
         
     }
     
-    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage?, String?)) -> Void)) {
         
         
         if checkConnectivity(){
@@ -376,7 +468,7 @@ class Home: UIViewController {
                     
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
-                        fetchCategories()
+                        fetchDataCat()
                         print("Updated: \(category.name) mit order \(category.order) und \(category.imgURL) ")
                         
                     } catch let error as NSError {
@@ -409,21 +501,101 @@ class Home: UIViewController {
         
     }
     
-    func fetchCategories () {
+    func saveFood(foodItem: FoodItem) {
+        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("FoodItem", inManagedObjectContext:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let fetchRequest = NSFetchRequest(entityName: "FoodItem")
+        
+        
+        fetchRequest.predicate = NSPredicate(format: "itemName = %@", foodItem.name)
+        do {
+            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    
+                    fetchResults.first?.setValue(foodItem.name, forKey: "name")
+                    fetchResults.first?.setValue(foodItem.price, forKey: "price")
+                    fetchResults.first?.setValue(foodItem.descriptionInfo, forKey: "descriptionInfo")
+                    fetchResults.first?.setValue(foodItem.img, forKey: "image")
+                    fetchResults.first?.setValue(foodItem.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try fetchResults.first?.managedObjectContext?.save()
+                        fetchDataCat()
+                        print("Updated: \(foodItem.name) mit order \(foodItem.price) und \(foodItem.imgURL) ")
+                        
+                    } catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                    
+                    
+                } else {
+                    
+                    categoryTemp.setValue(foodItem.name, forKey: "name")
+                    categoryTemp.setValue(foodItem.price, forKey: "price")
+                    categoryTemp.setValue(foodItem.descriptionInfo, forKey: "descriptionInfo")
+                    categoryTemp.setValue(foodItem.img, forKey: "image")
+                    categoryTemp.setValue(foodItem.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try managedContext.save()
+                        categoriesData.append(categoryTemp)
+                        print("Saved: \(foodItem.name) mit order \(foodItem.price) und \(foodItem.imgURL) ")
+                        
+                    }catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
+    }
+
+    func fetchDataCat() {
         categoriesData.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Category")
         fetchRequest.predicate = NSPredicate(format: "name != %@", "")
         
+        
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
             
-            
             categoriesData = results as! [NSManagedObject]
+            
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    func fetchDataFood() {
+        
+        foodItemsData.removeAll()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+     
+        let fetchRequestFood = NSFetchRequest(entityName: "FoodItem")
+        fetchRequestFood.predicate = NSPredicate(format: "name != %@", "")
+        
+        do {
+         
+            
+            let resultsFood =
+                try managedContext.executeFetchRequest(fetchRequestFood)
+            
+            foodItemsData = resultsFood as! [NSManagedObject]
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
