@@ -7,7 +7,10 @@
 //
 
 import UIKit
-
+import CoreData
+import Contentful
+import Alamofire
+import SwiftSpinner
 
 
 
@@ -41,6 +44,8 @@ class Home: UIViewController {
     @IBOutlet weak var menuLbl6: UILabel!
     
     @IBOutlet weak var socialButton: UIButton!
+    
+    var didLoad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +142,30 @@ class Home: UIViewController {
 
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if checkConnectivity() {
+            //deleteCoreData("Category")
+            deleteCoreDataNil("Category")
+            
+            if !didLoad {
+                SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
+                    SwiftSpinner.hide()
+                    }, subtitle: LoadingMsgTapToExit)
+                didLoad = true
+            }    
+            downloadCategories()
+            
+            
+        } else {
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+        }
+
+    }
 
     @IBAction func socialBtnPressed(sender: AnyObject) {
         if let appURL = NSURL(string: socialURLApp) {
@@ -169,8 +198,237 @@ class Home: UIViewController {
     @IBAction func menuItem6Pressed(sender: AnyObject) {
     }
     
+    func downloadCategories() {
+        
+        fetchCategories()
+        
+        let myGroupCat = dispatch_group_create()
+        
+        
+        client.fetchEntries(["content_type": "category"]).1.next {
+            
+            categories.removeAll()
+            
+            for entry in $0.items{
+                dispatch_group_enter(myGroupCat)
+                if let data = entry.fields["image"] as? Asset{
+                    
+                    do {
+                        imgURL = try data.URL()
+                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
+                        if categoriesData.count > 0 {
+                            
+                            for item in categoriesData {
+                                
+                                if let _ = item.valueForKey("name"), _ = entry.fields["categoryName"] where "\(item.valueForKey("name"))" == "\(entry.fields["categoryName"])" {
+                                    
+                                    
+                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                        "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" {
+                                        
+                                        print("Did detect change")
+                                        
+                                        //If data in client is not updated
+                                        
+                                        dispatch_group_enter(myGroupCat)
+                                        
+                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                            
+                                            print("Did download the update")
+                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            dispatch_group_leave(myGroupCat)
+                                            
+                                        })
+                                    }
+                                }
+                                
+                            }
+                            
+                            dispatch_group_leave(myGroupCat)
+                        }
+                            
+                        else if categoriesData.count == 0{
+                            //If zero data yet saved in client
+                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                
+                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                dispatch_group_leave(myGroupCat)
+                            })
+                        }
+                        
+                        
+                    } catch {
+                        print("Error Code: FJ3D85")
+                        dispatch_group_leave(myGroupCat)
+                    }
+                    
+                } else {
+                    //If no image is uploaded for this item, user default or blank
+                    categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                    dispatch_group_leave(myGroupCat)
+                }
+                
+                
+                
+            }
+            
+            dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
+                
+                
+                categories.sortInPlace({ $0.order < $1.order })
+                
+                for cat in categories {
+                    self.saveCategory(cat)
+                }
+                
+                SwiftSpinner.hide()
+            })
+            
+            
+        }
+        
+        
+    }
+    
+    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+        
+        
+        if checkConnectivity(){
+            var imgData: UIImage!
+            let myGroupImg = dispatch_group_create()
+            dispatch_group_enter(myGroupImg)
+            
+            Alamofire.request(.GET, URL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                
+                if err == nil {
+                    imgData = UIImage(data: data!)!
+                    
+                } else {
+                    imgData = UIImage()
+                }
+                dispatch_group_leave(myGroupImg)
+                
+            })
+            
+            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+                
+                
+                completionHandler(isResponse : (imgData, "\(URL)"))
+                
+            })
+        } else {
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+        }
+        
+    }
+    
+    func deleteCoreData(entity: String) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func deleteCoreDataNil(entity: String) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", "")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
     
     
+    
+    func saveCategory(category: Category) {
+        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        
+        
+        fetchRequest.predicate = NSPredicate(format: "name = %@", category.name)
+        do {
+            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    
+                    fetchResults.first?.setValue(category.name, forKey: "name")
+                    fetchResults.first?.setValue(category.order, forKey: "order")
+                    fetchResults.first?.setValue(category.img, forKey: "image")
+                    fetchResults.first?.setValue(category.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try fetchResults.first?.managedObjectContext?.save()
+                        fetchCategories()
+                        print("Updated: \(category.name) mit order \(category.order) und \(category.imgURL) ")
+                        
+                    } catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                    
+                    
+                } else {
+                    
+                    categoryTemp.setValue(category.name, forKey: "name")
+                    categoryTemp.setValue(category.order, forKey: "order")
+                    categoryTemp.setValue(category.img, forKey: "image")
+                    categoryTemp.setValue(category.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try managedContext.save()
+                        categoriesData.append(categoryTemp)
+                        print("Saved: \(category.name) mit order \(category.order) und \(category.imgURL) ")
+                        
+                    }catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
+    }
+    
+    func fetchCategories () {
+        categoriesData.removeAll()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "name != %@", "")
+        
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            
+            
+            categoriesData = results as! [NSManagedObject]
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
     
 }
 

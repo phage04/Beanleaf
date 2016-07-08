@@ -11,6 +11,12 @@ import UIKit
 import CoreLocation
 import SystemConfiguration
 import Contentful
+import CoreData
+
+var categoriesData = [NSManagedObject]()
+var categories = [Category]()
+
+var imgURL: NSURL!
 
 let COLOR1 = UIColor(red: CGFloat(188.0 / 255.0), green: CGFloat(208.0 / 255.0), blue: CGFloat(24.0 / 255.0), alpha: 1.0)
 let COLOR2 = UIColor(red: CGFloat(146.0 / 255.0), green: CGFloat(20.0 / 255.0), blue: CGFloat(114.0 / 255.0), alpha: 1.0)
