@@ -12,6 +12,8 @@ import Auk
 import moa
 import Contentful
 import Alamofire
+import SwiftSpinner
+
 
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -31,9 +33,15 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         super.viewDidLoad()
 
         if checkConnectivity() {
-            //deleteCoreData("Category")
+            deleteCoreData("Category")
             deleteCoreDataNil("Category")
+            SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
+                SwiftSpinner.hide()
+                }, subtitle: LoadingMsgTapToExit)
+            
             downloadCategories()
+            
+            
         } else {
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
@@ -156,10 +164,8 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
                         self.saveCategory(cat)
                     }
                 
-                for each in self.categoriesData {
-                    print("\(each.valueForKey("imageURL")!)")
-                }
                     self.collectionView.reloadData()
+                    SwiftSpinner.hide()
             })
 
 
@@ -174,6 +180,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+        
         
         if checkConnectivity(){
             var imgData: UIImage!

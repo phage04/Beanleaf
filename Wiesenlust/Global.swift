@@ -42,6 +42,9 @@ let socialURLApp = "yelp4:///biz/wiesenlust-frankfurt-am-main"
 let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
 let socialButtonTitle = "VISIT US ON YELP!"
 
+let LoadingMsgTapToExit = "Tap anytime to exit"
+let LoadingMsgGlobal = "Loading..."
+
 //CONTENTFUL
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
 let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"
