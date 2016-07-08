@@ -47,3 +47,52 @@ let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372
 let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"
 let CFId = "cvjq6nv76z9n"
 let client = Client(spaceIdentifier: CFId, accessToken: CFTokenProduction)
+
+public class Reachability {
+    
+    class func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
+    
+}
+
+
+func checkConnectivity() -> Bool {
+    if Reachability.isConnectedToNetwork() {
+        return true
+    } else {
+        
+        return false
+    }
+}
+
+func showErrorAlert(title: String, msg: String, VC: UIViewController) {
+    let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    alert.addAction(action)
+    VC.presentViewController(alert, animated: true, completion: nil)
+    
+}
+
+func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
+    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.rawValue), 0)) {
+        if(background != nil){ background!(); }
+        
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            if(completion != nil){ completion!(); }
+        }
+    }
+}

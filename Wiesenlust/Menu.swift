@@ -30,8 +30,13 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
+        if checkConnectivity() {
+            //deleteCoreData("Category")
+            deleteCoreDataNil("Category")
+            downloadCategories()
+        } else {
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+        }
 
         
         navigationItem.leftBarButtonItem =
@@ -59,8 +64,9 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         mainView.backgroundColor = COLOR1
         
         
-        //deleteIncidents()
-        downloadCategories()
+        
+        
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -85,28 +91,25 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
                     do {
                         self.imgURL = try data.URL()
                         //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
-                        
                         if self.categoriesData.count > 0 {
                             
                             for item in self.categoriesData {
-                       
-                                if item.valueForKey("name")! as? String == "\(entry.fields["categoryName"]!)" {
-                                    print(item.valueForKey("name")!)
-                                    print("\(entry.fields["categoryName"]!)")
-                                    print((item.valueForKey("imageURL")!))
-                                    print("\(self.imgURL)")
-                                    print(item.valueForKey("order")!)
-                                    print("\(entry.fields["order"]!)")
+        
+                                if let _ = item.valueForKey("name"), _ = entry.fields["categoryName"] where "\(item.valueForKey("name"))" == "\(entry.fields["categoryName"])" {
+                                    
              
-                                    if "\(item.valueForKey("imageURL")!)" != "\(self.imgURL)" ||
+                                    if let _ = item.valueForKey("imageURL"), _ = self.imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(self.imgURL)" ||
                                         "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" {
+                                        
+                                        print("Did detect change")
                                     
                                     //If data in client is not updated
                                     
                                         dispatch_group_enter(myGroupCat)
       
                                         self.downloadImage(self.imgURL, completionHandler: { (isResponse) in
-                                            
+                                           
+                                            print("Did download the update")
                                             self.categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                             dispatch_group_leave(myGroupCat)
                                             
@@ -147,13 +150,15 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
   
                 
-                    print("Finished downloading and updating category images.")
                     self.categories.sortInPlace({ $0.order < $1.order })
                     
                     for cat in self.categories {
                         self.saveCategory(cat)
                     }
                 
+                for each in self.categoriesData {
+                    print("\(each.valueForKey("imageURL")!)")
+                }
                     self.collectionView.reloadData()
             })
 
@@ -163,38 +168,48 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
 
     }
     
-    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+    override func viewWillAppear(animated: Bool) {
         
-        var imgData: UIImage!
-        let myGroupImg = dispatch_group_create()
-        dispatch_group_enter(myGroupImg)
-        
-        Alamofire.request(.GET, URL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-            
-            if err == nil {
-                imgData = UIImage(data: data!)!
-                
-            } else {
-                imgData = UIImage()
-            }
-            dispatch_group_leave(myGroupImg)
-  
-        })
-        
-        dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
-            
-       
-        completionHandler(isResponse : (imgData, "\(URL)"))
-            
-        })
+        self.collectionView.reloadData()
     }
     
-    func deleteIncidents() {
+    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+        
+        if checkConnectivity(){
+            var imgData: UIImage!
+            let myGroupImg = dispatch_group_create()
+            dispatch_group_enter(myGroupImg)
+            
+            Alamofire.request(.GET, URL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                
+                if err == nil {
+                    imgData = UIImage(data: data!)!
+                    
+                } else {
+                    imgData = UIImage()
+                }
+                dispatch_group_leave(myGroupImg)
+                
+            })
+            
+            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+                
+                
+                completionHandler(isResponse : (imgData, "\(URL)"))
+                
+            })
+        } else {
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+        }
+        
+    }
+    
+    func deleteCoreData(entity: String) {
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
         let coord = appDel.persistentStoreCoordinator
         
-        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let fetchRequest = NSFetchRequest(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
@@ -204,51 +219,70 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         }
     }
     
-    func saveCategory(category: Category) {
+    func deleteCoreDataNil(entity: String) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
         
-        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
-        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", "")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
-        categoryTemp.setValue(category.name, forKey: "name")
-        categoryTemp.setValue(category.order, forKey: "order")
-        categoryTemp.setValue(category.img, forKey: "image")
-        categoryTemp.setValue(category.imgURL, forKey: "imageURL")
-        
-   
         do {
-            try managedContext.save()
-            categoriesData.append(categoryTemp)
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
         }
     }
     
-    func updateCategory(category: Category) {
+
+    
+    func saveCategory(category: Category) {
         let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
         let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         let fetchRequest = NSFetchRequest(entityName: "Category")
         
+        
         fetchRequest.predicate = NSPredicate(format: "name = %@", category.name)
         do {
             if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
-                    let managedObject = fetchResults[0]
-                    managedObject.setValue(category.order, forKey: "order")
-                    managedObject.setValue(category.imgURL, forKey: "imageURL")
+      
+                    fetchResults.first?.setValue(category.name, forKey: "name")
+                    fetchResults.first?.setValue(category.order, forKey: "order")
+                    fetchResults.first?.setValue(category.img, forKey: "image")
+                    fetchResults.first?.setValue(category.imgURL, forKey: "imageURL")
                     
-                    try managedContext.save()
+                    do {
+                        try fetchResults.first?.managedObjectContext?.save()
+                        fetchCategories()
+                        print("Updated: \(category.name) mit order \(category.order) und \(category.imgURL) ")
+                        
+                    } catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                    
+                    
                 } else {
                     
                     categoryTemp.setValue(category.name, forKey: "name")
                     categoryTemp.setValue(category.order, forKey: "order")
                     categoryTemp.setValue(category.img, forKey: "image")
                     categoryTemp.setValue(category.imgURL, forKey: "imageURL")
+                    
+                   do {
+                    try managedContext.save()
+                    categoriesData.append(categoryTemp)
+                    print("Saved: \(category.name) mit order \(category.order) und \(category.imgURL) ")
+                   
+                   }catch let error as NSError {
+                    print("Could not fetch \(error), \(error.userInfo)")
+                   }
                 }
+                
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -258,17 +292,21 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func fetchCategories () {
-        
+        categoriesData.removeAll()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "name != %@", "")
         
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
+     
+            
             categoriesData = results as! [NSManagedObject]
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
