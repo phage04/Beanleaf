@@ -15,6 +15,8 @@ import CoreData
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
+var foodItemsData = [NSManagedObject]()
+var foodItems = [FoodItem]()
 
 var imgURL: NSURL!
 

@@ -60,11 +60,17 @@ class CategoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(dishName: String, dishImg: String) {
+    func configureCell(dishName: String, price: Double, dishImg: NSData?) {
         
         foodLbl.text = dishName
-        foodImg.image = UIImage(named: dishImg)
-        price.text = "4€"
+        
+        if image = dishImg {
+            foodImg.image = UIImage(data: image)
+        } else {
+            foodImg.hidden = true
+        }
+        
+        price.text = "\(price)€"
         starCount.text = "326"       
         
     

@@ -22,11 +22,9 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     
     @IBOutlet weak var starCount: UILabel!
     
-    var dishImgName = ""
-    var dishPrice = "4€"
     var starCountVal = 453
-    var dishName = ""
-    var dishDesc = "Lorem ipsum keme keme keme 48 years balaj sudems at sangkatuts at jowabelles jowabelles ng at bakit na ang kasi shogal chapter at ang keme borta kasi at bakit doonek fayatollah kumenis at nang wiz at bakit valaj chuckie at bakit tetetet na valaj wiz at bakit matod nang shonga shongaers bakit na ang chaka valaj shonga at ang waz kemerloo shonget nang na buya bongga kasi ang balaj tetetet biway sa planggana antibiotic pinkalou klapeypey-klapeypey shonget nang buya tungril cheapangga bonggakea mahogany at Mike ang chopopo bakit na ang nang at nang , at bakit dites katol jowabelles nang chipipay dites shogal sa at pamenthol ma-kyonget emena gushung ganders at ang nang na ang shala balaj guash shontis ng oblation na ang majubis at bakit. Lorem ipsum keme keme keme 48 years balaj sudems at sangkatuts at jowabelles jowabelles ng at bakit na ang kasi shogal chapter at ang keme borta kasi at bakit doonek fayatollah kumenis at nang wiz at bakit valaj chuckie at bakit tetetet na valaj wiz at bakit matod nang shonga shongaers bakit na ang chaka valaj shonga at ang waz kemerloo shonget nang na buya bongga kasi ang balaj tetetet biway sa planggana antibiotic pinkalou klapeypey-klapeypey shonget nang buya tungril cheapangga bonggakea mahogany at Mike ang chopopo bakit na ang nang at nang , at bakit dites katol jowabelles nang chipipay dites shogal sa at pamenthol ma-kyonget emena gushung ganders at ang nang na ang shala balaj guash shontis ng oblation na ang majubis at bakit."
+    let dish: FoodItem
+
     
     private let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
@@ -47,12 +45,15 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        navigationItem.title = dishName
+        navigationItem.title = dish.name
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
-        if dishImgName != "" {
-           dishImg.image = UIImage(named: dishImgName)
+        
+        if let image = dish.img {
+            dishImg.image = UIImage(data: image)
+        } else {
+            dishImg.hidden = true
         }
         
         starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
@@ -62,7 +63,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         starCount.text = "\(starCountVal)"
         price.textColor = UIColor.whiteColor()
         price.font = UIFont(name: font1Light, size: 24)
-        price.text = "\(dishPrice)"
+        price.text = "\(dish.price)€"
         
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = COLOR2
