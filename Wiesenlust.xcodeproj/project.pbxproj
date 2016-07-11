@@ -122,8 +122,8 @@
 		DE5DC5CB1D2A77B0002871B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */,
 				DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */,
+				DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */,
 				DE27E5E81D2D3A65005780BE /* ItemCell.swift */,
 				DE5BACB61D26BB08006C3C7C /* Main.storyboard */,
 				DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */,

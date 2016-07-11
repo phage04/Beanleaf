@@ -17,8 +17,7 @@ class MenuCategoryCell: UICollectionViewCell {
     @IBOutlet weak var categoryName: UILabel!
     
     var profileImageURL: String!
-    var img: UIImage?
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

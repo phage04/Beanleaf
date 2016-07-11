@@ -51,6 +51,7 @@ class Home: UIViewController {
         super.viewDidLoad()
         
         
+        
         backgroundView.backgroundColor = COLOR1
         
         var image = menuIcon1!
@@ -148,29 +149,23 @@ class Home: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if !checkConnectivity() {
-            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-        }
-        
-//        deleteCoreData("Category")
-//        deleteCoreData("FoodItem")
-        deleteCoreDataNil("Category")
-        deleteCoreDataNil("FoodItem")
         
         
-        fetchDataCat()
-        fetchDataFood()
-        
+
         if foodItemsData.count == 0 || categoriesData.count == 0 {
             
             SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
-                SwiftSpinner.hide()
+               
                 }, subtitle: LoadingMsgTapToExit)
             didLoad = true
         }
         
+        if !checkConnectivity() {
+             SwiftSpinner.hide()
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+        }
+        
         downloadCategories()
-
 
     }
 
@@ -205,9 +200,17 @@ class Home: UIViewController {
     @IBAction func menuItem6Pressed(sender: AnyObject) {
     }
     
+    func clearCoreData() {
+        deleteCoreData("Category")
+        deleteCoreData("FoodItem")
+    }
+    
     func downloadCategories() {
         
+        deleteCoreDataNil("Category")
+        deleteCoreDataNil("FoodItem")
         fetchDataCat()
+        fetchDataFood()
         
         let myGroupCat = dispatch_group_create()
         
@@ -215,6 +218,13 @@ class Home: UIViewController {
         client.fetchEntries(["content_type": "category"]).1.next {
             
             categories.removeAll()
+            
+            if $0.items.count < categoriesData.count {
+                categoriesData.removeAll()
+                foodItemsData.removeAll()
+                self.clearCoreData()
+                print("Cleared core data.")
+            }
             
             for entry in $0.items{
                 dispatch_group_enter(myGroupCat)
@@ -303,7 +313,7 @@ class Home: UIViewController {
     }
     
     func downloadFoodItems() {
-        fetchDataFood()
+        
         var categoryFood: String!
         let myGroupFood = dispatch_group_create()
         
@@ -311,6 +321,13 @@ class Home: UIViewController {
         client.fetchEntries(["content_type": "menuItem"]).1.next {
             
             foodItems.removeAll()
+            
+            if $0.items.count < foodItemsData.count {
+                categoriesData.removeAll()
+                foodItemsData.removeAll()
+                self.clearCoreData()
+                print("Cleared core data.")
+            }
             
             for entry in $0.items{
                 dispatch_group_enter(myGroupFood)
@@ -341,7 +358,7 @@ class Home: UIViewController {
                                         
                                         print("\(item.valueForKey("name")!)")
                                         print("\(entry.fields["itemName"]!)")
-                                        print("\(item.valueForKey("imageURL"))")
+                                        print("\(item.valueForKey("imageURL")!)")
                                         print("\(imgURL)")
                                         
                                         //If data in client is not updated

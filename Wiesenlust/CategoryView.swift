@@ -13,7 +13,6 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     
     var dishes = [FoodItem]()
-    let images:[String] = ["Awesome", "Cool", "Tasty", "Big"]
     var categorySelected = ""
     
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationItem.title = categorySelected
         
         for each in foodItemsData {
-            print("\(each.valueForKey("category")!)")
+            
             if "\(each.valueForKey("category")!)" == categorySelected {
                 dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String))
             }

@@ -373,7 +373,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Burgers" translatesAutoresizingMaskIntoConstraints="NO" id="2FR-XQ-KBc">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2FR-XQ-KBc">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="219.5"/>
                                                 </imageView>
                                                 <view alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFz-XT-7aU">
@@ -538,7 +538,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Burgers" translatesAutoresizingMaskIntoConstraints="NO" id="jY7-7Q-fKu">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jY7-7Q-fKu">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         </imageView>
                                         <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Vj-e2-PNO">
@@ -700,7 +700,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Burgers" width="1500" height="1125"/>
         <image name="background" width="812" height="799"/>
         <image name="logo02" width="749" height="217"/>
         <image name="menuIcon" width="92" height="92"/>
