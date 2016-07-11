@@ -42,7 +42,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("itemSegue", sender: ["\(dishes[indexPath.row])", "\(images[indexPath.row])"])
+        performSegueWithIdentifier("itemSegue", sender: dishes[indexPath.row])
     }
     
     

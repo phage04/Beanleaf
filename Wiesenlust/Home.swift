@@ -152,12 +152,17 @@ class Home: UIViewController {
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
         
-        deleteCoreData("Category")
-        deleteCoreData("FoodItem")
+//        deleteCoreData("Category")
+//        deleteCoreData("FoodItem")
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
         
-        if !didLoad {
+        
+        fetchDataCat()
+        fetchDataFood()
+        
+        if foodItemsData.count == 0 || categoriesData.count == 0 {
+            
             SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
                 SwiftSpinner.hide()
                 }, subtitle: LoadingMsgTapToExit)
@@ -228,7 +233,12 @@ class Home: UIViewController {
                                     if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
                                         "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" {
                                         
-                                        print("Did detect change")
+                                        print("Did detect change for \(item.valueForKey("name"))")
+                                        
+                                        print("\(item.valueForKey("name"))")
+                                        print("\(entry.fields["categoryName"])")
+                                        print("\(item.valueForKey("imageURL")!)")
+                                        print("\(imgURL)")
                                         
                                         //If data in client is not updated
                                         
@@ -237,7 +247,7 @@ class Home: UIViewController {
                                         self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
-                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0!, imgURL: "\(isResponse.1)"))
+                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                             dispatch_group_leave(myGroupCat)
                                             
                                         })
@@ -253,7 +263,7 @@ class Home: UIViewController {
                             //If zero data yet saved in client
                             self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                 
-                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0!, imgURL: "\(isResponse.1)"))
+                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                 dispatch_group_leave(myGroupCat)
                             })
                         }
@@ -322,16 +332,16 @@ class Home: UIViewController {
                                 if let _ = item.valueForKey("name"), _ = entry.fields["itemName"] where "\(item.valueForKey("name"))" == "\(entry.fields["itemName"])" {
                                    
                                     
-                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL!)" ||
+                                    if let _ = item.valueForKey("imageURL") as? String, _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
                                         "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
                                         "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
                                         "\(item.valueForKey("category")!)" != "\(categoryFood)" {
                                         
-                                        print("Did detect change for Food")
+                                        print("Did detect change for \(item.valueForKey("name")!)")
                                         
-                                        print("\(item.valueForKey("name"))")
-                                        print("\(entry.fields["itemName"])")
-                                        print("\(item.valueForKey("imageURL")!)")
+                                        print("\(item.valueForKey("name")!)")
+                                        print("\(entry.fields["itemName"]!)")
+                                        print("\(item.valueForKey("imageURL"))")
                                         print("\(imgURL)")
                                         
                                         //If data in client is not updated
@@ -340,7 +350,7 @@ class Home: UIViewController {
                                         
                                         self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
-                                            print("Did download the update for Food")
+                                            print("Did download the update")
                                             foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                             dispatch_group_leave(myGroupFood)
                                             
@@ -392,10 +402,10 @@ class Home: UIViewController {
                 foodItems.sortInPlace({ $0.price < $1.price })
                 
                 for food in foodItems {
-                    print(food.category)
+                    
                     self.saveFood(food)
                 }
-                
+                print("Update Check Complete.")
                 SwiftSpinner.hide()
             })
             
@@ -405,32 +415,38 @@ class Home: UIViewController {
         
     }
     
-    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage?, String?)) -> Void)) {
+    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
         
         
         if checkConnectivity(){
             var imgData: UIImage!
             let myGroupImg = dispatch_group_create()
-            dispatch_group_enter(myGroupImg)
             
-            Alamofire.request(.GET, URL).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+            
+            if let urlLink = URL as NSURL? {
                 
-                if err == nil {
-                    imgData = UIImage(data: data!)!
+                dispatch_group_enter(myGroupImg)
+                Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
                     
-                } else {
-                    imgData = UIImage()
-                }
-                dispatch_group_leave(myGroupImg)
+                    if err == nil {
+                        imgData = UIImage(data: data!)!
+                        
+                    } else {
+                        imgData = UIImage()
+                    }
+                    dispatch_group_leave(myGroupImg)
+                    
+                })
                 
-            })
+                dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+                    
+                    
+                    completionHandler(isResponse : (imgData, "\(URL)"))
+                    
+                })
+            }
             
-            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
-                
-                
-                completionHandler(isResponse : (imgData, "\(URL)"))
-                
-            })
+            
         } else {
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
