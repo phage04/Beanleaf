@@ -137,7 +137,7 @@ class Home: UIViewController {
         socialButton.layer.borderColor = COLOR2.CGColor
         socialButton.setTitle(socialButtonTitle, forState: .Normal)
         socialButton.setTitleColor(COLOR2, forState: .Normal)
-        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 12)
+        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
         
 

@@ -37,7 +37,7 @@ let menuIcon6 = UIImage(named: "menuIcon6.png")
 
 let font1Thin = "HelveticaNeue-Thin"
 let font1Medium = "HelveticaNeue-Medium"
-let font1Regular = "HelveticaNeue-Regular"
+let font1Regular = "HelveticaNeue"
 let font1Light = "HelveticaNeue-Light"
 let font1UltraLight = "HelveticaNeue-UltraLight"
 
