@@ -53,7 +53,7 @@ let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
 let socialButtonTitle = "VISIT US ON YELP!"
 
 let LoadingMsgTapToExit = "Tap anytime to exit"
-let LoadingMsgGlobal = "Downloding updates..."
+let LoadingMsgGlobal = "Downloading updates..."
 
 
 let DATE_FULL_FORMAT = "yyyy-MM-dd HH:mm:ss Z"

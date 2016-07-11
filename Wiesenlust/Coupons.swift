@@ -32,8 +32,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR2
-        
         downloadCoupons()
+        
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +67,15 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+    
+    
     func downloadCoupons() {
+        
+        
+        
+        //ADD THREADING for refresh
+        // Add star image
+        // create other promo types
         
         
         client.fetchEntries(["content_type": "coupon"]).1.next {
@@ -93,10 +101,6 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
             }
             self.tableView.reloadData()
-            for each in self.coupons {
-                print(each.title)
-            }
-            
             
         }
         
