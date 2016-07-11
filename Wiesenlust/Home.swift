@@ -148,23 +148,24 @@ class Home: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if checkConnectivity() {
-            //deleteCoreData("Category")
-            deleteCoreDataNil("Category")
-            
-            if !didLoad {
-                SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
-                    SwiftSpinner.hide()
-                    }, subtitle: LoadingMsgTapToExit)
-                didLoad = true
-            }
-            
-            downloadCategories()
-            
-            
-        } else {
+        if !checkConnectivity() {
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
+        
+        deleteCoreData("Category")
+        deleteCoreData("FoodItem")
+        deleteCoreDataNil("Category")
+        deleteCoreDataNil("FoodItem")
+        
+        if !didLoad {
+            SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
+                SwiftSpinner.hide()
+                }, subtitle: LoadingMsgTapToExit)
+            didLoad = true
+        }
+        
+        downloadCategories()
+
 
     }
 
@@ -282,7 +283,7 @@ class Home: UIViewController {
                     self.saveCategory(cat)
                 }
                 self.downloadFoodItems()
-                SwiftSpinner.hide()
+                //SwiftSpinner.hide()
             })
             
             
@@ -293,6 +294,7 @@ class Home: UIViewController {
     
     func downloadFoodItems() {
         fetchDataFood()
+        var categoryFood: String!
         let myGroupFood = dispatch_group_create()
         
         
@@ -302,6 +304,8 @@ class Home: UIViewController {
             
             for entry in $0.items{
                 dispatch_group_enter(myGroupFood)
+                
+                
                 if let data = entry.fields["image"] as? Asset{
                     
                     do {
@@ -310,15 +314,25 @@ class Home: UIViewController {
                         if foodItemsData.count > 0 {
                             
                             for item in foodItemsData {
+                               
+                                if let cat = entry.fields["category"] as? Entry {
+                                    categoryFood = cat.fields["categoryName"] as! String
+                                }
                                 
                                 if let _ = item.valueForKey("name"), _ = entry.fields["itemName"] where "\(item.valueForKey("name"))" == "\(entry.fields["itemName"])" {
+                                   
                                     
-                                    
-                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL!)" ||
                                         "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
-                                        "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" {
+                                        "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
+                                        "\(item.valueForKey("category")!)" != "\(categoryFood)" {
                                         
-                                        print("Did detect change")
+                                        print("Did detect change for Food")
+                                        
+                                        print("\(item.valueForKey("name"))")
+                                        print("\(entry.fields["itemName"])")
+                                        print("\(item.valueForKey("imageURL")!)")
+                                        print("\(imgURL)")
                                         
                                         //If data in client is not updated
                                         
@@ -326,8 +340,8 @@ class Home: UIViewController {
                                         
                                         self.downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
-                                            print("Did download the update")
-                                            foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            print("Did download the update for Food")
+                                            foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                             dispatch_group_leave(myGroupFood)
                                             
                                         })
@@ -342,8 +356,13 @@ class Home: UIViewController {
                         else if foodItemsData.count == 0{
                             //If zero data yet saved in client
                             self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                               
+                                if let cat = entry.fields["category"] as? Entry {
+                                    categoryFood = cat.fields["categoryName"] as! String
+                                }
                                 
-                                foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                               foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                
                                 dispatch_group_leave(myGroupFood)
                             })
                         }
@@ -355,8 +374,11 @@ class Home: UIViewController {
                     }
                     
                 } else {
+                    if let cat = entry.fields["category"] as? Entry {
+                        categoryFood = cat.fields["categoryName"] as! String
+                    }
                     //If no image is uploaded for this item, user default or blank
-                    foodItems.append(FoodItem(cat: "\(entry.fields["category"]!)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil))
+                    foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil))
                     dispatch_group_leave(myGroupFood)
                 }
                 
@@ -370,6 +392,7 @@ class Home: UIViewController {
                 foodItems.sortInPlace({ $0.price < $1.price })
                 
                 for food in foodItems {
+                    print(food.category)
                     self.saveFood(food)
                 }
                 
@@ -509,7 +532,7 @@ class Home: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: "FoodItem")
         
         
-        fetchRequest.predicate = NSPredicate(format: "itemName = %@", foodItem.name)
+        fetchRequest.predicate = NSPredicate(format: "name = %@", foodItem.name)
         do {
             if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
@@ -524,7 +547,7 @@ class Home: UIViewController {
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
                         fetchDataCat()
-                        print("Updated: \(foodItem.name) mit order \(foodItem.price) und \(foodItem.imgURL) ")
+                        print("Updated Food: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL) ")
                         
                     } catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")
@@ -533,6 +556,7 @@ class Home: UIViewController {
                     
                 } else {
                     
+                    categoryTemp.setValue(foodItem.category, forKey: "category")
                     categoryTemp.setValue(foodItem.name, forKey: "name")
                     categoryTemp.setValue(foodItem.price, forKey: "price")
                     categoryTemp.setValue(foodItem.descriptionInfo, forKey: "descriptionInfo")
@@ -541,8 +565,8 @@ class Home: UIViewController {
                     
                     do {
                         try managedContext.save()
-                        categoriesData.append(categoryTemp)
-                        print("Saved: \(foodItem.name) mit order \(foodItem.price) und \(foodItem.imgURL) ")
+                        foodItemsData.append(categoryTemp)
+                        print("Saved: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL) ")
                         
                     }catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")

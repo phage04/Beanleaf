@@ -64,8 +64,8 @@ class CategoryCell: UITableViewCell {
         
         foodLbl.text = dishName
         
-        if image = dishImg as NSData {
-            foodImg.image = UIImage(data: image)
+        if let imageDish = dishImg as NSData? {
+            foodImg.image = UIImage(data: imageDish)
         } else {
             foodImg.hidden = true
         }
