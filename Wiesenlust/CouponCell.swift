@@ -60,21 +60,32 @@ class CouponCell: UITableViewCell {
         couponImg.image = scaledImage
     }
     
-    func configureCell(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, special: Bool) {
+    func configureCell(titleTxt: String, discountTxt: String!, validityTxt: String?, termsTxt: String?, discType: String) {
         
         title.text = titleTxt
-        discount.text = discountTxt
-        validity.text = validityTxt
-        terms.text = termsTxt
         
-        if special {
-            starImg.hidden = false
-            subTitle.hidden = false
-            subTitle.text = "JUST FOR YOU"
-        } else {
+        switch(discType) {
+            case "Percentage":
+            discount.text = "\(discountTxt)%"
+            break
+            
+            case "Amount":
+            discount.text = "\(discountTxt)€"
+            break
+            
+            default:
+            break
+            
+        }
+        
+        validity.text = validityTxt
+        
+        if let text = termsTxt {
+            terms.text = text
+        }
             starImg.hidden = true
             subTitle.hidden = true
-        }
+        
     }
 
 

@@ -24,28 +24,28 @@ public class Coupon{
         if _title == nil {
             return ""
         }
-        return _title
+        return _title!
     }
     
     var subtitle: String {
         if _subTitle == nil {
             return ""
         }
-        return _subTitle
+        return _subTitle!
     }
     
     var discount: String {
         if _discount == nil {
             return ""
         }
-        return _discount
+        return _discount!
     }
     
     var validity: String {
         if _validity == nil {
             return ""
         }
-        return _validity
+        return _validity!
     }
     
     var terms: String {

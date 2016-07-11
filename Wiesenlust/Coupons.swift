@@ -23,8 +23,17 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Coupons.backButtonPressed(_:)));
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = COLOR2
+        
+        downloadCoupons()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,7 +54,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .None
             let couponNow = coupons[indexPath.row]
             
-            cell.configureCell(couponNow.title, discountTxt: couponNow.discount, validityTxt: couponNow.validity, termsTxt: couponNow.terms, special: couponNow.special)
+            cell.configureCell(couponNow.title, discountTxt: couponNow.discount, validityTxt: couponNow.validity, termsTxt: couponNow.terms, discType: couponNow.discountType)
             return cell
             
         } else {
@@ -58,42 +67,44 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    func downloadCategories() {
-        
-        deleteCoreDataNil("Coupons")
-      //  fetchDataFood()
-        
-        let myGroupCoup = dispatch_group_create()
+    func downloadCoupons() {
         
         
         client.fetchEntries(["content_type": "coupon"]).1.next {
-            
             self.coupons.removeAll()
-
             
             for entry in $0.items{
-                dispatch_group_enter(myGroupCoup)
-                if let data = entry.fields["image"] as? Asset{
- 
+                
+                if let date = entry.fields["validUntil"] {
+                    dateFormatter.dateFormat = DATE_FULL_FORMAT
+                    let dateFormatted = dateFormatter.dateFromString("\(date) 00:00:00 +0000")!
+                    dateFormatter.dateFormat = DATE_FORMAT1
+                    let dateDateFormattedVal = dateFormatter.stringFromDate(dateFormatted)
+                    
+                    
+                    
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: "\(entry.fields["discountValue"]!)", validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)"))
+                } else {
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: "\(entry.fields["discountValue"]!)", validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)"))
+                }
+                
+                
+                
                 
             }
-            
-            dispatch_group_notify(myGroupCoup, dispatch_get_main_queue(), {
-                
-                
-                categories.sortInPlace({ $0.order < $1.order })
-                
-                for cat in categories {
-                    self.saveCategory(cat)
-                }
-                self.downloadFoodItems()
-                //SwiftSpinner.hide()
-            })
+            self.tableView.reloadData()
+            for each in self.coupons {
+                print(each.title)
+            }
             
             
         }
         
         
+    
     }
+    
+    func backButtonPressed(sender:UIButton) {
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

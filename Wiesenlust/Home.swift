@@ -161,6 +161,8 @@ class Home: UIViewController {
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
         
+
+     
         downloadCategories()
 
     }
