@@ -144,10 +144,6 @@ class Home: UIViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-    }
-    
     override func viewDidAppear(animated: Bool) {
         
         
