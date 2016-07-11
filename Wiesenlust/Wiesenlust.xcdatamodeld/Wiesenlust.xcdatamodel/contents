@@ -6,6 +6,14 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Coupons" syncable="YES">
+        <attribute name="descriptionInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="discountType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="terms" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="validity" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="FoodItem" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionInfo" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,5 +25,6 @@
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="FoodItem" positionX="-63" positionY="9" width="128" height="135"/>
+        <element name="Coupons" positionX="-54" positionY="54" width="128" height="135"/>
     </elements>
 </model>

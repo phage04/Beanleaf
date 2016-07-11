@@ -250,7 +250,7 @@ class Home: UIViewController {
                                         
                                         dispatch_group_enter(myGroupCat)
                                         
-                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                        downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
                                             categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
@@ -267,7 +267,7 @@ class Home: UIViewController {
                             
                         else if categoriesData.count == 0{
                             //If zero data yet saved in client
-                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                            downloadImage(imgURL, completionHandler: { (isResponse) in
                                 
                                 categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                 dispatch_group_leave(myGroupCat)
@@ -361,7 +361,7 @@ class Home: UIViewController {
                                         
                                         dispatch_group_enter(myGroupFood)
                                         
-                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                        downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
                                             foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
@@ -378,7 +378,7 @@ class Home: UIViewController {
                             
                         else if foodItemsData.count == 0{
                             //If zero data yet saved in client
-                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                            downloadImage(imgURL, completionHandler: { (isResponse) in
                                
                                 if let cat = entry.fields["category"] as? Entry {
                                     categoryFood = cat.fields["categoryName"] as! String
@@ -428,76 +428,7 @@ class Home: UIViewController {
         
     }
     
-    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
-        
-        
-        if checkConnectivity(){
-            var imgData: UIImage!
-            let myGroupImg = dispatch_group_create()
-            
-            
-            if let urlLink = URL as NSURL? {
-                
-                dispatch_group_enter(myGroupImg)
-                Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-                    
-                    if err == nil {
-                        imgData = UIImage(data: data!)!
-                        
-                    } else {
-                        imgData = UIImage()
-                    }
-                    dispatch_group_leave(myGroupImg)
-                    
-                })
-                
-                dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
-                    
-                    
-                    completionHandler(isResponse : (imgData, "\(URL)"))
-                    
-                })
-            }
-            
-            
-        } else {
-            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-        }
-        
-    }
-    
-    func deleteCoreData(entity: String) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    func deleteCoreDataNil(entity: String) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        fetchRequest.predicate = NSPredicate(format: "name == %@", "")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    
+ 
     
     func saveCategory(category: Category) {
         let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate

@@ -45,7 +45,7 @@ class CouponCell: UITableViewCell {
         subTitle.textColor = COLOR2
         subTitle.font = UIFont(name: font1Light, size: 12)
         
-        var image = menuIcon1!
+        let image = UIImage(named: "coupon")!
         var targetWidth : CGFloat
         var targetHeight : CGFloat
         var scaledImage = image
@@ -57,7 +57,7 @@ class CouponCell: UITableViewCell {
         image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        couponImg.image = UIImage(data: scaledImage)
+        couponImg.image = scaledImage
     }
     
     func configureCell(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, special: Bool) {

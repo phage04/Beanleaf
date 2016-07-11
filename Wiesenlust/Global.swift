@@ -12,11 +12,13 @@ import CoreLocation
 import SystemConfiguration
 import Contentful
 import CoreData
+import Alamofire
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
 var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
+
 
 var imgURL: NSURL!
 
@@ -108,3 +110,71 @@ func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, comp
         }
     }
 }
+
+func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+    
+    
+    
+        var imgData: UIImage!
+        let myGroupImg = dispatch_group_create()
+        
+        
+        if let urlLink = URL as NSURL? {
+            
+            dispatch_group_enter(myGroupImg)
+            Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                
+                if err == nil {
+                    imgData = UIImage(data: data!)!
+                    
+                } else {
+                    imgData = UIImage()
+                }
+                dispatch_group_leave(myGroupImg)
+                
+            })
+            
+            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+                
+                
+                completionHandler(isResponse : (imgData, "\(URL)"))
+                
+            })
+        }
+ 
+    
+}
+
+func deleteCoreData(entity: String) {
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context = appDel.managedObjectContext
+    let coord = appDel.persistentStoreCoordinator
+    
+    let fetchRequest = NSFetchRequest(entityName: entity)
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+        try coord.executeRequest(deleteRequest, withContext: context)
+    } catch let error as NSError {
+        debugPrint(error)
+    }
+}
+
+func deleteCoreDataNil(entity: String) {
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context = appDel.managedObjectContext
+    let coord = appDel.persistentStoreCoordinator
+    
+    let fetchRequest = NSFetchRequest(entityName: entity)
+    fetchRequest.predicate = NSPredicate(format: "name == %@", "")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+        try coord.executeRequest(deleteRequest, withContext: context)
+    } catch let error as NSError {
+        debugPrint(error)
+    }
+}
+
+
+

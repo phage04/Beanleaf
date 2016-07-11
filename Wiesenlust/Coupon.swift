@@ -17,6 +17,7 @@ public class Coupon{
     private var _validity: String!
     private var _terms: String!
     private var _special: Bool!
+    private var _discountType: String!
     
     
     var title: String {
@@ -58,7 +59,14 @@ public class Coupon{
         return _special
     }
     
-    init(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, special: Bool) {
+    var discountType: String {
+        if _discountType == nil {
+            return ""
+        }
+        return _discountType
+    }
+    
+    init(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, discType: String) {
         
         self._title = titleTxt
         self._discount = discountTxt
@@ -71,7 +79,10 @@ public class Coupon{
           self._terms = txtTerms
         }
         
-        self._special = special
+        self._discountType = discType
+        
+        
+        self._special = false
         
         
         
