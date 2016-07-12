@@ -24,7 +24,7 @@ class Rewards: UIViewController {
     @IBOutlet weak var star7: UIImageView!
     @IBOutlet weak var star8: UIImageView!
     @IBOutlet weak var star9: UIImageView!
-    @IBOutlet weak var star10: UIStackView!
+    @IBOutlet weak var star10: UIImageView!
     @IBOutlet weak var star11: UIImageView!
     @IBOutlet weak var star12: UIImageView!
     
@@ -44,6 +44,7 @@ class Rewards: UIViewController {
     @IBOutlet weak var bottomLbl: UILabel!
     
     var numberOfStamps: Int = 0
+    var managerPin: String = "12345"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,8 +81,8 @@ class Rewards: UIViewController {
         gift11.text = ""
         gift12.text = defaultFree
         
-        numberOfStamps = 4
-    updateStamps(numberOfStamps)
+        numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps")
+        updateStamps(numberOfStamps)
 
 
         
@@ -90,19 +91,64 @@ class Rewards: UIViewController {
     func updateStamps(numberStamps: Int) {
         
         switch(numberOfStamps){
+        case 0:
+            star1.tintColor = UIColor.grayColor()
+            star2.tintColor = UIColor.grayColor()
+            star3.tintColor = UIColor.grayColor()
+            star4.tintColor = UIColor.grayColor()
+            star5.tintColor = UIColor.grayColor()
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
+            break
+            
         case 1:
             star1.tintColor = COLOR2
+            star2.tintColor = UIColor.grayColor()
+            star3.tintColor = UIColor.grayColor()
+            star4.tintColor = UIColor.grayColor()
+            star5.tintColor = UIColor.grayColor()
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 2:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
+            star3.tintColor = UIColor.grayColor()
+            star4.tintColor = UIColor.grayColor()
+            star5.tintColor = UIColor.grayColor()
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 3:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
+            star4.tintColor = UIColor.grayColor()
+            star5.tintColor = UIColor.grayColor()
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 4:
@@ -110,6 +156,14 @@ class Rewards: UIViewController {
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
             star4.tintColor = COLOR2
+            star5.tintColor = UIColor.grayColor()
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 5:
@@ -118,6 +172,13 @@ class Rewards: UIViewController {
             star3.tintColor = COLOR2
             star4.tintColor = COLOR2
             star5.tintColor = COLOR2
+            star6.tintColor = UIColor.grayColor()
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 6:
@@ -127,6 +188,12 @@ class Rewards: UIViewController {
             star4.tintColor = COLOR2
             star5.tintColor = COLOR2
             star6.tintColor = COLOR2
+            star7.tintColor = UIColor.grayColor()
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 7:
@@ -137,6 +204,11 @@ class Rewards: UIViewController {
             star5.tintColor = COLOR2
             star6.tintColor = COLOR2
             star7.tintColor = COLOR2
+            star8.tintColor = UIColor.grayColor()
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 8:
@@ -148,6 +220,10 @@ class Rewards: UIViewController {
             star6.tintColor = COLOR2
             star7.tintColor = COLOR2
             star8.tintColor = COLOR2
+            star9.tintColor = UIColor.grayColor()
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 9:
@@ -160,6 +236,9 @@ class Rewards: UIViewController {
             star7.tintColor = COLOR2
             star8.tintColor = COLOR2
             star9.tintColor = COLOR2
+            star10.tintColor = UIColor.grayColor()
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 10:
@@ -173,6 +252,8 @@ class Rewards: UIViewController {
             star8.tintColor = COLOR2
             star9.tintColor = COLOR2
             star10.tintColor = COLOR2
+            star11.tintColor = UIColor.grayColor()
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 11:
@@ -187,6 +268,7 @@ class Rewards: UIViewController {
             star9.tintColor = COLOR2
             star10.tintColor = COLOR2
             star11.tintColor = COLOR2
+            star12.tintColor = UIColor.grayColor()
             break
             
         case 12:
@@ -205,6 +287,7 @@ class Rewards: UIViewController {
             break
             
         default:
+            
             break
             
         
@@ -220,5 +303,100 @@ class Rewards: UIViewController {
     }
 
     @IBAction func addBtnPressed(sender: AnyObject) {
+        showAlert()
+    }
+    
+    func showErrorAlert(title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        VC.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func showActionSheet(){
+        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Select an option", message: "", preferredStyle: .ActionSheet)
+        
+        let cancelActionButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            print("Cancel")
+        }
+        actionSheetControllerIOS8.addAction(cancelActionButton)
+        
+        let saveActionButton: UIAlertAction = UIAlertAction(title: "Add One Stamp", style: .Default)
+        { action -> Void in
+            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
+            
+            if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            } else if self.numberOfStamps > 12 {
+                self.numberOfStamps = 1
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            }
+            
+            self.updateStamps(self.numberOfStamps)
+            
+            
+        }
+        actionSheetControllerIOS8.addAction(saveActionButton)
+        
+        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Subtract One Stamp", style: .Default)
+        { action -> Void in
+            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") - 1
+            
+            if self.numberOfStamps >= 0 {
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            } else {
+                self.numberOfStamps = 0
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            }
+            
+            self.updateStamps(self.numberOfStamps)
+
+        }
+        actionSheetControllerIOS8.addAction(deleteActionButton)
+        
+        let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .Default)
+        { action -> Void in
+            self.numberOfStamps = 0
+            
+            NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            
+            self.updateStamps(self.numberOfStamps)
+
+        }
+        actionSheetControllerIOS8.addAction(resetActionButton)
+        
+        self.presentViewController(actionSheetControllerIOS8, animated: true, completion: nil)
+
+    }
+
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: "Manager PIN Required", message: "", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
+            if let field = alertController.textFields![0] as? UITextField{
+                field.resignFirstResponder()
+                if field.text == self.managerPin {
+                    self.showActionSheet()
+                } else {
+                    self.showErrorAlert("Incorrect PIN", msg: "", VC: self)
+                }
+            } else {
+                // user did not fill field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.keyboardType = .NumberPad
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 }

@@ -1170,7 +1170,7 @@
                         <outlet property="gift8" destination="HXx-SM-8yh" id="FIa-a0-Emd"/>
                         <outlet property="gift9" destination="w7X-8e-Cdq" id="ldg-cG-kUO"/>
                         <outlet property="star1" destination="MfC-wd-F8q" id="Vrp-5k-zyM"/>
-                        <outlet property="star10" destination="gSg-Oa-Nil" id="FK0-ve-Dsx"/>
+                        <outlet property="star10" destination="ZMi-z1-wQw" id="dmQ-1c-JSB"/>
                         <outlet property="star11" destination="5w6-gZ-UWe" id="LNA-TE-DX6"/>
                         <outlet property="star12" destination="KnL-Fh-hGG" id="TWP-OM-dUA"/>
                         <outlet property="star2" destination="FkU-aR-mFr" id="ATW-N2-brZ"/>
