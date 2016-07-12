@@ -19,7 +19,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var couponsData = [NSManagedObject]()
     var coupons = [Coupon]()
-    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,10 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR2
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = COLOR1
+        refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
         activityIndicator.color = COLOR1
         activityIndicator.hidden = true
         deleteCoreDataNil("Coupons")
@@ -78,7 +82,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    
+    func refresh(sender:AnyObject) {
+       downloadCoupons()
+    }
     
     func downloadCoupons() {
         
@@ -134,6 +140,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.hidden = true
+                self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
             })
            

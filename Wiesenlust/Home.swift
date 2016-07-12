@@ -199,7 +199,7 @@ class Home: UIViewController {
         deleteCoreData("FoodItem")
     }
     
-    func downloadCategories() {
+  func downloadCategories() {
         
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
