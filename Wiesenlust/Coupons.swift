@@ -34,13 +34,16 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR2
         activityIndicator.color = COLOR1
+        deleteCoreDataNil("Coupons")
+        fetchDataCoupon()
         
-        downloadCoupons()
         
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.tableView.reloadData()
+       
+        downloadCoupons()
+        
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,9 +63,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCellWithIdentifier("CouponCell") as? CouponCell {
          
             cell.selectionStyle = .None
-            let couponNow = coupons[indexPath.row]
+            let couponNow = couponsData[indexPath.row]
             
-            cell.configureCell(couponNow.title, discountTxt: couponNow.discount, validityTxt: couponNow.validity, termsTxt: couponNow.terms, discType: couponNow.discountType, desc: couponNow.subtitle)
+            cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)")
             return cell
             
         } else {
@@ -79,14 +82,15 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func downloadCoupons() {
         
+        deleteCoreDataNil("Coupons")
         
         // Add star image
         // create other promo types
-        activityIndicator.startAnimating()
-        activityIndicator.hidden = false
         
+            activityIndicator.startAnimating()
+            activityIndicator.hidden = false
         
-        
+
         client.fetchEntries(["content_type": "coupon"]).1.next {
             self.coupons.removeAll()
             
@@ -116,7 +120,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     
                     self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc))
-                    self.tableView.reloadData()
+                    
                     dispatch_group_leave(myGroupCoup)
                     
                 }     
@@ -165,6 +169,44 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
         
         
+    }
+    
+    func fetchDataCoupon() {
+        couponsData.removeAll()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Coupons")
+        fetchRequest.predicate = NSPredicate(format: "title != %@", "")
+        
+        
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            
+            couponsData = results as! [NSManagedObject]
+            self.tableView.reloadData()
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func deleteCoreDataNil(entity: String) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.predicate = NSPredicate(format: "title == %@", "")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
     }
 
     

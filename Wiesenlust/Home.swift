@@ -45,7 +45,7 @@ class Home: UIViewController {
     
     @IBOutlet weak var socialButton: UIButton!
     
-   
+    var firstload = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,10 +147,10 @@ class Home: UIViewController {
         fetchDataCat()
         fetchDataFood()
 
-        if foodItemsData.count == 0 || categoriesData.count == 0 {
+        if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
             
             SwiftSpinner.show(LoadingMsgGlobal)
-
+            firstload = false
         }
         
         if !checkConnectivity() {
