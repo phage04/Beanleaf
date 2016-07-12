@@ -34,21 +34,21 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR2
         activityIndicator.color = COLOR1
+        activityIndicator.hidden = true
         deleteCoreDataNil("Coupons")
-        fetchDataCoupon()
+        
         
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-       
+    override func viewDidAppear(animated: Bool) {
+        fetchDataCoupon()
         downloadCoupons()
-        
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.coupons.count
+        return couponsData.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -84,13 +84,11 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         deleteCoreDataNil("Coupons")
         
-        // Add star image
-        // create other promo types
-        
-            activityIndicator.startAnimating()
-            activityIndicator.hidden = false
-        
-
+        if checkConnectivity() {
+            
+        activityIndicator.startAnimating()
+        activityIndicator.hidden = false
+ 
         client.fetchEntries(["content_type": "coupon"]).1.next {
             self.coupons.removeAll()
             
@@ -129,6 +127,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             dispatch_group_notify(myGroupCoup, dispatch_get_main_queue(), {
                 
+                deleteCoreData("Coupons")
+                self.couponsData.removeAll()
                 for each in self.coupons {
                     self.saveCoupon(each)
                 }
@@ -141,7 +141,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        
+        }
     
     }
     
@@ -160,7 +160,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         do {
             try managedContext.save()
-            foodItemsData.append(couponTemp)
+            couponsData.append(couponTemp)
             print("Saved: \(coupon.title) mit discount \(coupon.discount)")
             
         }catch let error as NSError {

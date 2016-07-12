@@ -158,6 +158,7 @@ func deleteCoreData(entity: String) {
     
     do {
         try coord.executeRequest(deleteRequest, withContext: context)
+        print("Deleted: \(entity)")
     } catch let error as NSError {
         debugPrint(error)
     }
