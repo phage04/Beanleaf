@@ -14,6 +14,12 @@ import Contentful
 import CoreData
 import Alamofire
 
+let storeName = "Wiesenlust"
+let minimumReceipt = "10€"
+
+
+let defaultFree = "Free coffee"
+
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
 var foodItemsData = [NSManagedObject]()
@@ -26,6 +32,8 @@ let COLOR1 = UIColor(red: CGFloat(188.0 / 255.0), green: CGFloat(208.0 / 255.0),
 let COLOR2 = UIColor(red: CGFloat(146.0 / 255.0), green: CGFloat(20.0 / 255.0), blue: CGFloat(114.0 / 255.0), alpha: 1.0)
 let COLOR2_DARK = UIColor(red: CGFloat(105.0 / 255.0), green: CGFloat(14.0 / 255.0), blue: CGFloat(82.0 / 255.0), alpha: 1.0)
 let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
+
+let SHADOW_COLOR: CGFloat = 30.0 / 255.0
 
 let logo1 = UIImage(named: "logo02.png")
 let menuIcon1 = UIImage(named: "menuIcon1.png")
@@ -40,6 +48,8 @@ let font1Medium = "HelveticaNeue-Medium"
 let font1Regular = "HelveticaNeue"
 let font1Light = "HelveticaNeue-Light"
 let font1UltraLight = "HelveticaNeue-UltraLight"
+
+
 
 let menuLblText1 = "Menu"
 let menuLblText2 = "Coupons"

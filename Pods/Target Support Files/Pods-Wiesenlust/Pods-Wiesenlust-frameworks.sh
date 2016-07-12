@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Wiesenlust/OAuthSwift.framework"
   install_framework "Pods-Wiesenlust/SwiftSpinner.framework"
   install_framework "Pods-Wiesenlust/moa.framework"
+  install_framework "Pods-Wiesenlust/pop.framework"
   install_framework "Pods-Wiesenlust/Clock.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,5 +104,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wiesenlust/OAuthSwift.framework"
   install_framework "Pods-Wiesenlust/SwiftSpinner.framework"
   install_framework "Pods-Wiesenlust/moa.framework"
+  install_framework "Pods-Wiesenlust/pop.framework"
   install_framework "Pods-Wiesenlust/Clock.framework"
 fi
