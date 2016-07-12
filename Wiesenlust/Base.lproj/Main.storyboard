@@ -536,17 +536,21 @@
                                                         <constraint firstAttribute="width" constant="60" id="bIV-o1-ZE6"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQc-lr-S4G">
-                                                    <rect key="frame" x="14" y="19" width="92" height="50"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wQc-lr-S4G">
+                                                    <rect key="frame" x="14" y="19" width="77" height="30"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z24-Dh-3tk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z24-Dh-3tk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="Nx5-Et-XeB"/>
+                                                                <constraint firstAttribute="height" constant="30" id="aiE-Ff-jMJ"/>
+                                                            </constraints>
                                                             <variation key="widthClass=compact" ambiguous="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             </variation>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubz-JW-cSS">
-                                                            <rect key="frame" x="50" y="0.0" width="42" height="50"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubz-JW-cSS">
+                                                            <rect key="frame" x="35" y="0.0" width="42" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>

@@ -47,7 +47,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidAppear(animated: Bool) {
         fetchDataCoupon()
-        downloadCoupons()
+        downloadCoupons(false)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,17 +83,20 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func refresh(sender:AnyObject) {
-       downloadCoupons()
+       downloadCoupons(true)
     }
     
-    func downloadCoupons() {
+    func downloadCoupons(fromRefresh: Bool) {
         
         deleteCoreDataNil("Coupons")
         
         if checkConnectivity() {
-            
-        activityIndicator.startAnimating()
-        activityIndicator.hidden = false
+         
+            if !fromRefresh {
+                activityIndicator.startAnimating()
+                activityIndicator.hidden = false
+            }
+
  
         client.fetchEntries(["content_type": "coupon"]).1.next {
             self.coupons.removeAll()

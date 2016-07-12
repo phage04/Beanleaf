@@ -91,9 +91,20 @@ class CouponCell: UITableViewCell {
         
         terms.text = termsTxt
         
-        special.hidden = true
+        if title.text == "Burger Discount" {
+            special.hidden = false
+            special.text = "JUST FOR YOU"
+            starImg.image = UIImage(named: "starFull1x")
+            starImg.image = starImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            starImg.tintColor = UIColor.yellowColor()
+
+            
+        } else {
+            special.hidden = true
+            starImg.hidden = true
+        }
         
-        starImg.hidden = true
+
         
     }
 
