@@ -45,7 +45,7 @@ class Home: UIViewController {
     
     @IBOutlet weak var socialButton: UIButton!
     
-    var didLoad = false
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,30 +140,26 @@ class Home: UIViewController {
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
         
-
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        
+        fetchDataCat()
+        fetchDataFood()
 
         if foodItemsData.count == 0 || categoriesData.count == 0 {
             
-            SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
-               
-                }, subtitle: LoadingMsgTapToExit)
-            didLoad = true
+            SwiftSpinner.show(LoadingMsgGlobal)
+
         }
         
         if !checkConnectivity() {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-        
 
-     
-        downloadCategories()
+     downloadCategories()
+   
 
     }
 
@@ -198,7 +194,7 @@ class Home: UIViewController {
     @IBAction func menuItem6Pressed(sender: AnyObject) {
     }
     
-    func clearCoreData() {
+    func clearCoreDataFoodMenu() {
         deleteCoreData("Category")
         deleteCoreData("FoodItem")
     }
@@ -207,8 +203,6 @@ class Home: UIViewController {
         
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
-        fetchDataCat()
-        fetchDataFood()
         
         let myGroupCat = dispatch_group_create()
         
@@ -218,9 +212,10 @@ class Home: UIViewController {
             categories.removeAll()
             
             if $0.items.count < categoriesData.count {
+                print("items: \($0.items.count) data: \(categoriesData.count)")
                 categoriesData.removeAll()
                 foodItemsData.removeAll()
-                self.clearCoreData()
+                self.clearCoreDataFoodMenu()
                 print("Cleared core data.")
             }
             
@@ -321,9 +316,10 @@ class Home: UIViewController {
             foodItems.removeAll()
             
             if $0.items.count < foodItemsData.count {
+                print("items: \($0.items.count) data: \(categoriesData.count)")
                 categoriesData.removeAll()
                 foodItemsData.removeAll()
-                self.clearCoreData()
+                self.clearCoreDataFoodMenu()
                 print("Cleared core data.")
             }
             

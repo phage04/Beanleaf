@@ -21,6 +21,8 @@ class CouponCell: UITableViewCell {
     
     @IBOutlet weak var subTitle: UILabel!
     
+    @IBOutlet weak var special: UILabel!
+    
     @IBOutlet weak var discount: UILabel!
     
     @IBOutlet weak var validity: UILabel!
@@ -45,6 +47,9 @@ class CouponCell: UITableViewCell {
         subTitle.textColor = COLOR2
         subTitle.font = UIFont(name: font1Light, size: 12)
         
+        special.textColor = COLOR2
+        special.font = UIFont(name: font1Light, size: 12)
+        
         let image = UIImage(named: "coupon")!
         var targetWidth : CGFloat
         var targetHeight : CGFloat
@@ -60,7 +65,7 @@ class CouponCell: UITableViewCell {
         couponImg.image = scaledImage
     }
     
-    func configureCell(titleTxt: String, discountTxt: String!, validityTxt: String?, termsTxt: String?, discType: String) {
+    func configureCell(titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?) {
         
         title.text = titleTxt
         
@@ -80,11 +85,15 @@ class CouponCell: UITableViewCell {
         
         validity.text = validityTxt
         
-        if let text = termsTxt {
-            terms.text = text
-        }
-            starImg.hidden = true
-            subTitle.hidden = true
+        
+        subTitle.text = desc
+       
+        
+        terms.text = termsTxt
+        
+        special.hidden = true
+        
+        starImg.hidden = true
         
     }
 
