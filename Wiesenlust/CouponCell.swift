@@ -21,6 +21,8 @@ class CouponCell: UITableViewCell {
     
     @IBOutlet weak var subTitle: UILabel!
     
+    @IBOutlet weak var special: UILabel!
+    
     @IBOutlet weak var discount: UILabel!
     
     @IBOutlet weak var validity: UILabel!
@@ -45,7 +47,10 @@ class CouponCell: UITableViewCell {
         subTitle.textColor = COLOR2
         subTitle.font = UIFont(name: font1Light, size: 12)
         
-        var image = menuIcon1!
+        special.textColor = COLOR2
+        special.font = UIFont(name: font1Light, size: 12)
+        
+        let image = UIImage(named: "coupon")!
         var targetWidth : CGFloat
         var targetHeight : CGFloat
         var scaledImage = image
@@ -57,24 +62,50 @@ class CouponCell: UITableViewCell {
         image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        couponImg.image = UIImage(data: scaledImage)
+        couponImg.image = scaledImage
     }
     
-    func configureCell(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, special: Bool) {
+    func configureCell(titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?) {
         
         title.text = titleTxt
-        discount.text = discountTxt
+        
+        switch(discType) {
+            case "Percentage":
+            discount.text = "\(discountTxt)%"
+            break
+            
+            case "Amount":
+            discount.text = "\(discountTxt)€"
+            break
+            
+            default:
+            break
+            
+        }
+        
         validity.text = validityTxt
+        
+        
+        subTitle.text = desc
+       
+        
         terms.text = termsTxt
         
-        if special {
-            starImg.hidden = false
-            subTitle.hidden = false
-            subTitle.text = "JUST FOR YOU"
+        if title.text == "Burger Discount" {
+            special.hidden = false
+            special.text = "JUST FOR YOU"
+            starImg.image = UIImage(named: "starFull1x")
+            starImg.image = starImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            starImg.tintColor = UIColor.yellowColor()
+
+            
         } else {
+            special.hidden = true
             starImg.hidden = true
-            subTitle.hidden = true
         }
+        
+
+        
     }
 
 

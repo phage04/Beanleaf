@@ -45,7 +45,7 @@ class Home: UIViewController {
     
     @IBOutlet weak var socialButton: UIButton!
     
-    var didLoad = false
+    var firstload = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,31 +137,29 @@ class Home: UIViewController {
         socialButton.layer.borderColor = COLOR2.CGColor
         socialButton.setTitle(socialButtonTitle, forState: .Normal)
         socialButton.setTitleColor(COLOR2, forState: .Normal)
-        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 12)
+        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
         
-
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        
+        fetchDataCat()
+        fetchDataFood()
 
-        if foodItemsData.count == 0 || categoriesData.count == 0 {
+        if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
             
-            SwiftSpinner.show(LoadingMsgGlobal).addTapHandler({
-               
-                }, subtitle: LoadingMsgTapToExit)
-            didLoad = true
+            SwiftSpinner.show(LoadingMsgGlobal)
+            firstload = false
         }
         
         if !checkConnectivity() {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-        
-        downloadCategories()
+
+     downloadCategories()
+   
 
     }
 
@@ -196,17 +194,15 @@ class Home: UIViewController {
     @IBAction func menuItem6Pressed(sender: AnyObject) {
     }
     
-    func clearCoreData() {
+    func clearCoreDataFoodMenu() {
         deleteCoreData("Category")
         deleteCoreData("FoodItem")
     }
     
-    func downloadCategories() {
+  func downloadCategories() {
         
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
-        fetchDataCat()
-        fetchDataFood()
         
         let myGroupCat = dispatch_group_create()
         
@@ -216,9 +212,10 @@ class Home: UIViewController {
             categories.removeAll()
             
             if $0.items.count < categoriesData.count {
+                print("items: \($0.items.count) data: \(categoriesData.count)")
                 categoriesData.removeAll()
                 foodItemsData.removeAll()
-                self.clearCoreData()
+                self.clearCoreDataFoodMenu()
                 print("Cleared core data.")
             }
             
@@ -250,7 +247,7 @@ class Home: UIViewController {
                                         
                                         dispatch_group_enter(myGroupCat)
                                         
-                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                        downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
                                             categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
@@ -267,7 +264,7 @@ class Home: UIViewController {
                             
                         else if categoriesData.count == 0{
                             //If zero data yet saved in client
-                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                            downloadImage(imgURL, completionHandler: { (isResponse) in
                                 
                                 categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                 dispatch_group_leave(myGroupCat)
@@ -319,9 +316,10 @@ class Home: UIViewController {
             foodItems.removeAll()
             
             if $0.items.count < foodItemsData.count {
+                print("items: \($0.items.count) data: \(categoriesData.count)")
                 categoriesData.removeAll()
                 foodItemsData.removeAll()
-                self.clearCoreData()
+                self.clearCoreDataFoodMenu()
                 print("Cleared core data.")
             }
             
@@ -361,7 +359,7 @@ class Home: UIViewController {
                                         
                                         dispatch_group_enter(myGroupFood)
                                         
-                                        self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                                        downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
                                             foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
@@ -378,7 +376,7 @@ class Home: UIViewController {
                             
                         else if foodItemsData.count == 0{
                             //If zero data yet saved in client
-                            self.downloadImage(imgURL, completionHandler: { (isResponse) in
+                            downloadImage(imgURL, completionHandler: { (isResponse) in
                                
                                 if let cat = entry.fields["category"] as? Entry {
                                     categoryFood = cat.fields["categoryName"] as! String
@@ -428,76 +426,7 @@ class Home: UIViewController {
         
     }
     
-    func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
-        
-        
-        if checkConnectivity(){
-            var imgData: UIImage!
-            let myGroupImg = dispatch_group_create()
-            
-            
-            if let urlLink = URL as NSURL? {
-                
-                dispatch_group_enter(myGroupImg)
-                Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
-                    
-                    if err == nil {
-                        imgData = UIImage(data: data!)!
-                        
-                    } else {
-                        imgData = UIImage()
-                    }
-                    dispatch_group_leave(myGroupImg)
-                    
-                })
-                
-                dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
-                    
-                    
-                    completionHandler(isResponse : (imgData, "\(URL)"))
-                    
-                })
-            }
-            
-            
-        } else {
-            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-        }
-        
-    }
-    
-    func deleteCoreData(entity: String) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    func deleteCoreDataNil(entity: String) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        fetchRequest.predicate = NSPredicate(format: "name == %@", "")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    
+ 
     
     func saveCategory(category: Category) {
         let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate

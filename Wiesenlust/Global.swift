@@ -12,11 +12,13 @@ import CoreLocation
 import SystemConfiguration
 import Contentful
 import CoreData
+import Alamofire
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
 var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
+
 
 var imgURL: NSURL!
 
@@ -35,7 +37,7 @@ let menuIcon6 = UIImage(named: "menuIcon6.png")
 
 let font1Thin = "HelveticaNeue-Thin"
 let font1Medium = "HelveticaNeue-Medium"
-let font1Regular = "HelveticaNeue-Regular"
+let font1Regular = "HelveticaNeue"
 let font1Light = "HelveticaNeue-Light"
 let font1UltraLight = "HelveticaNeue-UltraLight"
 
@@ -51,8 +53,11 @@ let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
 let socialButtonTitle = "VISIT US ON YELP!"
 
 let LoadingMsgTapToExit = "Tap anytime to exit"
-let LoadingMsgGlobal = "Downloding updates..."
+let LoadingMsgGlobal = "Downloading updates..."
 
+
+let DATE_FULL_FORMAT = "yyyy-MM-dd HH:mm:ss Z"
+let DATE_FORMAT1 = "MMM dd, yyyy"
 
 //CONTENTFUL
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
@@ -108,3 +113,75 @@ func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, comp
         }
     }
 }
+
+func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+    
+    
+    
+        var imgData: UIImage!
+        let myGroupImg = dispatch_group_create()
+        
+        
+        if let urlLink = URL as NSURL? {
+            
+            dispatch_group_enter(myGroupImg)
+            Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+                
+                if err == nil {
+                    imgData = UIImage(data: data!)!
+                    
+                } else {
+                    imgData = UIImage()
+                }
+                dispatch_group_leave(myGroupImg)
+                
+            })
+            
+            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+                
+                
+                completionHandler(isResponse : (imgData, "\(URL)"))
+                
+            })
+        }
+ 
+    
+}
+
+func deleteCoreData(entity: String) {
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context = appDel.managedObjectContext
+    let coord = appDel.persistentStoreCoordinator
+    
+    let fetchRequest = NSFetchRequest(entityName: entity)
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+        try coord.executeRequest(deleteRequest, withContext: context)
+        print("Deleted: \(entity)")
+    } catch let error as NSError {
+        debugPrint(error)
+    }
+}
+
+func deleteCoreDataNil(entity: String) {
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context = appDel.managedObjectContext
+    let coord = appDel.persistentStoreCoordinator
+    
+    let fetchRequest = NSFetchRequest(entityName: entity)
+    fetchRequest.predicate = NSPredicate(format: "name == %@", "")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+        try coord.executeRequest(deleteRequest, withContext: context)
+    } catch let error as NSError {
+        debugPrint(error)
+    }
+}
+
+let currentDate = NSDate()
+let dateFormatter = NSDateFormatter()
+
+
+

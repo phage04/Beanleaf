@@ -14,6 +14,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     var dishes = [FoodItem]()
     var categorySelected = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR1
-        
+
         
         navigationItem.title = categorySelected
         

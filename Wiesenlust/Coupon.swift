@@ -13,38 +13,39 @@ public class Coupon{
     
     private var _title: String!
     private var _subTitle: String!
-    private var _discount: String!
+    private var _discount: Int!
     private var _validity: String!
     private var _terms: String!
     private var _special: Bool!
+    private var _discountType: String!
     
     
     var title: String {
         if _title == nil {
             return ""
         }
-        return _title
+        return _title!
     }
     
     var subtitle: String {
         if _subTitle == nil {
             return ""
         }
-        return _subTitle
+        return _subTitle!
     }
     
-    var discount: String {
+    var discount: Int {
         if _discount == nil {
-            return ""
+            return 0
         }
-        return _discount
+        return _discount!
     }
     
     var validity: String {
         if _validity == nil {
             return ""
         }
-        return _validity
+        return _validity!
     }
     
     var terms: String {
@@ -54,11 +55,15 @@ public class Coupon{
         return _terms
     }
     
-    var special: Bool {
-        return _special
+    
+    var discountType: String {
+        if _discountType == nil {
+            return ""
+        }
+        return _discountType
     }
     
-    init(titleTxt: String, discountTxt: String, validityTxt: String?, termsTxt: String?, special: Bool) {
+    init(titleTxt: String, discountTxt: Int, validityTxt: String?, termsTxt: String?, discType: String, subtitle: String?) {
         
         self._title = titleTxt
         self._discount = discountTxt
@@ -71,7 +76,11 @@ public class Coupon{
           self._terms = txtTerms
         }
         
-        self._special = special
+        if let titleSub = subtitle {
+            self._subTitle = titleSub
+        }
+        
+        self._discountType = discType
         
         
         
