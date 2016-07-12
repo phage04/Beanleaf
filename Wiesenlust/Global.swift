@@ -36,12 +36,14 @@ let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 2
 let SHADOW_COLOR: CGFloat = 30.0 / 255.0
 
 let logo1 = UIImage(named: "logo02.png")
+let stampIcon = UIImage(named: "stamp")
 let menuIcon1 = UIImage(named: "menuIcon1.png")
 let menuIcon2 = UIImage(named: "menuIcon2.png")
 let menuIcon3 = UIImage(named: "menuIcon3.png")
 let menuIcon4 = UIImage(named: "menuIcon4.png")
 let menuIcon5 = UIImage(named: "menuIcon5.png")
 let menuIcon6 = UIImage(named: "menuIcon6.png")
+
 
 let font1Thin = "HelveticaNeue-Thin"
 let font1Medium = "HelveticaNeue-Medium"

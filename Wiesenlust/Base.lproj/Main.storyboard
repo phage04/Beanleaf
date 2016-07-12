@@ -2,6 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -704,285 +707,437 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hnd-bq-1ZP">
-                                <rect key="frame" x="277" y="20" width="46" height="51"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hnd-bq-1ZP">
+                                <rect key="frame" x="20" y="10" width="560" height="76"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-r9-9bs">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-r9-9bs">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="21" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="26" width="560" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="m7w-OZ-8h0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="PRESENT RECEIPT IN-STORE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="26" width="560" height="50"/>
+                                        </variation>
                                         <connections>
                                             <action selector="addBtnPressed:" destination="NJz-j9-Ghq" eventType="touchUpInside" id="DOw-DP-eVv"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="20" y="10" width="560" height="76"/>
+                                </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-gJ-XxT">
-                                <rect key="frame" x="190" y="130" width="220" height="322"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="81"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="odE-bu-Y7v"/>
-                                                            <constraint firstAttribute="width" constant="60" id="wob-pX-kN9"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
-                                                <rect key="frame" x="80" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="Fbw-eB-zRZ"/>
-                                                            <constraint firstAttribute="height" constant="60" id="QBQ-mm-uvv"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
-                                                <rect key="frame" x="160" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="b49-mQ-AQr"/>
-                                                            <constraint firstAttribute="width" constant="60" id="oIB-dk-cmW"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
-                                        <rect key="frame" x="0.0" y="81" width="220" height="81"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="cvs-Ot-gOn"/>
-                                                            <constraint firstAttribute="height" constant="60" id="iqb-N0-ldd"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
-                                                <rect key="frame" x="80" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="NAi-2k-7hQ"/>
-                                                            <constraint firstAttribute="height" constant="60" id="jae-Q3-FNP"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
-                                                <rect key="frame" x="160" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="WFq-pj-5Do"/>
-                                                            <constraint firstAttribute="height" constant="60" id="Z4c-CF-32m"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
-                                        <rect key="frame" x="0.0" y="161" width="220" height="81"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="1Jq-YI-0kT"/>
-                                                            <constraint firstAttribute="width" constant="60" id="TpK-HN-ia1"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
-                                                <rect key="frame" x="80" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="OSe-KB-Csk"/>
-                                                            <constraint firstAttribute="width" constant="60" id="bEM-WI-Pf7"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
-                                                <rect key="frame" x="160" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="3l9-v4-q04"/>
-                                                            <constraint firstAttribute="height" constant="60" id="oSS-s6-99Z"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
-                                        <rect key="frame" x="0.0" y="242" width="220" height="81"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="KGy-JA-tMO"/>
-                                                            <constraint firstAttribute="height" constant="60" id="ZBI-5C-feP"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
-                                                <rect key="frame" x="80" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="f5m-pj-B4R"/>
-                                                            <constraint firstAttribute="height" constant="60" id="qsF-MY-H70"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
-                                                <rect key="frame" x="160" y="0.0" width="60" height="81"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="0OK-jP-aeJ"/>
-                                                            <constraint firstAttribute="height" constant="60" id="asv-HC-87H"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="60" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSV-tY-1C5">
-                                <rect key="frame" x="279" y="476" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSV-tY-1C5">
+                                <rect key="frame" x="20" y="495" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-gJ-XxT">
+                                <rect key="frame" x="20" y="99" width="560" height="403"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="96"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="EWm-5K-kdI"/>
+                                                            <constraint firstAttribute="height" constant="60" id="odE-bu-Y7v"/>
+                                                            <constraint firstAttribute="width" constant="75" id="rIu-MX-qen"/>
+                                                            <constraint firstAttribute="width" constant="60" id="wob-pX-kN9"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="odE-bu-Y7v"/>
+                                                                <exclude reference="wob-pX-kN9"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
+                                                <rect key="frame" x="243" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="Fbw-eB-zRZ"/>
+                                                            <constraint firstAttribute="height" constant="75" id="GyE-Ou-Kux"/>
+                                                            <constraint firstAttribute="height" constant="60" id="QBQ-mm-uvv"/>
+                                                            <constraint firstAttribute="width" constant="75" id="x25-Ja-BnH"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Fbw-eB-zRZ"/>
+                                                                <exclude reference="QBQ-mm-uvv"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="90" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
+                                                <rect key="frame" x="485" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="C7F-SV-LAZ"/>
+                                                            <constraint firstAttribute="height" constant="60" id="b49-mQ-AQr"/>
+                                                            <constraint firstAttribute="width" constant="75" id="cFp-Jx-FXS"/>
+                                                            <constraint firstAttribute="width" constant="60" id="oIB-dk-cmW"/>
+                                                        </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="b49-mQ-AQr"/>
+                                                                <exclude reference="oIB-dk-cmW"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="81"/>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
+                                        <rect key="frame" x="0.0" y="103" width="560" height="96"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="cvs-Ot-gOn"/>
+                                                            <constraint firstAttribute="height" constant="75" id="iqb-N0-ldd"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
+                                                <rect key="frame" x="243" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="NAi-2k-7hQ"/>
+                                                            <constraint firstAttribute="height" constant="75" id="jae-Q3-FNP"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="90" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
+                                                <rect key="frame" x="485" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="WFq-pj-5Do"/>
+                                                            <constraint firstAttribute="height" constant="75" id="Z4c-CF-32m"/>
+                                                        </constraints>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="86" width="240" height="81"/>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
+                                        <rect key="frame" x="0.0" y="205" width="560" height="96"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="1Jq-YI-0kT"/>
+                                                            <constraint firstAttribute="width" constant="75" id="TpK-HN-ia1"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
+                                                <rect key="frame" x="243" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="OSe-KB-Csk"/>
+                                                            <constraint firstAttribute="width" constant="75" id="bEM-WI-Pf7"/>
+                                                        </constraints>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="90" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
+                                                <rect key="frame" x="485" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="3l9-v4-q04"/>
+                                                            <constraint firstAttribute="height" constant="75" id="oSS-s6-99Z"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="171" width="240" height="81"/>
+                                        </variation>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
+                                        <rect key="frame" x="0.0" y="308" width="560" height="96"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="KGy-JA-tMO"/>
+                                                            <constraint firstAttribute="height" constant="75" id="ZBI-5C-feP"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
+                                                <rect key="frame" x="243" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="f5m-pj-B4R"/>
+                                                            <constraint firstAttribute="height" constant="75" id="qsF-MY-H70"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="90" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
+                                                <rect key="frame" x="485" y="0.0" width="75" height="96"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="0OK-jP-aeJ"/>
+                                                            <constraint firstAttribute="height" constant="75" id="asv-HC-87H"/>
+                                                        </constraints>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        </variation>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="257" width="240" height="81"/>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NTY-gJ-XxT" secondAttribute="height" multiplier="240:337" id="T4w-9u-eau"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="T4w-9u-eau"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="190" y="276" width="240" height="337"/>
+                                </variation>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="centerY" secondItem="SXc-bY-4Km" secondAttribute="centerY" id="1fm-i4-okb"/>
                             <constraint firstItem="sSV-tY-1C5" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="2ra-ld-j9W"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="4oN-DX-xQk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NTY-gJ-XxT" secondAttribute="trailing" id="DJY-PN-xKb"/>
+                            <constraint firstItem="NTY-gJ-XxT" firstAttribute="firstBaseline" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="10" id="DPx-zn-hkw"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" constant="20" id="FLv-r9-8Th"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sSV-tY-1C5" secondAttribute="trailing" id="HA2-bd-0sw"/>
+                            <constraint firstItem="sSV-tY-1C5" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="PvI-e8-ThN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hnd-bq-1ZP" secondAttribute="trailing" id="Qmz-g4-Wub"/>
                             <constraint firstItem="Xll-fc-wys" firstAttribute="top" secondItem="sSV-tY-1C5" secondAttribute="bottom" constant="20" id="SqF-Sv-GCk"/>
                             <constraint firstItem="Hnd-bq-1ZP" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="UUx-I8-dXL"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="top" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="20" id="VLC-5s-2vX"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="top" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="20" id="XGx-af-vxT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NTY-gJ-XxT" secondAttribute="trailing" constant="150" id="gKO-ni-huR"/>
                             <constraint firstItem="TT8-r9-9bs" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="jdK-Of-jJ0"/>
-                            <constraint firstItem="sSV-tY-1C5" firstAttribute="top" secondItem="NTY-gJ-XxT" secondAttribute="bottom" constant="10" id="kDJ-gD-0IM"/>
-                            <constraint firstItem="Hnd-bq-1ZP" firstAttribute="top" secondItem="N1C-JR-ENH" secondAttribute="bottom" constant="20" id="qd5-6q-uYm"/>
+                            <constraint firstItem="sSV-tY-1C5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NTY-gJ-XxT" secondAttribute="bottom" constant="10" id="kDJ-gD-0IM"/>
+                            <constraint firstItem="Hnd-bq-1ZP" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="meP-zg-9AM"/>
+                            <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="q7U-Ke-e1f"/>
+                            <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="qco-8s-CNu"/>
+                            <constraint firstItem="Hnd-bq-1ZP" firstAttribute="top" secondItem="N1C-JR-ENH" secondAttribute="bottom" constant="10" id="qd5-6q-uYm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NTY-gJ-XxT" secondAttribute="trailing" constant="20" id="vLb-jB-Mme"/>
                         </constraints>
                         <variation key="default">
@@ -991,7 +1146,10 @@
                                 <exclude reference="FLv-r9-8Th"/>
                                 <exclude reference="VLC-5s-2vX"/>
                                 <exclude reference="XGx-af-vxT"/>
+                                <exclude reference="gKO-ni-huR"/>
+                                <exclude reference="q7U-Ke-e1f"/>
                                 <exclude reference="vLb-jB-Mme"/>
+                                <exclude reference="kDJ-gD-0IM"/>
                             </mask>
                         </variation>
                     </view>

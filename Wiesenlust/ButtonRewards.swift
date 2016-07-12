@@ -11,6 +11,7 @@ import pop
 
 class ButtonRewards: UIButton {
 
+    
     override func awakeFromNib() {
         layer.cornerRadius = 7.0
         layer.shadowColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.5).CGColor
@@ -19,9 +20,7 @@ class ButtonRewards: UIButton {
         layer.shadowOffset = CGSizeMake(0.0, 2.0)
         layer.backgroundColor = COLOR2.CGColor
         self.titleLabel?.textColor = UIColor.whiteColor()
-        self.titleLabel?.font =  UIFont(name: font1Regular, size: 18.0)
-        layer.frame.width
-        layer.frame = CGRectMake(0, 0, 280.0, 50.0)
+        self.titleLabel?.font = UIFont(name: font1Regular, size: 18.0) 
         setupAnimation()
     }
     

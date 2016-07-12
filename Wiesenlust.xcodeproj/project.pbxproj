@@ -168,7 +168,6 @@
 				DE27E5E61D2D36C4005780BE /* ItemView.swift */,
 				DE2BF0441D33C8260049F662 /* Coupons.swift */,
 				DEBC25401D355B3D00997EB1 /* Rewards.swift */,
-				DEBC254B1D3569CC00997EB1 /* Wiesenlust-Bridging-Header.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -180,6 +179,7 @@
 				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
 				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
+				DEBC254B1D3569CC00997EB1 /* Wiesenlust-Bridging-Header.h */,
 				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
 			);
 			name = Utilities;

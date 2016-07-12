@@ -43,7 +43,7 @@ class Rewards: UIViewController {
     
     @IBOutlet weak var bottomLbl: UILabel!
     
-    
+    var numberOfStamps: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,28 +62,157 @@ class Rewards: UIViewController {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
         
-        for view in self.view.subviews as [UIView] {
-            if let lbl = view as? UILabel {
-                lbl.hidden = true
-            }
-        }
+
 
         topLbl.hidden = false
         bottomLbl.hidden = false
-        gift1.hidden = false
-        gift3.hidden = false
-        gift6.hidden = false
-        gift8.hidden = false
-        gift10.hidden = false
-        gift12.hidden = false
         
         gift1.text = defaultFree
+        gift2.text = ""
         gift3.text = defaultFree
+        gift4.text = ""
+        gift5.text = ""
         gift6.text = defaultFree
+        gift7.text = ""
         gift8.text = defaultFree
+        gift9.text = ""
         gift10.text = defaultFree
+        gift11.text = ""
         gift12.text = defaultFree
         
+        numberOfStamps = 4
+    updateStamps(numberOfStamps)
+
+
+        
+    }
+    
+    func updateStamps(numberStamps: Int) {
+        
+        switch(numberOfStamps){
+        case 1:
+            star1.tintColor = COLOR2
+            break
+            
+        case 2:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            break
+            
+        case 3:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            break
+            
+        case 4:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            break
+            
+        case 5:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            break
+            
+        case 6:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            break
+            
+        case 7:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            break
+            
+        case 8:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            star8.tintColor = COLOR2
+            break
+            
+        case 9:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            star8.tintColor = COLOR2
+            star9.tintColor = COLOR2
+            break
+            
+        case 10:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            star8.tintColor = COLOR2
+            star9.tintColor = COLOR2
+            star10.tintColor = COLOR2
+            break
+            
+        case 11:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            star8.tintColor = COLOR2
+            star9.tintColor = COLOR2
+            star10.tintColor = COLOR2
+            star11.tintColor = COLOR2
+            break
+            
+        case 12:
+            star1.tintColor = COLOR2
+            star2.tintColor = COLOR2
+            star3.tintColor = COLOR2
+            star4.tintColor = COLOR2
+            star5.tintColor = COLOR2
+            star6.tintColor = COLOR2
+            star7.tintColor = COLOR2
+            star8.tintColor = COLOR2
+            star9.tintColor = COLOR2
+            star10.tintColor = COLOR2
+            star11.tintColor = COLOR2
+            star12.tintColor = COLOR2
+            break
+            
+        default:
+            break
+            
+        
+  
+        }
+        
+        
+      
     }
 
     func backButtonPressed(sender:UIButton) {
