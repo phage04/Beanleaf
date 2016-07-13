@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys">
+                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="799"/>
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="799"/>
@@ -196,6 +196,7 @@
                                                         </variation>
                                                         <connections>
                                                             <action selector="menuItem4Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dg9-zh-YTj"/>
+                                                            <segue destination="DzL-Ah-SCd" kind="show" id="2dc-tM-gdk"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
@@ -1617,7 +1618,42 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tc-7o-l9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486" y="225"/>
+            <point key="canvasLocation" x="1462" y="225"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0BA-Fu-OiE">
+            <objects>
+                <navigationController id="DzL-Ah-SCd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="menuIcon" id="mts-4d-40h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="leS-uA-puM" kind="relationship" relationship="rootViewController" id="Aot-Uy-aPZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfK-qY-gl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1478" y="941"/>
+        </scene>
+        <!--Reservations-->
+        <scene sceneID="OHE-Jn-tfz">
+            <objects>
+                <viewController id="leS-uA-puM" customClass="Reservations" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Ab-De-aX4"/>
+                        <viewControllerLayoutGuide type="bottom" id="jeS-ev-gJk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GZ0-oF-f8c">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reservations" id="rYg-yN-EYN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cm9-Ns-aIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2113" y="941"/>
         </scene>
     </scenes>
     <resources>
