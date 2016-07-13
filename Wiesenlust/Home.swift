@@ -133,9 +133,10 @@ class Home: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         fetchDataCat()
         fetchDataFood()
-
+        downloadManagerPin()
         if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
             
             SwiftSpinner.show(LoadingMsgGlobal)
@@ -186,6 +187,20 @@ class Home: UIViewController {
     func clearCoreDataFoodMenu() {
         deleteCoreData("Category")
         deleteCoreData("FoodItem")
+    }
+    
+    func downloadManagerPin() {
+        
+        managerPin = ""
+        
+        client.fetchEntries(["content_type": "security"]).1.next {
+            for pin in $0.items{
+               if let pinManager = pin.fields["pin"] as? String {
+                    managerPin = pinManager
+                    print("Manager PIN: \(managerPin)")
+                }
+            }
+        }
     }
     
   func downloadCategories() {

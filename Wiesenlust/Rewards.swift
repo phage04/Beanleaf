@@ -44,7 +44,7 @@ class Rewards: UIViewController {
     @IBOutlet weak var bottomLbl: UILabel!
     
     var numberOfStamps: Int = 0
-    var managerPin: String = "12345"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -377,7 +377,7 @@ class Rewards: UIViewController {
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
             if let field = alertController.textFields![0] as? UITextField{
                 field.resignFirstResponder()
-                if field.text == self.managerPin {
+                if field.text == managerPin {
                     self.showActionSheet()
                 } else {
                     self.showErrorAlert("Incorrect PIN", msg: "", VC: self)

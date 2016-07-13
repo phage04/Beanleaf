@@ -16,6 +16,7 @@ import Alamofire
 
 let storeName = "Wiesenlust"
 let minimumReceipt = "10€"
+var managerPin: String!
 
 
 let defaultFree = "Free coffee"
