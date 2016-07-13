@@ -96,7 +96,7 @@ class CouponCell: UITableViewCell {
             special.text = "JUST FOR YOU"
             starImg.image = UIImage(named: "starFull1x")
             starImg.image = starImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            starImg.tintColor = UIColor.yellowColor()
+            starImg.tintColor = COLOR_YELLOW
 
             
         } else {

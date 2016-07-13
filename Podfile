@@ -10,6 +10,7 @@ pod 'Auk', '~> 2.1'
 pod 'Alamofire', '~> 3.4'
 pod 'Contentful'
 pod "SwiftSpinner"
+pod 'pop', '~> 1.0'
 
 end
 

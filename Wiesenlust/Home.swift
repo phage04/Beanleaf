@@ -50,10 +50,23 @@ class Home: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        homeSetup()        
         
         backgroundView.backgroundColor = COLOR1
         
+        socialButton.backgroundColor = UIColor.clearColor()
+        socialButton.layer.cornerRadius = 5
+        socialButton.layer.borderWidth = 1
+        socialButton.layer.borderColor = COLOR2.CGColor
+        socialButton.setTitle(socialButtonTitle, forState: .Normal)
+        socialButton.setTitleColor(COLOR2, forState: .Normal)
+        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
+        
+        
+        
+    }
+    
+    func homeSetup(){
         var image = menuIcon1!
         let targetWidth : CGFloat = 92
         let targetHeight : CGFloat = 92
@@ -64,15 +77,15 @@ class Home: UIViewController {
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         menuItem1.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-
-   
+        
+        
         image = menuIcon2!
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
         image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         menuItem2.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-
+        
         
         image = menuIcon3!
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
@@ -110,19 +123,6 @@ class Home: UIViewController {
         menuItem5.tintColor = COLOR2
         menuItem6.tintColor = COLOR2
         
-        menuLbl1.font = UIFont(name: font1Medium, size: 14)
-        menuLbl2.font = UIFont(name: font1Medium, size: 14)
-        menuLbl3.font = UIFont(name: font1Medium, size: 14)
-        menuLbl4.font = UIFont(name: font1Medium, size: 14)
-        menuLbl5.font = UIFont(name: font1Medium, size: 14)
-        menuLbl6.font = UIFont(name: font1Medium, size: 14)
-        
-        menuLbl1.textColor = COLOR2
-        menuLbl2.textColor = COLOR2
-        menuLbl3.textColor = COLOR2
-        menuLbl4.textColor = COLOR2
-        menuLbl5.textColor = COLOR2
-        menuLbl6.textColor = COLOR2
         
         menuLbl1.text = menuLblText1
         menuLbl2.text = menuLblText2
@@ -130,23 +130,13 @@ class Home: UIViewController {
         menuLbl4.text = menuLblText4
         menuLbl5.text = menuLblText5
         menuLbl6.text = menuLblText6
-        
-        socialButton.backgroundColor = UIColor.clearColor()
-        socialButton.layer.cornerRadius = 5
-        socialButton.layer.borderWidth = 1
-        socialButton.layer.borderColor = COLOR2.CGColor
-        socialButton.setTitle(socialButtonTitle, forState: .Normal)
-        socialButton.setTitleColor(COLOR2, forState: .Normal)
-        socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
-        
-        
-        
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         fetchDataCat()
         fetchDataFood()
-
+        downloadManagerPin()
         if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
             
             SwiftSpinner.show(LoadingMsgGlobal)
@@ -197,6 +187,20 @@ class Home: UIViewController {
     func clearCoreDataFoodMenu() {
         deleteCoreData("Category")
         deleteCoreData("FoodItem")
+    }
+    
+    func downloadManagerPin() {
+        
+        managerPin = ""
+        
+        client.fetchEntries(["content_type": "security"]).1.next {
+            for pin in $0.items{
+               if let pinManager = pin.fields["pin"] as? String {
+                    managerPin = pinManager
+                    print("Manager PIN: \(managerPin)")
+                }
+            }
+        }
     }
     
   func downloadCategories() {
