@@ -44,6 +44,7 @@ class Rewards: UIViewController {
     @IBOutlet weak var bottomLbl: UILabel!
     
     var numberOfStamps: Int = 0
+    var numberOfClaims: Int = 0
     
 
     override func viewDidLoad() {
@@ -82,10 +83,88 @@ class Rewards: UIViewController {
         gift12.text = defaultFree
         
         numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps")
+        numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims")
         updateStamps(numberOfStamps)
+        updateClaim()
 
 
         
+    }
+    
+    func needMoreStamps(){
+        self.numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims") - 1
+        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfClaims, forKey: "claims")
+        
+        showErrorAlert("Insufficient Stamps", msg: "The customer need more stamps to claim the next reward.", VC: self)
+    }
+    
+    func updateClaim(){
+ 
+        switch numberOfClaims {
+        case 1:
+            if numberOfStamps >= 1 {
+                star1.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+ 
+        case 2:
+            if numberOfStamps >= 3 {
+                star1.tintColor = UIColor.greenColor()
+                star3.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+
+        case 3:
+            if numberOfStamps >= 6 {
+                star1.tintColor = UIColor.greenColor()
+                star3.tintColor = UIColor.greenColor()
+                star6.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+
+            
+        case 4:
+            if numberOfStamps >= 8 {
+                star1.tintColor = UIColor.greenColor()
+                star3.tintColor = UIColor.greenColor()
+                star6.tintColor = UIColor.greenColor()
+                star8.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+
+        case 5:
+            if numberOfStamps >= 10 {
+                star1.tintColor = UIColor.greenColor()
+                star3.tintColor = UIColor.greenColor()
+                star6.tintColor = UIColor.greenColor()
+                star8.tintColor = UIColor.greenColor()
+                star10.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+
+        case 6:
+            if numberOfStamps >= 12 {
+                star1.tintColor = UIColor.greenColor()
+                star3.tintColor = UIColor.greenColor()
+                star6.tintColor = UIColor.greenColor()
+                star8.tintColor = UIColor.greenColor()
+                star10.tintColor = UIColor.greenColor()
+                star12.tintColor = UIColor.greenColor()
+            } else {
+                self.needMoreStamps()
+            }
+
+
+        default:
+            numberOfClaims = 0
+            NSUserDefaults.standardUserDefaults().setInteger(self.numberOfClaims, forKey: "claims")
+            break
+        }
     }
     
     func updateStamps(numberStamps: Int) {
@@ -294,6 +373,7 @@ class Rewards: UIViewController {
   
         }
         
+        updateClaim()
         
       
     }
@@ -331,6 +411,8 @@ class Rewards: UIViewController {
             } else if self.numberOfStamps > 12 {
                 self.numberOfStamps = 1
                 NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                self.numberOfClaims = 0
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
             }
             
             self.updateStamps(self.numberOfStamps)
@@ -355,16 +437,39 @@ class Rewards: UIViewController {
         }
         actionSheetControllerIOS8.addAction(deleteActionButton)
         
+        let claimActionButton: UIAlertAction = UIAlertAction(title: "Claim Reward", style: .Default)
+        { action -> Void in
+            
+
+            self.numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims") + 1
+            
+            NSUserDefaults.standardUserDefaults().setInteger(self.numberOfClaims, forKey: "claims")
+            
+            self.numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims")
+            
+            self.updateClaim()
+            
+            
+        }
+        actionSheetControllerIOS8.addAction(claimActionButton)
+        
         let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .Default)
         { action -> Void in
-            self.numberOfStamps = 0
             
-            NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-            
-            self.updateStamps(self.numberOfStamps)
+                self.numberOfClaims = 0
+                
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+                self.numberOfStamps = 0
+                
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                
+                self.updateStamps(self.numberOfStamps)
+
 
         }
         actionSheetControllerIOS8.addAction(resetActionButton)
+        
+        
         
         self.presentViewController(actionSheetControllerIOS8, animated: true, completion: nil)
 
