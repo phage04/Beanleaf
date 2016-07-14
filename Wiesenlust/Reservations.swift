@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class Reservations: UIViewController{
+class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     
     
     
@@ -24,9 +25,6 @@ class Reservations: UIViewController{
     
     @IBOutlet weak var dateTimeView: UIView!
     
-    @IBOutlet weak var mobileTxt: UITextField!
-    
-    @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var sendBtn: UIButton!
     
     let userCalendar = NSCalendar.currentCalendar()
@@ -57,10 +55,6 @@ class Reservations: UIViewController{
         dateTimeTxt.placeholder = "Reservation date"
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
-        mobileView.backgroundColor = COLOR2
-        mobileTxt.placeholder = "Mobile number"
-        mobileTxt.font = UIFont(name: font1Regular, size: 18)
-        mobileTxt.textColor = COLOR2
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
         bottomLbl.textColor = COLOR2
         bottomLbl.text = "You'll receive a call/sms from us once your reservation is confirmed."
@@ -128,6 +122,44 @@ class Reservations: UIViewController{
 
 
     @IBAction func sendBtnPressed(sender: AnyObject) {
+        
+        if MFMessageComposeViewController.canSendText()  {
+           
+            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" {
+                let messageVC = MFMessageComposeViewController()
+                
+                messageVC.body = "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Thanks!"
+                messageVC.recipients = ["+639178235953"]
+                messageVC.messageComposeDelegate = self
+                
+                self.presentViewController(messageVC, animated: false, completion: nil)
+            } else {
+                
+                showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
+                
+            }
+        } else {
+            
+            showErrorAlert("Cannot Send Text Message", msg: "Your device is not able to send text messages.", VC: self)
+            
+        }
+
+        
+        
+       
+    }
+    
+    
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        print(result.rawValue)
+        self.dismissViewControllerAnimated(false, completion: nil)
+        if result.rawValue == 1 {
+            showErrorAlert("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
+        } else {
+            showErrorAlert("Something Went Wrong", msg: "You weren't able to send your message. Please try again.", VC: self)
+        }
+        
     }
     
     func dismissKeyboard() {

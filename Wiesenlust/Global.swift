@@ -71,7 +71,7 @@ let LoadingMsgGlobal = "Downloading updates..."
 
 let DATE_FULL_FORMAT = "yyyy-MM-dd HH:mm:ss Z"
 let DATE_FORMAT1 = "MMM dd, yyyy"
-let DATE_FORMAT2 = "MMM dd, yyyy (EEE) h:mma"
+let DATE_FORMAT2 = "MMMM dd, yyyy (EEE) h:mma"
 
 //CONTENTFUL
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
