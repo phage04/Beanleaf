@@ -12,6 +12,7 @@ class Reservations: UIViewController{
     
     
     
+    @IBOutlet weak var bottomLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var nameView: UIView!
@@ -28,6 +29,7 @@ class Reservations: UIViewController{
     @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var sendBtn: UIButton!
     
+    let userCalendar = NSCalendar.currentCalendar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,34 +61,71 @@ class Reservations: UIViewController{
         mobileTxt.placeholder = "Mobile number"
         mobileTxt.font = UIFont(name: font1Regular, size: 18)
         mobileTxt.textColor = COLOR2
-        
+        bottomLbl.font = UIFont(name: font1Regular, size: 14)
+        bottomLbl.textColor = COLOR2
+        bottomLbl.text = "You'll receive a call/sms from us once your reservation is confirmed."
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Reservations.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Reservations.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil)
-//        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Reservations.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil)
+
+
         
     }
     
-//    func keyboardWillShow(sender: NSNotification) {
-//        self.view.frame.origin.y -= 150
-//    }
-//    
-//    func keyboardWillHide(sender: NSNotification) {
-//        self.view.frame.origin.y += 150
-//    }
+
 
     
-    @IBAction func editingBegunMobile(sender: AnyObject) {
-        //self.view.frame.origin.y -= 150
+
+    @IBAction func editingBegunDateTime(sender: UITextField) {
+        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
+  
+        let datePickerView  : UIDatePicker = UIDatePicker(frame: CGRectMake((self.view.frame.size.width/2) - (320/2), 40, 0, 0))
+        
+        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        datePickerView.minuteInterval = 15
+        
+        let dateFromNow = userCalendar.dateByAddingUnit(
+            [.Day],
+            value: 90,
+            toDate: NSDate(),
+            options: [])
+        
+        datePickerView.maximumDate = dateFromNow
+        datePickerView.minimumDate = NSDate()
+        
+        inputView.addSubview(datePickerView)
+        inputView.backgroundColor = UIColor.whiteColor()
+        datePickerView.backgroundColor = UIColor.whiteColor()
+        
+
+        sender.inputView = inputView
+        datePickerView.addTarget(self, action: #selector(Reservations.handleDatePicker(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        let timeFromNow = userCalendar.dateByAddingUnit(
+            [.Hour],
+            value: 1,
+            toDate: NSDate(),
+            options: [])
+        
+        if let unwrappedDate = timeFromNow {
+            datePickerView.setDate(unwrappedDate, animated: false)
+        }
+        
+        
+        handleDatePicker(datePickerView)
+        
     }
-    @IBAction func editingEndedMobile(sender: AnyObject) {
-         //self.view.frame.origin.y += 150
+    
+    func handleDatePicker(sender: UIDatePicker) {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = DATE_FORMAT2
+        dateTimeTxt.text = dateFormatter.stringFromDate(sender.date)
+        dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
+        dateTimeTxt.textColor = COLOR2
     }
-    @IBAction func editingBegunDateTime(sender: AnyObject) {
-    }
+
 
     @IBAction func sendBtnPressed(sender: AnyObject) {
     }
