@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = COLOR2
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: font1Medium, size: 20)!, NSForegroundColorAttributeName : COLOR2]
         
-        
+        IQKeyboardManager.sharedManager().enable = true
+
         
         return true
     }

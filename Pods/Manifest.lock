@@ -13,6 +13,7 @@ PODS:
   - Interstellar/Core (1.4.0)
   - Interstellar/Warpdrive (1.4.0):
     - Interstellar/Core
+  - IQKeyboardManagerSwift (4.0.4)
   - moa (3.0.0)
   - OAuthSwift (0.5.2)
   - pop (1.0.9)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - Alamofire (~> 3.4)
   - Auk (~> 2.1)
   - Contentful
+  - IQKeyboardManagerSwift
   - OAuthSwift (~> 0.5.0)
   - pop (~> 1.0)
   - SwiftSpinner
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   Contentful: de96c3cdf1af4ae28828851a18f95cb2b502f8b8
   Decodable: ab6c7d02a5df949d3ab16b2696528a3241e37c76
   Interstellar: 40fc666872436d6c1b3524c59437ebdb5dec1c6a
+  IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
   moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
