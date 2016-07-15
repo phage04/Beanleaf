@@ -51,6 +51,7 @@
 		DE2BF0441D33C8260049F662 /* Coupons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupons.swift; sourceTree = "<group>"; };
 		DE2BF0461D33CEEB0049F662 /* CouponCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		DE2BF0481D33CFD80049F662 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnionApps-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE5BACAF1D26BB07006C3C7C /* OnionApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnionApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		DEBC25441D3563A700997EB1 /* LabelRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelRewards.swift; sourceTree = "<group>"; };
 		DEBC25461D35659700997EB1 /* ImageStarStamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStarStamp.swift; sourceTree = "<group>"; };
 		DEBC25481D35679F00997EB1 /* ButtonRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRewards.swift; sourceTree = "<group>"; };
-		DEBC254B1D3569CC00997EB1 /* Wiesenlust-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wiesenlust-Bridging-Header.h"; sourceTree = "<group>"; };
 		DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAnimate.swift; sourceTree = "<group>"; };
 		DEBC25501D369F0500997EB1 /* Reservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,8 +183,8 @@
 				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
 				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
-				DEBC254B1D3569CC00997EB1 /* Wiesenlust-Bridging-Header.h */,
 				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
+				DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
 				PRODUCT_NAME = OnionApps;
-				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Wiesenlust-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -472,7 +472,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
 				PRODUCT_NAME = OnionApps;
-				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Wiesenlust-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
 			};
 			name = Release;
 		};

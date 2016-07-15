@@ -12,8 +12,7 @@ pod 'Contentful'
 pod "SwiftSpinner"
 pod 'pop', '~> 1.0'
 pod 'IQKeyboardManagerSwift'
-pod 'GoogleAPIClient/Gmail', '~> 1.0.2'
-pod 'GTMOAuth2', '~> 1.1.0'
+
 
 end
 

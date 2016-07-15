@@ -73,6 +73,11 @@ let DATE_FULL_FORMAT = "yyyy-MM-dd HH:mm:ss Z"
 let DATE_FORMAT1 = "MMM dd, yyyy"
 let DATE_FORMAT2 = "MMMM dd, yyyy (EEE) h:mma"
 
+//MAILGUN
+let mailGunKey = "key-5b34852ee5f4c8467b150056b0b5ca1e"
+let mailGunURL = "sandboxab276373903c49c78f3c2c0eacc612e6.mailgun.org"
+let mailGunOwnerEmail = "jover.lyle@gmail.com"
+
 //CONTENTFUL
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
 let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"

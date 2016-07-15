@@ -5,10 +5,10 @@
 //  Created by Lyle Christianne Jover on 13/07/2016.
 //  Copyright © 2016 Wiesenlust. All rights reserved.
 //
-import GoogleAPIClient
-import GTMOAuth2
+
 import UIKit
 import MessageUI
+import Alamofire
 
 class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     
@@ -29,6 +29,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     @IBOutlet weak var sendBtn: UIButton!
     
     let userCalendar = NSCalendar.currentCalendar()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
 
         
     }
-    
+
 
 
     
@@ -120,20 +121,38 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
     }
+    
+    
 
 
     @IBAction func sendBtnPressed(sender: AnyObject) {
+     
         
-        if MFMessageComposeViewController.canSendText()  {
+        if checkConnectivity()  {
            
             if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" {
-                let messageVC = MFMessageComposeViewController()
                 
-                messageVC.body = "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Thanks!"
-                messageVC.recipients = ["+639178235953"]
-                messageVC.messageComposeDelegate = self
+                let key = mailGunKey
                 
-                self.presentViewController(messageVC, animated: false, completion: nil)
+                let parameters = [
+                    "Authorization" : "api:\(key)",
+                    "from": "mailgun@\(mailGunURL)",
+                    "to": "\(mailGunOwnerEmail)",
+                    "subject": "Reservation Request: \(NSDate())",
+                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Thanks!"
+                ]
+                
+                _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)
+                    .authenticate(user: "api", password: key)
+                    .response { (request, response, data, error) in
+                        if response?.statusCode == 200 {
+                           showErrorAlert("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
+                        } else {
+                           showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
+                        }
+                        print(response!)
+                }
+
             } else {
                 
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
@@ -141,7 +160,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
             }
         } else {
             
-            showErrorAlert("Cannot Send Text Message", msg: "Your device is not able to send text messages.", VC: self)
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
             
         }
 
