@@ -20,6 +20,8 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var peopleTxt: UITextField!
     
+    @IBOutlet weak var mobileTxt: UITextField!
+    @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var peopleView: UIView!
     
     @IBOutlet weak var dateTimeTxt: UITextField!
@@ -54,6 +56,10 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         peopleTxt.font = UIFont(name: font1Regular, size: 18)
         peopleTxt.textColor = COLOR2
         dateTimeView.backgroundColor = COLOR2
+        mobileTxt.placeholder = "Mobile number"
+        mobileTxt.font = UIFont(name: font1Regular, size: 18)
+        mobileTxt.textColor = COLOR2
+        mobileView.backgroundColor = COLOR2
         dateTimeTxt.placeholder = "Reservation date"
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
@@ -130,7 +136,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
         if checkConnectivity()  {
            
-            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" {
+            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" && mobileTxt.text! != "" {
                 
                 let key = mailGunKey
                 
@@ -139,7 +145,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
                     "from": "mailgun@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
                     "subject": "Reservation Request: \(NSDate())",
-                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Thanks!"
+                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text) Thanks!"
                 ]
                 
                 _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)

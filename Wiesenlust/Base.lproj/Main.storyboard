@@ -12,7 +12,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="Home" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="Home" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -48,7 +48,7 @@
                                             <rect key="frame" x="225" y="0.0" width="300" height="440"/>
                                         </variation>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="175" y="260" width="200" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Eie-HJ-lL4"/>
@@ -87,7 +87,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nbv-bH-5qZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="550" height="92"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="r5c-Qa-54z"/>
@@ -102,7 +102,7 @@
                                                             </segue>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="187" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="g1P-up-POl"/>
@@ -113,7 +113,7 @@
                                                             <segue destination="gNc-cv-VpO" kind="show" id="IKX-8N-6YA"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="374" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="LHN-Ld-as9"/>
@@ -132,7 +132,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5rR-RS-4rw">
                                                 <rect key="frame" x="0.0" y="97" width="550" height="21"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="184" height="21"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,7 +144,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="21"/>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="184" y="0.0" width="183" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -156,7 +156,7 @@
                                                             <rect key="frame" x="250" y="0.0" width="250" height="21"/>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="367" y="0.0" width="184" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -179,7 +179,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tOy-NH-egg">
                                                 <rect key="frame" x="0.0" y="123" width="550" height="92"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="CgF-0P-f7c"/>
@@ -199,7 +199,7 @@
                                                             <segue destination="DzL-Ah-SCd" kind="show" id="2dc-tM-gdk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="187" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="PQo-vG-apI"/>
@@ -218,7 +218,7 @@
                                                             <action selector="menuItem5Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uU9-Iq-N1F"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="374" y="0.0" width="177" height="92"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="92" id="2sB-em-eWr"/>
@@ -251,7 +251,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZZw-pr-NL0">
                                                 <rect key="frame" x="0.0" y="220" width="550" height="21"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="184" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -263,7 +263,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="21"/>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="184" y="0.0" width="183" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -275,7 +275,7 @@
                                                             <rect key="frame" x="250" y="0.0" width="250" height="21"/>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="367" y="0.0" width="184" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -380,7 +380,7 @@
         <!--Menu-->
         <scene sceneID="3MU-Af-lHR">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jrz-do-ggR" customClass="Menu" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jrz-do-ggR" customClass="Menu" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HoE-x4-XRU"/>
                         <viewControllerLayoutGuide type="bottom" id="rdB-e4-53f"/>
@@ -398,7 +398,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCategoryCell" id="E8p-1f-Vvh" customClass="MenuCategoryCell" customModule="Wiesenlust" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCategoryCell" id="E8p-1f-Vvh" customClass="MenuCategoryCell" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="285"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -473,7 +473,7 @@
         <!--Coupons-->
         <scene sceneID="Zpb-fW-ylA">
             <objects>
-                <viewController id="TSb-jX-W01" customClass="Coupons" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TSb-jX-W01" customClass="Coupons" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4dD-F9-Khb"/>
                         <viewControllerLayoutGuide type="bottom" id="CKx-U5-8u0"/>
@@ -486,7 +486,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponCell" rowHeight="229" id="krk-De-hzN" customClass="CouponCell" customModule="Wiesenlust" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponCell" rowHeight="229" id="krk-De-hzN" customClass="CouponCell" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="229"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krk-De-hzN" id="XYC-Tx-14k">
@@ -699,7 +699,7 @@
         <!--Rewards-->
         <scene sceneID="bmD-D5-4ln">
             <objects>
-                <viewController id="NJz-j9-Ghq" customClass="Rewards" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NJz-j9-Ghq" customClass="Rewards" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N1C-JR-ENH"/>
                         <viewControllerLayoutGuide type="bottom" id="Xll-fc-wys"/>
@@ -720,7 +720,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="26" width="560" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="m7w-OZ-8h0"/>
@@ -756,7 +756,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="EWm-5K-kdI"/>
@@ -771,7 +771,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -788,7 +788,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="Fbw-eB-zRZ"/>
@@ -803,7 +803,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -820,7 +820,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="C7F-SV-LAZ"/>
@@ -835,7 +835,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -860,14 +860,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="cvs-Ot-gOn"/>
                                                             <constraint firstAttribute="height" constant="75" id="iqb-N0-ldd"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -884,14 +884,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="NAi-2k-7hQ"/>
                                                             <constraint firstAttribute="height" constant="75" id="jae-Q3-FNP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -908,7 +908,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="WFq-pj-5Do"/>
@@ -918,7 +918,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -943,14 +943,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="1Jq-YI-0kT"/>
                                                             <constraint firstAttribute="width" constant="75" id="TpK-HN-ia1"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -967,7 +967,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="OSe-KB-Csk"/>
@@ -977,7 +977,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -994,14 +994,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="3l9-v4-q04"/>
                                                             <constraint firstAttribute="height" constant="75" id="oSS-s6-99Z"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1026,14 +1026,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="KGy-JA-tMO"/>
                                                             <constraint firstAttribute="height" constant="75" id="ZBI-5C-feP"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1050,14 +1050,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="f5m-pj-B4R"/>
                                                             <constraint firstAttribute="height" constant="75" id="qsF-MY-H70"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1074,7 +1074,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="0OK-jP-aeJ"/>
@@ -1084,7 +1084,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Wiesenlust" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="OnionApps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1192,7 +1192,7 @@
         <!--Category View-->
         <scene sceneID="aBT-hU-sk3">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AtX-WJ-VEY" customClass="CategoryView" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AtX-WJ-VEY" customClass="CategoryView" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l0C-2Z-xHg"/>
                         <viewControllerLayoutGuide type="bottom" id="5zA-Mv-muO"/>
@@ -1205,7 +1205,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Wiesenlust" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="cF3-jT-lYy" customClass="CategoryCell" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="249"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cF3-jT-lYy" id="cb6-o0-x7A">
@@ -1379,7 +1379,7 @@
         <!--Item View-->
         <scene sceneID="rF5-nB-m7R">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2eA-5i-yWa" customClass="ItemView" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2eA-5i-yWa" customClass="ItemView" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vjl-3M-TVz"/>
                         <viewControllerLayoutGuide type="bottom" id="fGK-io-vYb"/>
@@ -1512,7 +1512,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="148" id="1W1-PI-Aml" customClass="ItemCell" customModule="Wiesenlust" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="148" id="1W1-PI-Aml" customClass="ItemCell" customModule="OnionApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="600" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1W1-PI-Aml" id="KHP-Y7-UzP">
@@ -1639,7 +1639,7 @@
         <!--Reservations-->
         <scene sceneID="OHE-Jn-tfz">
             <objects>
-                <viewController id="leS-uA-puM" customClass="Reservations" customModule="Wiesenlust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="leS-uA-puM" customClass="Reservations" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Ab-De-aX4"/>
                         <viewControllerLayoutGuide type="bottom" id="jeS-ev-gJk"/>
@@ -1648,8 +1648,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="n07-fr-xTJ">
-                                <rect key="frame" x="20" y="0.0" width="560" height="319"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="n07-fr-xTJ">
+                                <rect key="frame" x="20" y="0.0" width="560" height="361"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvS-yr-6IJ">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
@@ -1658,7 +1658,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VuI-kP-4h7">
-                                        <rect key="frame" x="0.0" y="46" width="560" height="153"/>
+                                        <rect key="frame" x="0.0" y="39" width="560" height="216"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-rX-lkX">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="25"/>
@@ -1714,10 +1714,27 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjD-2L-Ngo">
+                                                <rect key="frame" x="0.0" y="193" width="560" height="23"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xn8-yk-lB1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    </textField>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INO-bp-9WW">
+                                                        <rect key="frame" x="0.0" y="22" width="560" height="1"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="wet-Fa-xul"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonRewards" customModule="Wiesenlust" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="224" width="560" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonRewards" customModule="OnionApps" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="273" width="560" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YpD-xz-yzD"/>
                                         </constraints>
@@ -1729,7 +1746,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeE-rR-8Gf">
-                                        <rect key="frame" x="0.0" y="299" width="560" height="21"/>
+                                        <rect key="frame" x="0.0" y="341" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1766,6 +1783,8 @@
                         <outlet property="bottomLbl" destination="LeE-rR-8Gf" id="LrG-0Q-Y4L"/>
                         <outlet property="dateTimeTxt" destination="aau-Wm-hbv" id="pwG-v8-aag"/>
                         <outlet property="dateTimeView" destination="El4-h7-99h" id="og1-TZ-TIv"/>
+                        <outlet property="mobileTxt" destination="Xn8-yk-lB1" id="Yhv-01-Tqg"/>
+                        <outlet property="mobileView" destination="INO-bp-9WW" id="KTC-7q-f7Y"/>
                         <outlet property="nameTxt" destination="qht-FI-eg4" id="UGD-u8-4Wg"/>
                         <outlet property="nameView" destination="9Rt-ZW-Yqk" id="Fd2-Ai-TJt"/>
                         <outlet property="peopleTxt" destination="BYi-Tx-ErU" id="6fe-BE-Eje"/>
