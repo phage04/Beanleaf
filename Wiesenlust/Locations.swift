@@ -25,6 +25,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
     var locNow: Locations!
+    var index: Int = 0
     
     var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
     var branchesLoc = [Locations]()
@@ -49,18 +50,13 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             locationManager.requestAlwaysAuthorization()
         }
 
-        
-//        headerView = self.tableView.tableHeaderView
-//        self.tableView.tableHeaderView = nil
-//        self.tableView.addSubview(headerView)
-//        
-//        self.tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
-//        self.tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
-
-
         mapView.delegate = self
         
-//        updateHeaderView()        
+       
+        plotLocations()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         plotLocations()
     }
     
@@ -71,6 +67,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func plotLocations(){
+        
+        self.branchesLoc.removeAll()
         for loc in branches {
             let geoCoder = CLGeocoder()
             
@@ -96,8 +94,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
-        
-        
        
         
                 let geoCoder = CLGeocoder()
@@ -110,7 +106,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", address: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                     
+                    self.index = 0
                     
+                    var x = 0
                     
                     for locationX in self.branchesLoc {
                         
@@ -123,18 +121,23 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             
                             if self.nearest.distance > locationX.distance {
                                 self.nearest = locationX
+                                self.index = x
                             }              
                             
                         } else {
                             self.nearest = locationX
+                            self.index = x
                         }
+                        
+                        x += 1
                     
                     }
-                    print(self.nearest.address)
+                    
                     
                     self.centerMapOnLocation(self.nearest.location)
                     self.tableView.dataSource = self
                     self.tableView.delegate = self
+                    self.tableView.reloadData()
                  
                 })
         
@@ -144,30 +147,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
 
 
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        updateHeaderView()
-//    }
-//    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        updateHeaderView()
-//    }
-//    
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        updateHeaderView()
-//    }
-//    
-//    func updateHeaderView() {
-//        var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: self.tableView.bounds.width, height: kTableHeaderHeight)
-//        
-//        if self.tableView.contentOffset.y < -kTableHeaderHeight {
-//            headerRect.origin.y = self.tableView.contentOffset.y
-//            headerRect.size.height = -self.tableView.contentOffset.y
-//        }
-//        
-//        headerView.frame = headerRect
-//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
