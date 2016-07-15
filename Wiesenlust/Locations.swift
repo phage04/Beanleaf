@@ -24,8 +24,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
-    var userLocOld: Locations!
-    
+    var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany"]
+    var branchesLoc = [Locations]()
+    var nearest: Locations!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
-            locationManager.startUpdatingLocation()
         }
 
         
@@ -57,6 +58,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.tableView.dataSource = self
         self.tableView.delegate = self
         updateHeaderView()
+        plotLocations()
     }
     
     func centerMapOnLocation(location: CLLocation) {
@@ -64,12 +66,36 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    func plotLocations(){
+        for loc in branches {
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                
+                // Place details
+                var placeMark: CLPlacemark!
+                placeMark = placemarks?[0]
+                
+                let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "12345", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
+                
+               
+                self.branchesLoc.append(locNow)
+                self.mapView.addAnnotation(locNow)
+                
+            
+            })
+        }
+        
+        locationManager.startUpdatingLocation()
+    }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
         
-        centerMapOnLocation(userLocation)
+        
+       
         
                 let geoCoder = CLGeocoder()
                 
@@ -78,18 +104,31 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     // Place details
                     var placeMark: CLPlacemark!
                     placeMark = placemarks?[0]
-                    print("City: \(placeMark.locality!)")
-                    print("Street: \(placeMark.thoroughfare!)")
-                    print("Postal Code: \(placeMark.postalCode!)")
-                    print("Long: \(longitude) Lat: \(latitude)")
                     
-                    self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", address: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                    self.userLocOld = self.userLocNow
-                    if let oldLoc = self.userLocOld {
-                        self.mapView.removeAnnotation(oldLoc)
+                    self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", address: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                    
+                    
+                    
+                    for locationX in self.branchesLoc {
+                        
+                        
+                        let distance = locationX.location.distanceFromLocation(userLocation)
+                        print(distance)
+                        locationX.addDistance(distance)
+                        
+                        if let _ = self.nearest {
+                            
+                            if self.nearest.distance > locationX.distance {
+                                self.nearest = locationX
+                            }              
+                            
+                        } else {
+                            self.nearest = locationX
+                        }
+                    
                     }
-                    self.mapView.addAnnotation(self.userLocNow)
-                    
+                    print(self.nearest.address)
+                    self.centerMapOnLocation(self.nearest.location)
                    
                  
                 })
