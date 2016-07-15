@@ -35,6 +35,8 @@
 		DEBC25491D35679F00997EB1 /* ButtonRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25481D35679F00997EB1 /* ButtonRewards.swift */; };
 		DEBC254F1D356D1100997EB1 /* ButtonAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */; };
 		DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25501D369F0500997EB1 /* Reservations.swift */; };
+		DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063C1D38F5D5004682EE /* Locations.swift */; };
+		DEF3063F1D38F644004682EE /* LocationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063E1D38F644004682EE /* LocationsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		DEBC25481D35679F00997EB1 /* ButtonRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRewards.swift; sourceTree = "<group>"; };
 		DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAnimate.swift; sourceTree = "<group>"; };
 		DEBC25501D369F0500997EB1 /* Reservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
+		DEF3063C1D38F5D5004682EE /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		DEF3063E1D38F644004682EE /* LocationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				DEBC25461D35659700997EB1 /* ImageStarStamp.swift */,
 				DEBC25481D35679F00997EB1 /* ButtonRewards.swift */,
 				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
+				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				DE2BF0441D33C8260049F662 /* Coupons.swift */,
 				DEBC25401D355B3D00997EB1 /* Rewards.swift */,
 				DEBC25501D369F0500997EB1 /* Reservations.swift */,
+				DEF3063C1D38F5D5004682EE /* Locations.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */,
 				DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */,
 				DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */,
+				DEF3063F1D38F644004682EE /* LocationsCell.swift in Sources */,
 				DE2BF0451D33C8260049F662 /* Coupons.swift in Sources */,
 				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
 				DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */,
@@ -334,6 +341,7 @@
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,
 				DEBC25471D35659700997EB1 /* ImageStarStamp.swift in Sources */,
+				DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */,
 				DE2BF0471D33CEEB0049F662 /* CouponCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -216,6 +216,7 @@
                                                         </variation>
                                                         <connections>
                                                             <action selector="menuItem5Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uU9-Iq-N1F"/>
+                                                            <segue destination="52Q-sb-Iou" kind="show" id="Bhy-Rj-co8"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="OnionApps" customModuleProvider="target">
@@ -1796,6 +1797,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm9-Ns-aIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2113" y="941"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8ep-rU-DA6">
+            <objects>
+                <navigationController id="52Q-sb-Iou" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="menuIcon" id="NAK-ZT-AP0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0HQ-vq-Zk4" kind="relationship" relationship="rootViewController" id="ecm-hj-aVk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7k-H9-R4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1478" y="1655"/>
+        </scene>
+        <!--Locations-->
+        <scene sceneID="fXS-eg-Ypt">
+            <objects>
+                <viewController id="0HQ-vq-Zk4" customClass="Locations" customModule="OnionApps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CSU-H9-xaE"/>
+                        <viewControllerLayoutGuide type="bottom" id="eiL-2z-7R9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hBM-D8-Kd7">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="2ZN-dn-pfc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="NcV-dn-qPR"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-hB-jpd">
+                                <rect key="frame" x="0.0" y="44" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="492" id="UNI-9v-HnN"/>
+                                </constraints>
+                                <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" id="vtc-9w-rr1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </mapView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationsCell" rowHeight="120" id="zJb-a9-g6f" customClass="LocationsCell" customModule="OnionApps" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="328" width="600" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJb-a9-g6f" id="uSu-ph-Lmc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="k5O-hB-jpd" secondAttribute="trailing" constant="-20" id="3Vi-GA-hKL"/>
+                            <constraint firstItem="k5O-hB-jpd" firstAttribute="leading" secondItem="hBM-D8-Kd7" secondAttribute="leadingMargin" constant="-20" id="3b0-3t-2ZA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2ZN-dn-pfc" secondAttribute="trailing" constant="-20" id="63x-z7-1lh"/>
+                            <constraint firstItem="k5O-hB-jpd" firstAttribute="leading" secondItem="hBM-D8-Kd7" secondAttribute="leadingMargin" constant="-20" id="AkN-mb-jWg"/>
+                            <constraint firstItem="k5O-hB-jpd" firstAttribute="top" secondItem="2ZN-dn-pfc" secondAttribute="bottom" id="Jmk-bf-aub"/>
+                            <constraint firstItem="2ZN-dn-pfc" firstAttribute="leading" secondItem="hBM-D8-Kd7" secondAttribute="leadingMargin" constant="-20" id="NYN-th-YXs"/>
+                            <constraint firstItem="2ZN-dn-pfc" firstAttribute="top" secondItem="CSU-H9-xaE" secondAttribute="bottom" id="ROp-fL-ipj"/>
+                            <constraint firstItem="k5O-hB-jpd" firstAttribute="top" secondItem="2ZN-dn-pfc" secondAttribute="bottom" id="eq0-Nh-rGi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k5O-hB-jpd" secondAttribute="trailing" constant="-20" id="lbl-WA-Bei"/>
+                            <constraint firstItem="eiL-2z-7R9" firstAttribute="top" secondItem="k5O-hB-jpd" secondAttribute="bottom" id="mxn-yL-SLb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Locations" id="0c9-di-jHy"/>
+                    <connections>
+                        <outlet property="mapView" destination="vtc-9w-rr1" id="rhG-yg-iZg"/>
+                        <outlet property="searchBar" destination="2ZN-dn-pfc" id="dge-gg-OF3"/>
+                        <outlet property="tableView" destination="k5O-hB-jpd" id="ZeN-8N-H4S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0m8-WW-h4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2120" y="1657"/>
         </scene>
     </scenes>
     <resources>
