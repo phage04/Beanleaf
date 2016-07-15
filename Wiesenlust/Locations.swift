@@ -57,7 +57,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        updateHeaderView()
+        mapView.delegate = self
+        
+        updateHeaderView()        
         plotLocations()
     }
     
