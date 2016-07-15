@@ -24,9 +24,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
+    var locNow: Locations!
     
     var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
-    var branchesLoc = [[Locations]]()
+    var branchesLoc = [Locations]()
     var nearest: Locations!
  
     
@@ -49,18 +50,17 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
 
         
-        headerView = self.tableView.tableHeaderView
-        self.tableView.tableHeaderView = nil
-        self.tableView.addSubview(headerView)
-        
-        self.tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
-        self.tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+//        headerView = self.tableView.tableHeaderView
+//        self.tableView.tableHeaderView = nil
+//        self.tableView.addSubview(headerView)
+//        
+//        self.tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
+//        self.tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
 
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+
         mapView.delegate = self
         
-        updateHeaderView()        
+//        updateHeaderView()        
         plotLocations()
     }
     
@@ -83,7 +83,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "12345", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
                 
                
-                self.branchesLoc[1].append(locNow)
+                self.branchesLoc.append(locNow)
                 self.mapView.addAnnotation(locNow)
                 
             
@@ -112,7 +112,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     
                     
-                    for locationX in self.branchesLoc[1] {
+                    for locationX in self.branchesLoc {
                         
                         
                         let distance = locationX.location.distanceFromLocation(userLocation)
@@ -131,9 +131,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     }
                     print(self.nearest.address)
-                    self.branchesLoc[0].append(self.nearest)
+                    
                     self.centerMapOnLocation(self.nearest.location)
-                   
+                    self.tableView.dataSource = self
+                    self.tableView.delegate = self
                  
                 })
         
@@ -143,30 +144,30 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
 
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        updateHeaderView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateHeaderView()
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        updateHeaderView()
-    }
-    
-    func updateHeaderView() {
-        var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: self.tableView.bounds.width, height: kTableHeaderHeight)
-        
-        if self.tableView.contentOffset.y < -kTableHeaderHeight {
-            headerRect.origin.y = self.tableView.contentOffset.y
-            headerRect.size.height = -self.tableView.contentOffset.y
-        }
-        
-        headerView.frame = headerRect
-    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        updateHeaderView()
+//    }
+//    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        updateHeaderView()
+//    }
+//    
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        updateHeaderView()
+//    }
+//    
+//    func updateHeaderView() {
+//        var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: self.tableView.bounds.width, height: kTableHeaderHeight)
+//        
+//        if self.tableView.contentOffset.y < -kTableHeaderHeight {
+//            headerRect.origin.y = self.tableView.contentOffset.y
+//            headerRect.size.height = -self.tableView.contentOffset.y
+//        }
+//        
+//        headerView.frame = headerRect
+//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -201,13 +202,23 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if let cell = tableView.dequeueReusableCellWithIdentifier("LocationsCell") as? LocationsCell {
             
             cell.selectionStyle = .None
-            let locNow = branchesLoc[indexPath.section][indexPath.row]
+            print("COL: \(indexPath.section)")
+            print("ROW: \(indexPath.row)")
             
+            
+            
+            if indexPath.section == 0 {
+                locNow = nearest
+            } else if indexPath.section == 1 {
+                locNow = branchesLoc[indexPath.row]
+            }
+           
             cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
             
          
             return cell
-            
+           
+        
         } else {
             return UITableViewCell()
         }
