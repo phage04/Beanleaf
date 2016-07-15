@@ -24,8 +24,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
-    var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany"]
-    var branchesLoc = [Locations]()
+    
+    var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
+    var branchesLoc = [[Locations]]()
     var nearest: Locations!
  
     
@@ -82,7 +83,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "12345", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
                 
                
-                self.branchesLoc.append(locNow)
+                self.branchesLoc[1].append(locNow)
                 self.mapView.addAnnotation(locNow)
                 
             
@@ -111,7 +112,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     
                     
-                    for locationX in self.branchesLoc {
+                    for locationX in self.branchesLoc[1] {
                         
                         
                         let distance = locationX.location.distanceFromLocation(userLocation)
@@ -130,6 +131,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     }
                     print(self.nearest.address)
+                    self.branchesLoc[0].append(self.nearest)
                     self.centerMapOnLocation(self.nearest.location)
                    
                  
@@ -166,10 +168,29 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         headerView.frame = headerRect
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return branchesLoc.count-1
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Nearest to you"
+        } else if section == 1 {
+            return "Search results"
+        } else {
+            return ""
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -177,7 +198,20 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCellWithIdentifier("LocationsCell") as? LocationsCell {
+            
+            cell.selectionStyle = .None
+            let locNow = branchesLoc[indexPath.section][indexPath.row]
+            
+            cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+            
+         
+            return cell
+            
+        } else {
+            return UITableViewCell()
+        }
+        
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 120

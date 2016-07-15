@@ -1850,7 +1850,50 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJb-a9-g6f" id="uSu-ph-Lmc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="35d-vX-KMq">
+                                                    <rect key="frame" x="8" y="8" width="484" height="104"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-il-7o7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="484" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGg-JP-MYq">
+                                                            <rect key="frame" x="0.0" y="26" width="484" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vaw-zF-13x">
+                                                            <rect key="frame" x="0.0" y="52" width="484" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VW0-X8-UE3">
+                                                            <rect key="frame" x="0.0" y="78" width="484" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="35d-vX-KMq" firstAttribute="top" secondItem="uSu-ph-Lmc" secondAttribute="topMargin" id="7Fj-U5-NhD"/>
+                                                <constraint firstItem="35d-vX-KMq" firstAttribute="leading" secondItem="uSu-ph-Lmc" secondAttribute="leadingMargin" id="CLl-AL-yzE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="35d-vX-KMq" secondAttribute="bottom" id="aiN-Au-NqS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="35d-vX-KMq" secondAttribute="trailing" constant="100" id="cPD-HL-XIc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="dGg-JP-MYq" id="gOf-Ij-sux"/>
+                                            <outlet property="contact" destination="Vaw-zF-13x" id="dYz-cD-0sL"/>
+                                            <outlet property="storeHours" destination="VW0-X8-UE3" id="tUw-Vq-6ad"/>
+                                            <outlet property="title" destination="0ZA-il-7o7" id="xWj-rd-ZI4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
