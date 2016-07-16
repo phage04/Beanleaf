@@ -38,6 +38,7 @@ let SHADOW_COLOR: CGFloat = 30.0 / 255.0
 
 let logo1 = UIImage(named: "logo02.png")
 let stampIcon = UIImage(named: "stamp")
+let phoneIcon = UIImage(named: "phone")
 let menuIcon1 = UIImage(named: "menuIcon1.png")
 let menuIcon2 = UIImage(named: "menuIcon2.png")
 let menuIcon3 = UIImage(named: "menuIcon3.png")

@@ -160,7 +160,6 @@
 				DE2BF0461D33CEEB0049F662 /* CouponCell.swift */,
 				DE5BACB61D26BB08006C3C7C /* Main.storyboard */,
 				DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */,
-				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
 				DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */,
 				DEBC25421D3561A000997EB1 /* LabelHome.swift */,
 				DEBC25441D3563A700997EB1 /* LabelRewards.swift */,
@@ -169,6 +168,7 @@
 				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
 				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
 				DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */,
+				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
 			);
 			name = View;
 			sourceTree = "<group>";

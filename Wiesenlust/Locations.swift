@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -29,6 +29,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
     var branchesLoc = [Locations]()
+    var filteredBranchesLoc = [Locations]()
+    var inSearchMode = false
     var nearest: Locations!
  
     
@@ -51,14 +53,22 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
 
         mapView.delegate = self
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         
        
+        
+
         plotLocations()
     }
     
     override func viewDidAppear(animated: Bool) {
         plotLocations()
     }
+    
+
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
@@ -79,7 +89,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 var placeMark: CLPlacemark!
                 placeMark = placemarks?[0]
                 
-                let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "12345", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
+                let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
                 
                
                 self.branchesLoc.append(locNow)
@@ -88,10 +98,55 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             })
         }
         
+        
         locationManager.startUpdatingLocation()
     }
     
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchBar.showsCancelButton = true
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            tableView.reloadData()
+        } else {
+            inSearchMode = true
+            filterContentForSearchText(searchBar.text!)
+            
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        inSearchMode = false
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        view.endEditing(true)
+        tableView.reloadData()
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        
+        filteredBranchesLoc = branchesLoc.filter { branches in
+            
+            return branches.address.lowercaseString.containsString(searchText.lowercaseString) || branches.locationName.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        view.endEditing(true)
+    }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
@@ -103,12 +158,13 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
                     
                     // Place details
-                    var placeMark: CLPlacemark!
-                    placeMark = placemarks?[0]
                     
-                    self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", address: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
-                    
-                   self.getNearest(userLocation)
+                    if let placeMark = placemarks?[0] {
+                        self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare as String?), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", address: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare!), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                        
+                        self.getNearest(userLocation)
+                    }
+
                  
                 })
         } else {
@@ -126,6 +182,25 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
 
         
+    }
+    
+    func callClicked(sender:UIButton) {
+        
+        let buttonRow = sender.tag
+        if buttonRow != 9999 {
+            self.callNumber(branchesLoc[buttonRow].contact)
+        } else if buttonRow == 9999 {
+            self.callNumber(nearest.contact)
+        }
+    }
+    
+    func callNumber(phoneNumber:String) {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(phoneNumber)") {
+            let application:UIApplication = UIApplication.sharedApplication()
+            if (application.canOpenURL(phoneCallURL)) {
+                application.openURL(phoneCallURL);
+            }
+        }
     }
 
     func getNearest(userloc: CLLocation!){
@@ -156,8 +231,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         }
         
+        if let nearest = self.nearest.location as CLLocation?{
+           self.centerMapOnLocation(nearest)
+        }
         
-        self.centerMapOnLocation(self.nearest.location)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.reloadData()
@@ -172,7 +249,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if section == 0 {
             return 1
         } else if section == 1 {
-            return branchesLoc.count-1
+            if inSearchMode {
+            return filteredBranchesLoc.count
+            }
+            return branchesLoc.count
         } else {
             return 0
         }
@@ -199,7 +279,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.section == 0 {
             self.centerMapOnLocation(nearest.location)
         } else if indexPath.section == 1 {
-            self.centerMapOnLocation(branchesLoc[indexPath.row].location)
+            if inSearchMode {
+                self.centerMapOnLocation(filteredBranchesLoc[indexPath.row].location)
+            } else {
+                self.centerMapOnLocation(branchesLoc[indexPath.row].location)
+            }
+            
         }
         
     }
@@ -212,21 +297,28 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             if indexPath.section == 0 {
                 if let locNow = nearest {
-                    cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+                    cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: 9999)
                 } else {
                     return UITableViewCell()
                 }
             } else if indexPath.section == 1 {
-                if let locNow = branchesLoc[indexPath.row] as Locations? {
-                    cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+                
+                if inSearchMode {
+                    if let locNow = filteredBranchesLoc[indexPath.row] as Locations? {
+                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: indexPath.row)
+                    } else {
+                        return UITableViewCell()
+                    }
                 } else {
-                    return UITableViewCell()
+                    if let locNow = branchesLoc[indexPath.row] as Locations? {
+                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: indexPath.row)
+                    } else {
+                        return UITableViewCell()
+                    }
                 }
+                
             }
-           
-            
-            
-         
+
             return cell
            
         
@@ -242,5 +334,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func backButtonPressed(sender:UIButton) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
 
 }
