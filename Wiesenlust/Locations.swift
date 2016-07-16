@@ -69,6 +69,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func plotLocations(){
         
         self.branchesLoc.removeAll()
+    
         for loc in branches {
             let geoCoder = CLGeocoder()
             
@@ -90,12 +91,14 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         locationManager.startUpdatingLocation()
     }
+    
+
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
        
-        
+        if checkConnectivity() {
                 let geoCoder = CLGeocoder()
                 
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
@@ -140,7 +143,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.tableView.reloadData()
                  
                 })
-        
+        } else {
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+
+        }
         
 
         
@@ -163,14 +169,20 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Nearest to you"
-        } else if section == 1 {
-            return "Search results"
-        } else {
-            return ""
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label : UILabel = UILabel()
+        if(section == 0){
+            label.textColor = COLOR2
+            label.text = "  Nearest Location"
+            label.backgroundColor = COLOR1
+            label.font = UIFont(name: font1Medium, size: 17)
+        } else if (section == 1){
+            label.textColor = COLOR2
+            label.text = "  Other Locations"
+            label.backgroundColor = COLOR1
+            label.font = UIFont(name: font1Medium, size: 17)
         }
+        return label
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
