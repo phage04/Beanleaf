@@ -22,7 +22,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     private let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
     let locationManager = CLLocationManager()
-    let regionRadius: CLLocationDistance = 1000
+    var regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
     var locNow: Locations!
     var index: Int = 0
@@ -195,6 +195,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.regionRadius = 500
+        if indexPath.section == 0 {
+            self.centerMapOnLocation(nearest.location)
+        } else if indexPath.section == 1 {
+            self.centerMapOnLocation(branchesLoc[indexPath.row].location)
+        }
         
     }
     
