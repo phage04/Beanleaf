@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.050000000000000003" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="799"/>
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="799"/>
@@ -319,6 +319,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6XI-0L-lys" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="5ir-L8-YeM"/>
                             <constraint firstItem="6XI-0L-lys" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="7x6-gd-W86"/>
                             <constraint firstItem="6XI-0L-lys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Aql-xp-FfG"/>
                             <constraint firstAttribute="trailing" secondItem="6XI-0L-lys" secondAttribute="trailing" id="GK5-gu-LH7"/>
@@ -329,6 +330,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6XI-0L-lys" secondAttribute="trailing" id="Wgd-LZ-jxr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6XI-0L-lys" secondAttribute="bottom" id="fvp-7a-9zq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yjH-kd-CtO" secondAttribute="bottom" constant="20" id="hNw-QD-w1a"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="6XI-0L-lys" secondAttribute="bottom" id="i7v-D0-i6F"/>
                             <constraint firstItem="yjH-kd-CtO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="l5N-dz-sgD"/>
                         </constraints>
                         <variation key="default">
@@ -341,6 +343,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundImg" destination="6XI-0L-lys" id="cVI-Gz-mF8"/>
                         <outlet property="backgroundView" destination="8bC-Xf-vdC" id="amQ-Xd-eH2"/>
                         <outlet property="logo" destination="Z7w-SX-JRq" id="O4e-gx-dMs"/>
                         <outlet property="menuItem1" destination="oeq-jE-VdD" id="ijv-vz-gab"/>
@@ -1958,8 +1961,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="288" height="288"/>
         <image name="coupon" width="708" height="500"/>
-        <image name="logo02" width="749" height="217"/>
+        <image name="logo02" width="750" height="200"/>
         <image name="menuIcon" width="92" height="92"/>
         <image name="starEmpty1x" width="25" height="25"/>
         <image name="starFull1x" width="25" height="25"/>

@@ -14,8 +14,10 @@ import SwiftSpinner
 
 
 
-class Home: UIViewController {
 
+class Home: UIViewController {
+    
+    @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet var backgroundView: UIView!    
     @IBOutlet weak var logo: UIImageView!
     
@@ -52,7 +54,9 @@ class Home: UIViewController {
         
         homeSetup()        
         
+        backgroundImg.image = UIImage(named: "bg")
         backgroundView.backgroundColor = UIColor.whiteColor()
+        backgroundImg.alpha = 0.25
         
         socialButton.backgroundColor = UIColor.clearColor()
         socialButton.layer.cornerRadius = 5
