@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import Alamofire
+import SideMenu
 
 class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     
@@ -37,11 +38,19 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.backButtonPressed(_:)))
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.showMenu))
         
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        SideMenuManager.MenuPresentMode
+        SideMenuManager.menuAnimationTransformScaleFactor = 1
+        SideMenuManager.menuAnimationFadeStrength = 0
+        SideMenuManager.menuShadowOpacity = 0.25
+        SideMenuManager.menuFadeStatusBar = true
         
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
@@ -194,5 +203,9 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
     }
 }

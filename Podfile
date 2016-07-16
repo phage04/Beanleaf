@@ -12,7 +12,7 @@ pod 'Contentful'
 pod "SwiftSpinner"
 pod 'pop', '~> 1.0'
 pod 'IQKeyboardManagerSwift'
-
+pod 'SideMenu'
 
 end
 
