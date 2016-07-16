@@ -84,7 +84,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                
                 self.branchesLoc.append(locNow)
                 self.mapView.addAnnotation(locNow)
-                
             
             })
         }
@@ -109,42 +108,19 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", address: "\(placeMark.subThoroughfare!)\(placeMark.thoroughfare!), \(placeMark.locality!) \(placeMark.postalCode!)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                     
-                    self.index = 0
-                    
-                    var x = 0
-                    
-                    for locationX in self.branchesLoc {
-                        
-                        
-                        let distance = locationX.location.distanceFromLocation(userLocation)
-                        print(distance)
-                        locationX.addDistance(distance)
-                        
-                        if let _ = self.nearest {
-                            
-                            if self.nearest.distance > locationX.distance {
-                                self.nearest = locationX
-                                self.index = x
-                            }              
-                            
-                        } else {
-                            self.nearest = locationX
-                            self.index = x
-                        }
-                        
-                        x += 1
-                    
-                    }
-                    
-                    
-                    self.centerMapOnLocation(self.nearest.location)
-                    self.tableView.dataSource = self
-                    self.tableView.delegate = self
-                    self.tableView.reloadData()
+                   self.getNearest(userLocation)
                  
                 })
         } else {
-            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+            
+           
+           showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+            
+            self.centerMapOnLocation(userLocation)
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            self.tableView.reloadData()
+
 
         }
         
@@ -152,7 +128,40 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
 
-
+    func getNearest(userloc: CLLocation!){
+        self.index = 0
+        
+        var x = 0
+        
+        for locationX in self.branchesLoc {
+            
+            
+            let distance = locationX.location.distanceFromLocation(userloc)
+            print(distance)
+            locationX.addDistance(distance)
+            
+            if let _ = self.nearest {
+                
+                if self.nearest.distance > locationX.distance {
+                    self.nearest = locationX
+                    self.index = x
+                }
+                
+            } else {
+                self.nearest = locationX
+                self.index = x
+            }
+            
+            x += 1
+            
+        }
+        
+        
+        self.centerMapOnLocation(self.nearest.location)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.reloadData()
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -193,18 +202,23 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if let cell = tableView.dequeueReusableCellWithIdentifier("LocationsCell") as? LocationsCell {
             
             cell.selectionStyle = .None
-            print("COL: \(indexPath.section)")
-            print("ROW: \(indexPath.row)")
-            
-            
+                
             
             if indexPath.section == 0 {
-                locNow = nearest
+                if let locNow = nearest {
+                    cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+                } else {
+                    return UITableViewCell()
+                }
             } else if indexPath.section == 1 {
-                locNow = branchesLoc[indexPath.row]
+                if let locNow = branchesLoc[indexPath.row] as Locations? {
+                    cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+                } else {
+                    return UITableViewCell()
+                }
             }
            
-            cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours)
+            
             
          
             return cell
