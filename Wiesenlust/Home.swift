@@ -52,12 +52,12 @@ class Home: UIViewController {
         
         homeSetup()        
         
-        backgroundView.backgroundColor = COLOR1
+        backgroundView.backgroundColor = UIColor.whiteColor()
         
         socialButton.backgroundColor = UIColor.clearColor()
         socialButton.layer.cornerRadius = 5
         socialButton.layer.borderWidth = 1
-        socialButton.layer.borderColor = COLOR2.CGColor
+        socialButton.layer.borderColor = COLOR1.CGColor
         socialButton.setTitle(socialButtonTitle, forState: .Normal)
         socialButton.setTitleColor(COLOR2, forState: .Normal)
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
@@ -116,12 +116,12 @@ class Home: UIViewController {
         menuItem6.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         
         
-        menuItem1.tintColor = COLOR2
-        menuItem2.tintColor = COLOR2
-        menuItem3.tintColor = COLOR2
-        menuItem4.tintColor = COLOR2
-        menuItem5.tintColor = COLOR2
-        menuItem6.tintColor = COLOR2
+        menuItem1.tintColor = COLOR1
+        menuItem2.tintColor = COLOR1
+        menuItem3.tintColor = COLOR1
+        menuItem4.tintColor = COLOR1
+        menuItem5.tintColor = COLOR1
+        menuItem6.tintColor = COLOR1
         
         
         menuLbl1.text = menuLblText1

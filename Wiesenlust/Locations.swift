@@ -54,7 +54,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         mapView.delegate = self
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.Done
+        searchBar.returnKeyType = UIReturnKeyType.Search
+        searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
+
         let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         
@@ -161,8 +163,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     
                     if let placeMark = placemarks?[0] {
                         self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare as String?), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", address: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare!), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                        if let userLoc = userLocation as CLLocation? {
+                            self.getNearest(userLoc)
+                        }
                         
-                        self.getNearest(userLocation)
                     }
 
                  
@@ -171,8 +175,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
            
            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+            if let userLoc = userLocation as CLLocation? {
+                self.centerMapOnLocation(userLoc)
+            }
             
-            self.centerMapOnLocation(userLocation)
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.reloadData()
@@ -267,9 +273,13 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             label.font = UIFont(name: font1Medium, size: 17)
         } else if (section == 1){
             label.textColor = COLOR2
-            label.text = "  Other Locations"
             label.backgroundColor = COLOR1
             label.font = UIFont(name: font1Medium, size: 17)
+            if inSearchMode {
+                label.text = "  Search Results"
+            } else {
+                label.text = "  Our Locations"
+            }
         }
         return label
     }

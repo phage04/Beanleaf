@@ -29,9 +29,14 @@ var foodItems = [FoodItem]()
 
 var imgURL: NSURL!
 
-let COLOR1 = UIColor(red: CGFloat(188.0 / 255.0), green: CGFloat(208.0 / 255.0), blue: CGFloat(24.0 / 255.0), alpha: 1.0)
-let COLOR2 = UIColor(red: CGFloat(146.0 / 255.0), green: CGFloat(20.0 / 255.0), blue: CGFloat(114.0 / 255.0), alpha: 1.0)
-let COLOR2_DARK = UIColor(red: CGFloat(105.0 / 255.0), green: CGFloat(14.0 / 255.0), blue: CGFloat(82.0 / 255.0), alpha: 1.0)
+//let COLOR1 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
+//let COLOR2 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+//let COLOR2_DARK = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+//let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
+//WIESEN
+let COLOR1 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+let COLOR2 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
+let COLOR2_DARK = UIColor(red: CGFloat(78.0 / 255.0), green: CGFloat(31.0 / 255.0), blue: CGFloat(160.0 / 255.0), alpha: 1.0)
 let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
 
 let SHADOW_COLOR: CGFloat = 30.0 / 255.0
