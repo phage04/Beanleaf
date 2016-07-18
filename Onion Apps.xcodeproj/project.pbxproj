@@ -59,7 +59,7 @@
 		DE2BF0461D33CEEB0049F662 /* CouponCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		DE2BF0481D33CFD80049F662 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnionApps-Bridging-Header.h"; sourceTree = "<group>"; };
-		DE5BACAF1D26BB07006C3C7C /* OnionApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnionApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Onion Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DE5BACB71D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		DE5BACB01D26BB07006C3C7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE5BACAF1D26BB07006C3C7C /* OnionApps.app */,
+				DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,9 +213,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DE5BACAE1D26BB07006C3C7C /* OnionApps */ = {
+		DE5BACAE1D26BB07006C3C7C /* Onion Apps */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "OnionApps" */;
+			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */;
 			buildPhases = (
 				B77AD5788142497553332291 /* Check Pods Manifest.lock */,
 				DE5BACAB1D26BB07006C3C7C /* Sources */,
@@ -228,9 +228,9 @@
 			);
 			dependencies = (
 			);
-			name = OnionApps;
+			name = "Onion Apps";
 			productName = Wiesenlust;
-			productReference = DE5BACAF1D26BB07006C3C7C /* OnionApps.app */;
+			productReference = DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -248,7 +248,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "OnionApps" */;
+			buildConfigurationList = DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -261,7 +261,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE5BACAE1D26BB07006C3C7C /* OnionApps */,
+				DE5BACAE1D26BB07006C3C7C /* Onion Apps */,
 			);
 		};
 /* End PBXProject section */
@@ -483,7 +483,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
-				PRODUCT_NAME = OnionApps;
+				PRODUCT_NAME = "Onion Apps";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -499,7 +499,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
-				PRODUCT_NAME = OnionApps;
+				PRODUCT_NAME = "Onion Apps";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
 			};
 			name = Release;
@@ -507,7 +507,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "OnionApps" */ = {
+		DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE5BACC21D26BB08006C3C7C /* Debug */,
@@ -516,7 +516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "OnionApps" */ = {
+		DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE5BACC51D26BB08006C3C7C /* Debug */,

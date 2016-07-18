@@ -22,12 +22,15 @@ class SideMenuCell: UITableViewCell {
 
     }
     
-    func configureCell(titleVal: String, image: UIImage) {
+    func configureCell(titleVal: String, image: String) {
         
-        menuLbl.text = titleVal       
-        menuImg.image = image
-        menuImg.image = menuImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        menuImg.tintColor = COLOR1
+        menuLbl.text = titleVal
+        if image != "" {
+            menuImg.image = UIImage(named: image)
+            menuImg.image = menuImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            menuImg.tintColor = COLOR1
+        }
+       
         
         
     }

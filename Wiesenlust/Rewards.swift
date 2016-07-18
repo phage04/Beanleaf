@@ -64,8 +64,7 @@ class Rewards: UIViewController {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.showMenu))
         
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        navigationController?.navigationBarHidden = false
 
         topLbl.hidden = false
         bottomLbl.hidden = false
@@ -92,6 +91,9 @@ class Rewards: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
     func showMenu() {
         performSegueWithIdentifier("menuSegue", sender: nil)
     }
@@ -384,7 +386,7 @@ class Rewards: UIViewController {
     }
 
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
     @IBAction func addBtnPressed(sender: AnyObject) {

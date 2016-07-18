@@ -49,8 +49,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(ItemView.showMenu))
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+
         
         if let image = dish.img as NSData? {
             dishImg.image = UIImage(data: image)

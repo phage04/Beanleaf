@@ -23,12 +23,11 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR1
 
-        
+       
         navigationItem.title = categorySelected
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(CategoryView.showMenu))
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+
         
         for each in foodItemsData {
             

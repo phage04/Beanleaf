@@ -52,7 +52,9 @@ class Home: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeSetup()        
+        homeSetup()
+        
+        navigationController?.navigationBarHidden = true
         
         backgroundImg.image = UIImage(named: "bg")
         backgroundView.backgroundColor = UIColor.whiteColor()
@@ -68,6 +70,10 @@ class Home: UIViewController {
         
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = true
     }
     
     func homeSetup(){
@@ -169,24 +175,7 @@ class Home: UIViewController {
         }
     }
    
-    @IBAction func menuItem1Pressed(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func menuItem2Pressed(sender: AnyObject) {
-    }
 
-    @IBAction func menuItem3Pressed(sender: AnyObject) {
-    }
-
-    @IBAction func menuItem4Pressed(sender: AnyObject) {
-    }
-    
-    @IBAction func menuItem5Pressed(sender: AnyObject) {
-    }
-
-    @IBAction func menuItem6Pressed(sender: AnyObject) {
-    }
     
     func clearCoreDataFoodMenu() {
         deleteCoreData("Category")

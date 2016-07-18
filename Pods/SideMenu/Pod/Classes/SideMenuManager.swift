@@ -40,7 +40,7 @@ public class SideMenuManager {
      - ViewSlideInOut: The existing view slides out while the menu slides in.
      - MenuDissolveIn: The menu dissolves in over the existing view controller.
      */
-    public static var menuPresentMode: MenuPresentMode = .ViewSlideOut    
+    public static var menuPresentMode: MenuPresentMode = .ViewSlideOut
     /// Prevents the same view controller (or a view controller of the same class) from being pushed more than once. Defaults to true.
     public static var menuAllowPushOfSameClassTwice = true
     

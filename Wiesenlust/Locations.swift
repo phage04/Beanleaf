@@ -44,8 +44,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.showMenu))
 
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        navigationController?.navigationBarHidden = false
         self.locationManager.requestAlwaysAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()){
@@ -68,9 +67,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidAppear(animated: Bool) {
         plotLocations()
+        locationManager.startUpdatingLocation()
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
@@ -87,23 +89,27 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
                 
-                print(error)
                 
                 // Place details
-                var placeMark: CLPlacemark!
-                placeMark = placemarks?[0]
                 
-                let locNow = Locations(title: "\(storeName)", locationName: "\(placeMark.thoroughfare!) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (placeMark.location?.coordinate.latitude)!, (placeMark.location?.coordinate.longitude)!), location: CLLocation(latitude: (placeMark.location?.coordinate.latitude)!, longitude: (placeMark.location?.coordinate.longitude)!))
-                
+                if let placeMark = placemarks?[0] {
                
-                self.branchesLoc.append(locNow)
-                self.mapView.addAnnotation(locNow)
+                    if let thorough = placeMark.thoroughfare as String?, long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                        
+                        let locNow = Locations(title: "\(storeName)", locationName: "\(thorough) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
+                        
+                        
+                        self.branchesLoc.append(locNow)
+                        self.mapView.addAnnotation(locNow)
+                    }
+                
+                }
             
             })
         }
         
         
-        locationManager.startUpdatingLocation()
+       
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -163,19 +169,23 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
                     
-                    // Place details
-                    print(error)
                     
                     
                     if let placeMark = placemarks?[0] {
-                        print(placeMark.locality)
-                        self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare as String?), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", address: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare!), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                        
+                        
+                        if let subThorough = placeMark.subThoroughfare as String?, thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
+                        
+                        
+                        self.userLocNow = Locations(title: "Your Location", locationName: "\(subThorough)\(thorough), \(locality) \(postal)", address: "\(subThorough)\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                         if let userLoc = userLocation as CLLocation? {
                             self.getNearest(userLoc)
                         }
+                            
+                        }
                         
                     }
-
+                    self.locationManager.stopUpdatingLocation()
                  
                 })
         } else {
@@ -192,6 +202,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
 
         }
+        
+        
         
 
         
@@ -349,7 +361,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func showMenu() {

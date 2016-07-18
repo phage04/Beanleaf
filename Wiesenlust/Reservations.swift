@@ -42,9 +42,8 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.showMenu))
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-   
+
+        navigationController?.navigationBarHidden = false
         
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
@@ -82,7 +81,9 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         performSegueWithIdentifier("menuSegue", sender: nil)
     }
 
-    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
 
     @IBAction func editingBegunDateTime(sender: UITextField) {
         let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
@@ -198,7 +199,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     }
     
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     

@@ -31,8 +31,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Coupons.showMenu))
         
-        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        navigationController?.navigationBarHidden = false
   
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -47,6 +46,10 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
     }
     
     func showMenu() {
@@ -228,6 +231,6 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 }

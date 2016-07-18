@@ -13,11 +13,12 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let menuItem: [String] = ["Menu", "Coupons", "Rewards", "Reservations", "Locations", "Feedback"]
-    let menuImages: [String] = ["menuIcon1", "menuIcon2", "menuIcon3", "menuIcon4", "menuIcon5", "menuIcon6"]
+    let menuItem: [String] = ["Home", "Menu", "Coupons", "Rewards", "Reservations", "Locations", "Feedback"]
+    let menuImages: [String] = ["","menuIcon1", "menuIcon2", "menuIcon3", "menuIcon4", "menuIcon5", "menuIcon6"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
         
 //        SideMenuManager.menuAnimationTransformScaleFactor = 1
 //        SideMenuManager.menuAnimationFadeStrength = 0
@@ -41,7 +42,7 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("SideMenuCell") as? SideMenuCell {
             
-            cell.configureCell(menuItem[indexPath.row], image: UIImage(named: "\(menuImages[indexPath.row])")!)
+            cell.configureCell(menuItem[indexPath.row], image: "\(menuImages[indexPath.row])")
             cell.backgroundColor = COLOR2
             return cell
             
@@ -54,6 +55,7 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
+        performSegueWithIdentifier("\(indexPath.row)", sender: nil)
         
     }
     
