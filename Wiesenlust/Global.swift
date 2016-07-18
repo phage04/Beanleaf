@@ -29,15 +29,21 @@ var foodItems = [FoodItem]()
 
 var imgURL: NSURL!
 
-let COLOR1 = UIColor(red: CGFloat(188.0 / 255.0), green: CGFloat(208.0 / 255.0), blue: CGFloat(24.0 / 255.0), alpha: 1.0)
-let COLOR2 = UIColor(red: CGFloat(146.0 / 255.0), green: CGFloat(20.0 / 255.0), blue: CGFloat(114.0 / 255.0), alpha: 1.0)
-let COLOR2_DARK = UIColor(red: CGFloat(105.0 / 255.0), green: CGFloat(14.0 / 255.0), blue: CGFloat(82.0 / 255.0), alpha: 1.0)
+//let COLOR1 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
+//let COLOR2 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+//let COLOR2_DARK = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+//let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
+//WIESEN
+let COLOR1 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
+let COLOR2 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
+let COLOR2_DARK = UIColor(red: CGFloat(78.0 / 255.0), green: CGFloat(31.0 / 255.0), blue: CGFloat(160.0 / 255.0), alpha: 1.0)
 let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
 
 let SHADOW_COLOR: CGFloat = 30.0 / 255.0
 
 let logo1 = UIImage(named: "logo02.png")
 let stampIcon = UIImage(named: "stamp")
+let phoneIcon = UIImage(named: "phone")
 let menuIcon1 = UIImage(named: "menuIcon1.png")
 let menuIcon2 = UIImage(named: "menuIcon2.png")
 let menuIcon3 = UIImage(named: "menuIcon3.png")
@@ -72,6 +78,11 @@ let LoadingMsgGlobal = "Downloading updates..."
 let DATE_FULL_FORMAT = "yyyy-MM-dd HH:mm:ss Z"
 let DATE_FORMAT1 = "MMM dd, yyyy"
 let DATE_FORMAT2 = "MMMM dd, yyyy (EEE) h:mma"
+
+//MAILGUN
+let mailGunKey = "key-5b34852ee5f4c8467b150056b0b5ca1e"
+let mailGunURL = "sandboxab276373903c49c78f3c2c0eacc612e6.mailgun.org"
+let mailGunOwnerEmail = "jover.lyle@gmail.com"
 
 //CONTENTFUL
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
@@ -113,6 +124,7 @@ func showErrorAlert(title: String, msg: String, VC: UIViewController) {
     let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
     let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
     alert.addAction(action)
+    
     VC.presentViewController(alert, animated: true, completion: nil)
     
 }
@@ -193,6 +205,8 @@ func deleteCoreDataNil(entity: String) {
         debugPrint(error)
     }
 }
+
+
 
 let currentDate = NSDate()
 let dateFormatter = NSDateFormatter()

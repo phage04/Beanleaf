@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6168494746A4DF27F356079E /* Pods_OnionApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA0644B1820713E203594A /* Pods_OnionApps.framework */; };
+		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
+		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
+		DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */; };
+		DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E41D2C0F3F005780BE /* CategoryView.swift */; };
+		DE27E5E71D2D36C4005780BE /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E61D2D36C4005780BE /* ItemView.swift */; };
+		DE27E5E91D2D3A65005780BE /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E81D2D3A65005780BE /* ItemCell.swift */; };
+		DE2BF0431D2FDDE40049F662 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0421D2FDDE40049F662 /* FoodItem.swift */; };
+		DE2BF0451D33C8260049F662 /* Coupons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0441D33C8260049F662 /* Coupons.swift */; };
+		DE2BF0471D33CEEB0049F662 /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0461D33CEEB0049F662 /* CouponCell.swift */; };
+		DE2BF0491D33CFD80049F662 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0481D33CFD80049F662 /* Coupon.swift */; };
+		DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */; };
+		DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* Home.swift */; };
+		DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACB61D26BB08006C3C7C /* Main.storyboard */; };
+		DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */; };
+		DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */; };
+		DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */; };
+		DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DC5CE1D2A78DC002871B9 /* Global.swift */; };
+		DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317231D3CB61700B1E2AE /* SideMenu.swift */; };
+		DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */; };
+		DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317271D3CBF8900B1E2AE /* Feedback.swift */; };
+		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
+		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
+		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
+		DEBC25411D355B3D00997EB1 /* Rewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25401D355B3D00997EB1 /* Rewards.swift */; };
+		DEBC25431D3561A000997EB1 /* LabelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25421D3561A000997EB1 /* LabelHome.swift */; };
+		DEBC25451D3563A700997EB1 /* LabelRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25441D3563A700997EB1 /* LabelRewards.swift */; };
+		DEBC25471D35659700997EB1 /* ImageStarStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25461D35659700997EB1 /* ImageStarStamp.swift */; };
+		DEBC25491D35679F00997EB1 /* ButtonRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25481D35679F00997EB1 /* ButtonRewards.swift */; };
+		DEBC254F1D356D1100997EB1 /* ButtonAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */; };
+		DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25501D369F0500997EB1 /* Reservations.swift */; };
+		DED309CA1D3D1FCA00B26728 /* TextFieldFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */; };
+		DED4A00D1D390407006FEB2C /* LocationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4A00C1D390407006FEB2C /* LocationsModel.swift */; };
+		DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */; };
+		DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063C1D38F5D5004682EE /* Locations.swift */; };
+		DEF3063F1D38F644004682EE /* LocationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063E1D38F644004682EE /* LocationsCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		27DA0644B1820713E203594A /* Pods_OnionApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnionApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.debug.xcconfig"; sourceTree = "<group>"; };
+		9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.release.xcconfig"; sourceTree = "<group>"; };
+		DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
+		DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
+		DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		DE27E5E41D2C0F3F005780BE /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		DE27E5E61D2D36C4005780BE /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		DE27E5E81D2D3A65005780BE /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		DE2BF0421D2FDDE40049F662 /* FoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		DE2BF0441D33C8260049F662 /* Coupons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupons.swift; sourceTree = "<group>"; };
+		DE2BF0461D33CEEB0049F662 /* CouponCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
+		DE2BF0481D33CFD80049F662 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnionApps-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Onion Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		DE5BACB71D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE5BACBA1D26BB08006C3C7C /* Wiesenlust.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wiesenlust.xcdatamodel; sourceTree = "<group>"; };
+		DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE5BACBF1D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE5BACC11D26BB08006C3C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5DC5CE1D2A78DC002871B9 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		DE6317231D3CB61700B1E2AE /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		DE6317271D3CBF8900B1E2AE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
+		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DEBC25401D355B3D00997EB1 /* Rewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rewards.swift; sourceTree = "<group>"; };
+		DEBC25421D3561A000997EB1 /* LabelHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelHome.swift; sourceTree = "<group>"; };
+		DEBC25441D3563A700997EB1 /* LabelRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelRewards.swift; sourceTree = "<group>"; };
+		DEBC25461D35659700997EB1 /* ImageStarStamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStarStamp.swift; sourceTree = "<group>"; };
+		DEBC25481D35679F00997EB1 /* ButtonRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRewards.swift; sourceTree = "<group>"; };
+		DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAnimate.swift; sourceTree = "<group>"; };
+		DEBC25501D369F0500997EB1 /* Reservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
+		DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFeedback.swift; sourceTree = "<group>"; };
+		DED4A00C1D390407006FEB2C /* LocationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsModel.swift; sourceTree = "<group>"; };
+		DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsMapView.swift; sourceTree = "<group>"; };
+		DEF3063C1D38F5D5004682EE /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		DEF3063E1D38F644004682EE /* LocationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE5BACAC1D26BB07006C3C7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6168494746A4DF27F356079E /* Pods_OnionApps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0959CEED770E5F1D073DEC39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27DA0644B1820713E203594A /* Pods_OnionApps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D4A3F28CB55C207DE4075AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */,
+				9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE5BACA61D26BB07006C3C7C = {
+			isa = PBXGroup;
+			children = (
+				DE5BACB11D26BB08006C3C7C /* OnionApps */,
+				DE5BACB01D26BB07006C3C7C /* Products */,
+				1D4A3F28CB55C207DE4075AE /* Pods */,
+				0959CEED770E5F1D073DEC39 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DE5BACB01D26BB07006C3C7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE5BACB11D26BB08006C3C7C /* OnionApps */ = {
+			isa = PBXGroup;
+			children = (
+				DE5DC5CA1D2A77A9002871B9 /* Model */,
+				DE5DC5CB1D2A77B0002871B9 /* View */,
+				DE5DC5CC1D2A77BC002871B9 /* Controller */,
+				DE5DC5CD1D2A77C3002871B9 /* Utilities */,
+			);
+			name = OnionApps;
+			path = Wiesenlust;
+			sourceTree = "<group>";
+		};
+		DE5DC5CA1D2A77A9002871B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEB4DFE91D2E782500816A2F /* Category.swift */,
+				DE2BF0421D2FDDE40049F662 /* FoodItem.swift */,
+				DE2BF0481D33CFD80049F662 /* Coupon.swift */,
+				DED4A00C1D390407006FEB2C /* LocationsModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DE5DC5CB1D2A77B0002871B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */,
+				DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */,
+				DE27E5E81D2D3A65005780BE /* ItemCell.swift */,
+				DE2BF0461D33CEEB0049F662 /* CouponCell.swift */,
+				DE5BACB61D26BB08006C3C7C /* Main.storyboard */,
+				DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */,
+				DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */,
+				DEBC25421D3561A000997EB1 /* LabelHome.swift */,
+				DEBC25441D3563A700997EB1 /* LabelRewards.swift */,
+				DEBC25461D35659700997EB1 /* ImageStarStamp.swift */,
+				DEBC25481D35679F00997EB1 /* ButtonRewards.swift */,
+				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
+				DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */,
+				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
+				DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */,
+				DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */,
+				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DE5DC5CC1D2A77BC002871B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE5BACB41D26BB08006C3C7C /* Home.swift */,
+				DEB470741D2BA9B300218AE1 /* Menu.swift */,
+				DE27E5E41D2C0F3F005780BE /* CategoryView.swift */,
+				DE27E5E61D2D36C4005780BE /* ItemView.swift */,
+				DE2BF0441D33C8260049F662 /* Coupons.swift */,
+				DEBC25401D355B3D00997EB1 /* Rewards.swift */,
+				DEBC25501D369F0500997EB1 /* Reservations.swift */,
+				DEF3063C1D38F5D5004682EE /* Locations.swift */,
+				DE6317271D3CBF8900B1E2AE /* Feedback.swift */,
+				DE6317231D3CB61700B1E2AE /* SideMenu.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DE5DC5CD1D2A77C3002871B9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */,
+				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
+				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
+				DE5BACC11D26BB08006C3C7C /* Info.plist */,
+				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
+				DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE5BACAE1D26BB07006C3C7C /* Onion Apps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */;
+			buildPhases = (
+				B77AD5788142497553332291 /* Check Pods Manifest.lock */,
+				DE5BACAB1D26BB07006C3C7C /* Sources */,
+				DE5BACAC1D26BB07006C3C7C /* Frameworks */,
+				DE5BACAD1D26BB07006C3C7C /* Resources */,
+				ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */,
+				8083EE9F2B77758080E953AC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Onion Apps";
+			productName = Wiesenlust;
+			productReference = DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE5BACA71D26BB07006C3C7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = OnionApps;
+				TargetAttributes = {
+					DE5BACAE1D26BB07006C3C7C = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE5BACA61D26BB07006C3C7C;
+			productRefGroup = DE5BACB01D26BB07006C3C7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE5BACAE1D26BB07006C3C7C /* Onion Apps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE5BACAD1D26BB07006C3C7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */,
+				DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */,
+				DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8083EE9F2B77758080E953AC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B77AD5788142497553332291 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE5BACAB1D26BB07006C3C7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DED309CA1D3D1FCA00B26728 /* TextFieldFeedback.swift in Sources */,
+				DEBC25411D355B3D00997EB1 /* Rewards.swift in Sources */,
+				DE2BF0431D2FDDE40049F662 /* FoodItem.swift in Sources */,
+				DEBC25491D35679F00997EB1 /* ButtonRewards.swift in Sources */,
+				DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */,
+				DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */,
+				DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */,
+				DEF3063F1D38F644004682EE /* LocationsCell.swift in Sources */,
+				DE2BF0451D33C8260049F662 /* Coupons.swift in Sources */,
+				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
+				DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */,
+				DE27E5E71D2D36C4005780BE /* ItemView.swift in Sources */,
+				DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */,
+				DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */,
+				DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */,
+				DEBC25451D3563A700997EB1 /* LabelRewards.swift in Sources */,
+				DE2BF0491D33CFD80049F662 /* Coupon.swift in Sources */,
+				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
+				DEBC254F1D356D1100997EB1 /* ButtonAnimate.swift in Sources */,
+				DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */,
+				DEBC25431D3561A000997EB1 /* LabelHome.swift in Sources */,
+				DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */,
+				DE27E5E91D2D3A65005780BE /* ItemCell.swift in Sources */,
+				DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */,
+				DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */,
+				DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */,
+				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
+				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,
+				DEBC25471D35659700997EB1 /* ImageStarStamp.swift in Sources */,
+				DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */,
+				DE2BF0471D33CEEB0049F662 /* CouponCell.swift in Sources */,
+				DED4A00D1D390407006FEB2C /* LocationsModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE5BACB61D26BB08006C3C7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE5BACB71D26BB08006C3C7C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE5BACBF1D26BB08006C3C7C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE5BACC21D26BB08006C3C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE5BACC31D26BB08006C3C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE5BACC51D26BB08006C3C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Wiesenlust/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
+				PRODUCT_NAME = "Onion Apps";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE5BACC61D26BB08006C3C7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Wiesenlust/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
+				PRODUCT_NAME = "Onion Apps";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE5BACC21D26BB08006C3C7C /* Debug */,
+				DE5BACC31D26BB08006C3C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE5BACC51D26BB08006C3C7C /* Debug */,
+				DE5BACC61D26BB08006C3C7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE5BACBA1D26BB08006C3C7C /* Wiesenlust.xcdatamodel */,
+			);
+			currentVersion = DE5BACBA1D26BB08006C3C7C /* Wiesenlust.xcdatamodel */;
+			path = Wiesenlust.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DE5BACA71D26BB07006C3C7C /* Project object */;
+}

@@ -8,8 +8,10 @@
 
 import UIKit
 import MessageUI
+import Alamofire
+import SideMenu
 
-class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
+class Reservations: UIViewController{
     
     
     
@@ -19,6 +21,8 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var peopleTxt: UITextField!
     
+    @IBOutlet weak var mobileTxt: UITextField!
+    @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var peopleView: UIView!
     
     @IBOutlet weak var dateTimeTxt: UITextField!
@@ -28,16 +32,18 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     @IBOutlet weak var sendBtn: UIButton!
     
     let userCalendar = NSCalendar.currentCalendar()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.backButtonPressed(_:)))
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
-        
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.showMenu))
+
+        navigationController?.navigationBarHidden = false
         
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
@@ -52,6 +58,10 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         peopleTxt.font = UIFont(name: font1Regular, size: 18)
         peopleTxt.textColor = COLOR2
         dateTimeView.backgroundColor = COLOR2
+        mobileTxt.placeholder = "Mobile number"
+        mobileTxt.font = UIFont(name: font1Regular, size: 18)
+        mobileTxt.textColor = COLOR2
+        mobileView.backgroundColor = COLOR2
         dateTimeTxt.placeholder = "Reservation date"
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
@@ -67,9 +77,26 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
     }
     
+    func showErrorAlertAction(title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        
+        let actionOK = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            
+        })
+        alert.addAction(actionOK)
+        VC.presentViewController(alert, animated: true, completion: nil)
+        
+    }
 
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
 
-    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
 
     @IBAction func editingBegunDateTime(sender: UITextField) {
         let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
@@ -119,20 +146,38 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
     }
+    
+    
 
 
     @IBAction func sendBtnPressed(sender: AnyObject) {
+     
         
-        if MFMessageComposeViewController.canSendText()  {
+        if checkConnectivity()  {
            
-            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" {
-                let messageVC = MFMessageComposeViewController()
+            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" && mobileTxt.text! != "" {
                 
-                messageVC.body = "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Thanks!"
-                messageVC.recipients = ["+639178235953"]
-                messageVC.messageComposeDelegate = self
+                let key = mailGunKey
                 
-                self.presentViewController(messageVC, animated: false, completion: nil)
+                let parameters = [
+                    "Authorization" : "api:\(key)",
+                    "from": "mailgun@\(mailGunURL)",
+                    "to": "\(mailGunOwnerEmail)",
+                    "subject": "Reservation Request: \(NSDate())",
+                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"
+                ]
+                
+                _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)
+                    .authenticate(user: "api", password: key)
+                    .response { (request, response, data, error) in
+                        if response?.statusCode == 200 {
+                           self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
+                        } else {
+                           showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
+                        }
+                        print(response!)
+                }
+
             } else {
                 
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
@@ -140,7 +185,7 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
             }
         } else {
             
-            showErrorAlert("Cannot Send Text Message", msg: "Your device is not able to send text messages.", VC: self)
+            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
             
         }
 
@@ -151,22 +196,13 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     
     
     
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        print(result.rawValue)
-        self.dismissViewControllerAnimated(false, completion: nil)
-        if result.rawValue == 1 {
-            showErrorAlert("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
-        } else {
-            showErrorAlert("Something Went Wrong", msg: "You weren't able to send your message. Please try again.", VC: self)
-        }
-        
-    }
-    
     func dismissKeyboard() {
         view.endEditing(true)
     }
     
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    
 }

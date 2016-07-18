@@ -14,8 +14,10 @@ import SwiftSpinner
 
 
 
-class Home: UIViewController {
 
+class Home: UIViewController {
+    
+    @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet var backgroundView: UIView!    
     @IBOutlet weak var logo: UIImageView!
     
@@ -50,20 +52,28 @@ class Home: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeSetup()        
+        homeSetup()
         
-        backgroundView.backgroundColor = COLOR1
+        navigationController?.navigationBarHidden = true
+        
+        backgroundImg.image = UIImage(named: "bg")
+        backgroundView.backgroundColor = UIColor.whiteColor()
+        backgroundImg.alpha = 0.25
         
         socialButton.backgroundColor = UIColor.clearColor()
         socialButton.layer.cornerRadius = 5
         socialButton.layer.borderWidth = 1
-        socialButton.layer.borderColor = COLOR2.CGColor
+        socialButton.layer.borderColor = COLOR1.CGColor
         socialButton.setTitle(socialButtonTitle, forState: .Normal)
         socialButton.setTitleColor(COLOR2, forState: .Normal)
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = true
     }
     
     func homeSetup(){
@@ -116,12 +126,12 @@ class Home: UIViewController {
         menuItem6.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         
         
-        menuItem1.tintColor = COLOR2
-        menuItem2.tintColor = COLOR2
-        menuItem3.tintColor = COLOR2
-        menuItem4.tintColor = COLOR2
-        menuItem5.tintColor = COLOR2
-        menuItem6.tintColor = COLOR2
+        menuItem1.tintColor = COLOR1
+        menuItem2.tintColor = COLOR1
+        menuItem3.tintColor = COLOR1
+        menuItem4.tintColor = COLOR1
+        menuItem5.tintColor = COLOR1
+        menuItem6.tintColor = COLOR1
         
         
         menuLbl1.text = menuLblText1
@@ -165,24 +175,7 @@ class Home: UIViewController {
         }
     }
    
-    @IBAction func menuItem1Pressed(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func menuItem2Pressed(sender: AnyObject) {
-    }
 
-    @IBAction func menuItem3Pressed(sender: AnyObject) {
-    }
-
-    @IBAction func menuItem4Pressed(sender: AnyObject) {
-    }
-    
-    @IBAction func menuItem5Pressed(sender: AnyObject) {
-    }
-
-    @IBAction func menuItem6Pressed(sender: AnyObject) {
-    }
     
     func clearCoreDataFoodMenu() {
         deleteCoreData("Category")

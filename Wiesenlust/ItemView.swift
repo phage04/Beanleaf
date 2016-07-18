@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SideMenu
 class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -48,7 +48,8 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         navigationItem.title = dish.name
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(ItemView.showMenu))
+
         
         if let image = dish.img as NSData? {
             dishImg.image = UIImage(data: image)
@@ -69,7 +70,9 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         circleView.backgroundColor = COLOR2
         updateHeaderView()
     }
-    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateHeaderView()

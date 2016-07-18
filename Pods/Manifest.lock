@@ -17,6 +17,7 @@ PODS:
   - moa (3.0.0)
   - OAuthSwift (0.5.2)
   - pop (1.0.9)
+  - SideMenu (1.1.8)
   - SwiftSpinner (0.9.5)
   - "\U0001F555 (0.0.1)"
 
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - OAuthSwift (~> 0.5.0)
   - pop (~> 1.0)
+  - SideMenu
   - SwiftSpinner
 
 SPEC CHECKSUMS:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SideMenu: 92f6a665414ece93860ce381f7d3eabe81c4dc3d
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
   "\U0001F555": 2a41c1f9b76698cb697b8ec9a1db1087f5621187
 

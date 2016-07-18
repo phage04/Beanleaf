@@ -13,8 +13,7 @@ import moa
 import Contentful
 import Alamofire
 import SwiftSpinner
-
-
+import SideMenu
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -33,7 +32,9 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.showMenu))
+        
+        navigationController?.navigationBarHidden = false
         
         scrollView.delegate = self
         scrollView.auk.settings.contentMode = .ScaleAspectFill
@@ -53,12 +54,15 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.backgroundColor = COLOR1
         mainView.backgroundColor = COLOR1
         
+
         
         
         
         
     }
-    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
     override func viewWillLayoutSubviews() {
      collectionView.collectionViewLayout.invalidateLayout()    
     }
@@ -66,7 +70,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     
     override func viewWillAppear(animated: Bool) {
-        
+        navigationController?.navigationBarHidden = false
         self.collectionView.reloadData()
     }
     
@@ -104,7 +108,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

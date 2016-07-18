@@ -12,7 +12,7 @@ class LabelHome: UILabel {
 
     override func awakeFromNib() {
         font = UIFont(name: font1Medium, size: 14)
-        textColor = COLOR2        
+        textColor = COLOR2
        
     }
 

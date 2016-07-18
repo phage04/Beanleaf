@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SideMenu
 class Rewards: UIViewController {
     
     
@@ -62,9 +62,9 @@ class Rewards: UIViewController {
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.showMenu))
         
-
+        navigationController?.navigationBarHidden = false
 
         topLbl.hidden = false
         bottomLbl.hidden = false
@@ -89,6 +89,13 @@ class Rewards: UIViewController {
 
 
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
     }
     
     func needMoreStamps(){
@@ -379,7 +386,7 @@ class Rewards: UIViewController {
     }
 
     func backButtonPressed(sender:UIButton) {
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
     @IBAction func addBtnPressed(sender: AnyObject) {
@@ -504,4 +511,6 @@ class Rewards: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
         
     }
+    
+
 }
