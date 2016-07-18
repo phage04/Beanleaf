@@ -1843,10 +1843,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jeS-ev-gJk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="n07-fr-xTJ" secondAttribute="bottom" id="OGl-VO-AUg"/>
                             <constraint firstItem="n07-fr-xTJ" firstAttribute="leading" secondItem="GZ0-oF-f8c" secondAttribute="leadingMargin" id="Va4-os-LEK"/>
                             <constraint firstItem="n07-fr-xTJ" firstAttribute="trailing" secondItem="GZ0-oF-f8c" secondAttribute="trailingMargin" id="YYc-9l-Dh6"/>
-                            <constraint firstItem="n07-fr-xTJ" firstAttribute="top" secondItem="2Ab-De-aX4" secondAttribute="bottom" constant="20" id="gfL-V8-Bpb"/>
-                            <constraint firstItem="jeS-ev-gJk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="n07-fr-xTJ" secondAttribute="bottom" id="u6a-JZ-GBA"/>
+                            <constraint firstItem="n07-fr-xTJ" firstAttribute="top" secondItem="2Ab-De-aX4" secondAttribute="bottom" constant="20" id="vaO-1X-KBK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reservations" id="rYg-yN-EYN"/>
@@ -2040,10 +2040,110 @@
                     <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="4Ot-PB-Wal">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="wEs-7P-qam">
+                                <rect key="frame" x="20" y="20" width="560" height="540"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We’d love to hear from you! We respond to every feedback we receive." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gPI-sF-t8A">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="K4W-xI-syX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="175-4F-Vn0">
+                                        <rect key="frame" x="0.0" y="68" width="560" height="404"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5N1-pf-R6W">
+                                                <rect key="frame" x="0.0" y="131" width="560" height="273"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="273" id="SRG-2D-TId"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="5N1-pf-R6W" secondAttribute="bottom" id="8fd-ki-Jxc"/>
+                                            <constraint firstItem="5N1-pf-R6W" firstAttribute="top" secondItem="2HE-SG-9vg" secondAttribute="baseline" constant="30" id="cjv-Iw-CUv"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8fd-ki-Jxc"/>
+                                                <exclude reference="cjv-Iw-CUv"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-N3-QRE" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="490" width="560" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="BBz-xW-woS"/>
+                                        </constraints>
+                                        <state key="normal" title="SEND FEEDBACK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendBtn:" destination="5EP-Nc-R5w" eventType="touchUpInside" id="Y4h-oh-Aal"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gPI-sF-t8A" secondAttribute="trailing" id="0rr-Wx-W8D"/>
+                                    <constraint firstAttribute="trailing" secondItem="VDI-N3-QRE" secondAttribute="trailing" id="99m-AS-6EU"/>
+                                    <constraint firstItem="VDI-N3-QRE" firstAttribute="leading" secondItem="wEs-7P-qam" secondAttribute="leading" id="CFG-mC-YER"/>
+                                    <constraint firstItem="gPI-sF-t8A" firstAttribute="leading" secondItem="wEs-7P-qam" secondAttribute="leading" id="Dq5-tl-05a"/>
+                                    <constraint firstItem="175-4F-Vn0" firstAttribute="leading" secondItem="wEs-7P-qam" secondAttribute="leading" id="V8K-jA-d3j"/>
+                                    <constraint firstItem="VDI-N3-QRE" firstAttribute="top" secondItem="175-4F-Vn0" secondAttribute="bottom" constant="20" id="iTm-TI-j8E"/>
+                                    <constraint firstItem="VDI-N3-QRE" firstAttribute="top" secondItem="175-4F-Vn0" secondAttribute="bottom" id="qzl-0f-pJG"/>
+                                    <constraint firstAttribute="trailing" secondItem="175-4F-Vn0" secondAttribute="trailing" id="sm9-X7-Dfm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="iTm-TI-j8E"/>
+                                        <exclude reference="qzl-0f-pJG"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wEs-7P-qam" firstAttribute="top" secondItem="tdX-Pu-lUT" secondAttribute="bottom" constant="20" id="Pzk-72-qMa"/>
+                            <constraint firstItem="kwN-73-fmn" firstAttribute="top" secondItem="wEs-7P-qam" secondAttribute="bottom" constant="20" id="aBf-We-yYp"/>
+                            <constraint firstItem="kwN-73-fmn" firstAttribute="top" secondItem="wEs-7P-qam" secondAttribute="bottom" id="tzF-T4-TIS"/>
+                            <constraint firstItem="wEs-7P-qam" firstAttribute="trailing" secondItem="4Ot-PB-Wal" secondAttribute="trailingMargin" id="uVy-9F-t5L"/>
+                            <constraint firstItem="wEs-7P-qam" firstAttribute="leading" secondItem="4Ot-PB-Wal" secondAttribute="leadingMargin" id="xqZ-l3-8eC"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tzF-T4-TIS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Feedback" id="ou8-R4-Ax0"/>
                     <connections>
+                        <outlet property="emailLbl" destination="2HE-SG-9vg" id="0UL-qm-C3j"/>
+                        <outlet property="headerLbl" destination="gPI-sF-t8A" id="Vth-ae-bgz"/>
+                        <outlet property="msgLbl" destination="5N1-pf-R6W" id="1Lk-0a-oTR"/>
+                        <outlet property="nameLbl" destination="hcz-Rw-u6f" id="tLU-4M-dtP"/>
                         <segue destination="DIk-IS-28r" kind="presentation" identifier="menuSegue" id="uc4-ff-jb2"/>
                     </connections>
                 </viewController>
@@ -2061,10 +2161,10 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tu6-Hc-ynB"/>
-        <segue reference="fTn-n1-Yeg"/>
+        <segue reference="uc4-ff-jb2"/>
         <segue reference="ByJ-5X-vFK"/>
         <segue reference="lSl-5G-diZ"/>
+        <segue reference="fTn-n1-Yeg"/>
         <segue reference="oPm-o0-noY"/>
         <segue reference="MP2-ps-yw4"/>
         <segue reference="F9w-Lg-DGK"/>

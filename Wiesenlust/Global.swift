@@ -124,6 +124,7 @@ func showErrorAlert(title: String, msg: String, VC: UIViewController) {
     let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
     let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
     alert.addAction(action)
+    
     VC.presentViewController(alert, animated: true, completion: nil)
     
 }

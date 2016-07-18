@@ -38,6 +38,7 @@
 		DEBC25491D35679F00997EB1 /* ButtonRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25481D35679F00997EB1 /* ButtonRewards.swift */; };
 		DEBC254F1D356D1100997EB1 /* ButtonAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */; };
 		DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25501D369F0500997EB1 /* Reservations.swift */; };
+		DED309CA1D3D1FCA00B26728 /* TextFieldFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */; };
 		DED4A00D1D390407006FEB2C /* LocationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4A00C1D390407006FEB2C /* LocationsModel.swift */; };
 		DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */; };
 		DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063C1D38F5D5004682EE /* Locations.swift */; };
@@ -81,6 +82,7 @@
 		DEBC25481D35679F00997EB1 /* ButtonRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRewards.swift; sourceTree = "<group>"; };
 		DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAnimate.swift; sourceTree = "<group>"; };
 		DEBC25501D369F0500997EB1 /* Reservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
+		DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFeedback.swift; sourceTree = "<group>"; };
 		DED4A00C1D390407006FEB2C /* LocationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsModel.swift; sourceTree = "<group>"; };
 		DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsMapView.swift; sourceTree = "<group>"; };
 		DEF3063C1D38F5D5004682EE /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				DEBC25461D35659700997EB1 /* ImageStarStamp.swift */,
 				DEBC25481D35679F00997EB1 /* ButtonRewards.swift */,
 				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
+				DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */,
 				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
 				DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */,
 				DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */,
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED309CA1D3D1FCA00B26728 /* TextFieldFeedback.swift in Sources */,
 				DEBC25411D355B3D00997EB1 /* Rewards.swift in Sources */,
 				DE2BF0431D2FDDE40049F662 /* FoodItem.swift in Sources */,
 				DEBC25491D35679F00997EB1 /* ButtonRewards.swift in Sources */,

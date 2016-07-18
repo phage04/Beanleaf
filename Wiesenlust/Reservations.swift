@@ -11,7 +11,7 @@ import MessageUI
 import Alamofire
 import SideMenu
 
-class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
+class Reservations: UIViewController{
     
     
     
@@ -74,6 +74,19 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
 
 
+        
+    }
+    
+    func showErrorAlertAction(title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        
+        let actionOK = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            
+        })
+        alert.addAction(actionOK)
+        VC.presentViewController(alert, animated: true, completion: nil)
         
     }
 
@@ -151,14 +164,14 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
                     "from": "mailgun@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
                     "subject": "Reservation Request: \(NSDate())",
-                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text) Thanks!"
+                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"
                 ]
                 
                 _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)
                     .authenticate(user: "api", password: key)
                     .response { (request, response, data, error) in
                         if response?.statusCode == 200 {
-                           showErrorAlert("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
+                           self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
                         } else {
                            showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
                         }
@@ -182,17 +195,6 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
     }
     
     
-    
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        print(result.rawValue)
-        self.dismissViewControllerAnimated(false, completion: nil)
-        if result.rawValue == 1 {
-            showErrorAlert("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
-        } else {
-            showErrorAlert("Something Went Wrong", msg: "You weren't able to send your message. Please try again.", VC: self)
-        }
-        
-    }
     
     func dismissKeyboard() {
         view.endEditing(true)
