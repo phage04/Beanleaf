@@ -13,8 +13,7 @@ import moa
 import Contentful
 import Alamofire
 import SwiftSpinner
-
-
+import SideMenu
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -33,7 +32,10 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.showMenu))
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         scrollView.delegate = self
         scrollView.auk.settings.contentMode = .ScaleAspectFill
@@ -53,12 +55,15 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.backgroundColor = COLOR1
         mainView.backgroundColor = COLOR1
         
+
         
         
         
         
     }
-    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
     override func viewWillLayoutSubviews() {
      collectionView.collectionViewLayout.invalidateLayout()    
     }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import SideMenu
 
 class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
     
@@ -41,9 +42,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.showMenu))
 
-        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         self.locationManager.requestAlwaysAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()){
@@ -59,8 +61,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
-        
-       
         
 
         plotLocations()
@@ -86,6 +86,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let geoCoder = CLGeocoder()
             
             geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                
+                print(error)
                 
                 // Place details
                 var placeMark: CLPlacemark!
@@ -153,6 +155,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
+        print(latitude)
+        print(longitude)
        
         if checkConnectivity() {
                 let geoCoder = CLGeocoder()
@@ -160,8 +164,11 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
                     
                     // Place details
+                    print(error)
+                    
                     
                     if let placeMark = placemarks?[0] {
+                        print(placeMark.locality)
                         self.userLocNow = Locations(title: "Your Location", locationName: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare as String?), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", address: "\(placeMark.subThoroughfare as String?)\(placeMark.thoroughfare!), \(placeMark.locality as String?) \(placeMark.postalCode as String?)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                         if let userLoc = userLocation as CLLocation? {
                             self.getNearest(userLoc)
@@ -343,6 +350,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
     }
     
     

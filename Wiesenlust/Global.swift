@@ -205,6 +205,8 @@ func deleteCoreDataNil(entity: String) {
     }
 }
 
+
+
 let currentDate = NSDate()
 let dateFormatter = NSDateFormatter()
 

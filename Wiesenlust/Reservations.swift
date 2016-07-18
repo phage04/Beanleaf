@@ -42,15 +42,9 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.showMenu))
-        
         SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        SideMenuManager.MenuPresentMode
-        SideMenuManager.menuAnimationTransformScaleFactor = 1
-        SideMenuManager.menuAnimationFadeStrength = 0
-        SideMenuManager.menuShadowOpacity = 0.25
-        SideMenuManager.menuFadeStatusBar = true
+   
         
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
@@ -84,7 +78,9 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         
     }
 
-
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
 
     
 
@@ -205,7 +201,5 @@ class Reservations: UIViewController, MFMessageComposeViewControllerDelegate{
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
-    }
+    
 }

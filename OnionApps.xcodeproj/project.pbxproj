@@ -25,6 +25,9 @@
 		DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */; };
 		DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACBE1D26BB08006C3C7C /* LaunchScreen.storyboard */; };
 		DE5DC5CF1D2A78DC002871B9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DC5CE1D2A78DC002871B9 /* Global.swift */; };
+		DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317231D3CB61700B1E2AE /* SideMenu.swift */; };
+		DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */; };
+		DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317271D3CBF8900B1E2AE /* Feedback.swift */; };
 		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
 		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
 		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
@@ -65,6 +68,9 @@
 		DE5BACBF1D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE5BACC11D26BB08006C3C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5DC5CE1D2A78DC002871B9 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		DE6317231D3CB61700B1E2AE /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		DE6317271D3CBF8900B1E2AE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
 		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
 				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
 				DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */,
+				DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */,
 				DE5BACBC1D26BB08006C3C7C /* Assets.xcassets */,
 			);
 			name = View;
@@ -184,6 +191,8 @@
 				DEBC25401D355B3D00997EB1 /* Rewards.swift */,
 				DEBC25501D369F0500997EB1 /* Reservations.swift */,
 				DEF3063C1D38F5D5004682EE /* Locations.swift */,
+				DE6317271D3CBF8900B1E2AE /* Feedback.swift */,
+				DE6317231D3CB61700B1E2AE /* SideMenu.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -334,6 +343,8 @@
 				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
 				DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */,
 				DE27E5E71D2D36C4005780BE /* ItemView.swift in Sources */,
+				DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */,
+				DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */,
 				DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */,
 				DEBC25451D3563A700997EB1 /* LabelRewards.swift in Sources */,
 				DE2BF0491D33CFD80049F662 /* Coupon.swift in Sources */,
@@ -344,6 +355,7 @@
 				DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */,
 				DE27E5E91D2D3A65005780BE /* ItemCell.swift in Sources */,
 				DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */,
+				DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */,
 				DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,

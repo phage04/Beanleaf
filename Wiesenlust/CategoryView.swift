@@ -7,7 +7,7 @@
 
 
 import UIKit
-
+import SideMenu
 class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,6 +25,10 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         
         navigationItem.title = categorySelected
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(CategoryView.showMenu))
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         for each in foodItemsData {
             
@@ -33,10 +37,11 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
 
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+   
     }
-
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
     }

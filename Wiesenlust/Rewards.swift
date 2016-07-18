@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SideMenu
 class Rewards: UIViewController {
     
     
@@ -62,9 +62,10 @@ class Rewards: UIViewController {
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.showMenu))
         
-
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
 
         topLbl.hidden = false
         bottomLbl.hidden = false
@@ -89,6 +90,10 @@ class Rewards: UIViewController {
 
 
         
+    }
+    
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
     }
     
     func needMoreStamps(){

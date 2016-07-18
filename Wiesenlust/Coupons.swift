@@ -11,6 +11,7 @@ import CoreData
 import Contentful
 import Alamofire
 import SwiftSpinner
+import SideMenu
 
 class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,7 +29,10 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Coupons.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:nil)
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Coupons.showMenu))
+        
+        SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
   
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -45,6 +49,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func showMenu() {
+        performSegueWithIdentifier("menuSegue", sender: nil)
+    }
     override func viewDidAppear(animated: Bool) {
         fetchDataCoupon()
         downloadCoupons(false)
