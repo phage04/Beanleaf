@@ -86,7 +86,7 @@ public class FoodItem {
         return _imgURL
     }
     
-    init(cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?, key: String) {
+    init(cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?, key: String, likes: Int?) {
         self._category = cat
         
         self._name = name
@@ -105,6 +105,10 @@ public class FoodItem {
         }
         
         self._postRef = key
+        if let _ = likes {
+            self._postLikes = likes
+        }
+        
         
     }
     

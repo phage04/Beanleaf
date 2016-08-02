@@ -81,7 +81,7 @@ class CategoryCell: UITableViewCell {
         
         price.text = "\(item.price)€"
         
-        DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(item.postRef)").observeSingleEventOfType(.Value, withBlock:
+        DataService.ds.REF_ITEM.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(item.postRef)").observeSingleEventOfType(.Value, withBlock:
             { snapshot in
                 
                 
@@ -112,26 +112,35 @@ class CategoryCell: UITableViewCell {
     
     func likeTapped(sender: UITapGestureRecognizer) {
         
-        DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").observeSingleEventOfType(.Value, withBlock:
-            { snapshot in
-                
-            
-                if snapshot.value is NSNull {
-                    self.post.adjustLikes(true, key: self.post.postRef)
-                    self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-                    self.star.tintColor = COLOR_YELLOW
-                    self.starCount.text = "\(Int(self.starCount.text!)! + 1)"                    
-                    DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").setValue(true)
-                } else {
-                    self.post.adjustLikes(false, key: self.post.postRef)
-                    self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-                    self.star.tintColor = COLOR_YELLOW
-                    self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
-                    DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").removeValue()
-                }
-            
+        if checkConnectivity() {
+        
+       let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
+        
+        
+        if let ref = self.post.postRef as? String {
+            DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
+                { snapshot in
+                    
+                    
+                    if snapshot.value is NSNull {
+                        self.post.adjustLikes(true, key: ref)
+                        self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                        self.star.tintColor = COLOR_YELLOW
+                        self.starCount.text = "\(Int(self.starCount.text!)! + 1)"
+                        DataService.ds.REF_ITEM.child("\(user)/\(self.post.postRef)").setValue(true)
+                    } else {
+                        self.post.adjustLikes(false, key: ref)
+                        self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                        self.star.tintColor = COLOR_YELLOW
+                        self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
+                        DataService.ds.REF_ITEM.child("\(user)/\(ref)").removeValue()
+                    }
+                    
             })
-            
+
+        }
+        
+        }
         
     }
 

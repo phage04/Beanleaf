@@ -34,19 +34,13 @@ public class DataService {
     
     func logInAnonymously(completion: (result: Bool) -> Void) {
         
-        if let _ = FIRAuth.auth()?.currentUser {
-            print("Firebase user still logged in")
-        } else {
         
         FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
             completion(result: true)
             NSUserDefaults.standardUserDefaults().setValue(user?.uid, forKey: "userId")
-            print("Firebase log in successful")
-        })
+            print("Firebase log in successful ID: \(user?.uid)")
             
-        }
-        
-        
+        })
         
         
     }

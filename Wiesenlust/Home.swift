@@ -11,6 +11,8 @@ import CoreData
 import Contentful
 import Alamofire
 import SwiftSpinner
+import Firebase
+import FirebaseDatabase
 
 
 
@@ -198,11 +200,8 @@ class Home: UIViewController {
     }
     
   func downloadCategories() {
-    
-    //DataService.ds.signOut()
-    
-    DataService.ds.logInAnonymously { (result) in
-        
+        DataService.ds.logInAnonymously { (result) in
+            
     }
     
         deleteCoreDataNil("Category")
@@ -313,7 +312,7 @@ class Home: UIViewController {
         
         var categoryFood: String!
         let myGroupFood = dispatch_group_create()
-        
+        var likes: Int = 0
         
         client.fetchEntries(["content_type": "menuItem"]).1.next {
             
@@ -331,92 +330,93 @@ class Home: UIViewController {
                 dispatch_group_enter(myGroupFood)
                 //setup likes
                 DataService.ds.REF_LIKES.child("\(entry.identifier)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    if snapshot.value is NSNull {
-                        DataService.ds.REF_LIKES.child("\(entry.identifier)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
-                            print(error)
-                            if error == nil {
-                                
-                            }
-                            
-                        })
-                    }
-                })
-                //download data
-                if let data = entry.fields["image"] as? Asset{
                     
-                    do {
-                        imgURL = try data.URL()
-                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
-                        if foodItemsData.count > 0 {
-                            
-                            for item in foodItemsData {
-                               
-                                if let cat = entry.fields["category"] as? Entry {
-                                    categoryFood = cat.fields["categoryName"] as! String
-                                }
-                                
-                                if let _ = item.valueForKey("name"), _ = entry.fields["itemName"] where "\(item.valueForKey("name"))" == "\(entry.fields["itemName"])" {
-                                   
-                                    
-                                    if let _ = item.valueForKey("imageURL") as? String, _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
-                                        "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
-                                        "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
-                                        "\(item.valueForKey("category")!)" != "\(categoryFood)" {
-                                        
-                                        print("Did detect change for \(item.valueForKey("name")!)")
-                                        
-                                        print("\(item.valueForKey("name")!)")
-                                        print("\(entry.fields["itemName"]!)")
-                                        print("\(item.valueForKey("imageURL")!)")
-                                        print("\(imgURL)")
-                                        
-                                        //If data in client is not updated
-                                        
-                                        dispatch_group_enter(myGroupFood)
-                                        
-                                        downloadImage(imgURL, completionHandler: { (isResponse) in
-                                            
-                                            print("Did download the update")
-                                            foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier))
-                                            dispatch_group_leave(myGroupFood)
-                                            
-                                        })
-                                    }
-                                }
-                                
-                            }
-                            
-                            dispatch_group_leave(myGroupFood)
-                        }
-                            
-                        else if foodItemsData.count == 0{
-                            //If zero data yet saved in client
-                            downloadImage(imgURL, completionHandler: { (isResponse) in
-                               
-                                if let cat = entry.fields["category"] as? Entry {
-                                    categoryFood = cat.fields["categoryName"] as! String
-                                }
-                
-                               foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier))
-                                
-                                dispatch_group_leave(myGroupFood)
+                    if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                        if snapshot.value is NSNull {
+                            likes = 0
+                            DataService.ds.REF_LIKES.child("\(entry.identifier)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
                             })
                         }
                         
-                        
-                    } catch {
-                        print("Error Code: KF2048J")
-                        dispatch_group_leave(myGroupFood)
+                        //download data
+                        if let data = entry.fields["image"] as? Asset{
+                            
+                            do {
+                                imgURL = try data.URL()
+                                //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
+                                if foodItemsData.count > 0 {
+                                    
+                                    for item in foodItemsData {
+                                        
+                                        if let cat = entry.fields["category"] as? Entry {
+                                            categoryFood = cat.fields["categoryName"] as! String
+                                        }
+                                        
+                                        if let _ = item.valueForKey("name"), _ = entry.fields["itemName"] where "\(item.valueForKey("name"))" == "\(entry.fields["itemName"])" {
+                                            
+                                            
+                                            if let _ = item.valueForKey("imageURL") as? String, _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                                "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
+                                                "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
+                                                "\(item.valueForKey("category")!)" != "\(categoryFood)" {
+                                                
+                                                print("Did detect change for \(item.valueForKey("name")!)")
+                                                
+                                                print("\(item.valueForKey("name")!)")
+                                                print("\(entry.fields["itemName"]!)")
+                                                print("\(item.valueForKey("imageURL")!)")
+                                                print("\(imgURL)")
+                                                
+                                                //If data in client is not updated
+                                                
+                                                dispatch_group_enter(myGroupFood)
+                                                
+                                                downloadImage(imgURL, completionHandler: { (isResponse) in
+                                                    
+                                                    print("Did download the update")
+                                                    foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier, likes: likes))
+                                                    dispatch_group_leave(myGroupFood)
+                                                    
+                                                })
+                                            }
+                                        }
+                                        
+                                    }
+                                    
+                                    dispatch_group_leave(myGroupFood)
+                                }
+                                    
+                                else if foodItemsData.count == 0{
+                                    //If zero data yet saved in client
+                                    downloadImage(imgURL, completionHandler: { (isResponse) in
+                                        
+                                        if let cat = entry.fields["category"] as? Entry {
+                                            categoryFood = cat.fields["categoryName"] as! String
+                                        }
+                                        
+                                        foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier, likes: likes))
+                                        
+                                        dispatch_group_leave(myGroupFood)
+                                    })
+                                }
+                                
+                                
+                            } catch {
+                                print("Error Code: KF2048J")
+                                dispatch_group_leave(myGroupFood)
+                            }
+                            
+                        } else {
+                            if let cat = entry.fields["category"] as? Entry {
+                                categoryFood = cat.fields["categoryName"] as! String
+                            }
+                            //If no image is uploaded for this item, user default or blank
+                            foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil, key: entry.identifier, likes: likes))
+                            dispatch_group_leave(myGroupFood)
+                        }
+
                     }
-                    
-                } else {
-                    if let cat = entry.fields["category"] as? Entry {
-                        categoryFood = cat.fields["categoryName"] as! String
-                    }
-                    //If no image is uploaded for this item, user default or blank
-                    foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil, key: entry.identifier))
-                    dispatch_group_leave(myGroupFood)
-                }
+                })
                 
                 
                 
@@ -517,11 +517,12 @@ class Home: UIViewController {
                     fetchResults.first?.setValue(foodItem.img, forKey: "image")
                     fetchResults.first?.setValue(foodItem.imgURL, forKey: "imageURL")
                     fetchResults.first?.setValue(foodItem.postRef, forKey: "key")
+                    fetchResults.first?.setValue(foodItem.postLikes, forKey: "likes")
                     
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
                         fetchDataCat()
-                        print("Updated Food: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL) ")
+                        print("Updated Food: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL), \(foodItem.postLikes) ")
                         
                     } catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")
@@ -537,11 +538,12 @@ class Home: UIViewController {
                     categoryTemp.setValue(foodItem.img, forKey: "image")
                     categoryTemp.setValue(foodItem.imgURL, forKey: "imageURL")
                     categoryTemp.setValue(foodItem.postRef, forKey: "key")
+                    categoryTemp.setValue(foodItem.postLikes, forKey: "likes")
                     
                     do {
                         try managedContext.save()
                         foodItemsData.append(categoryTemp)
-                        print("Saved: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL) ")
+                        print("Saved: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL), \(foodItem.postLikes)")
                         
                     }catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")

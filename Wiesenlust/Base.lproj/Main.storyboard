@@ -1213,7 +1213,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-C8-Np8">
                                                     <rect key="frame" x="8" y="8" width="45" height="56"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-Sx-8UP">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-Sx-8UP" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="hi0-Cj-n8p"/>
@@ -1221,7 +1221,7 @@
                                                             </constraints>
                                                             <state key="normal" image="starEmpty1x"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul8-3S-dhL">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul8-3S-dhL">
                                                             <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="3gt-qH-S5M"/>
@@ -2057,7 +2057,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2065,7 +2065,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>

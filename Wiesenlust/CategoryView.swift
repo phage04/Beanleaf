@@ -14,7 +14,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     var dishes = [FoodItem]()
     var categorySelected = ""
-
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,10 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR1
-
-       
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = COLOR2
+        refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
         navigationItem.title = categorySelected
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(CategoryView.showMenu))
@@ -32,7 +34,8 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         for each in foodItemsData {
             
             if "\(each.valueForKey("category")!)" == categorySelected {
-                dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String, key: each.valueForKey("key")! as! String))
+                
+                dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String, key: each.valueForKey("key")! as! String, likes: each.valueForKey("likes") as? Int))
             }
         }
 
@@ -56,6 +59,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell.clipsToBounds = false
             cell.selectionStyle = .None
             cell.configureCell(dishes[indexPath.row])
+            
             return cell
             
         } else {
@@ -63,6 +67,8 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
 
     }
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -75,6 +81,11 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
                 }
             }
         }
+    }
+    
+    func refresh(sender:AnyObject) {
+        tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
 
