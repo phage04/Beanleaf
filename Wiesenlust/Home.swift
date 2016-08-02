@@ -53,6 +53,7 @@ class Home: UIViewController {
         super.viewDidLoad()
         
         homeSetup()
+
         
         navigationController?.navigationBarHidden = true
         
@@ -197,7 +198,12 @@ class Home: UIViewController {
     }
     
   func downloadCategories() {
+    
+    DataService.ds.signOut()
+    DataService.ds.logInAnonymously { (result) in
         
+    }
+    
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
         
