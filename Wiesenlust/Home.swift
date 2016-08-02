@@ -199,7 +199,8 @@ class Home: UIViewController {
     
   func downloadCategories() {
     
-    DataService.ds.signOut()
+    //DataService.ds.signOut()
+    
     DataService.ds.logInAnonymously { (result) in
         
     }
@@ -328,8 +329,19 @@ class Home: UIViewController {
             
             for entry in $0.items{
                 dispatch_group_enter(myGroupFood)
-                
-                
+                //setup likes
+                DataService.ds.REF_LIKES.child("\(entry.identifier)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    if snapshot.value is NSNull {
+                        DataService.ds.REF_LIKES.child("\(entry.identifier)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
+                            print(error)
+                            if error == nil {
+                                
+                            }
+                            
+                        })
+                    }
+                })
+                //download data
                 if let data = entry.fields["image"] as? Asset{
                     
                     do {
@@ -365,7 +377,7 @@ class Home: UIViewController {
                                         downloadImage(imgURL, completionHandler: { (isResponse) in
                                             
                                             print("Did download the update")
-                                            foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier))
                                             dispatch_group_leave(myGroupFood)
                                             
                                         })
@@ -384,8 +396,8 @@ class Home: UIViewController {
                                 if let cat = entry.fields["category"] as? Entry {
                                     categoryFood = cat.fields["categoryName"] as! String
                                 }
-                                
-                               foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                
+                               foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier))
                                 
                                 dispatch_group_leave(myGroupFood)
                             })
@@ -402,7 +414,7 @@ class Home: UIViewController {
                         categoryFood = cat.fields["categoryName"] as! String
                     }
                     //If no image is uploaded for this item, user default or blank
-                    foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil))
+                    foodItems.append(FoodItem(cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil, key: entry.identifier))
                     dispatch_group_leave(myGroupFood)
                 }
                 
@@ -504,6 +516,7 @@ class Home: UIViewController {
                     fetchResults.first?.setValue(foodItem.descriptionInfo, forKey: "descriptionInfo")
                     fetchResults.first?.setValue(foodItem.img, forKey: "image")
                     fetchResults.first?.setValue(foodItem.imgURL, forKey: "imageURL")
+                    fetchResults.first?.setValue(foodItem.postRef, forKey: "key")
                     
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
@@ -523,6 +536,7 @@ class Home: UIViewController {
                     categoryTemp.setValue(foodItem.descriptionInfo, forKey: "descriptionInfo")
                     categoryTemp.setValue(foodItem.img, forKey: "image")
                     categoryTemp.setValue(foodItem.imgURL, forKey: "imageURL")
+                    categoryTemp.setValue(foodItem.postRef, forKey: "key")
                     
                     do {
                         try managedContext.save()

@@ -32,7 +32,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         for each in foodItemsData {
             
             if "\(each.valueForKey("category")!)" == categorySelected {
-                dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String))
+                dishes.append(FoodItem(cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String, key: each.valueForKey("key")! as! String))
             }
         }
 

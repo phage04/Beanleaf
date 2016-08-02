@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 public class FoodItem {
     private var _category: String!
@@ -16,8 +17,21 @@ public class FoodItem {
     private var _price: Double!
     private var _img: NSData!
     private var _imgURL: String!
-    
-    
+    private var _postLikes: Int!
+    private var _postRef: String!
+
+    var postRef: String {
+        
+        if _postRef == nil {
+            return ""
+        }
+        return _postRef
+        
+    }
+    var postLikes: Int {
+        return _postLikes
+        
+    }
     var category: String {
         if _category == nil {
             return ""
@@ -62,7 +76,7 @@ public class FoodItem {
         return _imgURL
     }
     
-    init(cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?) {
+    init(cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?, key: String) {
         self._category = cat
         
         self._name = name
@@ -80,8 +94,20 @@ public class FoodItem {
             self._imgURL = imgURLVal
         }
         
+        self._postRef = key
         
     }
+    
+    func adjustLikes(addLike: Bool) {
+        
+        if addLike {
+            _postLikes = _postLikes + 1
+        } else {
+            _postLikes = _postLikes - 1
+        }
+        DataService.ds.REF_LIKES.setValue("\(_postRef)/\(_postLikes)")
+    }
+    
     
     
 }
