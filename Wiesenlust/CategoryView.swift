@@ -41,6 +41,9 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
    
     }
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
     func showMenu() {
         performSegueWithIdentifier("menuSegue", sender: nil)
     }

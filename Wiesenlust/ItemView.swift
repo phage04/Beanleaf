@@ -22,7 +22,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     
     @IBOutlet weak var starCount: UILabel!
     
-    var starCountVal = 453
+   
     var dish: FoodItem!
 
     
@@ -56,12 +56,36 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         } else {
             dishImg.hidden = true
         }
+        DataService.ds.REF_ITEM.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(dish.postRef)").observeSingleEventOfType(.Value, withBlock:
+            { snapshot in
+                
+                
+                if snapshot.value is NSNull {
+                    self.starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.starBtn.tintColor = COLOR_YELLOW
+                } else {
+                    self.starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.starBtn.tintColor = COLOR_YELLOW
+                }
+                
+        })
         
-        starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        starBtn.tintColor = COLOR_YELLOW
+        DataService.ds.REF_LIKES.child("\(dish.postRef)/likes").observeSingleEventOfType(.Value, withBlock:
+            { snapshot in
+                if snapshot.value is NSNull {
+                    self.starCount.text = "0"
+                    
+                } else {
+                    self.starCount.text = "\(snapshot.value!)"
+                    
+                }
+               
+        })
+        
+        
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.whiteColor()
-        starCount.text = "\(starCountVal)"
+        
         price.textColor = UIColor.whiteColor()
         price.font = UIFont(name: font1Light, size: 24)
         price.text = "\(dish.price)€"
@@ -130,5 +154,34 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     }
 
     @IBAction func starBtnPressed(sender: AnyObject) {
+        if checkConnectivity() {
+            
+            let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
+            
+            
+            if let ref = self.dish.postRef as? String {
+                DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
+                    { snapshot in
+                        
+                        
+                        if snapshot.value is NSNull {
+                            self.dish.adjustLikes(true, key: ref)
+                            self.starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                            self.starBtn.tintColor = COLOR_YELLOW
+                            self.starCount.text = "\(Int(self.starCount.text!)! + 1)"
+                            DataService.ds.REF_ITEM.child("\(user)/\(self.dish.postRef)").setValue(true)
+                        } else {
+                            self.dish.adjustLikes(false, key: ref)
+                            self.starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                            self.starBtn.tintColor = COLOR_YELLOW
+                            self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
+                            DataService.ds.REF_ITEM.child("\(user)/\(ref)").removeValue()
+                        }
+                        
+                })
+                
+            }
+            
+        }
     }
 }

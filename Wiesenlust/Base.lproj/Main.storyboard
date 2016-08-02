@@ -1397,7 +1397,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-ku-FAQ">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-xw-J5z">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-xw-J5z" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="2fV-Ug-SOH"/>
@@ -1408,7 +1408,7 @@
                                                         <action selector="starBtnPressed:" destination="2eA-5i-yWa" eventType="touchUpInside" id="YuP-lB-JEw"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-FN-zbf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-FN-zbf">
                                                     <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="0a8-SU-fy8"/>
