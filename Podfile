@@ -3,16 +3,19 @@ platform :ios, ‘9.0’
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target ‘OnionApps’ do
+target ‘Onion Apps’ do
 
 pod 'OAuthSwift', '~> 0.5.0'
 pod 'Auk', '~> 2.1'
 pod 'Alamofire', '~> 3.4'
 pod 'Contentful'
-pod "SwiftSpinner"
+pod 'SwiftSpinner'
 pod 'pop', '~> 1.0'
 pod 'IQKeyboardManagerSwift'
 pod 'SideMenu'
+pod 'Firebase'
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
 
 end
 

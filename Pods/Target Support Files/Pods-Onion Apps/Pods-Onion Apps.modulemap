@@ -1,0 +1,6 @@
+framework module Pods_Onion_Apps {
+  umbrella header "Pods-Onion Apps-umbrella.h"
+
+  export *
+  module * { export * }
+}
