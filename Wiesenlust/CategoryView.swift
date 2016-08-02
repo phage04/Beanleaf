@@ -55,7 +55,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell.contentView.clipsToBounds = false
             cell.clipsToBounds = false
             cell.selectionStyle = .None
-            cell.configureCell(dishes[indexPath.row].name, priceVal: dishes[indexPath.row].price, dishImg: dishes[indexPath.row].img)
+            cell.configureCell(dishes[indexPath.row])
             return cell
             
         } else {
@@ -76,6 +76,8 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
     }
+    
+
 
     
 

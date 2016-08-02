@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class CategoryCell: UITableViewCell {
     
@@ -23,8 +25,11 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     
     @IBOutlet weak var foodImg: UIImageView!
+  
 
     let gradientLayer = CAGradientLayer()
+    var post: FoodItem!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,8 +47,12 @@ class CategoryCell: UITableViewCell {
         gradientLayer.endPoint = CGPointMake(1,0.5)
         barView.layer.addSublayer(gradientLayer)
         
-        star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         star.tintColor = COLOR_YELLOW
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryCell.likeTapped(_:)))
+        tap.numberOfTapsRequired = 1
+        star.addGestureRecognizer(tap)
+        star.userInteractionEnabled = true
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.whiteColor()
         price.textColor = UIColor.whiteColor()
@@ -60,20 +69,69 @@ class CategoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(dishName: String, priceVal: Double, dishImg: NSData?) {
+    func configureCell(item: FoodItem) {
         
-        foodLbl.text = dishName
+        foodLbl.text = item.name
         
-        if let imageDish = dishImg as NSData? {
+        if let imageDish = item.img as NSData? {
             foodImg.image = UIImage(data: imageDish)
         } else {
             foodImg.hidden = true
         }
         
-        price.text = "\(priceVal)€"
-        starCount.text = "326"       
+        price.text = "\(item.price)€"
         
+        DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(item.postRef)").observeSingleEventOfType(.Value, withBlock:
+            { snapshot in
+                
+                
+                if snapshot.value is NSNull {
+                    self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.tintColor = COLOR_YELLOW
+                } else {
+                    self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.tintColor = COLOR_YELLOW
+                }
+                
+        })
+        
+        DataService.ds.REF_LIKES.child("\(item.postRef)/likes").observeSingleEventOfType(.Value, withBlock:
+            { snapshot in
+                if snapshot.value is NSNull {
+                    self.starCount.text = "0"
+                    item.postLikes = 0
+                } else {
+                   self.starCount.text = "\(snapshot.value!)"
+                    item.postLikes = snapshot.value as! Int
+                }
+                self.post = item
+            })
+       
+        
+    }
     
+    func likeTapped(sender: UITapGestureRecognizer) {
+        
+        DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").observeSingleEventOfType(.Value, withBlock:
+            { snapshot in
+                
+            
+                if snapshot.value is NSNull {
+                    self.post.adjustLikes(true, key: self.post.postRef)
+                    self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.tintColor = COLOR_YELLOW
+                    self.starCount.text = "\(Int(self.starCount.text!)! + 1)"                    
+                    DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").setValue(true)
+                } else {
+                    self.post.adjustLikes(false, key: self.post.postRef)
+                    self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.tintColor = COLOR_YELLOW
+                    self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
+                    DataService.ds.REF_ITEM.child("\(FIRAuth.auth()?.currentUser)/\(self.post.postRef)").removeValue()
+                }
+            
+            })
+            
         
     }
 

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 public class FoodItem {
     private var _category: String!
@@ -29,7 +31,15 @@ public class FoodItem {
         
     }
     var postLikes: Int {
-        return _postLikes
+        get {
+            if _postLikes == nil {
+                return 0
+            }
+           return _postLikes
+        }
+        set {
+            _postLikes = postLikes
+        }
         
     }
     var category: String {
@@ -98,14 +108,25 @@ public class FoodItem {
         
     }
     
-    func adjustLikes(addLike: Bool) {
-        
-        if addLike {
-            _postLikes = _postLikes + 1
-        } else {
-            _postLikes = _postLikes - 1
-        }
-        DataService.ds.REF_LIKES.setValue("\(_postRef)/\(_postLikes)")
+    func adjustLikes(addLike: Bool, key: String) {
+       
+        DataService.ds.REF_LIKES.child("\(key)/likes").runTransactionBlock({
+            (currentData:FIRMutableData!) in
+            var value = currentData.value as? Int
+            if (value == nil) {
+                value = 0
+            }
+            if addLike {
+                currentData.value = value! + 1
+                
+            } else {
+                currentData.value = value! - 1
+               
+            }
+            
+            
+            return FIRTransactionResult.successWithValue(currentData)
+        })
     }
     
     

@@ -29,7 +29,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="800" height="799"/>
                                 </variation>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-kd-CtO">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-kd-CtO">
                                 <rect key="frame" x="25" y="20" width="550" height="560"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="Z7w-SX-JRq">
@@ -2057,7 +2057,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2065,7 +2065,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>
@@ -2161,13 +2161,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uc4-ff-jb2"/>
-        <segue reference="ByJ-5X-vFK"/>
         <segue reference="lSl-5G-diZ"/>
-        <segue reference="fTn-n1-Yeg"/>
-        <segue reference="oPm-o0-noY"/>
+        <segue reference="tX9-GD-spD"/>
         <segue reference="MP2-ps-yw4"/>
+        <segue reference="oPm-o0-noY"/>
         <segue reference="F9w-Lg-DGK"/>
+        <segue reference="fTn-n1-Yeg"/>
+        <segue reference="ByJ-5X-vFK"/>
         <segue reference="PzC-CE-oEv"/>
     </inferredMetricsTieBreakers>
 </document>

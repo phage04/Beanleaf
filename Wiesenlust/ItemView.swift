@@ -57,7 +57,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
             dishImg.hidden = true
         }
         
-        starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         starBtn.tintColor = COLOR_YELLOW
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.whiteColor()
