@@ -180,9 +180,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
         locNotif.alertBody = "You are near Onion Apps! Come on over, here's a free burger."
         locNotif.soundName = UILocalNotificationDefaultSoundName
         locNotif.userInfo = ["location": "near"]
-        locNotif.regionTriggersOnce = true
-        locNotif.region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
-            50.2192501305139, longitude: 8.61948763021139), radius: 3.0, identifier: "Location1")
+        locNotif.regionTriggersOnce = false
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
+            50.2192501305139, longitude: 8.61948763021139), radius: 10.0, identifier: "Location1")
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
+        locNotif.region = region
 
         UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
         
@@ -197,6 +200,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
         for each in UIApplication.sharedApplication().scheduledLocalNotifications! {
             print(each)
         }
+        
+        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
     }
     
 
