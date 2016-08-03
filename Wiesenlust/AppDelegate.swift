@@ -21,14 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
+        registerForPushNotifications(application)
         UINavigationBar.appearance().barTintColor = COLOR1
         UINavigationBar.appearance().tintColor = COLOR2
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: font1Medium, size: 20)!, NSForegroundColorAttributeName : COLOR2]
         
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
-        registerForPushNotifications(application)
+        
 
         
         return true
@@ -125,6 +125,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings = UIUserNotificationSettings(
             forTypes: [.Badge, .Sound, .Alert], categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
+      
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != .None {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        
+        for i in 0..<deviceToken.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        print("Device Token:", tokenString)
+        let refreshedToken = FIRInstanceID.instanceID().token()!
+        print("InstanceID token: \(refreshedToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register:", error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
+                     fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        
+        // Print full message.
+        print("%@", userInfo)
     }
 
 }

@@ -62,6 +62,7 @@ DEPENDENCIES:
   - Contentful
   - Firebase
   - Firebase/Auth
+  - Firebase/Core
   - Firebase/Database
   - IQKeyboardManagerSwift
   - OAuthSwift (~> 0.5.0)
