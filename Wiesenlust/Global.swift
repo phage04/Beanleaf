@@ -14,9 +14,10 @@ import Contentful
 import CoreData
 import Alamofire
 
-let storeName = "Wiesenlust"
+let storeName = "Onion Apps"
 let minimumReceipt = "10€"
 var managerPin: String!
+
 
 
 let defaultFree = "Free coffee"

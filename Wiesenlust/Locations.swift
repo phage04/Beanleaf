@@ -22,12 +22,11 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     private let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
-    let locationManager = CLLocationManager()
     var regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
     var locNow: Locations!
     var index: Int = 0
-    
+    let locationManager = CLLocationManager()
     var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
     var branchesLoc = [Locations]()
     var filteredBranchesLoc = [Locations]()
@@ -45,14 +44,16 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.showMenu))
 
         navigationController?.navigationBarHidden = false
-        self.locationManager.requestAlwaysAuthorization()
+
+        self.locationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()){
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
         }
-
+        
         mapView.delegate = self
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Search

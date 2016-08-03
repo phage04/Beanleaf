@@ -13,11 +13,13 @@ import Alamofire
 import SwiftSpinner
 import Firebase
 import FirebaseDatabase
+import CoreLocation
 
 
 
 
-class Home: UIViewController {
+
+class Home: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet var backgroundView: UIView!    
@@ -50,12 +52,18 @@ class Home: UIViewController {
     @IBOutlet weak var socialButton: UIButton!
     
     var firstload = true
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeSetup()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
 
+        
+        homeSetup()
         
         navigationController?.navigationBarHidden = true
         
@@ -70,8 +78,6 @@ class Home: UIViewController {
         socialButton.setTitle(socialButtonTitle, forState: .Normal)
         socialButton.setTitleColor(COLOR2, forState: .Normal)
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
-        
-        
         
     }
     
@@ -143,6 +149,7 @@ class Home: UIViewController {
         menuLbl4.text = menuLblText4
         menuLbl5.text = menuLblText5
         menuLbl6.text = menuLblText6
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -160,11 +167,38 @@ class Home: UIViewController {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-
-     downloadCategories()
-   
+        setupNotifications()
+        downloadCategories()
+     
 
     }
+    
+    func setupNotifications(){
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        let locNotif: UILocalNotification = UILocalNotification()
+        locNotif.alertBody = "You are near Onion Apps! Come on over, here's a free burger."
+        locNotif.soundName = UILocalNotificationDefaultSoundName
+        locNotif.userInfo = ["location": "near"]
+        locNotif.regionTriggersOnce = true
+        locNotif.region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
+            50.2192501305139, longitude: 8.61948763021139), radius: 3.0, identifier: "Location1")
+
+        UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
+        
+        let timeNotif: UILocalNotification = UILocalNotification()
+        timeNotif.alertBody = "Hey! Why don't write us a review on Yelp?"
+        timeNotif.soundName = UILocalNotificationDefaultSoundName
+        timeNotif.userInfo = ["time": "1min"]
+        timeNotif.fireDate = NSDate(timeIntervalSinceNow: 10)
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(timeNotif)
+        
+        for each in UIApplication.sharedApplication().scheduledLocalNotifications! {
+            print(each)
+        }
+    }
+    
 
     @IBAction func socialBtnPressed(sender: AnyObject) {
         if let appURL = NSURL(string: socialURLApp) {

@@ -14,6 +14,8 @@ import FirebaseInstanceID
 import FirebaseMessaging
 
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -35,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
         // [END register_for_notifications]
         
         FIRApp.configure()
@@ -43,6 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add observer for InstanceID token refresh callback.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+        
+
+        if let options = launchOptions {
+            if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+                if let userInfo = notification.userInfo {
+                    let customField = userInfo["location"] as! String
+                    print("Received Local Notification:")
+                    print(customField)
+                    
+                }
+            }
+        }
 
         
         return true
@@ -153,11 +168,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        // Do something serious in a real app.
+        print("Received Local Notification:")
+        print(notification.alertBody)
+    }
+    
   
     func tokenRefreshNotification(notification: NSNotification) {
-        let refreshedToken = FIRInstanceID.instanceID().token()!
-        print("InstanceID token: \(refreshedToken)")
-        
+        if let refreshedToken = FIRInstanceID.instanceID().token(){
+            print("InstanceID token: \(refreshedToken)")
+        }        
     
         connectToFcm()
     }
