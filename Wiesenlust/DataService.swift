@@ -35,7 +35,7 @@ public class DataService {
     func logInAnonymously(completion: (result: Bool) -> Void) {
         
         
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
+        FIRAuth.auth()!.signInAnonymouslyWithCompletion({ (user, error) in
             completion(result: true)
             NSUserDefaults.standardUserDefaults().setValue(user?.uid, forKey: "userId")
             print("Firebase log in successful ID: \(user?.uid)")
@@ -45,13 +45,7 @@ public class DataService {
         
     }
     
-    func signOut() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {
-            print("Sign out error")
-        }
-    }
+ 
     
     
     
