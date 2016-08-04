@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6168494746A4DF27F356079E /* Pods_OnionApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DA0644B1820713E203594A /* Pods_OnionApps.framework */; };
 		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
 		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
 		DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */; };
@@ -50,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		029CB57EC8232D5AA102618F /* Pods_Onion_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onion_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27DA0644B1820713E203594A /* Pods_OnionApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnionApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.release.xcconfig"; sourceTree = "<group>"; };
 		A4F19500DDFE59EE16F8E7EE /* Pods-Onion Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6168494746A4DF27F356079E /* Pods_OnionApps.framework in Frameworks */,
 				F934B2D69E49422EB34D1F5C /* Pods_Onion_Apps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +110,6 @@
 		0959CEED770E5F1D073DEC39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27DA0644B1820713E203594A /* Pods_OnionApps.framework */,
 				029CB57EC8232D5AA102618F /* Pods_Onion_Apps.framework */,
 			);
 			name = Frameworks;
