@@ -45,12 +45,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         navigationController?.navigationBarHidden = false
 
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()){
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
             UIApplication.sharedApplication().cancelAllLocalNotifications()
         }
         
@@ -63,6 +63,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         
 
+        plotLocations()
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         plotLocations()
     }
     

@@ -59,8 +59,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
+  
 
         
         homeSetup()
@@ -84,6 +84,13 @@ class Home: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = true
     }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        setupNotifications()
+    }
+    
+    
+    
     
     func homeSetup(){
         var image = menuIcon1!
@@ -174,21 +181,27 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     func setupNotifications(){
+        
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
-        let locNotif: UILocalNotification = UILocalNotification()
-        locNotif.alertBody = "You are near Onion Apps! Come on over, here's a free burger."
-        locNotif.soundName = UILocalNotificationDefaultSoundName
-        locNotif.userInfo = ["location": "near"]
-        locNotif.regionTriggersOnce = false
+        if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
+            showErrorAlert("Location Services Disabled", msg: "Please enable location services for Onion Apps in your device settings.", VC: self)
+        } else {
+            print("Location Auth Confirmed: Always")
+        }
+        
         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
-            50.2192501305139, longitude: 8.61948763021139), radius: 10.0, identifier: "Location1")
+            50.2192501305139, longitude: 8.61948763021139), radius: 50.0, identifier: "Location1")
         region.notifyOnEntry = true
         region.notifyOnExit = true
-        locNotif.region = region
-
-        UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
         
+        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
+             showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
+        } else {
+        locationManager.startMonitoringForRegion(region)
+            print("Region monitoring started.")
+        }
+ 
         let timeNotif: UILocalNotification = UILocalNotification()
         timeNotif.alertBody = "Hey! Why don't write us a review on Yelp?"
         timeNotif.soundName = UILocalNotificationDefaultSoundName
@@ -197,12 +210,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         UIApplication.sharedApplication().scheduleLocalNotification(timeNotif)
         
-        for each in UIApplication.sharedApplication().scheduledLocalNotifications! {
-            print(each)
-        }
-        
         let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+        locationManager.requestStateForRegion(region)
         
     }
     

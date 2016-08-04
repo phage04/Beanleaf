@@ -12,15 +12,15 @@ import IQKeyboardManagerSwift
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
-
+import CoreLocation
 
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -58,7 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
         return true
     }
@@ -191,6 +193,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Connected to FCM.")
             }
         }
+    }
+    
+    func handleRegionEvent(region: CLRegion!) {
+        
+        let locNotif: UILocalNotification = UILocalNotification()
+        locNotif.alertBody = "You are near Onion Apps! Come on over, here's a free burger."
+        locNotif.soundName = UILocalNotificationDefaultSoundName
+        locNotif.userInfo = ["location": "near"]
+        locNotif.fireDate = NSDate(timeIntervalSinceNow: 1)
+       
+        UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
+    }
+    
+    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
+        print("Region State: \(region) Status: \(state.hashValue)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleRegionEvent(region)
+            print("Entry detected")
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleRegionEvent(region)
+            print("Exit detected")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+        print("Monitoring failed for region with identifier: \(region!.identifier)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Location Manager failed with the following error: \(error)")
     }
     
 

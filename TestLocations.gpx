@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+    <wpt lat="50.2192501305139" lon="10.71948763021139">
+         <name>Outside BoardingHouse</name>
+    </wpt>
+    <wpt lat="50.2192501305139" lon="8.61948763021139">
+        <name>Inside BoardingHouse</name>
+    </wpt>
+
+</gpx>
