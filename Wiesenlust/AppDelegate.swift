@@ -25,6 +25,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
+        if let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+            
+            if notification.alertTitle == "Time" {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+            }
+            if notification.alertTitle == "Location" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationController = self.window?.rootViewController as? UINavigationController
+                let destinationController = storyboard.instantiateViewControllerWithIdentifier("Coupons") as? Coupons
+                navigationController?.pushViewController(destinationController!, animated: false)
+            }
+            
+        }
         
         UINavigationBar.appearance().barTintColor = COLOR1
         UINavigationBar.appearance().tintColor = COLOR2
@@ -33,10 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Register for remote notifications
     
             // [START register_for_notifications]
-        let settings: UIUserNotificationSettings =
-            UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
+
         
         // [END register_for_notifications]
         
@@ -46,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Add observer for InstanceID token refresh callback.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
-        
-        
+    
+
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
@@ -162,24 +177,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // Do something serious in a real app.
         print("Received Local Notification: \(notification.alertBody)")
-        
-        if UIApplication.sharedApplication().applicationState == .Inactive || UIApplication.sharedApplication().applicationState == .Background {
-            if notification.alertTitle == "Time" {
-                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
-            }
-            if notification.alertTitle == "Location" {
-                //SHOW THE COUPON
-            }
-        } else if UIApplication.sharedApplication().applicationState == .Active {
-            if notification.alertTitle == "Time" {
-                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
-            }
-            if notification.alertTitle == "Location" {
-               //SHOW THE COUPON
-            }
+       
+        if notification.alertTitle == "Time" {
+            UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+        }
+        if notification.alertTitle == "Location" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = self.window?.rootViewController as? UINavigationController
+            let destinationController = storyboard.instantiateViewControllerWithIdentifier("Coupons") as? Coupons
+            navigationController?.pushViewController(destinationController!, animated: false)
         }
        
     }
+    
+
     
   
     func tokenRefreshNotification(notification: NSNotification) {
