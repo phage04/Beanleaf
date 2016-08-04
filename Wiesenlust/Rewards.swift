@@ -426,11 +426,13 @@ class Rewards: UIViewController {
             //time based notification
             
             let timeNotif: UILocalNotification = UILocalNotification()
+            
             timeNotif.alertBody = "Thank you for dining! Care to write us a review on Yelp?"
             timeNotif.soundName = UILocalNotificationDefaultSoundName
-            timeNotif.userInfo = ["time": "1min"]
+            timeNotif.userInfo = ["time": "min"]
+            timeNotif.alertTitle = "Time"
             //fire after 20 secs for demo purposes
-            timeNotif.fireDate = NSDate(timeIntervalSinceNow: 20)
+            timeNotif.fireDate = NSDate(timeIntervalSinceNow: 15)
             
             UIApplication.sharedApplication().scheduleLocalNotification(timeNotif)
             

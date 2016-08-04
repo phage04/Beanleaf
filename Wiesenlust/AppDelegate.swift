@@ -47,17 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
                                                          name: kFIRInstanceIDTokenRefreshNotification, object: nil)
         
-
-        if let options = launchOptions {
-            if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
-                if let userInfo = notification.userInfo {
-                    let customField = userInfo["location"] as! String
-                    print("Received Local Notification:")
-                    print(customField)
-                    
-                }
-            }
-        }
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -172,8 +161,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // Do something serious in a real app.
-        print("Received Local Notification:")
-        print(notification.alertBody)
+        print("Received Local Notification: \(notification.alertBody)")
+        
+        if UIApplication.sharedApplication().applicationState == .Inactive || UIApplication.sharedApplication().applicationState == .Background {
+            if notification.alertTitle == "Time" {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+            }
+            if notification.alertTitle == "Location" {
+                //SHOW THE COUPON
+            }
+        } else if UIApplication.sharedApplication().applicationState == .Active {
+            if notification.alertTitle == "Time" {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+            }
+            if notification.alertTitle == "Location" {
+               //SHOW THE COUPON
+            }
+        }
+       
     }
     
   
@@ -201,6 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locNotif.alertBody = "You are near Onion Apps \(region.identifier)! Come on over, here's a free burger."
         locNotif.soundName = UILocalNotificationDefaultSoundName
         locNotif.userInfo = ["location": "near"]
+        locNotif.alertTitle = "Location"
         locNotif.fireDate = NSDate(timeIntervalSinceNow: 1)
        
         UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
@@ -228,6 +234,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Location Manager failed with the following error: \(error)")
+    }
+    
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        if identifier == "editList" {
+            NSNotificationCenter.defaultCenter().postNotificationName("modifyListNotification", object: nil)
+        }
+                
+        completionHandler()
     }
     
 
