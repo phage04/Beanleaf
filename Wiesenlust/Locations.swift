@@ -27,7 +27,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var locNow: Locations!
     var index: Int = 0
     let locationManager = CLLocationManager()
-    var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
+
     var branchesLoc = [Locations]()
     var filteredBranchesLoc = [Locations]()
     var inSearchMode = false

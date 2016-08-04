@@ -423,6 +423,19 @@ class Rewards: UIViewController {
             }
             
             self.updateStamps(self.numberOfStamps)
+            //time based notification
+            
+            let timeNotif: UILocalNotification = UILocalNotification()
+            timeNotif.alertBody = "Thank you for dining! Care to write us a review on Yelp?"
+            timeNotif.soundName = UILocalNotificationDefaultSoundName
+            timeNotif.userInfo = ["time": "1min"]
+            //fire after 20 secs for demo purposes
+            timeNotif.fireDate = NSDate(timeIntervalSinceNow: 20)
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(timeNotif)
+            
+            let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
             
             
         }

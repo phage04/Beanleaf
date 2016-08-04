@@ -86,7 +86,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        setupNotifications()
+        setupLocationNotifications()
     }
     
     
@@ -174,46 +174,59 @@ class Home: UIViewController, CLLocationManagerDelegate {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-        setupNotifications()
+        setupLocationNotifications()
         downloadCategories()
      
 
     }
     
-    func setupNotifications(){
+    
+    func setupLocationNotifications(){
         
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        
+         //Check if location is set to enabled always
         if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
             showErrorAlert("Location Services Disabled", msg: "Please enable location services for Onion Apps in your device settings.", VC: self)
         } else {
             print("Location Auth Confirmed: Always")
         }
         
-        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
-            50.2192501305139, longitude: 8.61948763021139), radius: 50.0, identifier: "Location1")
-        region.notifyOnEntry = true
-        region.notifyOnExit = true
+        //setup geofences to monitor
         
-        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
-             showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
-        } else {
-        locationManager.startMonitoringForRegion(region)
-            print("Region monitoring started.")
+        for loc in branches {
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                
+                
+                if let placeMark = placemarks?[0] {
+                    
+                    if let name = placeMark.thoroughfare as String?,long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                        
+                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
+                            lat, longitude: long), radius: radiusOfInterest, identifier: name)
+                        region.notifyOnEntry = true
+                        region.notifyOnExit = false
+                        //print("Name:\(name) Long:\(long) Lat:\(lat)")
+                        
+                        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
+                            showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
+                        } else {
+                            self.locationManager.startMonitoringForRegion(region)
+                            print("Region monitoring started for \(name)")
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
         }
- 
-        let timeNotif: UILocalNotification = UILocalNotification()
-        timeNotif.alertBody = "Hey! Why don't write us a review on Yelp?"
-        timeNotif.soundName = UILocalNotificationDefaultSoundName
-        timeNotif.userInfo = ["time": "1min"]
-        timeNotif.fireDate = NSDate(timeIntervalSinceNow: 10)
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(timeNotif)
-        
+
         let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
-        locationManager.requestStateForRegion(region)
+        
         
     }
     

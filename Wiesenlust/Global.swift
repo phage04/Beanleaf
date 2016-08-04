@@ -18,7 +18,8 @@ let storeName = "Onion Apps"
 let minimumReceipt = "10€"
 var managerPin: String!
 
-
+let branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
+let radiusOfInterest = 100.0
 
 let defaultFree = "Free coffee"
 

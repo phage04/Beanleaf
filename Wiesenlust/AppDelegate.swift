@@ -198,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func handleRegionEvent(region: CLRegion!) {
         
         let locNotif: UILocalNotification = UILocalNotification()
-        locNotif.alertBody = "You are near Onion Apps! Come on over, here's a free burger."
+        locNotif.alertBody = "You are near Onion Apps \(region.identifier)! Come on over, here's a free burger."
         locNotif.soundName = UILocalNotificationDefaultSoundName
         locNotif.userInfo = ["location": "near"]
         locNotif.fireDate = NSDate(timeIntervalSinceNow: 1)
@@ -206,14 +206,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
     }
     
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
-        print("Region State: \(region) Status: \(state.hashValue)")
-    }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
             handleRegionEvent(region)
-            print("Entry detected")
+            print("Entry detected \(region.identifier)")
         }
         
     }
@@ -221,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
             handleRegionEvent(region)
-            print("Exit detected")
+            print("Exit detected: \(region.identifier)")
         }
     }
     
