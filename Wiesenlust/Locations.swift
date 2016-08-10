@@ -32,10 +32,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var filteredBranchesLoc = [Locations]()
     var inSearchMode = false
     var nearest: Locations!
+   
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
@@ -168,29 +170,29 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let latitude = userLocation.coordinate.latitude
         print(latitude)
         print(longitude)
+        
        
         if checkConnectivity() {
                 let geoCoder = CLGeocoder()
                 
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
-                    
-                    
-                    
+              
                     if let placeMark = placemarks?[0] {
+                       
+                 
+                        if let thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
                         
                         
-                        if let subThorough = placeMark.subThoroughfare as String?, thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
-                        
-                        
-                        self.userLocNow = Locations(title: "Your Location", locationName: "\(subThorough)\(thorough), \(locality) \(postal)", address: "\(subThorough)\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                        self.userLocNow = Locations(title: "Your Location", locationName: "\(thorough), \(locality) \(postal)", address: "\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                         if let userLoc = userLocation as CLLocation? {
                             self.getNearest(userLoc)
+                            self.locationManager.stopUpdatingLocation()
                         }
                             
                         }
                         
-                    }
-                    self.locationManager.stopUpdatingLocation()
+                    } 
+                    
                  
                 })
         } else {

@@ -7,15 +7,6 @@
 //
 
 import Foundation
-//
-//  DataService.swift
-//  NeverHaveIEver
-//
-//  Created by Lyle Christianne Jover on 19/05/2016.
-//  Copyright © 2016 Lyle Christianne Jover. All rights reserved.
-//
-
-import Foundation
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
