@@ -208,6 +208,21 @@ func deleteCoreDataNil(entity: String) {
     }
 }
 
+func randomStringWithLength (len : Int) -> NSString {
+    
+    let letters : NSString = "0123456789"
+    
+    var randomString : NSMutableString = NSMutableString(capacity: len)
+    
+    for (var i=0; i < len; i += 1){
+        let length = UInt32 (letters.length)
+        let rand = arc4random_uniform(length)
+        randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+    }
+    
+    return randomString
+}
+
 
 
 let currentDate = NSDate()

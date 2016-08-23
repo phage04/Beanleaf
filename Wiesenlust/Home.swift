@@ -252,8 +252,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     func downloadManagerPin() {
         
-        managerPin = ""
-        
         client.fetchEntries(["content_type": "security"]).1.next {
             for pin in $0.items{
                if let pinManager = pin.fields["pin"] as? String {

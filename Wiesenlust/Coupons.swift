@@ -66,7 +66,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //DO SOMETHING WHEN CLICKED
+        showCoupon()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -232,5 +232,35 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func showCoupon() {
+        let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
+            if let field = alertController.textFields![0] as? UITextField{
+                field.resignFirstResponder()
+                if field.text == managerPin {
+                    let couponCode = randomStringWithLength(6)
+                    showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                } else {
+                    showErrorAlert("Incorrect PIN", msg: "", VC: self)
+                }
+            } else {
+                // user did not fill field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.keyboardType = .NumberPad
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 }
