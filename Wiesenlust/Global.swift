@@ -14,10 +14,12 @@ import Contentful
 import CoreData
 import Alamofire
 
-let storeName = "Wiesenlust"
+let storeName = "Onion Apps"
 let minimumReceipt = "10€"
 var managerPin: String!
 
+let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ABS-CBN, ELJ Bldg, Mother Ignacia Ave, South Triangle, Quezon City, Philippines", "Lot C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "Schweizer Platz 56 60594 Frankfurt Germany"]
+let radiusOfInterest = 100.0
 
 let defaultFree = "Free coffee"
 

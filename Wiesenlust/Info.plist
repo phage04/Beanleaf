@@ -65,6 +65,11 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To receive location-based discounts &amp; offers.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

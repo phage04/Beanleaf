@@ -22,21 +22,22 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     private let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
-    let locationManager = CLLocationManager()
     var regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
     var locNow: Locations!
     var index: Int = 0
-    
-    var branches:[String] = ["Berger Str. 77, 60316 Frankfurt am Main", "An der Welle 7 60322 Frankfurt Germany", "Franziusstr. 35 60314 Frankfurt Germany", "Kantstr. 25 60316 Frankfurt Germany", "Schweizer Platz 56 60594 Frankfurt Germany"]
+    let locationManager = CLLocationManager()
+
     var branchesLoc = [Locations]()
     var filteredBranchesLoc = [Locations]()
     var inSearchMode = false
     var nearest: Locations!
+   
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
@@ -45,14 +46,16 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.showMenu))
 
         navigationController?.navigationBarHidden = false
+
         self.locationManager.requestAlwaysAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()){
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
         }
-
+        
         mapView.delegate = self
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Search
@@ -62,6 +65,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         
 
+        plotLocations()
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         plotLocations()
     }
     
@@ -163,29 +170,29 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let latitude = userLocation.coordinate.latitude
         print(latitude)
         print(longitude)
+        
        
         if checkConnectivity() {
                 let geoCoder = CLGeocoder()
                 
                 geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
-                    
-                    
-                    
+              
                     if let placeMark = placemarks?[0] {
+                       
+                 
+                        if let thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
                         
                         
-                        if let subThorough = placeMark.subThoroughfare as String?, thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
-                        
-                        
-                        self.userLocNow = Locations(title: "Your Location", locationName: "\(subThorough)\(thorough), \(locality) \(postal)", address: "\(subThorough)\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
+                        self.userLocNow = Locations(title: "Your Location", locationName: "\(thorough), \(locality) \(postal)", address: "\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
                         if let userLoc = userLocation as CLLocation? {
                             self.getNearest(userLoc)
+                            self.locationManager.stopUpdatingLocation()
                         }
                             
                         }
                         
-                    }
-                    self.locationManager.stopUpdatingLocation()
+                    } 
+                    
                  
                 })
         } else {

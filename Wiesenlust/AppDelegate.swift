@@ -10,26 +10,61 @@ import UIKit
 import CoreData
 import IQKeyboardManagerSwift
 import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
+import CoreLocation
+
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
+        if let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+            
+            if notification.alertTitle == "Time" {
+                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+            }
+            if notification.alertTitle == "Location" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationController = self.window?.rootViewController as? UINavigationController
+                let destinationController = storyboard.instantiateViewControllerWithIdentifier("Coupons") as? Coupons
+                navigationController?.pushViewController(destinationController!, animated: false)
+            }
+            
+        }
         
         UINavigationBar.appearance().barTintColor = COLOR1
         UINavigationBar.appearance().tintColor = COLOR2
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: font1Medium, size: 20)!, NSForegroundColorAttributeName : COLOR2]
         
+        // Register for remote notifications
+    
+            // [START register_for_notifications]
+
+        
+        // [END register_for_notifications]
+        
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
-        registerForPushNotifications(application)
+        
+        // Add observer for InstanceID token refresh callback.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification),
+                                                         name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+    
 
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
         return true
     }
@@ -42,6 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        FIRMessaging.messaging().disconnect()
+        print("Disconnected from FCM.")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -50,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        connectToFcm()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -121,11 +159,105 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func registerForPushNotifications(application: UIApplication) {
-        let notificationSettings = UIUserNotificationSettings(
-            forTypes: [.Badge, .Sound, .Alert], categories: nil)
-        application.registerUserNotificationSettings(notificationSettings)
+
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register:", error)
     }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
+                     fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        // Do something serious in a real app.
+        print("Received Local Notification: \(notification.alertBody)")
+       
+        if notification.alertTitle == "Time" {
+            UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+        }
+        if notification.alertTitle == "Location" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = self.window?.rootViewController as? UINavigationController
+            let destinationController = storyboard.instantiateViewControllerWithIdentifier("Coupons") as? Coupons
+            navigationController?.pushViewController(destinationController!, animated: false)
+        }
+       
+    }
+    
+
+    
+  
+    func tokenRefreshNotification(notification: NSNotification) {
+        if let refreshedToken = FIRInstanceID.instanceID().token(){
+            print("InstanceID token: \(refreshedToken)")
+        }        
+    
+        connectToFcm()
+    }
+   
+    func connectToFcm() {
+        FIRMessaging.messaging().connectWithCompletion { (error) in
+            if (error != nil) {
+                print("Unable to connect with FCM. \(error)")
+            } else {
+                print("Connected to FCM.")
+            }
+        }
+    }
+    
+    func handleRegionEvent(region: CLRegion!) {
+        
+        let locNotif: UILocalNotification = UILocalNotification()
+        locNotif.alertBody = "You are near Onion Apps \(region.identifier)! Come on over, here's a free burger."
+        locNotif.soundName = UILocalNotificationDefaultSoundName
+        locNotif.userInfo = ["location": "near"]
+        locNotif.alertTitle = "Location"
+        locNotif.fireDate = NSDate(timeIntervalSinceNow: 1)
+       
+        UIApplication.sharedApplication().scheduleLocalNotification(locNotif)
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleRegionEvent(region)
+            print("Entry detected \(region.identifier)")
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleRegionEvent(region)
+            print("Exit detected: \(region.identifier)")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+        print("Monitoring failed for region with identifier: \(region!.identifier)")
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Location Manager failed with the following error: \(error)")
+    }
+    
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        if identifier == "editList" {
+            NSNotificationCenter.defaultCenter().postNotificationName("modifyListNotification", object: nil)
+        }
+                
+        completionHandler()
+    }
+    
+
 
 }
 

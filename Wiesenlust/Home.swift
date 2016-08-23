@@ -13,11 +13,13 @@ import Alamofire
 import SwiftSpinner
 import Firebase
 import FirebaseDatabase
+import CoreLocation
 
 
 
 
-class Home: UIViewController {
+
+class Home: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet var backgroundView: UIView!    
@@ -50,12 +52,18 @@ class Home: UIViewController {
     @IBOutlet weak var socialButton: UIButton!
     
     var firstload = true
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeSetup()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+  
 
+        
+        homeSetup()
         
         navigationController?.navigationBarHidden = true
         
@@ -71,13 +79,18 @@ class Home: UIViewController {
         socialButton.setTitleColor(COLOR2, forState: .Normal)
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = true
     }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        setupLocationNotifications()
+    }
+    
+    
+    
     
     func homeSetup(){
         var image = menuIcon1!
@@ -143,6 +156,7 @@ class Home: UIViewController {
         menuLbl4.text = menuLblText4
         menuLbl5.text = menuLblText5
         menuLbl6.text = menuLblText6
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -160,11 +174,62 @@ class Home: UIViewController {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-
-     downloadCategories()
-   
+        setupLocationNotifications()
+        downloadCategories()
+     
 
     }
+    
+    
+    func setupLocationNotifications(){
+        
+         //Check if location is set to enabled always
+        if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
+            showErrorAlert("Location Services Disabled", msg: "Please enable location services for Onion Apps in your device settings.", VC: self)
+        } else {
+            print("Location Auth Confirmed: Always")
+        }
+        
+        //setup geofences to monitor
+        
+        for loc in branches {
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                
+                
+                if let placeMark = placemarks?[0] {
+                    
+                    if let name = placeMark.thoroughfare as String?,long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                        
+                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
+                            lat, longitude: long), radius: radiusOfInterest, identifier: name)
+                        region.notifyOnEntry = true
+                        region.notifyOnExit = false
+                        //print("Name:\(name) Long:\(long) Lat:\(lat)")
+                        
+                        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
+                            showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
+                        } else {
+                            self.locationManager.startMonitoringForRegion(region)
+                            print("Region monitoring started for \(name)")
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
+        }
+
+        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+        
+        
+    }
+    
 
     @IBAction func socialBtnPressed(sender: AnyObject) {
         if let appURL = NSURL(string: socialURLApp) {

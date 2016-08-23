@@ -16,6 +16,9 @@ pod 'SideMenu'
 pod 'Firebase'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+
 
 end
 
