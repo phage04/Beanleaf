@@ -32,7 +32,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var filteredBranchesLoc = [Locations]()
     var inSearchMode = false
     var nearest: Locations!
-   
+    var nameTitle: String!
  
     
     override func viewDidLoad() {
@@ -63,9 +63,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
-        
-
-        plotLocations()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -101,13 +100,28 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 if let placeMark = placemarks?[0] {
                
-                    if let thorough = placeMark.thoroughfare as String?, long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                    if let long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
                         
-                        let locNow = Locations(title: "\(storeName)", locationName: "\(thorough) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
+                        if let name = placeMark.thoroughfare as String? {
+                            self.nameTitle = name
+                        } else if let name = placeMark.subLocality as String? {
+                            self.nameTitle = name
+                        }
                         
+                        let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
                         
-                        self.branchesLoc.append(locNow)
+                        print(locNow.locationName)
+                        
+                        if branches.count > self.branchesLoc.count {
+                            self.branchesLoc.append(locNow)
+                        }
+                        
+
                         self.mapView.addAnnotation(locNow)
+                        if self.branchesLoc.count == branches.count {
+                            
+                            self.tableView.reloadData()
+                        }
                     }
                 
                 }
@@ -116,7 +130,6 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         
-       
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -168,51 +181,11 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
-        print(latitude)
-        print(longitude)
         
-       
-        if checkConnectivity() {
-                let geoCoder = CLGeocoder()
-                
-                geoCoder.reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in
-              
-                    if let placeMark = placemarks?[0] {
-                       
-                 
-                        if let thorough = placeMark.thoroughfare as String?, locality = placeMark.locality as String?, postal = placeMark.postalCode as String? {
-                        
-                        
-                        self.userLocNow = Locations(title: "Your Location", locationName: "\(thorough), \(locality) \(postal)", address: "\(thorough), \(locality) \(postal)", contact: "n/a", coordinates: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), location: CLLocation(latitude: latitude, longitude: longitude))
-                        if let userLoc = userLocation as CLLocation? {
-                            self.getNearest(userLoc)
-                            self.locationManager.stopUpdatingLocation()
-                        }
-                            
-                        }
-                        
-                    } 
-                    
-                 
-                })
-        } else {
+        if let userLoc = userLocation as CLLocation? {
+            self.getNearest(userLoc)
             
-           
-           showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-            if let userLoc = userLocation as CLLocation? {
-                self.centerMapOnLocation(userLoc)
-            }
-            
-            self.tableView.dataSource = self
-            self.tableView.delegate = self
-            self.tableView.reloadData()
-
-
         }
-        
-        
-        
-
         
     }
     
@@ -244,7 +217,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             
             let distance = locationX.location.distanceFromLocation(userloc)
-            print(distance)
+            
             locationX.addDistance(distance)
             
             if let _ = self.nearest {
@@ -260,15 +233,16 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
             
             x += 1
+            print("\(x) \(self.branchesLoc.count)")
+            if let nearest = self.nearest.location as CLLocation! where x == self.branchesLoc.count-1{
+                self.centerMapOnLocation(nearest)
+                self.locationManager.stopUpdatingLocation()
+            }
             
         }
         
-        if let nearest = self.nearest.location as CLLocation?{
-           self.centerMapOnLocation(nearest)
-        }
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        
         self.tableView.reloadData()
     }
     

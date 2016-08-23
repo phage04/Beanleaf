@@ -53,6 +53,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     var firstload = true
     let locationManager = CLLocationManager()
+    var nameTitle: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,7 +183,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     
     func setupLocationNotifications(){
-        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
          //Check if location is set to enabled always
         if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
             showErrorAlert("Location Services Disabled", msg: "Please enable location services for Onion Apps in your device settings.", VC: self)
@@ -193,26 +194,32 @@ class Home: UIViewController, CLLocationManagerDelegate {
         //setup geofences to monitor
         
         for loc in branches {
+            
             let geoCoder = CLGeocoder()
             
             geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
-                
-                
+        
                 if let placeMark = placemarks?[0] {
                     
-                    if let name = placeMark.thoroughfare as String?,long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                    if let long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
                         
+                        
+                        if let name = placeMark.thoroughfare as String? {
+                            self.nameTitle = name
+                        } else if let name = placeMark.subLocality as String? {
+                            self.nameTitle = name
+                        }
                         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
-                            lat, longitude: long), radius: radiusOfInterest, identifier: name)
+                            lat, longitude: long), radius: radiusOfInterest, identifier: self.nameTitle)
                         region.notifyOnEntry = true
                         region.notifyOnExit = false
-                        //print("Name:\(name) Long:\(long) Lat:\(lat)")
+                        print("Name:\(self.nameTitle) Long:\(long) Lat:\(lat)")
                         
                         if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
                             showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
                         } else {
                             self.locationManager.startMonitoringForRegion(region)
-                            print("Region monitoring started for \(name)")
+                            //print("Region monitoring started for \(self.nameTitle)")
                         }
                         
                         
