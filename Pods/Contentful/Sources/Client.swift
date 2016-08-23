@@ -74,6 +74,7 @@ public class Client {
     private func handleJSON<T: Decodable>(data: NSData, _ completion: Result<T> -> Void) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            //let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String: AnyObject]
             if let json = json as? NSDictionary { json.client = self }
 
             if let error = try? ContentfulError.decode(json) {

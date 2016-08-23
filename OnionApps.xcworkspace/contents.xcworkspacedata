@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TestLocations.gpx">
+   </FileRef>
+   <FileRef
       location = "group:/Users/LyleJover/Google Drive/OnionApps/001_Wiesenlust/Wiesenlust/Onion Apps.xcodeproj">
    </FileRef>
    <FileRef
