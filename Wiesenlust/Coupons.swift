@@ -13,8 +13,9 @@ import Alamofire
 import SwiftSpinner
 import SideMenu
 import Firebase
+import CoreLocation
 
-class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,6 +23,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var couponsData = [NSManagedObject]()
     var coupons = [Coupon]()
     var refreshControl: UIRefreshControl!
+    let locationManager = CLLocationManager()
+    var lat: Double = 0.0
+    var long: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,16 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         activityIndicator.hidden = true
         deleteCoreDataNil("Coupons")
         
+        self.locationManager.requestAlwaysAuthorization()
         
+        if (CLLocationManager.locationServicesEnabled()){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            
+        }
+        
+        locationManager.startUpdatingLocation()
         
     }
     
@@ -67,8 +80,10 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let couponSelected = coupons[indexPath.row].couponRef as String?{
+            showCoupon("\(couponSelected)")
+        }
         
-        showCoupon("\(coupons[indexPath.row].couponRef)")
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -238,6 +253,15 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0]
+        long = userLocation.coordinate.longitude
+        lat = userLocation.coordinate.latitude
+        
+        
+    }
+
+    
     func showCoupon(ref: String) {
         let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
         
@@ -246,21 +270,19 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 field.resignFirstResponder()
                 if field.text == managerPin {
                     let couponCode = randomStringWithLength(6)
-                    DataService.ds.REF_COUPONUSES.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)").runTransactionBlock({
-                        (currentData:FIRMutableData!) in
-                        var value = currentData.value as? Int
-                        if (value == nil) {
-                            value = 0
-                        }
-                        
-                        currentData.value = value! + 1
-                        
-                        
-                        
-                        return FIRTransactionResult.successWithValue(currentData)
-                    })
                     
-                    showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                    if let _ = self.long as Double?, _ = self.lat as Double? {
+                        DataService.ds.REF_COUPONUSES.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
+                            
+                            if error == nil {
+                                showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                            } else {
+                                showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
+                            }
+                        })
+                    }
+                    
+                    
                 } else {
                     showErrorAlert("Incorrect PIN", msg: "", VC: self)
                 }
