@@ -39,7 +39,10 @@ public class Client {
      */
     public init(spaceIdentifier: String, accessToken: String, configuration: Configuration = Configuration()) {
         network.sessionConfigurator = { (sessionConfiguration) in
-            sessionConfiguration.HTTPAdditionalHeaders = [ "Authorization": "Bearer \(accessToken)" ]
+            sessionConfiguration.HTTPAdditionalHeaders = [
+                "Authorization": "Bearer \(accessToken)",
+                "User-Agent": configuration.userAgent
+            ]
         }
 
         self.configuration = configuration
@@ -74,7 +77,6 @@ public class Client {
     private func handleJSON<T: Decodable>(data: NSData, _ completion: Result<T> -> Void) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-            //let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! [String: AnyObject]
             if let json = json as? NSDictionary { json.client = self }
 
             if let error = try? ContentfulError.decode(json) {
