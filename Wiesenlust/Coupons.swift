@@ -12,6 +12,7 @@ import Contentful
 import Alamofire
 import SwiftSpinner
 import SideMenu
+import Firebase
 
 class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -66,7 +67,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        showCoupon()
+        
+        showCoupon("\(coupons[indexPath.row].couponRef)")
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -129,14 +131,14 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!))
                     
                     dispatch_group_leave(myGroupCoup)
                    
                 } else {
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!))
                     
                     dispatch_group_leave(myGroupCoup)
                     
@@ -177,6 +179,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         couponTemp.setValue(coupon.subtitle, forKey: "descriptionInfo")
         couponTemp.setValue(coupon.terms, forKey: "terms")
         couponTemp.setValue(coupon.validity, forKey: "validity")
+        couponTemp.setValue(coupon.couponRef, forKey: "couponRef")
+        couponTemp.setValue(coupon.couponUses, forKey: "couponUses")
         
         do {
             try managedContext.save()
@@ -234,7 +238,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func showCoupon() {
+    func showCoupon(ref: String) {
         let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
@@ -242,6 +246,20 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 field.resignFirstResponder()
                 if field.text == managerPin {
                     let couponCode = randomStringWithLength(6)
+                    DataService.ds.REF_COUPONUSES.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)").runTransactionBlock({
+                        (currentData:FIRMutableData!) in
+                        var value = currentData.value as? Int
+                        if (value == nil) {
+                            value = 0
+                        }
+                        
+                        currentData.value = value! + 1
+                        
+                        
+                        
+                        return FIRTransactionResult.successWithValue(currentData)
+                    })
+                    
                     showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
                 } else {
                     showErrorAlert("Incorrect PIN", msg: "", VC: self)
