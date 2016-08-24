@@ -26,6 +26,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
     let locationManager = CLLocationManager()
     var lat: Double = 0.0
     var long: Double = 0.0
+    var claimValid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,8 +260,42 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         lat = userLocation.coordinate.latitude
         
         
+        
+        
     }
 
+    func checkIfWithinVicinity(distance: Int, completion: (result: Bool) -> Void) {
+        var index = 0
+        self.claimValid = false  
+            for loc in branches {
+                let geoCoder = CLGeocoder()
+                
+                geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                    
+                    if let placeMark = placemarks?[0] {
+                        index += 1
+                        if let _ = placeMark.location {
+                            
+                            if let dist = self.locationManager.location?.distanceFromLocation(placeMark.location!) where distance > Int(dist)  {
+                                
+                                print(dist)
+                                self.claimValid = true
+                                completion(result: self.claimValid)
+                                
+                                
+                            } else if index == branches.count && self.claimValid == false {
+                                completion(result: false)
+                            }
+                        }
+                        }
+                    
+                })
+            }
+            
+
+        
+        
+    }
     
     func showCoupon(ref: String) {
         let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
@@ -271,16 +306,25 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                 if field.text == managerPin {
                     let couponCode = randomStringWithLength(6)
                     
-                    if let _ = self.long as Double?, _ = self.lat as Double? {
-                        DataService.ds.REF_COUPONUSES.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
+                    self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
+                        if result {
                             
-                            if error == nil {
-                                showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
-                            } else {
-                                showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
+                            if let _ = self.long as Double?, _ = self.lat as Double? {
+                                DataService.ds.REF_COUPONUSES.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
+                                    
+                                    if error == nil {
+                                        showErrorAlert("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                                    } else {
+                                        showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
+                                    }
+                                })
                             }
-                        })
-                    }
+                        } else {
+                            showErrorAlert("You're Too Far Away", msg: "Please come closer to our branch.", VC: self)
+                        }
+                        
+                    })
+                   
                     
                     
                 } else {

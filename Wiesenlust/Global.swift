@@ -22,6 +22,7 @@ let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "EL
 let radiusOfInterest = 100.0
 
 let defaultFree = "Free coffee"
+let distanceToClaim = 50
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()

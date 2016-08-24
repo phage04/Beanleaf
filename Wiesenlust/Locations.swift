@@ -110,6 +110,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         
                         let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
                         
+                        
                         print(locNow.locationName)
                         
                         if branches.count > self.branchesLoc.count {
