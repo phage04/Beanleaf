@@ -259,9 +259,6 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         long = userLocation.coordinate.longitude
         lat = userLocation.coordinate.latitude
         
-        
-        
-        
     }
 
     func checkIfWithinVicinity(distance: Int, completion: (result: Bool) -> Void) {
