@@ -18,8 +18,8 @@ class ButtonRewards: UIButton {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 3.0
         layer.shadowOffset = CGSizeMake(0.0, 2.0)
-        layer.backgroundColor = COLOR2.CGColor
-        self.titleLabel?.textColor = UIColor.whiteColor()
+        layer.backgroundColor = UIColor.clearColor().CGColor
+        self.titleLabel?.textColor = UIColor.clearColor()
         self.titleLabel?.font = UIFont(name: font1Regular, size: 18.0) 
         setupAnimation()
     }

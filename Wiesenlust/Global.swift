@@ -16,7 +16,7 @@ import Alamofire
 
 let storeName = "Onion Apps"
 let minimumReceipt = "10€"
-var managerPin: String!
+var managerPin = NSUserDefaults.standardUserDefaults().valueForKey("managerPin")
 let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ELJCC Bldg. Mother Ignacia Ave., South Triangle 4, Quezon City, Philippines", "C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "11 Aguirre Avenue, BF Homes, Paranaque City, Philippines"]
 
 let radiusOfInterest = 100.0

@@ -161,10 +161,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        downloadManagerPin()
         fetchDataCat()
         fetchDataFood()
-        downloadManagerPin()
+        
         if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
             
             SwiftSpinner.show(LoadingMsgGlobal)
@@ -258,11 +258,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     func downloadManagerPin() {
-        
+        var mPin: String = ""
         client.fetchEntries(["content_type": "security"]).1.next {
             for pin in $0.items{
                if let pinManager = pin.fields["pin"] as? String {
-                    managerPin = pinManager
+                    mPin = pinManager
+                    NSUserDefaults.standardUserDefaults().setValue(mPin, forKey: "managerPin")
                     print("Manager PIN: \(managerPin)")
                 }
             }

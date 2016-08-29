@@ -44,6 +44,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var gift12: UILabel!
     
     @IBOutlet weak var bottomLbl: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var numberOfStamps: Int = 0
     var numberOfClaims: Int = 0
@@ -56,13 +57,13 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topLbl.font = UIFont(name: font1Regular, size: 18)
+        topLbl.font = UIFont(name: font1Regular, size: 17)
         topLbl.textColor = COLOR2
         topLbl.text = "Earn stamps and receive special \(storeName) coupons as you collect! "
         
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
         bottomLbl.textColor = COLOR2
-        bottomLbl.text = "For every transaction with minimum amount of \(minimumReceipt), earn one stamp."
+        bottomLbl.text = "For every transaction with minimum amount of \(minimumReceipt), earn one stamp. Uninstalling \(storeName) will cause stamps to be lost."
         
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Rewards.backButtonPressed(_:)));
@@ -74,6 +75,9 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
 
         topLbl.hidden = false
         bottomLbl.hidden = false
+        
+        activityIndicator.color = COLOR1
+        activityIndicator.hidden = true
         
         gift1.text = defaultFree
         gift2.text = ""
@@ -499,6 +503,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func addBtnPressed(sender: AnyObject) {
+    
         showAlert()
     }
     
@@ -639,9 +644,13 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
             if let field = alertController.textFields![0] as? UITextField{
                 field.resignFirstResponder()
-                if field.text == managerPin {
+                self.activityIndicator.hidden = false
+                self.activityIndicator.startAnimating()
+                if field.text == "\(managerPin!)" {
                     
                     self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
+                        self.activityIndicator.hidden = true
+                        self.activityIndicator.stopAnimating()
                         if result {
                             
                             if let _ = self.long as Double?, _ = self.lat as Double? {
@@ -658,6 +667,8 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                     
                     
                 } else {
+                    self.activityIndicator.hidden = true
+                    self.activityIndicator.stopAnimating()
                     self.showErrorAlert("Incorrect PIN", msg: "", VC: self)
                 }
             } else {

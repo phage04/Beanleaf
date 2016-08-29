@@ -300,7 +300,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
             if let field = alertController.textFields![0] as? UITextField{
                 field.resignFirstResponder()
-                if field.text == managerPin {
+                if field.text == "\(managerPin!)" {
                     let couponCode = randomStringWithLength(6)
                     
                     self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
