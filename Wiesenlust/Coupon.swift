@@ -20,6 +20,11 @@ public class Coupon{
     private var _discountType: String!
     private var _couponRef: String!
     private var _couponUses: Int!
+    private var _active: Bool!
+    
+    var active: Bool {
+        return _active
+    }
     
     var couponRef: String {
         
@@ -107,9 +112,15 @@ public class Coupon{
         
         self._discountType = discType
         
+        self._active = true
         
         
         
+        
+    }
+    
+    func changeStatus(status: Bool) {
+    self._active = status
     }
     
     
