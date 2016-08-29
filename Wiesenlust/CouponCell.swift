@@ -65,7 +65,7 @@ class CouponCell: UITableViewCell {
         couponImg.image = scaledImage
     }
     
-    func configureCell(titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?) {
+    func configureCell(titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?, locFlag: Bool) {
         
         title.text = titleTxt
         
@@ -91,13 +91,12 @@ class CouponCell: UITableViewCell {
         
         terms.text = termsTxt
         
-        if title.text == "Burger Discount" {
+        if locFlag {
             special.hidden = false
             special.text = "JUST FOR YOU"
             starImg.image = UIImage(named: "starFull1x")
             starImg.image = starImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             starImg.tintColor = COLOR_YELLOW
-
             
         } else {
             special.hidden = true

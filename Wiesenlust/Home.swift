@@ -86,12 +86,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
         navigationController?.navigationBarHidden = true
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        setupLocationNotifications()
-    }
-    
-    
-    
     
     func homeSetup(){
         var image = menuIcon1!

@@ -87,8 +87,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let couponSelected = couponsData[indexPath.row].valueForKey("couponRef"){
-            showCoupon("\(couponSelected)", locationEnabled: couponsData[indexPath.row].valueForKey("locFlag"))
+        if let couponSelected = couponsData[indexPath.row].valueForKey("couponRef"), flagLoc = couponsData[indexPath.row].valueForKey("locFlag") as? Bool{
+            showCoupon("\(couponSelected)", locationEnabled: flagLoc)
         }
         
     }
@@ -103,7 +103,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
             cell.selectionStyle = .None
             let couponNow = couponsData[indexPath.row]
             
-            cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)")
+            cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)", locFlag: (couponNow.valueForKey("locFlag") as? Bool)!)
             return cell
             
         } else {
@@ -351,7 +351,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         
     }
     
-    func showCoupon(ref: String, locationEnabled: Coupon) {
+    func showCoupon(ref: String, locationEnabled: Bool) {
         let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
