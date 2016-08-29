@@ -2553,12 +2553,15 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vtc-9w-rr1">
-                                <rect key="frame" x="0.0" y="44" width="600" height="250"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vtc-9w-rr1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="rkl-iA-8Bi"/>
                                 </constraints>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-2J-Swn">
+                                <rect key="frame" x="282" y="170.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-hB-jpd">
                                 <rect key="frame" x="0.0" y="294" width="600" height="242"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2650,7 +2653,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vtc-9w-rr1" secondAttribute="trailing" constant="-20" id="L4F-cv-EOd"/>
                             <constraint firstItem="2ZN-dn-pfc" firstAttribute="leading" secondItem="hBM-D8-Kd7" secondAttribute="leadingMargin" constant="-20" id="NYN-th-YXs"/>
                             <constraint firstItem="2ZN-dn-pfc" firstAttribute="top" secondItem="CSU-H9-xaE" secondAttribute="bottom" id="ROp-fL-ipj"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerY" secondItem="vtc-9w-rr1" secondAttribute="centerY" id="U3r-Tv-z8E"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerY" secondItem="hBM-D8-Kd7" secondAttribute="centerY" id="dzj-jy-8VH"/>
                             <constraint firstItem="k5O-hB-jpd" firstAttribute="top" secondItem="2ZN-dn-pfc" secondAttribute="bottom" id="eq0-Nh-rGi"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerX" secondItem="hBM-D8-Kd7" secondAttribute="centerX" id="fxL-Yj-h7u"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerX" secondItem="vtc-9w-rr1" secondAttribute="centerX" id="inm-nU-ToN"/>
                             <constraint firstAttribute="bottomMargin" secondItem="k5O-hB-jpd" secondAttribute="bottom" id="j4v-4a-gNh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="k5O-hB-jpd" secondAttribute="trailing" constant="-20" id="lbl-WA-Bei"/>
                             <constraint firstItem="eiL-2z-7R9" firstAttribute="top" secondItem="k5O-hB-jpd" secondAttribute="bottom" id="mxn-yL-SLb"/>
@@ -2661,12 +2668,15 @@
                                 <exclude reference="3b0-3t-2ZA"/>
                                 <exclude reference="Jmk-bf-aub"/>
                                 <exclude reference="eq0-Nh-rGi"/>
+                                <exclude reference="dzj-jy-8VH"/>
+                                <exclude reference="fxL-Yj-h7u"/>
                                 <exclude reference="mxn-yL-SLb"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Locations" id="0c9-di-jHy"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="kBa-2J-Swn" id="8qt-ml-Y74"/>
                         <outlet property="mapView" destination="vtc-9w-rr1" id="rhG-yg-iZg"/>
                         <outlet property="searchBar" destination="2ZN-dn-pfc" id="dge-gg-OF3"/>
                         <outlet property="tableView" destination="k5O-hB-jpd" id="ZeN-8N-H4S"/>
@@ -2705,7 +2715,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2713,7 +2723,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>
@@ -2810,12 +2820,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MP2-ps-yw4"/>
-        <segue reference="rUg-s8-uXE"/>
-        <segue reference="F9w-Lg-DGK"/>
+        <segue reference="0QZ-d4-p05"/>
+        <segue reference="oPm-o0-noY"/>
         <segue reference="fTn-n1-Yeg"/>
         <segue reference="lSl-5G-diZ"/>
         <segue reference="ByJ-5X-vFK"/>
         <segue reference="PzC-CE-oEv"/>
-        <segue reference="oPm-o0-noY"/>
+        <segue reference="F9w-Lg-DGK"/>
     </inferredMetricsTieBreakers>
 </document>

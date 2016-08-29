@@ -14,6 +14,7 @@ import SideMenu
 class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate {
     
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -65,6 +66,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        activityIndicator.color = COLOR1
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -237,6 +241,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             print("\(x) \(self.branchesLoc.count)")
             if let nearest = self.nearest.location as CLLocation! where x == self.branchesLoc.count-1{
                 self.centerMapOnLocation(nearest)
+                self.activityIndicator.hidden = true
+                self.activityIndicator.stopAnimating()
                 self.locationManager.stopUpdatingLocation()
             }
             

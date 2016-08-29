@@ -61,6 +61,8 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         
         locationManager.startUpdatingLocation()
         
+        tableView.allowsSelection = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -169,6 +171,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                 for each in self.coupons {
                     self.saveCoupon(each)
                 }
+                self.tableView.allowsSelection = true
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.hidden = true
                 self.refreshControl.endRefreshing()
