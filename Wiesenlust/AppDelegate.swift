@@ -178,16 +178,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Do something serious in a real app.
         print("Received Local Notification: \(notification.alertBody)")
        
-        if notification.alertTitle == "Time" {
+        if notification.alertTitle == "Write us a review" {
             UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
         }
-        if notification.alertTitle == "Location" {
+        if notification.alertTitle == "Nearby Offer" {
+            validForLocationOffer = true
+            NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: #selector(AppDelegate.switchLocCoupon), userInfo: nil, repeats: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = self.window?.rootViewController as? UINavigationController
             let destinationController = storyboard.instantiateViewControllerWithIdentifier("Coupons") as? Coupons
             navigationController?.pushViewController(destinationController!, animated: false)
         }
        
+    }
+    
+    func switchLocCoupon() {
+        print("Toggled Location Flag To False.")
+        validForLocationOffer = false
     }
     
 
@@ -214,10 +221,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func handleRegionEvent(region: CLRegion!) {
         
         let locNotif: UILocalNotification = UILocalNotification()
-        locNotif.alertBody = "You are near Onion Apps \(region.identifier)! Come on over, here's a free burger."
+        locNotif.alertBody = "You are near our \(region.identifier) branch! Come on over within the next hour, here's a special discount."
         locNotif.soundName = UILocalNotificationDefaultSoundName
         locNotif.userInfo = ["location": "near"]
-        locNotif.alertTitle = "Location"
+        locNotif.alertTitle = "Nearby Offer"
         locNotif.fireDate = NSDate(timeIntervalSinceNow: 1)
        
         UIApplication.sharedApplication().scheduleLocalNotification(locNotif)

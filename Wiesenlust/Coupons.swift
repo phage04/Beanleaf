@@ -88,7 +88,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let couponSelected = couponsData[indexPath.row].valueForKey("couponRef"){
-            showCoupon("\(couponSelected)")
+            showCoupon("\(couponSelected)", locationEnabled: couponsData[indexPath.row].valueForKey("locFlag"))
         }
         
     }
@@ -141,9 +141,14 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
             for entry in $0.items{
                 dispatch_group_enter(myGroupCoup)
                 var desc: String = ""
+                var locationFlag: Bool = false
                 
                 if let descTxt = entry.fields["description"] as? String {
                     desc = descTxt
+                }
+                
+                if let locVal = entry.fields["locationCoupon"] as? Bool where locVal == true{
+                    locationFlag = locVal
                 }
                 
                 if let date = entry.fields["validUntil"] {
@@ -154,14 +159,14 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                     
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
                     
                     dispatch_group_leave(myGroupCoup)
                    
                 } else {
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
                     
                     dispatch_group_leave(myGroupCoup)
                     
@@ -182,13 +187,18 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                         if snapshot.exists() {
                             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                                 
-                                
-                                if snapshots.count >= each.couponUses && each.couponUses > 0 {
-                                    print("EXCLUDED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
-                                } else if snapshots.count < each.couponUses || each.couponUses == 0{
-                                    print("SAVED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                if each.location == false {
+                                    if snapshots.count >= each.couponUses && each.couponUses > 0 {
+                                        print("EXCLUDED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                    } else if snapshots.count < each.couponUses || each.couponUses == 0{
+                                        print("SAVED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                        self.saveCoupon(each)
+                                    }
+                                } else if each.location == true && validForLocationOffer == true {
+                                    print("SAVED LOC COUPON CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
                                     self.saveCoupon(each)
                                 }
+                               
                                 
                                 
                                 dispatch_group_leave(myGroupCoup2)
@@ -198,7 +208,13 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                             }
 
                         } else {
-                            self.saveCoupon(each)
+                            if each.location == true && validForLocationOffer == true {
+                                print("SAVED LOCATION COUPON.")
+                                self.saveCoupon(each)
+                            } else if each.location == false {
+                                self.saveCoupon(each)
+                            }
+                            
                             dispatch_group_leave(myGroupCoup2)
                            
                         }
@@ -237,6 +253,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         couponTemp.setValue(coupon.validity, forKey: "validity")
         couponTemp.setValue(coupon.couponRef, forKey: "couponRef")
         couponTemp.setValue(coupon.couponUses, forKey: "couponUses")
+        couponTemp.setValue(coupon.location, forKey: "locFlag")
         
         do {
             try managedContext.save()
@@ -334,7 +351,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         
     }
     
-    func showCoupon(ref: String) {
+    func showCoupon(ref: String, locationEnabled: Coupon) {
         let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
@@ -356,6 +373,10 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                                         self.activityIndicator.hidden = true
                                         
                                         if error == nil {
+                                            
+                                            if locationEnabled == true {
+                                                validForLocationOffer = false
+                                            }
                     
                                             self.showErrorAlertWithAction("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
                        

@@ -28,6 +28,7 @@ var categoriesData = [NSManagedObject]()
 var categories = [Category]()
 var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
+var validForLocationOffer = false
 
 
 var imgURL: NSURL!

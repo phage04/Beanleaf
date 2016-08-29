@@ -20,10 +20,11 @@ public class Coupon{
     private var _discountType: String!
     private var _couponRef: String!
     private var _couponUses: Int!
-    private var _active: Bool!
+    private var _location: Bool!
+
     
-    var active: Bool {
-        return _active
+    var location: Bool {
+        return _location
     }
     
     var couponRef: String {
@@ -90,7 +91,7 @@ public class Coupon{
         return _discountType
     }
     
-    init(titleTxt: String, discountTxt: Int, validityTxt: String?, termsTxt: String?, discType: String, subtitle: String?, identifier: String, uses: Int) {
+    init(titleTxt: String, discountTxt: Int, validityTxt: String?, termsTxt: String?, discType: String, subtitle: String?, identifier: String, uses: Int, location: Bool) {
         
         self._couponRef = identifier
         self._couponUses = uses
@@ -112,7 +113,7 @@ public class Coupon{
         
         self._discountType = discType
         
-        self._active = true
+        self._location = location
         
         
         
@@ -120,7 +121,7 @@ public class Coupon{
     }
     
     func changeStatus(status: Bool) {
-    self._active = status
+    self._location = status
     }
     
     

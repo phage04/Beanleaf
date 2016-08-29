@@ -175,7 +175,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
              SwiftSpinner.hide()
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
         }
-        setupLocationNotifications()
         downloadCategories()
      
 
@@ -503,6 +502,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     self.saveFood(food)
                 }
                 print("Update Check Complete.")
+                self.setupLocationNotifications()
                 SwiftSpinner.hide()
             })
             
