@@ -21,6 +21,8 @@ public class DataService {
     
     var REF_ITEM = baseData.child("item")
     var REF_LIKES = baseData.child("likes")
+    var REF_COUPONUSES = baseData.child("couponUses")
+    var REF_REWARDCLAIMS = baseData.child("rewardClaims")
     
     
     func logInAnonymously(completion: (result: Bool) -> Void) {

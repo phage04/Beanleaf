@@ -12,15 +12,22 @@ import Contentful
 import Alamofire
 import SwiftSpinner
 import SideMenu
+import Firebase
+import CoreLocation
 
-class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var couponsData = [NSManagedObject]()
+    var couponsFilter = [NSManagedObject]()
     var coupons = [Coupon]()
     var refreshControl: UIRefreshControl!
+    let locationManager = CLLocationManager()
+    var lat: Double = 0.0
+    var long: Double = 0.0
+    var claimValid = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +48,22 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
         activityIndicator.color = COLOR1
-        activityIndicator.hidden = true
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.hidden = false
         deleteCoreDataNil("Coupons")
         
+        self.locationManager.requestAlwaysAuthorization()
         
+        if (CLLocationManager.locationServicesEnabled()){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            
+        }
+        
+        locationManager.startUpdatingLocation()
+        
+        tableView.allowsSelection = false
         
     }
     
@@ -59,14 +78,19 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         fetchDataCoupon()
         downloadCoupons(false)
     }
+    
 
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return couponsData.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //DO SOMETHING WHEN CLICKED
+        if let couponSelected = couponsData[indexPath.row].valueForKey("couponRef"), flagLoc = couponsData[indexPath.row].valueForKey("locFlag") as? Bool{
+            showCoupon("\(couponSelected)", locationEnabled: flagLoc)
+        }
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -79,7 +103,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .None
             let couponNow = couponsData[indexPath.row]
             
-            cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)")
+            cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)", locFlag: (couponNow.valueForKey("locFlag") as? Bool)!)
             return cell
             
         } else {
@@ -112,13 +136,19 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.coupons.removeAll()
             
             let myGroupCoup = dispatch_group_create()
+            let myGroupCoup2 = dispatch_group_create()
             
             for entry in $0.items{
                 dispatch_group_enter(myGroupCoup)
                 var desc: String = ""
+                var locationFlag: Bool = false
                 
                 if let descTxt = entry.fields["description"] as? String {
                     desc = descTxt
+                }
+                
+                if let locVal = entry.fields["locationCoupon"] as? Bool where locVal == true{
+                    locationFlag = locVal
                 }
                 
                 if let date = entry.fields["validUntil"] {
@@ -129,14 +159,14 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
                     
                     dispatch_group_leave(myGroupCoup)
                    
                 } else {
                     
                     
-                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc))
+                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
                     
                     dispatch_group_leave(myGroupCoup)
                     
@@ -146,15 +176,59 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             dispatch_group_notify(myGroupCoup, dispatch_get_main_queue(), {
                 
+                
                 deleteCoreData("Coupons")
                 self.couponsData.removeAll()
+                
                 for each in self.coupons {
-                    self.saveCoupon(each)
+                    dispatch_group_enter(myGroupCoup2)
+                    DataService.ds.REF_COUPONUSES.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(each.couponRef)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                        
+                        if snapshot.exists() {
+                            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                                
+                                if each.location == false {
+                                    if snapshots.count >= each.couponUses && each.couponUses > 0 {
+                                        print("EXCLUDED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                    } else if snapshots.count < each.couponUses || each.couponUses == 0{
+                                        print("SAVED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                        self.saveCoupon(each)
+                                    }
+                                } else if each.location == true && validForLocationOffer == true {
+                                    print("SAVED LOC COUPON CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                    self.saveCoupon(each)
+                                }
+                               
+                                
+                                
+                                dispatch_group_leave(myGroupCoup2)
+                                
+                                
+                                
+                            }
+
+                        } else {
+                            if each.location == true && validForLocationOffer == true {
+                                print("SAVED LOCATION COUPON.")
+                                self.saveCoupon(each)
+                            } else if each.location == false {
+                                self.saveCoupon(each)
+                            }
+                            
+                            dispatch_group_leave(myGroupCoup2)
+                           
+                        }
+                        
+                    })
+                    
                 }
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.hidden = true
-                self.refreshControl.endRefreshing()
-                self.tableView.reloadData()
+                dispatch_group_notify(myGroupCoup2, dispatch_get_main_queue(), {
+                    self.tableView.allowsSelection = true
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                })
             })
            
            
@@ -177,6 +251,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
         couponTemp.setValue(coupon.subtitle, forKey: "descriptionInfo")
         couponTemp.setValue(coupon.terms, forKey: "terms")
         couponTemp.setValue(coupon.validity, forKey: "validity")
+        couponTemp.setValue(coupon.couponRef, forKey: "couponRef")
+        couponTemp.setValue(coupon.couponUses, forKey: "couponUses")
+        couponTemp.setValue(coupon.location, forKey: "locFlag")
         
         do {
             try managedContext.save()
@@ -232,5 +309,128 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func backButtonPressed(sender:UIButton) {
         navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0]
+        long = userLocation.coordinate.longitude
+        lat = userLocation.coordinate.latitude
+        
+    }
+
+    func checkIfWithinVicinity(distance: Int, completion: (result: Bool) -> Void) {
+        var index = 0
+        self.claimValid = false  
+            for loc in branches {
+                let geoCoder = CLGeocoder()
+                
+                geoCoder.geocodeAddressString(loc, completionHandler: { (placemarks, error) in
+                    
+                    if let placeMark = placemarks?[0] {
+                        index += 1
+                        if let _ = placeMark.location {
+                            
+                            if let dist = self.locationManager.location?.distanceFromLocation(placeMark.location!) where distance > Int(dist)  {
+                                
+                                print(dist)
+                                self.claimValid = true
+                                completion(result: self.claimValid)
+                                
+                                
+                            } else if index == branches.count && self.claimValid == false {
+                                completion(result: false)
+                            }
+                        }
+                        }
+                    
+                })
+            }
+            
+
+        
+        
+    }
+    
+    func showCoupon(ref: String, locationEnabled: Bool) {
+        let alertController = UIAlertController(title: "Manager PIN Required", message: "Have the manager enter the PIN to claim this deal.", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .Default) { (_) in
+            if let field = alertController.textFields![0] as? UITextField{
+                field.resignFirstResponder()
+                if field.text == "\(managerPin!)" {
+                    let couponCode = randomStringWithLength(6)
+                    
+                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.hidden = false
+                    self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
+                        if result {
+                            
+                            if let _ = self.long as Double?, _ = self.lat as Double? {
+                                
+                                    DataService.ds.REF_COUPONUSES.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
+                                        
+                                        self.activityIndicator.stopAnimating()
+                                        self.activityIndicator.hidden = true
+                                        
+                                        if error == nil {
+                                            
+                                            if locationEnabled == true {
+                                                validForLocationOffer = false
+                                            }
+                    
+                                            self.showErrorAlertWithAction("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                       
+                                        } else {
+                                           
+                                            showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
+                                        }
+                                        
+                                        
+                                    })
+                                    
+                                
+                                
+                            }
+                        } else {
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.hidden = true
+                            showErrorAlert("You're Too Far Away", msg: "Please come closer to our branch.", VC: self)
+                        }
+                        
+                    })
+                   
+                    
+                    
+                } else {
+                    showErrorAlert("Incorrect PIN", msg: "", VC: self)
+                }
+            } else {
+                // user did not fill field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.keyboardType = .NumberPad
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func showErrorAlertWithAction(title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default) {(_) in
+            self.tableView.allowsSelection = false
+            self.downloadCoupons(true)
+        }
+        alert.addAction(action)
+        
+        VC.presentViewController(alert, animated: true, completion: nil)
+        
     }
 }

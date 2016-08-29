@@ -16,17 +16,19 @@ import Alamofire
 
 let storeName = "Onion Apps"
 let minimumReceipt = "10€"
-var managerPin: String!
+var managerPin = NSUserDefaults.standardUserDefaults().valueForKey("managerPin")
+let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ELJCC Bldg. Mother Ignacia Ave., South Triangle 4, Quezon City, Philippines", "C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "11 Aguirre Avenue, BF Homes, Paranaque City, Philippines"]
 
-let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ABS-CBN, ELJ Bldg, Mother Ignacia Ave, South Triangle, Quezon City, Philippines", "Lot C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "Schweizer Platz 56 60594 Frankfurt Germany"]
 let radiusOfInterest = 100.0
 
 let defaultFree = "Free coffee"
+let distanceToClaim = 300000
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
 var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
+var validForLocationOffer = false
 
 
 var imgURL: NSURL!
@@ -206,6 +208,21 @@ func deleteCoreDataNil(entity: String) {
     } catch let error as NSError {
         debugPrint(error)
     }
+}
+
+func randomStringWithLength (len : Int) -> NSString {
+    
+    let letters : NSString = "0123456789"
+    
+    var randomString : NSMutableString = NSMutableString(capacity: len)
+    
+    for (var i=0; i < len; i += 1){
+        let length = UInt32 (letters.length)
+        let rand = arc4random_uniform(length)
+        randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+    }
+    
+    return randomString
 }
 
 

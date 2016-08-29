@@ -1,19 +1,10 @@
 <?xml version="1.0"?>
 <gpx version="1.1" creator="Xcode">
-    <wpt lat="50.102037" lon="8.680095">
-         <name>Schweizer Platz</name>
+    <wpt lat="14.5621426916173" lon="121.027920403295">
+         <name>Jupiter</name>
     </wpt>
-    <wpt lat="50.120211" lon="8.696424">
-        <name>Kantstraße</name>
+    <wpt lat="14.558757" lon="121.00036599999999">
+        <name>Bermeo</name>
     </wpt>
-    <wpt lat="50.11869" lon="8.672308">
-        <name>An der Welle</name>
-    </wpt>
-    <wpt lat="50.111543" lon="8.732212">
-        <name>Franziusstraße</name>
-    </wpt>
-    <wpt lat="50.12167" lon="8.698396">
-        <name>Berger Straße</name>
-    </wpt>
-
+    
 </gpx>

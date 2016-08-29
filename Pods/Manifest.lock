@@ -2,7 +2,7 @@ PODS:
   - Alamofire (3.4.1)
   - Auk (2.1.5):
     - moa (~> 3.0)
-  - Contentful (0.2.1):
+  - Contentful (0.2.2):
     - Decodable (~> 0.4.2)
     - Interstellar (~> 1.4.0)
     - "\U0001F555 (= 0.0.1)"
@@ -64,7 +64,7 @@ PODS:
   - moa (3.0.0)
   - OAuthSwift (0.5.2)
   - pop (1.0.9)
-  - SideMenu (1.1.8)
+  - SideMenu (1.1.9)
   - SwiftSpinner (0.9.5)
   - "\U0001F555 (0.0.1)"
 
@@ -86,7 +86,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Auk: 25fe0c1ac0d22b387eca4c5ea9de48c9caea5c05
-  Contentful: de96c3cdf1af4ae28828851a18f95cb2b502f8b8
+  Contentful: 6d36bfcaaa655c2649b95f5da7d48b3292a4b6cb
   Decodable: ab6c7d02a5df949d3ab16b2696528a3241e37c76
   Firebase: 754562547af419cc2f4b15247fee419081924bc2
   FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
@@ -105,8 +105,10 @@ SPEC CHECKSUMS:
   moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
   OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  SideMenu: 92f6a665414ece93860ce381f7d3eabe81c4dc3d
+  SideMenu: e4ecb0f1061e19230e53079edb2b300081446f80
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
   "\U0001F555": 2a41c1f9b76698cb697b8ec9a1db1087f5621187
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 6e4c87f5e2a7df86187eb0183db9a85f5d78656a
+
+COCOAPODS: 1.0.1

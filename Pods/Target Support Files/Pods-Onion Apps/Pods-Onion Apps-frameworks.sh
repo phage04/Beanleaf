@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,8 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
+    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements \"$1\""
+    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1"
   fi
 }
 
@@ -84,30 +84,30 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Onion Apps/Alamofire.framework"
-  install_framework "Pods-Onion Apps/Auk.framework"
-  install_framework "Pods-Onion Apps/Contentful.framework"
-  install_framework "Pods-Onion Apps/Decodable.framework"
-  install_framework "Pods-Onion Apps/IQKeyboardManagerSwift.framework"
-  install_framework "Pods-Onion Apps/Interstellar.framework"
-  install_framework "Pods-Onion Apps/OAuthSwift.framework"
-  install_framework "Pods-Onion Apps/SideMenu.framework"
-  install_framework "Pods-Onion Apps/SwiftSpinner.framework"
-  install_framework "Pods-Onion Apps/moa.framework"
-  install_framework "Pods-Onion Apps/pop.framework"
-  install_framework "Pods-Onion Apps/Clock.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Auk/Auk.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Contentful/Contentful.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Decodable/Decodable.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Interstellar/Interstellar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/OAuthSwift/OAuthSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftSpinner/SwiftSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/moa/moa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/pop/pop.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/🕕/Clock.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Onion Apps/Alamofire.framework"
-  install_framework "Pods-Onion Apps/Auk.framework"
-  install_framework "Pods-Onion Apps/Contentful.framework"
-  install_framework "Pods-Onion Apps/Decodable.framework"
-  install_framework "Pods-Onion Apps/IQKeyboardManagerSwift.framework"
-  install_framework "Pods-Onion Apps/Interstellar.framework"
-  install_framework "Pods-Onion Apps/OAuthSwift.framework"
-  install_framework "Pods-Onion Apps/SideMenu.framework"
-  install_framework "Pods-Onion Apps/SwiftSpinner.framework"
-  install_framework "Pods-Onion Apps/moa.framework"
-  install_framework "Pods-Onion Apps/pop.framework"
-  install_framework "Pods-Onion Apps/Clock.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Auk/Auk.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Contentful/Contentful.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Decodable/Decodable.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Interstellar/Interstellar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/OAuthSwift/OAuthSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftSpinner/SwiftSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/moa/moa.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/pop/pop.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/🕕/Clock.framework"
 fi

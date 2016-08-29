@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BAE662408C35C6B1B008A242 /* Pods_Onion_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */; };
 		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
 		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
 		DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */; };
@@ -44,14 +45,12 @@
 		DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */; };
 		DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063C1D38F5D5004682EE /* Locations.swift */; };
 		DEF3063F1D38F644004682EE /* LocationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF3063E1D38F644004682EE /* LocationsCell.swift */; };
-		F934B2D69E49422EB34D1F5C /* Pods_Onion_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029CB57EC8232D5AA102618F /* Pods_Onion_Apps.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		029CB57EC8232D5AA102618F /* Pods_Onion_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onion_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.debug.xcconfig"; sourceTree = "<group>"; };
-		9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnionApps.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnionApps/Pods-OnionApps.release.xcconfig"; sourceTree = "<group>"; };
-		A4F19500DDFE59EE16F8E7EE /* Pods-Onion Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.debug.xcconfig"; sourceTree = "<group>"; };
+		56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.release.xcconfig"; sourceTree = "<group>"; };
+		AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onion_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.debug.xcconfig"; sourceTree = "<group>"; };
 		DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
 		DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
 		DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -62,7 +61,7 @@
 		DE2BF0441D33C8260049F662 /* Coupons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupons.swift; sourceTree = "<group>"; };
 		DE2BF0461D33CEEB0049F662 /* CouponCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		DE2BF0481D33CFD80049F662 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
-		DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnionApps-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE37851A1D6CAC1600B0F455 /* Onion Apps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Onion Apps-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE57B7521D509EF6009F1296 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		DE57B7541D522885009F1296 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Onion Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +91,6 @@
 		DED4A00E1D391DD4006FEB2C /* LocationsMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsMapView.swift; sourceTree = "<group>"; };
 		DEF3063C1D38F5D5004682EE /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		DEF3063E1D38F644004682EE /* LocationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsCell.swift; sourceTree = "<group>"; };
-		E39D59576DF0F18E7DB9B84A /* Pods-Onion Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,30 +98,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F934B2D69E49422EB34D1F5C /* Pods_Onion_Apps.framework in Frameworks */,
+				BAE662408C35C6B1B008A242 /* Pods_Onion_Apps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0959CEED770E5F1D073DEC39 /* Frameworks */ = {
+		80E806E9E07DD33566C3A96E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				029CB57EC8232D5AA102618F /* Pods_Onion_Apps.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1D4A3F28CB55C207DE4075AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3C7A3CE4B2FDDA1ADF49CEE3 /* Pods-OnionApps.debug.xcconfig */,
-				9FC51BFB2FCE1281F6F65829 /* Pods-OnionApps.release.xcconfig */,
-				A4F19500DDFE59EE16F8E7EE /* Pods-Onion Apps.debug.xcconfig */,
-				E39D59576DF0F18E7DB9B84A /* Pods-Onion Apps.release.xcconfig */,
+				BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */,
+				56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		85C481B389672D5D74895909 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DE5BACA61D26BB07006C3C7C = {
@@ -131,8 +127,8 @@
 			children = (
 				DE5BACB11D26BB08006C3C7C /* OnionApps */,
 				DE5BACB01D26BB07006C3C7C /* Products */,
-				1D4A3F28CB55C207DE4075AE /* Pods */,
-				0959CEED770E5F1D073DEC39 /* Frameworks */,
+				80E806E9E07DD33566C3A96E /* Pods */,
+				85C481B389672D5D74895909 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,8 +213,8 @@
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
 				DE57B7541D522885009F1296 /* GoogleService-Info.plist */,
 				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
-				DE45D2D11D38D2930065EBAD /* OnionApps-Bridging-Header.h */,
 				DE57B7521D509EF6009F1296 /* DataService.swift */,
+				DE37851A1D6CAC1600B0F455 /* Onion Apps-Bridging-Header.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -230,12 +226,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */;
 			buildPhases = (
-				B77AD5788142497553332291 /* Check Pods Manifest.lock */,
+				6073ECCBA18470C6EFBDCE82 /* [CP] Check Pods Manifest.lock */,
 				DE5BACAB1D26BB07006C3C7C /* Sources */,
 				DE5BACAC1D26BB07006C3C7C /* Frameworks */,
 				DE5BACAD1D26BB07006C3C7C /* Resources */,
-				ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */,
-				8083EE9F2B77758080E953AC /* Copy Pods Resources */,
+				4471D445FF03B18AF9746BF5 /* [CP] Embed Pods Frameworks */,
+				86C496EC654F536586434C0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,29 +299,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8083EE9F2B77758080E953AC /* Copy Pods Resources */ = {
+		4471D445FF03B18AF9746BF5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B77AD5788142497553332291 /* Check Pods Manifest.lock */ = {
+		6073ECCBA18470C6EFBDCE82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,19 +329,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		ED6FD68534D52EB89990A1BE /* Embed Pods Frameworks */ = {
+		86C496EC654F536586434C0A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,6 +432,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -450,12 +447,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -482,6 +482,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -490,44 +491,85 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		DE5BACC51D26BB08006C3C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4F19500DDFE59EE16F8E7EE /* Pods-Onion Apps.debug.xcconfig */;
+			baseConfigurationReference = BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Analytics/Sources",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleIPhoneUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleNetworkingUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleParsingUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
+				);
 				INFOPLIST_FILE = Wiesenlust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
 				PRODUCT_NAME = "Onion Apps";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		DE5BACC61D26BB08006C3C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E39D59576DF0F18E7DB9B84A /* Pods-Onion Apps.release.xcconfig */;
+			baseConfigurationReference = 56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Analytics/Sources",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleIPhoneUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleInterchangeUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleNetworkingUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleParsingUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
+				);
 				INFOPLIST_FILE = Wiesenlust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
 				PRODUCT_NAME = "Onion Apps";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/OnionApps-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

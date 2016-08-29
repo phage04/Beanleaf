@@ -18,7 +18,35 @@ public class Coupon{
     private var _terms: String!
     private var _special: Bool!
     private var _discountType: String!
+    private var _couponRef: String!
+    private var _couponUses: Int!
+    private var _location: Bool!
+
     
+    var location: Bool {
+        return _location
+    }
+    
+    var couponRef: String {
+        
+        if _couponRef == nil {
+            return ""
+        }
+        return _couponRef
+        
+    }
+    var couponUses: Int {
+        get {
+            if _couponUses == nil {
+                return 0
+            }
+            return _couponUses
+        }
+        set {
+            _couponUses = couponUses
+        }
+        
+    }
     
     var title: String {
         if _title == nil {
@@ -63,7 +91,10 @@ public class Coupon{
         return _discountType
     }
     
-    init(titleTxt: String, discountTxt: Int, validityTxt: String?, termsTxt: String?, discType: String, subtitle: String?) {
+    init(titleTxt: String, discountTxt: Int, validityTxt: String?, termsTxt: String?, discType: String, subtitle: String?, identifier: String, uses: Int, location: Bool) {
+        
+        self._couponRef = identifier
+        self._couponUses = uses
         
         self._title = titleTxt
         self._discount = discountTxt
@@ -82,9 +113,15 @@ public class Coupon{
         
         self._discountType = discType
         
+        self._location = location
         
         
         
+        
+    }
+    
+    func changeStatus(status: Bool) {
+    self._location = status
     }
     
     

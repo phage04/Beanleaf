@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r70-eN-5Bq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r70-eN-5Bq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -25,9 +25,6 @@
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="799"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="799"/>
-                                </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-kd-CtO">
                                 <rect key="frame" x="25" y="20" width="550" height="560"/>
@@ -42,6 +39,9 @@
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="25" y="0.0" width="300" height="240"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="25" y="0.0" width="300" height="440"/>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="225" y="0.0" width="300" height="440"/>
@@ -72,6 +72,9 @@
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="75" y="260" width="200" height="40"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="75" y="460" width="200" height="40"/>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="275" y="460" width="200" height="40"/>
@@ -297,6 +300,9 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="320" width="350" height="240"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="520" width="350" height="240"/>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="520" width="750" height="240"/>
                                         </variation>
@@ -476,6 +482,12 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="coupon" translatesAutoresizingMaskIntoConstraints="NO" id="KeJ-F4-HiE">
                                                     <rect key="frame" x="10" y="10" width="580" height="220"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="10" y="10" width="580" height="219"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="10" y="10" width="580" height="219"/>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rY-Pg-fIw">
                                                     <rect key="frame" x="20" y="192" width="445" height="21"/>
@@ -577,6 +589,9 @@
                                                             <exclude reference="fjg-QY-1TW"/>
                                                         </mask>
                                                     </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="180" y="130" width="200" height="21"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjN-pu-npK">
                                                     <rect key="frame" x="259" y="151" width="42" height="21"/>
@@ -603,6 +618,9 @@
                                                             <exclude reference="nte-uZ-22z"/>
                                                             <include reference="q68-up-8bh"/>
                                                         </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="180" y="151" width="200" height="21"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -653,8 +671,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-kx-GXl">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-kx-GXl">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -691,398 +709,909 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hnd-bq-1ZP">
-                                <rect key="frame" x="20" y="10" width="560" height="76"/>
+                                <rect key="frame" x="20" y="30" width="560" height="21"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-r9-9bs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-r9-9bs">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="OH7-IY-tHB"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="OH7-IY-tHB"/>
+                                            </mask>
+                                        </variation>
                                         <variation key="heightClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                         </variation>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="26" width="560" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="m7w-OZ-8h0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="PRESENT RECEIPT IN-STORE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="26" width="560" height="50"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="21"/>
                                         </variation>
-                                        <connections>
-                                            <action selector="addBtnPressed:" destination="NJz-j9-Ghq" eventType="touchUpInside" id="DOw-DP-eVv"/>
-                                        </connections>
-                                    </button>
+                                    </label>
                                 </subviews>
                                 <variation key="heightClass=regular" misplaced="YES">
                                     <rect key="frame" x="20" y="10" width="560" height="76"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="30" width="360" height="21"/>
+                                </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSV-tY-1C5">
-                                <rect key="frame" x="20" y="559" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="sSV-tY-1C5">
+                                <rect key="frame" x="20" y="540" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="zw8-UQ-XYw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-gJ-XxT">
-                                <rect key="frame" x="20" y="99" width="560" height="403"/>
+                                <rect key="frame" x="20" y="130" width="560" height="403"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="96"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="EWm-5K-kdI"/>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="75" id="EWm-5K-kdI"/>
+                                                            <constraint firstAttribute="width" constant="150" id="FjS-Jq-PjH"/>
+                                                            <constraint firstAttribute="height" constant="75" id="eO6-E6-WVj"/>
+                                                            <constraint firstAttribute="height" constant="75" id="mOt-px-vFJ"/>
                                                             <constraint firstAttribute="height" constant="60" id="odE-bu-Y7v"/>
-                                                            <constraint firstAttribute="width" constant="75" id="rIu-MX-qen"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="75" id="rIu-MX-qen"/>
+                                                            <constraint firstAttribute="height" constant="150" id="ryc-B1-mYV"/>
+                                                            <constraint firstAttribute="width" constant="75" id="td0-Hs-BHy"/>
                                                             <constraint firstAttribute="width" constant="60" id="wob-pX-kN9"/>
+                                                            <constraint firstAttribute="width" constant="75" id="xlW-xW-nn5"/>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="constraints">
+                                                                <exclude reference="EWm-5K-kdI"/>
+                                                                <exclude reference="FjS-Jq-PjH"/>
+                                                                <exclude reference="mOt-px-vFJ"/>
                                                                 <exclude reference="odE-bu-Y7v"/>
+                                                                <exclude reference="rIu-MX-qen"/>
+                                                                <exclude reference="ryc-B1-mYV"/>
+                                                                <exclude reference="td0-Hs-BHy"/>
                                                                 <exclude reference="wob-pX-kN9"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <exclude reference="eO6-E6-WVj"/>
+                                                                <include reference="mOt-px-vFJ"/>
+                                                                <include reference="td0-Hs-BHy"/>
+                                                                <exclude reference="xlW-xW-nn5"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <include reference="FjS-Jq-PjH"/>
+                                                                <exclude reference="eO6-E6-WVj"/>
+                                                                <include reference="ryc-B1-mYV"/>
+                                                                <exclude reference="xlW-xW-nn5"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="2DM-7Y-Y5W"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="2DM-7Y-Y5W"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="13"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="163"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="8Ov-CP-edy"/>
                                                             <constraint firstAttribute="width" constant="60" id="Fbw-eB-zRZ"/>
                                                             <constraint firstAttribute="height" constant="75" id="GyE-Ou-Kux"/>
+                                                            <constraint firstAttribute="height" constant="75" id="Hds-OI-Nah"/>
+                                                            <constraint firstAttribute="width" constant="75" id="J0h-s5-uif"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="LZc-QR-MRz"/>
                                                             <constraint firstAttribute="height" constant="60" id="QBQ-mm-uvv"/>
+                                                            <constraint firstAttribute="height" constant="150" id="s5j-lg-GfU"/>
                                                             <constraint firstAttribute="width" constant="75" id="x25-Ja-BnH"/>
+                                                            <constraint firstAttribute="width" constant="150" id="zLl-G2-0tg"/>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="constraints">
+                                                                <exclude reference="8Ov-CP-edy"/>
                                                                 <exclude reference="Fbw-eB-zRZ"/>
+                                                                <exclude reference="Hds-OI-Nah"/>
+                                                                <exclude reference="J0h-s5-uif"/>
+                                                                <exclude reference="LZc-QR-MRz"/>
                                                                 <exclude reference="QBQ-mm-uvv"/>
+                                                                <exclude reference="s5j-lg-GfU"/>
+                                                                <exclude reference="zLl-G2-0tg"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <exclude reference="GyE-Ou-Kux"/>
+                                                                <include reference="Hds-OI-Nah"/>
+                                                                <include reference="J0h-s5-uif"/>
+                                                                <exclude reference="x25-Ja-BnH"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <exclude reference="GyE-Ou-Kux"/>
+                                                                <include reference="s5j-lg-GfU"/>
+                                                                <exclude reference="x25-Ja-BnH"/>
+                                                                <include reference="zLl-G2-0tg"/>
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="KuR-AP-D89"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="KuR-AP-D89"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="13"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="90" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="143" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="305" y="0.0" width="150" height="163"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="C7F-SV-LAZ"/>
+                                                            <constraint firstAttribute="height" constant="75" id="K0r-GJ-F4d"/>
+                                                            <constraint firstAttribute="width" constant="75" id="UGq-Ib-fUT"/>
                                                             <constraint firstAttribute="height" constant="60" id="b49-mQ-AQr"/>
+                                                            <constraint firstAttribute="width" constant="150" id="bIl-ab-evL"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="bL4-l8-f9Y"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="c0l-6O-fv5"/>
                                                             <constraint firstAttribute="width" constant="75" id="cFp-Jx-FXS"/>
                                                             <constraint firstAttribute="width" constant="60" id="oIB-dk-cmW"/>
+                                                            <constraint firstAttribute="height" constant="150" id="wir-OP-6AY"/>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="constraints">
+                                                                <exclude reference="K0r-GJ-F4d"/>
+                                                                <exclude reference="UGq-Ib-fUT"/>
                                                                 <exclude reference="b49-mQ-AQr"/>
+                                                                <exclude reference="bIl-ab-evL"/>
+                                                                <exclude reference="bL4-l8-f9Y"/>
+                                                                <exclude reference="c0l-6O-fv5"/>
                                                                 <exclude reference="oIB-dk-cmW"/>
+                                                                <exclude reference="wir-OP-6AY"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <exclude reference="C7F-SV-LAZ"/>
+                                                                <include reference="K0r-GJ-F4d"/>
+                                                                <include reference="UGq-Ib-fUT"/>
+                                                                <exclude reference="cFp-Jx-FXS"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <mask key="constraints">
+                                                                <exclude reference="C7F-SV-LAZ"/>
+                                                                <include reference="bIl-ab-evL"/>
+                                                                <exclude reference="cFp-Jx-FXS"/>
+                                                                <include reference="wir-OP-6AY"/>
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="eUI-Vh-OrK"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="eUI-Vh-OrK"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="13"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="285" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="610" y="0.0" width="150" height="163"/>
                                                 </variation>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="81"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="96"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="760" height="163"/>
+                                        </variation>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
                                         <rect key="frame" x="0.0" y="103" width="560" height="96"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="MVt-ij-HzP"/>
                                                             <constraint firstAttribute="width" constant="75" id="cvs-Ot-gOn"/>
                                                             <constraint firstAttribute="height" constant="75" id="iqb-N0-ldd"/>
+                                                            <constraint firstAttribute="width" constant="150" id="jue-sr-m6b"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="MVt-ij-HzP"/>
+                                                                <exclude reference="jue-sr-m6b"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <include reference="MVt-ij-HzP"/>
+                                                                <exclude reference="cvs-Ot-gOn"/>
+                                                                <exclude reference="iqb-N0-ldd"/>
+                                                                <include reference="jue-sr-m6b"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="fNS-Gw-6Pe"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="fNS-Gw-6Pe"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="NAi-2k-7hQ"/>
+                                                            <constraint firstAttribute="width" constant="150" id="gKr-II-gaX"/>
+                                                            <constraint firstAttribute="height" constant="150" id="i0i-Az-ec7"/>
                                                             <constraint firstAttribute="height" constant="75" id="jae-Q3-FNP"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="gKr-II-gaX"/>
+                                                                <exclude reference="i0i-Az-ec7"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="NAi-2k-7hQ"/>
+                                                                <include reference="gKr-II-gaX"/>
+                                                                <include reference="i0i-Az-ec7"/>
+                                                                <exclude reference="jae-Q3-FNP"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="ry8-Cs-NGm"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="ry8-Cs-NGm"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="90" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="143" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="305" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="WFq-pj-5Do"/>
+                                                            <constraint firstAttribute="width" constant="150" id="YmY-L3-taD"/>
                                                             <constraint firstAttribute="height" constant="75" id="Z4c-CF-32m"/>
+                                                            <constraint firstAttribute="height" constant="150" id="syM-mS-fX1"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="YmY-L3-taD"/>
+                                                                <exclude reference="syM-mS-fX1"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="WFq-pj-5Do"/>
+                                                                <include reference="YmY-L3-taD"/>
+                                                                <exclude reference="Z4c-CF-32m"/>
+                                                                <include reference="syM-mS-fX1"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="0pP-bE-NTb"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="0pP-bE-NTb"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="285" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="610" y="0.0" width="150" height="171"/>
                                                 </variation>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="86" width="240" height="81"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="103" width="360" height="96"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="170" width="760" height="171"/>
+                                        </variation>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
                                         <rect key="frame" x="0.0" y="205" width="560" height="96"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="1Jq-YI-0kT"/>
+                                                            <constraint firstAttribute="height" constant="150" id="1RA-dt-IAt"/>
                                                             <constraint firstAttribute="width" constant="75" id="TpK-HN-ia1"/>
+                                                            <constraint firstAttribute="width" constant="150" id="u4m-7E-qQ6"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="1RA-dt-IAt"/>
+                                                                <exclude reference="u4m-7E-qQ6"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="1Jq-YI-0kT"/>
+                                                                <include reference="1RA-dt-IAt"/>
+                                                                <exclude reference="TpK-HN-ia1"/>
+                                                                <include reference="u4m-7E-qQ6"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="OyR-ag-WjH"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="OyR-ag-WjH"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="ELU-nI-0sL"/>
                                                             <constraint firstAttribute="height" constant="75" id="OSe-KB-Csk"/>
                                                             <constraint firstAttribute="width" constant="75" id="bEM-WI-Pf7"/>
+                                                            <constraint firstAttribute="width" constant="150" id="dOu-f2-Ifh"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="ELU-nI-0sL"/>
+                                                                <exclude reference="dOu-f2-Ifh"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <include reference="ELU-nI-0sL"/>
+                                                                <exclude reference="OSe-KB-Csk"/>
+                                                                <exclude reference="bEM-WI-Pf7"/>
+                                                                <include reference="dOu-f2-Ifh"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="XNc-As-ExO"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="XNc-As-ExO"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="90" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="143" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="305" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="3l9-v4-q04"/>
+                                                            <constraint firstAttribute="height" constant="150" id="J15-CR-At2"/>
+                                                            <constraint firstAttribute="width" constant="150" id="Oh9-Y0-RpL"/>
                                                             <constraint firstAttribute="height" constant="75" id="oSS-s6-99Z"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="J15-CR-At2"/>
+                                                                <exclude reference="Oh9-Y0-RpL"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="3l9-v4-q04"/>
+                                                                <include reference="J15-CR-At2"/>
+                                                                <include reference="Oh9-Y0-RpL"/>
+                                                                <exclude reference="oSS-s6-99Z"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="7Rr-rP-hOb"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="7Rr-rP-hOb"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="180" y="0.0" width="60" height="81"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="285" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="610" y="0.0" width="150" height="171"/>
                                                 </variation>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="171" width="240" height="81"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="205" width="360" height="96"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="347" width="760" height="171"/>
+                                        </variation>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
                                         <rect key="frame" x="0.0" y="308" width="560" height="96"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="KGy-JA-tMO"/>
                                                             <constraint firstAttribute="height" constant="75" id="ZBI-5C-feP"/>
+                                                            <constraint firstAttribute="width" constant="150" id="qe0-ud-mu1"/>
+                                                            <constraint firstAttribute="height" constant="150" id="s8M-Mq-nQ7"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="qe0-ud-mu1"/>
+                                                                <exclude reference="s8M-Mq-nQ7"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="KGy-JA-tMO"/>
+                                                                <exclude reference="ZBI-5C-feP"/>
+                                                                <include reference="qe0-ud-mu1"/>
+                                                                <include reference="s8M-Mq-nQ7"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="dKd-YY-Pfb"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="dKd-YY-Pfb"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
                                                 <rect key="frame" x="243" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="150" id="KvW-3h-7LK"/>
+                                                            <constraint firstAttribute="height" constant="150" id="bpF-2R-pqj"/>
                                                             <constraint firstAttribute="width" constant="75" id="f5m-pj-B4R"/>
                                                             <constraint firstAttribute="height" constant="75" id="qsF-MY-H70"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="KvW-3h-7LK"/>
+                                                                <exclude reference="bpF-2R-pqj"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <include reference="KvW-3h-7LK"/>
+                                                                <include reference="bpF-2R-pqj"/>
+                                                                <exclude reference="f5m-pj-B4R"/>
+                                                                <exclude reference="qsF-MY-H70"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="g4L-9d-Iik"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="g4L-9d-Iik"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="90" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="143" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="305" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
                                                 <rect key="frame" x="485" y="0.0" width="75" height="96"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="0OK-jP-aeJ"/>
+                                                            <constraint firstAttribute="height" constant="150" id="4pL-cG-KOf"/>
+                                                            <constraint firstAttribute="width" constant="150" id="SBw-1Y-gLt"/>
                                                             <constraint firstAttribute="height" constant="75" id="asv-HC-87H"/>
                                                         </constraints>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="4pL-cG-KOf"/>
+                                                                <exclude reference="SBw-1Y-gLt"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <mask key="constraints">
+                                                                <exclude reference="0OK-jP-aeJ"/>
+                                                                <include reference="4pL-cG-KOf"/>
+                                                                <include reference="SBw-1Y-gLt"/>
+                                                                <exclude reference="asv-HC-87H"/>
+                                                            </mask>
+                                                        </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="XE6-t3-D25"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="XE6-t3-D25"/>
+                                                            </mask>
+                                                        </variation>
                                                         <variation key="heightClass=regular" misplaced="YES">
                                                             <rect key="frame" x="0.0" y="60" width="60" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="75" width="75" height="21"/>
+                                                        </variation>
+                                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="150" width="150" height="21"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="180" y="0.0" width="60" height="81"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="285" y="0.0" width="75" height="96"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                                    <rect key="frame" x="610" y="0.0" width="150" height="171"/>
+                                                </variation>
                                             </stackView>
                                         </subviews>
                                         <variation key="heightClass=regular" misplaced="YES">
                                             <rect key="frame" x="0.0" y="257" width="240" height="81"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="308" width="360" height="96"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="525" width="760" height="171"/>
                                         </variation>
                                     </stackView>
                                 </subviews>
@@ -1097,26 +1626,64 @@
                                 <variation key="heightClass=regular" misplaced="YES">
                                     <rect key="frame" x="190" y="276" width="240" height="337"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="241" width="360" height="403"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="20" y="241" width="760" height="695"/>
+                                </variation>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                <rect key="frame" x="20" y="10" width="560" height="570"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m7w-OZ-8h0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="m7w-OZ-8h0"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="26" width="560" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="addBtnPressed:" destination="NJz-j9-Ghq" eventType="touchUpInside" id="DOw-DP-eVv"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D9u-63-qpw">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="centerY" secondItem="SXc-bY-4Km" secondAttribute="centerY" id="1fm-i4-okb"/>
                             <constraint firstItem="sSV-tY-1C5" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="2ra-ld-j9W"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="4oN-DX-xQk"/>
+                            <constraint firstItem="Yo6-gF-zxx" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="4pH-ac-JNO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NTY-gJ-XxT" secondAttribute="trailing" id="DJY-PN-xKb"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="firstBaseline" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="10" id="DPx-zn-hkw"/>
+                            <constraint firstItem="D9u-63-qpw" firstAttribute="centerY" secondItem="SXc-bY-4Km" secondAttribute="centerY" id="EFL-EH-koq"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" constant="20" id="FLv-r9-8Th"/>
+                            <constraint firstItem="sSV-tY-1C5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NTY-gJ-XxT" secondAttribute="bottom" constant="5" id="Fvx-Mh-HkP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sSV-tY-1C5" secondAttribute="trailing" id="HA2-bd-0sw"/>
                             <constraint firstItem="sSV-tY-1C5" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="PvI-e8-ThN"/>
+                            <constraint firstItem="D9u-63-qpw" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="Q7I-uO-teC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hnd-bq-1ZP" secondAttribute="trailing" id="Qmz-g4-Wub"/>
-                            <constraint firstItem="Xll-fc-wys" firstAttribute="top" secondItem="sSV-tY-1C5" secondAttribute="bottom" constant="20" id="SqF-Sv-GCk"/>
+                            <constraint firstItem="Xll-fc-wys" firstAttribute="top" secondItem="sSV-tY-1C5" secondAttribute="bottom" constant="10" id="SqF-Sv-GCk"/>
                             <constraint firstItem="Hnd-bq-1ZP" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="UUx-I8-dXL"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="top" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="20" id="VLC-5s-2vX"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="top" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="20" id="XGx-af-vxT"/>
+                            <constraint firstItem="NTY-gJ-XxT" firstAttribute="top" secondItem="Hnd-bq-1ZP" secondAttribute="bottom" constant="10" id="br4-Xm-ali"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NTY-gJ-XxT" secondAttribute="trailing" constant="150" id="gKO-ni-huR"/>
+                            <constraint firstItem="Yo6-gF-zxx" firstAttribute="top" secondItem="SXc-bY-4Km" secondAttribute="topMargin" constant="10" id="iRJ-iK-SxM"/>
+                            <constraint firstItem="Xll-fc-wys" firstAttribute="top" secondItem="Yo6-gF-zxx" secondAttribute="bottom" constant="20" id="jO0-yR-oMK"/>
                             <constraint firstItem="TT8-r9-9bs" firstAttribute="centerX" secondItem="SXc-bY-4Km" secondAttribute="centerX" id="jdK-Of-jJ0"/>
                             <constraint firstItem="sSV-tY-1C5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NTY-gJ-XxT" secondAttribute="bottom" constant="10" id="kDJ-gD-0IM"/>
+                            <constraint firstItem="Yo6-gF-zxx" firstAttribute="trailing" secondItem="SXc-bY-4Km" secondAttribute="trailingMargin" id="lAB-B5-LSO"/>
                             <constraint firstItem="Hnd-bq-1ZP" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="meP-zg-9AM"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="q7U-Ke-e1f"/>
                             <constraint firstItem="NTY-gJ-XxT" firstAttribute="leading" secondItem="SXc-bY-4Km" secondAttribute="leadingMargin" id="qco-8s-CNu"/>
@@ -1126,6 +1693,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1fm-i4-okb"/>
+                                <exclude reference="4oN-DX-xQk"/>
+                                <exclude reference="DPx-zn-hkw"/>
                                 <exclude reference="FLv-r9-8Th"/>
                                 <exclude reference="VLC-5s-2vX"/>
                                 <exclude reference="XGx-af-vxT"/>
@@ -1138,6 +1707,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rewards" id="BmT-Fl-SMO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="D9u-63-qpw" id="BXd-HE-DPl"/>
                         <outlet property="addBtn" destination="Yo6-gF-zxx" id="PWA-98-lwA"/>
                         <outlet property="bottomLbl" destination="sSV-tY-1C5" id="alf-ch-x7i"/>
                         <outlet property="gift1" destination="Rmb-Qo-bAH" id="yay-f3-GUA"/>
@@ -1197,6 +1767,12 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2FR-XQ-KBc">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="219.5"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                                                    </variation>
                                                 </imageView>
                                                 <view alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFz-XT-7aU">
                                                     <rect key="frame" x="0.0" y="0.5" width="600" height="220"/>
@@ -1208,6 +1784,12 @@
                                                         <mask key="constraints">
                                                             <exclude reference="YGw-zT-qMZ"/>
                                                         </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.5" width="600" height="248.5"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.5" width="600" height="248.5"/>
                                                     </variation>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-C8-Np8">
@@ -1240,6 +1822,9 @@
                                                             <variation key="widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                             </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="35" width="45" height="21"/>
+                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                             </variation>
@@ -1249,6 +1834,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
@@ -1261,6 +1849,12 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="Roj-wL-7j3"/>
                                                     </constraints>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="189" width="600" height="60"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="189" width="600" height="60"/>
+                                                    </variation>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-jh-h3f">
                                                     <rect key="frame" x="13" y="207" width="42" height="21"/>
@@ -1275,12 +1869,24 @@
                                                         <constraint firstAttribute="width" constant="80" id="8di-tz-dQ3"/>
                                                         <constraint firstAttribute="height" constant="80" id="sul-Ie-tHX"/>
                                                     </constraints>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="484" y="179" width="80" height="80"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="484" y="179" width="80" height="80"/>
+                                                    </variation>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNz-qP-pjv">
                                                     <rect key="frame" x="503" y="206" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="484" y="179" width="80" height="80"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                        <rect key="frame" x="484" y="179" width="80" height="80"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1427,6 +2033,9 @@
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                     </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="35" width="45" height="21"/>
+                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="35" width="45" height="21"/>
                                                     </variation>
@@ -1436,6 +2045,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
                                             </variation>
                                             <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="56"/>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
@@ -1514,6 +2126,9 @@
                                                             <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="368" height="92"/>
                                                             </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="368" height="92"/>
+                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="92"/>
                                                             </variation>
@@ -1526,14 +2141,14 @@
                                                             <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="92" width="368" height="21"/>
                                                             </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="92" width="368" height="21"/>
+                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="92" width="768" height="21"/>
                                                             </variation>
                                                         </label>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                                        <rect key="frame" x="16" y="28" width="768" height="112"/>
-                                                    </variation>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -1609,9 +2224,6 @@
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="799"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="799"/>
-                                </variation>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ai-zp-feu">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
@@ -1640,6 +2252,12 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="50" y="10" width="314" height="21"/>
+                                                            </variation>
+                                                            <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                                <rect key="frame" x="50" y="10" width="714" height="21"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
@@ -1727,6 +2345,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="21"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="760" height="21"/>
+                                        </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VuI-kP-4h7">
                                         <rect key="frame" x="0.0" y="39" width="560" height="216"/>
@@ -1803,6 +2427,12 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="39" width="360" height="216"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="39" width="760" height="216"/>
+                                        </variation>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="273" width="560" height="50"/>
@@ -1812,6 +2442,12 @@
                                         <state key="normal" title="SEND REQUEST">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="273" width="360" height="50"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="273" width="760" height="50"/>
+                                        </variation>
                                         <connections>
                                             <action selector="sendBtnPressed:" destination="leS-uA-puM" eventType="touchUpInside" id="Xyt-AW-Gto"/>
                                         </connections>
@@ -1821,6 +2457,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="341" width="360" height="21"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="341" width="760" height="21"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -1838,6 +2480,12 @@
                                     <mask key="constraints">
                                         <exclude reference="5SD-0R-siM"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="40" width="360" height="361"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="20" y="40" width="760" height="361"/>
                                 </variation>
                             </stackView>
                         </subviews>
@@ -1905,12 +2553,15 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vtc-9w-rr1">
-                                <rect key="frame" x="0.0" y="44" width="600" height="250"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vtc-9w-rr1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="rkl-iA-8Bi"/>
                                 </constraints>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-2J-Swn">
+                                <rect key="frame" x="282" y="170.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-hB-jpd">
                                 <rect key="frame" x="0.0" y="294" width="600" height="242"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2002,7 +2653,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vtc-9w-rr1" secondAttribute="trailing" constant="-20" id="L4F-cv-EOd"/>
                             <constraint firstItem="2ZN-dn-pfc" firstAttribute="leading" secondItem="hBM-D8-Kd7" secondAttribute="leadingMargin" constant="-20" id="NYN-th-YXs"/>
                             <constraint firstItem="2ZN-dn-pfc" firstAttribute="top" secondItem="CSU-H9-xaE" secondAttribute="bottom" id="ROp-fL-ipj"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerY" secondItem="vtc-9w-rr1" secondAttribute="centerY" id="U3r-Tv-z8E"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerY" secondItem="hBM-D8-Kd7" secondAttribute="centerY" id="dzj-jy-8VH"/>
                             <constraint firstItem="k5O-hB-jpd" firstAttribute="top" secondItem="2ZN-dn-pfc" secondAttribute="bottom" id="eq0-Nh-rGi"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerX" secondItem="hBM-D8-Kd7" secondAttribute="centerX" id="fxL-Yj-h7u"/>
+                            <constraint firstItem="kBa-2J-Swn" firstAttribute="centerX" secondItem="vtc-9w-rr1" secondAttribute="centerX" id="inm-nU-ToN"/>
                             <constraint firstAttribute="bottomMargin" secondItem="k5O-hB-jpd" secondAttribute="bottom" id="j4v-4a-gNh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="k5O-hB-jpd" secondAttribute="trailing" constant="-20" id="lbl-WA-Bei"/>
                             <constraint firstItem="eiL-2z-7R9" firstAttribute="top" secondItem="k5O-hB-jpd" secondAttribute="bottom" id="mxn-yL-SLb"/>
@@ -2013,12 +2668,15 @@
                                 <exclude reference="3b0-3t-2ZA"/>
                                 <exclude reference="Jmk-bf-aub"/>
                                 <exclude reference="eq0-Nh-rGi"/>
+                                <exclude reference="dzj-jy-8VH"/>
+                                <exclude reference="fxL-Yj-h7u"/>
                                 <exclude reference="mxn-yL-SLb"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Locations" id="0c9-di-jHy"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="kBa-2J-Swn" id="8qt-ml-Y74"/>
                         <outlet property="mapView" destination="vtc-9w-rr1" id="rhG-yg-iZg"/>
                         <outlet property="searchBar" destination="2ZN-dn-pfc" id="dge-gg-OF3"/>
                         <outlet property="tableView" destination="k5O-hB-jpd" id="ZeN-8N-H4S"/>
@@ -2057,7 +2715,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2065,7 +2723,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>
@@ -2161,13 +2819,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSl-5G-diZ"/>
+        <segue reference="MP2-ps-yw4"/>
         <segue reference="Tu6-Hc-ynB"/>
         <segue reference="fTn-n1-Yeg"/>
         <segue reference="PzC-CE-oEv"/>
-        <segue reference="MP2-ps-yw4"/>
+        <segue reference="ByJ-5X-vFK"/>
         <segue reference="oPm-o0-noY"/>
         <segue reference="F9w-Lg-DGK"/>
-        <segue reference="ByJ-5X-vFK"/>
+        <segue reference="lSl-5G-diZ"/>
     </inferredMetricsTieBreakers>
 </document>

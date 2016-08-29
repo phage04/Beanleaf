@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="Category" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,9 +7,12 @@
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Coupons" syncable="YES">
+        <attribute name="couponRef" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="couponUses" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="descriptionInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="discount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="discountType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="terms" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="validity" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +29,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Coupons" positionX="-54" positionY="54" width="128" height="135"/>
+        <element name="Coupons" positionX="-54" positionY="54" width="128" height="180"/>
         <element name="FoodItem" positionX="-63" positionY="9" width="128" height="165"/>
     </elements>
 </model>

@@ -287,7 +287,7 @@ extension Request {
             }
 
             do {
-                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options) 
+                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 return .Success(JSON)
             } catch {
                 return .Failure(error as NSError)
