@@ -159,7 +159,8 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
             let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
             
             
-            if let ref = self.dish.postRef as? String {
+            if let _ = self.dish {
+                let ref = self.dish.postRef
                 DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
                     { snapshot in
                         

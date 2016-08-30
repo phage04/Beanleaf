@@ -117,7 +117,8 @@ class CategoryCell: UITableViewCell {
        let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
         
         
-        if let ref = self.post.postRef as? String {
+        if let _ = self.post {
+            let ref = self.post.postRef
             DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
                 { snapshot in
                     
