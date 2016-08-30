@@ -525,7 +525,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         }
         actionSheetControllerIOS8.addAction(cancelActionButton)
         
-        let saveActionButton: UIAlertAction = UIAlertAction(title: "Add One Stamp", style: .Default)
+        let saveActionNotifyButton: UIAlertAction = UIAlertAction(title: "Add Stamp & Ask Review", style: .Default)
         { action -> Void in
             self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
             
@@ -557,7 +557,26 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             
             
         }
-        actionSheetControllerIOS8.addAction(saveActionButton)
+        actionSheetControllerIOS8.addAction(saveActionNotifyButton)
+        
+        let saveActionNoNotifyButton: UIAlertAction = UIAlertAction(title: "Add Stamp & No Review", style: .Default)
+        { action -> Void in
+            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
+            
+            if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+            } else if self.numberOfStamps > 12 {
+                self.numberOfStamps = 1
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                self.numberOfClaims = 0
+                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+            }
+            
+            self.updateStamps(self.numberOfStamps)
+            
+            
+        }
+        actionSheetControllerIOS8.addAction(saveActionNoNotifyButton)
         
 //        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Subtract One Stamp", style: .Default)
 //        { action -> Void in
