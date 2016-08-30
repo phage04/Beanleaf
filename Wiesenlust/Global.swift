@@ -85,7 +85,7 @@ let DATE_FORMAT2 = "MMMM dd, yyyy (EEE) h:mma"
 
 //MAILGUN
 let mailGunKey = "key-5b34852ee5f4c8467b150056b0b5ca1e"
-let mailGunURL = "sandboxab276373903c49c78f3c2c0eacc612e6.mailgun.org"
+let mailGunURL = "onionapps.com"
 let mailGunOwnerEmail = "jover.lyle@gmail.com"
 
 //CONTENTFUL

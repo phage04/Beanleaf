@@ -161,7 +161,7 @@ class Reservations: UIViewController{
                 
                 let parameters = [
                     "Authorization" : "api:\(key)",
-                    "from": "mailgun@\(mailGunURL)",
+                    "from": "info@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
                     "subject": "Reservation Request: \(NSDate())",
                     "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"

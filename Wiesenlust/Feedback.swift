@@ -84,7 +84,7 @@ class Feedback: UIViewController, UITextViewDelegate {
                 
                 let parameters = [
                     "Authorization" : "api:\(key)",
-                    "from": "mailgun@\(mailGunURL)",
+                    "from": "info@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
                     "subject": "Customer Feedback: \(NSDate())",
                     "text": "\(Message)"
