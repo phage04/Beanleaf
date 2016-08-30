@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BAE662408C35C6B1B008A242 /* Pods_Onion_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */; };
+		DE19AD721D75A695009BDA27 /* ButtonStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19AD711D75A695009BDA27 /* ButtonStandard.swift */; };
 		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
 		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
 		DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */; };
@@ -51,6 +52,7 @@
 		56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.release.xcconfig"; sourceTree = "<group>"; };
 		AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onion_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.debug.xcconfig"; sourceTree = "<group>"; };
+		DE19AD711D75A695009BDA27 /* ButtonStandard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStandard.swift; sourceTree = "<group>"; };
 		DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
 		DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
 		DE27E5E21D2C0EF9005780BE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				DEBC25441D3563A700997EB1 /* LabelRewards.swift */,
 				DEBC25461D35659700997EB1 /* ImageStarStamp.swift */,
 				DEBC25481D35679F00997EB1 /* ButtonRewards.swift */,
+				DE19AD711D75A695009BDA27 /* ButtonStandard.swift */,
 				DEBC254E1D356D1100997EB1 /* ButtonAnimate.swift */,
 				DED309C91D3D1FCA00B26728 /* TextFieldFeedback.swift */,
 				DEF3063E1D38F644004682EE /* LocationsCell.swift */,
@@ -363,6 +366,7 @@
 				DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */,
 				DE27E5E51D2C0F3F005780BE /* CategoryView.swift in Sources */,
 				DE27E5E71D2D36C4005780BE /* ItemView.swift in Sources */,
+				DE19AD721D75A695009BDA27 /* ButtonStandard.swift in Sources */,
 				DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */,
 				DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */,
 				DEBC25511D369F0500997EB1 /* Reservations.swift in Sources */,

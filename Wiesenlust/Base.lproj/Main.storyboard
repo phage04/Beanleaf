@@ -2434,7 +2434,7 @@
                                             <rect key="frame" x="0.0" y="39" width="760" height="216"/>
                                         </variation>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="273" width="560" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YpD-xz-yzD"/>
@@ -2751,7 +2751,7 @@
                                             </mask>
                                         </variation>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-N3-QRE" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-N3-QRE" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="490" width="560" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="BBz-xW-woS"/>
@@ -2819,13 +2819,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MP2-ps-yw4"/>
-        <segue reference="Tu6-Hc-ynB"/>
-        <segue reference="fTn-n1-Yeg"/>
-        <segue reference="PzC-CE-oEv"/>
-        <segue reference="ByJ-5X-vFK"/>
-        <segue reference="oPm-o0-noY"/>
         <segue reference="F9w-Lg-DGK"/>
+        <segue reference="uc4-ff-jb2"/>
+        <segue reference="ByJ-5X-vFK"/>
+        <segue reference="PzC-CE-oEv"/>
         <segue reference="lSl-5G-diZ"/>
+        <segue reference="oPm-o0-noY"/>
+        <segue reference="fTn-n1-Yeg"/>
+        <segue reference="MP2-ps-yw4"/>
     </inferredMetricsTieBreakers>
 </document>
