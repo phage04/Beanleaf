@@ -72,6 +72,9 @@ public class FoodItem {
     
     var img: NSData {
         get {
+            if _img == nil {
+                return UIImagePNGRepresentation(UIImage(named: "NoImage")!)!
+            }
             return _img
         }
         set {
