@@ -53,6 +53,8 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     var long: Double = 0.0
     var claimValid = false
     var firstLoad = true
+    let maxRewards = 6
+    let maxStamps = 12
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,7 +173,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     func updateClaim(){
  
         switch numberOfClaims {
-        case 1:
+        case maxRewards-5:
             if numberOfStamps >= 1 {
           
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion: { (result) in
@@ -188,7 +190,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
  
-        case 2:
+        case maxRewards-4:
             if numberOfStamps >= 3 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
@@ -204,7 +206,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
 
-        case 3:
+        case maxRewards-3:
             if numberOfStamps >= 6 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
@@ -222,7 +224,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             }
 
             
-        case 4:
+        case maxRewards-2:
             if numberOfStamps >= 8 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
@@ -240,7 +242,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
 
-        case 5:
+        case maxRewards-1:
             if numberOfStamps >= 10 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
@@ -259,7 +261,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
 
-        case 6:
+        case maxRewards:
             if numberOfStamps >= 12 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
@@ -290,7 +292,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     func updateStamps(numberStamps: Int) {
         
         switch(numberOfStamps){
-        case 0:
+        case maxStamps-12:
             star1.tintColor = UIColor.grayColor()
             star2.tintColor = UIColor.grayColor()
             star3.tintColor = UIColor.grayColor()
@@ -305,7 +307,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 1:
+        case maxStamps-11:
             star1.tintColor = COLOR2
             star2.tintColor = UIColor.grayColor()
             star3.tintColor = UIColor.grayColor()
@@ -320,7 +322,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 2:
+        case maxStamps-10:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = UIColor.grayColor()
@@ -335,7 +337,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 3:
+        case maxStamps-9:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -350,7 +352,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 4:
+        case maxStamps-8:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -365,7 +367,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 5:
+        case maxStamps-7:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -380,7 +382,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 6:
+        case maxStamps-6:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -395,7 +397,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 7:
+        case maxStamps-5:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -410,7 +412,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 8:
+        case maxStamps-4:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -425,7 +427,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 9:
+        case maxStamps-3:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -440,7 +442,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 10:
+        case maxStamps-2:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -455,7 +457,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 11:
+        case maxStamps-1:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -470,7 +472,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             star12.tintColor = UIColor.grayColor()
             break
             
-        case 12:
+        case maxStamps:
             star1.tintColor = COLOR2
             star2.tintColor = COLOR2
             star3.tintColor = COLOR2
@@ -557,7 +559,11 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             
             
         }
-        actionSheetControllerIOS8.addAction(saveActionNotifyButton)
+        
+        if !(numberOfStamps == maxStamps && numberOfClaims < maxRewards) {
+            actionSheetControllerIOS8.addAction(saveActionNotifyButton)
+        }
+        
         
         let saveActionNoNotifyButton: UIAlertAction = UIAlertAction(title: "Add Stamp & No Review", style: .Default)
         { action -> Void in
@@ -576,7 +582,10 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             
             
         }
-        actionSheetControllerIOS8.addAction(saveActionNoNotifyButton)
+         if !(numberOfStamps == maxStamps && numberOfClaims < maxRewards) {
+            actionSheetControllerIOS8.addAction(saveActionNoNotifyButton)
+         }
+        
         
 //        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Subtract One Stamp", style: .Default)
 //        { action -> Void in
@@ -600,7 +609,11 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             self.updateClaim()
             
         }
-        actionSheetControllerIOS8.addAction(claimActionButton)
+        
+        if numberOfClaims < maxRewards {
+          actionSheetControllerIOS8.addAction(claimActionButton)
+        }
+        
         
         let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .Default)
         { action -> Void in
@@ -665,11 +678,16 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 field.resignFirstResponder()
                 self.activityIndicator.hidden = false
                 self.activityIndicator.startAnimating()
+                self.addBtn.userInteractionEnabled = false
+                self.addBtn.enabled = false
+                
                 if field.text == "\(managerPin!)" {
                     
                     self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
                         self.activityIndicator.hidden = true
                         self.activityIndicator.stopAnimating()
+                        self.addBtn.userInteractionEnabled = true
+                        self.addBtn.enabled = true
                         if result {
                             
                             if let _ = self.long as Double?, _ = self.lat as Double? {
