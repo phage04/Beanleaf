@@ -134,8 +134,13 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
       
             DataService.ds.REF_REWARDCLAIMS.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(refLvl)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss xxxx"
+                dateFormatter.timeZone = NSTimeZone(name: "GMT+8")
+                let dateString = dateFormatter.stringFromDate(NSDate())
+                
                 if snapshot.value is NSNull && self.numberOfClaims > 0 {
-                    DataService.ds.REF_REWARDCLAIMS.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(refLvl)/\(NSDate())/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(refLvl)/\(NSDate())/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
+                    DataService.ds.REF_REWARDCLAIMS.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(refLvl)/\(dateString)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(refLvl)/\(dateString)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
                         
                         if error == nil {
                             completion(result: true)
@@ -571,14 +576,22 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             
             if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
                 NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                self.updateStamps(self.numberOfStamps)
             } else if self.numberOfStamps > 12 {
-                self.numberOfStamps = 1
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-                self.numberOfClaims = 0
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+                self.resetFirebase({ (result) in
+                    if result {
+                        self.numberOfStamps = 1
+                        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                        self.numberOfClaims = 0
+                        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+                        self.updateStamps(self.numberOfStamps)
+                        self.updateStamps(self.numberOfStamps)
+                    } else {
+                        self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+                    }
+                })
+                
             }
-            
-            self.updateStamps(self.numberOfStamps)
             
             
         }
@@ -618,14 +631,23 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .Default)
         { action -> Void in
             
-                self.numberOfClaims = 0
+            self.resetFirebase({ (result) in
                 
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
-                self.numberOfStamps = 0
-                
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-                
-                self.updateStamps(self.numberOfStamps)
+                if result {
+                    self.numberOfClaims = 0
+                    
+                    NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+                    self.numberOfStamps = 0
+                    
+                    NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                    
+                    
+                    
+                    self.updateStamps(self.numberOfStamps)
+                } else {
+                    self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+                }
+            })
 
 
         }
@@ -635,6 +657,19 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
         self.presentViewController(actionSheetControllerIOS8, animated: true, completion: nil)
 
+    }
+    
+    func resetFirebase(completion: (result: Bool) -> Void){
+        DataService.ds.REF_REWARDCLAIMS.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)").removeValueWithCompletionBlock({ (error, FIRDatabaseReference) in
+            
+            if error == nil {
+                completion(result: true)
+            } else {
+                self.removeClaims()
+                completion(result: false)
+            }
+        })
+        
     }
     
     func checkIfWithinVicinity(distance: Int, completion: (result: Bool) -> Void) {
