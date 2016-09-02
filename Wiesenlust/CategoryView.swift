@@ -58,6 +58,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? CategoryCell {
+            cell.layer.anchorPointZ = CGFloat(indexPath.row)
             cell.contentView.clipsToBounds = false
             cell.clipsToBounds = false
             cell.selectionStyle = .None
