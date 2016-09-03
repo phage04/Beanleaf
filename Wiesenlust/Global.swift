@@ -73,7 +73,7 @@ let menuLblText6 = "Feedback"
 
 let socialURLApp = "yelp4:///biz/wiesenlust-frankfurt-am-main"
 let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
-let socialButtonTitle = "VISIT US ON YELP!"
+let socialButtonTitle = "WRITE US A REVIEW"
 
 let LoadingMsgTapToExit = "Tap anytime to exit"
 let LoadingMsgGlobal = "Downloading updates..."
