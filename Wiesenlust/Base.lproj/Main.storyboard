@@ -623,6 +623,13 @@
                                                         <rect key="frame" x="180" y="151" width="200" height="21"/>
                                                     </variation>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-qx-7Ah">
+                                                    <rect key="frame" x="180" y="51" width="200" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="UMX-qV-Se1"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="128" id="wF5-tT-jhJ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -633,7 +640,9 @@
                                                 <constraint firstItem="VdS-kZ-gT0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3rY-Pg-fIw" secondAttribute="trailing" constant="5" id="9u1-di-p4n"/>
                                                 <constraint firstItem="VdS-kZ-gT0" firstAttribute="top" secondItem="XYC-Tx-14k" secondAttribute="topMargin" constant="20" id="FfQ-mN-h72"/>
                                                 <constraint firstItem="RjN-pu-npK" firstAttribute="centerX" secondItem="5a6-w0-eFD" secondAttribute="centerX" id="GDc-Qm-M05"/>
+                                                <constraint firstItem="5a6-w0-eFD" firstAttribute="centerX" secondItem="QSW-qx-7Ah" secondAttribute="centerX" id="GhF-CP-2gI"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3rY-Pg-fIw" secondAttribute="bottom" constant="7.5" id="HiD-Sn-a2l"/>
+                                                <constraint firstItem="QSW-qx-7Ah" firstAttribute="centerY" secondItem="XYC-Tx-14k" secondAttribute="centerY" id="LqD-7r-oKy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VdS-kZ-gT0" secondAttribute="trailing" id="R2C-u3-VpQ"/>
                                                 <constraint firstItem="3rY-Pg-fIw" firstAttribute="leading" secondItem="XYC-Tx-14k" secondAttribute="leadingMargin" constant="12" id="R8P-j1-vwG"/>
                                                 <constraint firstAttribute="trailing" secondItem="KeJ-F4-HiE" secondAttribute="trailing" constant="10" id="Ycl-iR-zMg"/>
@@ -2715,7 +2724,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2723,7 +2732,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>
@@ -2819,13 +2828,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MP2-ps-yw4"/>
+        <segue reference="Tu6-Hc-ynB"/>
+        <segue reference="fTn-n1-Yeg"/>
+        <segue reference="oPm-o0-noY"/>
         <segue reference="F9w-Lg-DGK"/>
-        <segue reference="uc4-ff-jb2"/>
+        <segue reference="lSl-5G-diZ"/>
         <segue reference="ByJ-5X-vFK"/>
         <segue reference="PzC-CE-oEv"/>
-        <segue reference="lSl-5G-diZ"/>
-        <segue reference="oPm-o0-noY"/>
-        <segue reference="fTn-n1-Yeg"/>
-        <segue reference="MP2-ps-yw4"/>
     </inferredMetricsTieBreakers>
 </document>
