@@ -522,7 +522,50 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
+    func addStamp(){
+        
+        if let _ = self.long as Double?, _ = self.lat as Double? {
+       
+        
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            dateFormatter.timeZone = NSTimeZone(name: "GMT+8")
+            let dateString = dateFormatter.stringFromDate(NSDate())
+            
+            DataService.ds.REF_STAMPREPORT.updateChildValues(["\(dateString)/\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)": "Long: \(self.long) Lat: \(self.lat) "], withCompletionBlock: { (error, FIRDatabaseReference) in
+                
+                if error == nil {
+                    self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
+                    
+                    if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
+                        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                        self.updateStamps(self.numberOfStamps)
+                    } else if self.numberOfStamps > 12 {
+                        self.resetFirebase({ (result) in
+                            if result {
+                                self.numberOfStamps = 1
+                                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
+                                self.numberOfClaims = 0
+                                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
+                                self.updateStamps(self.numberOfStamps)
+                            } else {
+                                self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+                            }
+                        })
+                        
+                    }
+
+                } else {
+                    self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+                }
+                
+            })
+            
+            
+        } else {
+            self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+        }
+    }
     
     func showActionSheet(){
         let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Select an option", message: "", preferredStyle: .ActionSheet)
@@ -534,18 +577,9 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
         let saveActionNotifyButton: UIAlertAction = UIAlertAction(title: "Add Stamp & Ask Review", style: .Default)
         { action -> Void in
-            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
             
-            if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-            } else if self.numberOfStamps > 12 {
-                self.numberOfStamps = 1
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-                self.numberOfClaims = 0
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
-            }
             
-            self.updateStamps(self.numberOfStamps)
+            self.addStamp()
             //time based notification
             
             let timeNotif: UILocalNotification = UILocalNotification()
@@ -572,28 +606,8 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
         let saveActionNoNotifyButton: UIAlertAction = UIAlertAction(title: "Add Stamp & No Review", style: .Default)
         { action -> Void in
-            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
-            
-            if self.numberOfStamps <= 12 && self.numberOfStamps > 0 {
-                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-                self.updateStamps(self.numberOfStamps)
-            } else if self.numberOfStamps > 12 {
-                self.resetFirebase({ (result) in
-                    if result {
-                        self.numberOfStamps = 1
-                        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-                        self.numberOfClaims = 0
-                        NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "claims")
-                        self.updateStamps(self.numberOfStamps)
-                        self.updateStamps(self.numberOfStamps)
-                    } else {
-                        self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
-                    }
-                })
-                
-            }
-            
-            
+            self.addStamp()
+    
         }
          if !(numberOfStamps == maxStamps && numberOfClaims < maxRewards) {
             actionSheetControllerIOS8.addAction(saveActionNoNotifyButton)

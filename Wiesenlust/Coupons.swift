@@ -368,17 +368,33 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                             if let _ = self.long as Double?, _ = self.lat as Double? {
                                 
                                     DataService.ds.REF_COUPONUSES.updateChildValues(["\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/long": self.long, "\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(ref)/\(couponCode)/lat": self.lat], withCompletionBlock: { (error, FIRDatabaseReference) in
-                                        
-                                        self.activityIndicator.stopAnimating()
-                                        self.activityIndicator.hidden = true
-                                        
+
                                         if error == nil {
+                   
+                                            let dateFormatter = NSDateFormatter()
+                                            dateFormatter.dateFormat = "MM-dd-yyyy"
+                                            dateFormatter.timeZone = NSTimeZone(name: "GMT+8")
+                                            let dateString = dateFormatter.stringFromDate(NSDate())
                                             
-                                            if locationEnabled == true {
-                                                validForLocationOffer = false
-                                            }
+                                            DataService.ds.REF_COUPONREPORT.updateChildValues(["\(dateString)/\(ref)/\(couponCode)/\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)": "Long: \(self.long) Lat: \(self.lat) "], withCompletionBlock: { (error, FIRDatabaseReference) in
+                                                
+                                                self.activityIndicator.stopAnimating()
+                                                self.activityIndicator.hidden = true
+                                                
+                                                if error == nil {
+                                                    
+                                                    if locationEnabled == true {
+                                                        validForLocationOffer = false
+                                                    }
+                                                    
+                                                     self.showErrorAlertWithAction("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                                                } else {
+                                                    showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
+                                                }
+                                               
+                                            })
                     
-                                            self.showErrorAlertWithAction("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
+                                            
                        
                                         } else {
                                            
