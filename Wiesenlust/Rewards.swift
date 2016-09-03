@@ -524,16 +524,31 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     
     func addStamp(){
         
-        if let _ = self.long as Double?, _ = self.lat as Double? {
-       
+        if let _ = self.long as Double?, _ = self.lat as Double?{
+            self.activityIndicator.hidden = false
+            self.activityIndicator.startAnimating()
+            self.addBtn.userInteractionEnabled = false
+            self.addBtn.enabled = false
         
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             dateFormatter.timeZone = NSTimeZone(name: "GMT+8")
             let dateString = dateFormatter.stringFromDate(NSDate())
             
-            DataService.ds.REF_STAMPREPORT.updateChildValues(["\(dateString)/\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)": "Long: \(self.long) Lat: \(self.lat) "], withCompletionBlock: { (error, FIRDatabaseReference) in
+            var stampTrack = 0
+            
+            if numberOfStamps > 12 {
+                stampTrack = 0
+            }else {
+                stampTrack = numberOfStamps
+            }
+            
+            DataService.ds.REF_STAMPREPORT.updateChildValues(["\(dateString)/\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(stampTrack+1)": "Long: \(self.long) Lat: \(self.lat) "], withCompletionBlock: { (error, FIRDatabaseReference) in
                 
+                self.activityIndicator.hidden = true
+                self.activityIndicator.stopAnimating()
+                self.addBtn.userInteractionEnabled = true
+                self.addBtn.enabled = true
                 if error == nil {
                     self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") + 1
                     

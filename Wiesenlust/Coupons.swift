@@ -362,6 +362,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                     
                     self.activityIndicator.startAnimating()
                     self.activityIndicator.hidden = false
+                    self.tableView.allowsSelection = false
                     self.checkIfWithinVicinity(distanceToClaim, completion: { (result) in
                         if result {
                             
@@ -380,6 +381,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                                                 
                                                 self.activityIndicator.stopAnimating()
                                                 self.activityIndicator.hidden = true
+                                                self.tableView.allowsSelection = true
                                                 
                                                 if error == nil {
                                                     
@@ -389,6 +391,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                                                     
                                                      self.showErrorAlertWithAction("Coupon Code: \(couponCode)", msg: "To the Manager: Please keep this code on record.", VC: self)
                                                 } else {
+                                        
                                                     showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
                                                 }
                                                
@@ -397,7 +400,9 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                                             
                        
                                         } else {
-                                           
+                                            self.activityIndicator.stopAnimating()
+                                            self.activityIndicator.hidden = true
+                                            self.tableView.allowsSelection = true
                                             showErrorAlert("An Error Occured", msg: "Please try again later.", VC: self)
                                         }
                                         
