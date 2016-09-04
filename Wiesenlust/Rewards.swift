@@ -61,7 +61,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
         topLbl.font = UIFont(name: font1Regular, size: 17)
         topLbl.textColor = COLOR2
-        topLbl.text = "Earn stamps and receive special \(storeName) coupons as you collect! "
+        topLbl.text = "Earn stamps and redeem a free item as you collect!"
         
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
         bottomLbl.textColor = COLOR2
