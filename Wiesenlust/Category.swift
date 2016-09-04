@@ -14,6 +14,15 @@ public class Category {
     private var _order: Int!
     private var _img: NSData!
     private var _imgURL: String!
+    private var _id: String!
+    
+    var id: String {
+        if _id == nil {
+            return ""
+        }else {
+            return _id
+        }
+    }
     
     
     var name: String {
@@ -46,7 +55,9 @@ public class Category {
         return _imgURL
     }
     
-    init(name: String, order: Int, image: UIImage, imgURL: String) {
+    init(id: String, name: String, order: Int, image: UIImage, imgURL: String) {
+       
+       self._id = id
        self._name = name
        self._order = order
        self._img = UIImagePNGRepresentation(image)

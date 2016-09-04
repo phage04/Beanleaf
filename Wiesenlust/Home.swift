@@ -156,20 +156,24 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         downloadManagerPin()
-        fetchDataCat()
-        fetchDataFood()
-        
-        if (foodItemsData.count == 0 || categoriesData.count == 0 ) && firstload{
-            
-            SwiftSpinner.show(LoadingMsgGlobal)
-            firstload = false
+        fetchDataCat { (result) in
+            if result {
+                self.fetchDataFood()
+                
+                if (foodItemsData.count == 0 || categoriesData.count == 0 ) && self.firstload{
+                    
+                    SwiftSpinner.show(LoadingMsgGlobal)
+                    self.firstload = false
+                }
+                
+                if !checkConnectivity() {
+                    SwiftSpinner.hide()
+                    showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+                }
+                self.downloadCategories()
+            }
         }
-        
-        if !checkConnectivity() {
-             SwiftSpinner.hide()
-            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-        }
-        downloadCategories()
+
      
 
     }
@@ -263,113 +267,184 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func clearDataAll() {
+        categoriesData.removeAll()
+        foodItemsData.removeAll()
+        self.clearCoreDataFoodMenu()
+        print("Cleared core data.")
+    }
+    
   func downloadCategories() {
         DataService.ds.logInAnonymously { (result) in
             
     }
     
+    var changes: Int = 0
+    
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
         
         let myGroupCat = dispatch_group_create()
+        let myGroupCat2 = dispatch_group_create()
         
         
         client.fetchEntries(["content_type": "category"]).1.next {
             
             categories.removeAll()
-            
-            if $0.items.count < categoriesData.count {
-                print("items: \($0.items.count) data: \(categoriesData.count)")
-                categoriesData.removeAll()
-                foodItemsData.removeAll()
-                self.clearCoreDataFoodMenu()
-                print("Cleared core data.")
+            let data = $0.items
+            if data.count < categoriesData.count {
+                print("Data: \(data.count) DataFromCore:\(categoriesData.count)")
+                self.clearDataAll()
+           
             }
             
-            for entry in $0.items{
-                dispatch_group_enter(myGroupCat)
-                if let data = entry.fields["image"] as? Asset{
-                    
-                    do {
-                        imgURL = try data.URL()
-                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
-                        if categoriesData.count > 0 {
+            if categoriesData.count > 0 {
+                print("Checking for data changes...")
+                //IF DATA IS EXISTING, CHECK IF THERE ARE CHANGES. IF YES, REDOWNLOAD EVERYTHING. Else, do nothing.
+                for entry in data{
+                    dispatch_group_enter(myGroupCat)
+                    if let dataURL = entry.fields["image"] as? Asset{
+                        do {
+                        imgURL = try dataURL.URL()
+                        
+                        print("Checking: \(entry.fields["categoryName"]!)")
+                        
+                        for item in categoriesData {
                             
-                            for item in categoriesData {
+                            
+                            print("with...\(item.valueForKey("name")!)")
+                            if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
                                 
-                                if let _ = item.valueForKey("name"), _ = entry.fields["categoryName"] where "\(item.valueForKey("name"))" == "\(entry.fields["categoryName"])" {
+                                
+                                if let _ = item.valueForKey("name"), _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                    "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" || "\(item.valueForKey("name")!)" != "\(entry.fields["categoryName"]!)" {
                                     
+                                    print("Did detect change in CATEGORIES: \(item.valueForKey("name")!)")
+                                    changes += 1
                                     
-                                    if let _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
-                                        "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" {
+                                }
+                            }
+                            
+                        }
+                        
+                        dispatch_group_leave(myGroupCat)
+                        } catch {
+                            dispatch_group_leave(myGroupCat)
+                        }
+                        
+                    } else {
+                        dispatch_group_leave(myGroupCat)
+                    }
+                    
+                    
+                }
+                
+                dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
+                    
+                    if changes > 0 {
+                        self.clearDataAll()
+                        changes = 0
+                        
+                        //DOWNLOAD FRESH
+                        print("Downloading fresh data...")
+                        if categoriesData.count == 0 {
+                            for entry in data{
+                                dispatch_group_enter(myGroupCat2)
+                                if let data = entry.fields["image"] as? Asset{
+                                    do {
+                                        imgURL = try data.URL()
                                         
-                                        print("Did detect change for \(item.valueForKey("name"))")
-                                        
-                                        print("\(item.valueForKey("name"))")
-                                        print("\(entry.fields["categoryName"])")
-                                        print("\(item.valueForKey("imageURL")!)")
-                                        print("\(imgURL)")
-                                        
-                                        //If data in client is not updated
-                                        
-                                        dispatch_group_enter(myGroupCat)
-                                        
+                                        //If zero data yet saved in client
                                         downloadImage(imgURL, completionHandler: { (isResponse) in
-                                            
-                                            print("Did download the update")
-                                            categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
-                                            dispatch_group_leave(myGroupCat)
-                                            
+                                            print(entry.identifier)
+                                            categories.append(Category(id: "\(entry.identifier)", name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            dispatch_group_leave(myGroupCat2)
                                         })
+                                        
+                                        
+                                    } catch {
+                                        
+                                        dispatch_group_leave(myGroupCat2)
                                     }
+                                    
+                                } else {
+                                    //If no image is uploaded for this item, user default or blank
+                                    categories.append(Category(id: "\(entry.identifier)", name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                                    dispatch_group_leave(myGroupCat2)
                                 }
                                 
                             }
                             
-                            dispatch_group_leave(myGroupCat)
-                        }
-                            
-                        else if categoriesData.count == 0{
-                            //If zero data yet saved in client
-                            downloadImage(imgURL, completionHandler: { (isResponse) in
+                            dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
                                 
-                                categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
-                                dispatch_group_leave(myGroupCat)
+                                print("Download complete.")
+                                
+                                categories.sortInPlace({ $0.order < $1.order })
+                                
+                                for cat in categories {
+                                    
+                                    self.saveCategory(cat)
+                                }
+                                self.downloadFoodItems()
+                                //SwiftSpinner.hide()
                             })
                         }
+
+                    }else {
+                        self.downloadFoodItems()
+                        print("No changes in CATEGORIES detected.")
+                    }
+                })
+            }else {
+                //DOWNLOAD FRESH
+                print("Downloading fresh data...")
+                if categoriesData.count == 0 {
+                    for entry in data{
+                        dispatch_group_enter(myGroupCat2)
+                        if let data = entry.fields["image"] as? Asset{
+                            do {
+                                imgURL = try data.URL()
+                                
+                                //If zero data yet saved in client
+                                downloadImage(imgURL, completionHandler: { (isResponse) in
+                                    print(entry.identifier)
+                                    categories.append(Category(id: "\(entry.identifier)", name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                    dispatch_group_leave(myGroupCat2)
+                                })
+                                
+                                
+                            } catch {
+                                
+                                dispatch_group_leave(myGroupCat2)
+                            }
+                            
+                        } else {
+                            //If no image is uploaded for this item, user default or blank
+                            categories.append(Category(id: "\(entry.identifier)", name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                            dispatch_group_leave(myGroupCat2)
+                        }
                         
-                        
-                    } catch {
-                        print("Error Code: FJ3D85")
-                        dispatch_group_leave(myGroupCat)
                     }
                     
-                } else {
-                    //If no image is uploaded for this item, user default or blank
-                    categories.append(Category(name: "\(entry.fields["categoryName"]!)", order: Int("\(entry.fields["order"]!)")!, image: UIImage(), imgURL: ""))
-                    dispatch_group_leave(myGroupCat)
+                    dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
+                        
+                        print("Download complete.")
+                        
+                        categories.sortInPlace({ $0.order < $1.order })
+                        
+                        for cat in categories {
+                            self.saveCategory(cat)
+                        }
+                        self.downloadFoodItems()
+                        //SwiftSpinner.hide()
+                    })
                 }
-                
-                
-                
             }
-            
-            dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
-                
-                
-                categories.sortInPlace({ $0.order < $1.order })
-                
-                for cat in categories {
-                    self.saveCategory(cat)
-                }
-                self.downloadFoodItems()
-                //SwiftSpinner.hide()
-            })
             
             
         }
-        
-        
+    
+    
     }
     
     func downloadFoodItems() {
@@ -426,10 +501,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                 
                                                 print("Did detect change for \(item.valueForKey("name")!)")
                                                 
-                                                print("\(item.valueForKey("name")!)")
-                                                print("\(entry.fields["itemName"]!)")
-                                                print("\(item.valueForKey("imageURL")!)")
-                                                print("\(imgURL)")
                                                 
                                                 //If data in client is not updated
                                                 
@@ -516,12 +587,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
         let fetchRequest = NSFetchRequest(entityName: "Category")
         
         
-        fetchRequest.predicate = NSPredicate(format: "name = %@", category.name)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", category.id)
         do {
             if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
-                    
+                    fetchResults.first?.setValue(category.id, forKey: "id")
                     fetchResults.first?.setValue(category.name, forKey: "name")
                     fetchResults.first?.setValue(category.order, forKey: "order")
                     fetchResults.first?.setValue(category.img, forKey: "image")
@@ -529,8 +600,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
-                        fetchDataCat()
-                        print("Updated: \(category.name) mit order \(category.order) und \(category.imgURL) ")
+                        fetchDataCat({ (result) in
+                            if result {
+                                 print("Updated: \(category.name) mit order \(category.order) und \(category.imgURL) with id \(category.id) ")
+                            }
+                        })
+                       
                         
                     } catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")
@@ -539,6 +614,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     
                 } else {
                     
+                    categoryTemp.setValue(category.id, forKey: "id")
                     categoryTemp.setValue(category.name, forKey: "name")
                     categoryTemp.setValue(category.order, forKey: "order")
                     categoryTemp.setValue(category.img, forKey: "image")
@@ -586,8 +662,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     
                     do {
                         try fetchResults.first?.managedObjectContext?.save()
-                        fetchDataCat()
-                        print("Updated Food: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL), \(foodItem.postLikes) ")
+                        fetchDataCat({ (result) in
+                            if result {
+                               print("Updated Food: \(foodItem.name) mit preis \(foodItem.price) und \(foodItem.imgURL), \(foodItem.postLikes) ")
+                            }
+                        })
+                        
                         
                     } catch let error as NSError {
                         print("Could not fetch \(error), \(error.userInfo)")
@@ -623,14 +703,14 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
     }
 
-    func fetchDataCat() {
+    func fetchDataCat(completion: (result: Bool) -> Void) {
         categoriesData.removeAll()
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Category")
-        fetchRequest.predicate = NSPredicate(format: "name != %@", "")
+        fetchRequest.predicate = NSPredicate(format: "id != %@", "")
         
         
         do {
@@ -638,7 +718,13 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 try managedContext.executeFetchRequest(fetchRequest)
             
             categoriesData = results as! [NSManagedObject]
-            
+            if categoriesData.count > 0 {
+                print("Local data fetched.")
+                completion(result: true)
+            }else{
+                print("No data available in local.")
+                completion(result: true)
+            }
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
