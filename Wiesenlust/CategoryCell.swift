@@ -56,7 +56,7 @@ class CategoryCell: UITableViewCell {
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.whiteColor()
         price.textColor = UIColor.whiteColor()
-        price.font = UIFont(name: font1Light, size: 24)
+        price.font = UIFont(name: font1Light, size: 20)
         foodLbl.textColor = COLOR2
         foodLbl.font = UIFont(name: font1Light, size: 20)
         

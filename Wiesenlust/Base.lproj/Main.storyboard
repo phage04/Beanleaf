@@ -1830,7 +1830,7 @@
                                                         <rect key="frame" x="484" y="179" width="80" height="80"/>
                                                     </variation>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNz-qP-pjv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FNz-qP-pjv">
                                                     <rect key="frame" x="503" y="206" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2016,7 +2016,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="BKU-GR-ede"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOY-uI-wO7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HOY-uI-wO7">
                                             <rect key="frame" x="512" y="259.5" width="80" height="80"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2669,7 +2669,7 @@
                                         <rect key="frame" x="0.0" y="68" width="560" height="404"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
                                                 </constraints>
@@ -2677,7 +2677,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="70" width="560" height="31"/>
+                                                <rect key="frame" x="0.0" y="61" width="560" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
                                                 </constraints>
@@ -2773,13 +2773,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aWk-Aa-VjO"/>
-        <segue reference="2pr-FC-ebc"/>
-        <segue reference="lSl-5G-diZ"/>
-        <segue reference="PAO-9Z-2j9"/>
-        <segue reference="T4D-LV-E4T"/>
-        <segue reference="3Oq-v4-3gT"/>
         <segue reference="08p-oD-Qpd"/>
+        <segue reference="lSl-5G-diZ"/>
+        <segue reference="tX9-GD-spD"/>
+        <segue reference="2pr-FC-ebc"/>
+        <segue reference="PAO-9Z-2j9"/>
+        <segue reference="3Oq-v4-3gT"/>
         <segue reference="4GZ-W5-5yC"/>
+        <segue reference="T4D-LV-E4T"/>
     </inferredMetricsTieBreakers>
 </document>
