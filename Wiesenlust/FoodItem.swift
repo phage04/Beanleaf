@@ -21,7 +21,15 @@ public class FoodItem {
     private var _imgURL: String!
     private var _postLikes: Int!
     private var _postRef: String!
-
+    private var _id: String!
+    
+    var id: String {
+        if _id == nil {
+            return ""
+        }else {
+            return _id
+        }
+    }
     var postRef: String {
         
         if _postRef == nil {
@@ -89,7 +97,9 @@ public class FoodItem {
         return _imgURL
     }
     
-    init(cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?, key: String, likes: Int?) {
+    init(id: String, cat: String, name: String, desc: String?, price: Double, image: UIImage?, imgURL: String?, key: String, likes: Int?) {
+        
+        self._id = id
         self._category = cat
         
         self._name = name

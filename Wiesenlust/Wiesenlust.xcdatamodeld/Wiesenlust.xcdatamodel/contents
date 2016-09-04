@@ -21,6 +21,7 @@
     <entity name="FoodItem" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,6 +32,6 @@
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Coupons" positionX="-54" positionY="54" width="128" height="180"/>
-        <element name="FoodItem" positionX="-63" positionY="9" width="128" height="165"/>
+        <element name="FoodItem" positionX="-63" positionY="9" width="128" height="180"/>
     </elements>
 </model>
