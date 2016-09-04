@@ -92,6 +92,8 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func plotLocations(){
         
+        var index = 0
+        
         self.branchesLoc.removeAll()
     
         for loc in branches {
@@ -112,7 +114,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             self.nameTitle = name
                         }
                         
-                        let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle) Branch", address: loc, contact: "+639178235953", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
+                        let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle) Branch", address: loc, contact: "\(contacts[index])", storeHours: "\(storeHours[index])", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
                         
                         
                         print(locNow.locationName)
@@ -130,7 +132,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }
                 
                 }
-            
+            index += 1
             })
         }
         

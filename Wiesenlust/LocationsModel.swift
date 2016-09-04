@@ -21,7 +21,7 @@ class Locations: NSObject, MKAnnotation {
     var distance: CLLocationDistance
     let storeHours: String
     
-    init(title: String, locationName: String, address: String, contact: String, coordinates: CLLocationCoordinate2D, location: CLLocation) {
+    init(title: String, locationName: String, address: String, contact: String, storeHours: String, coordinates: CLLocationCoordinate2D, location: CLLocation) {
         self.title = title
         self.locationName = locationName
         self.address = address
@@ -29,7 +29,7 @@ class Locations: NSObject, MKAnnotation {
         self.coordinate = coordinates
         self.location = location
         self.distance = 99999.99
-        self.storeHours = "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM"
+        self.storeHours = storeHours
         
         super.init()
     }
