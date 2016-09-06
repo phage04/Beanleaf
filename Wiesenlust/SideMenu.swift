@@ -13,7 +13,7 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let menuItem: [String] = ["Home", "Menu", "Coupons", "Rewards", "Reservations", "Locations", "Feedback"]
+    let menuItem: [String] = ["Home", "Menu", "Coupons", "Stamps", "Reservations", "Locations", "Feedback"]
     let menuImages: [String] = ["","menuIcon1", "menuIcon2", "menuIcon3", "menuIcon4", "menuIcon5", "menuIcon6"]
     override func viewDidLoad() {
         super.viewDidLoad()
