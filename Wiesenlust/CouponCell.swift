@@ -75,7 +75,7 @@ class CouponCell: UITableViewCell {
             break
             
             case "Amount":
-            discount.text = "\(discountTxt)€"
+            discount.text = "P\(discountTxt)"
             break
             
             default:
