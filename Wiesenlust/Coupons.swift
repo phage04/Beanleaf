@@ -13,6 +13,7 @@ import Alamofire
 import SwiftSpinner
 import SideMenu
 import Firebase
+import FirebaseDatabase
 import CoreLocation
 
 class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{

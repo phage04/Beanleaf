@@ -55,7 +55,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     var firstLoad = true
     let maxRewards = 6
     let maxStamps = 12
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,18 +81,18 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         activityIndicator.color = COLOR1
         activityIndicator.hidden = true
         
-        gift1.text = defaultFree
+        gift1.text = ""
         gift2.text = ""
-        gift3.text = defaultFree
+        gift3.text = ""
         gift4.text = ""
         gift5.text = ""
-        gift6.text = defaultFree
+        gift6.text = ""
         gift7.text = ""
-        gift8.text = defaultFree
+        gift8.text = ""
         gift9.text = ""
-        gift10.text = defaultFree
+        gift10.text = ""
         gift11.text = ""
-        gift12.text = defaultFree
+        gift12.text = ""
         
         numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps")
         numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims")
@@ -108,13 +108,37 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
 
-
+        
         
     }
     
+
+    
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBarHidden = false
+
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+            downloadFreeItems({ (result) in
+                print("Free items downloaded.")
+                self.gift1.text = freeItems[0]
+                self.gift2.text = ""
+                self.gift3.text = freeItems[1]
+                self.gift4.text = ""
+                self.gift5.text = ""
+                self.gift6.text = freeItems[2]
+                self.gift7.text = ""
+                self.gift8.text = freeItems[3]
+                self.gift9.text = ""
+                self.gift10.text = freeItems[4]
+                self.gift11.text = ""
+                self.gift12.text = freeItems[5]
+            })
+    }
+    
+    
     func showMenu() {
         performSegueWithIdentifier("menuSegue", sender: nil)
     }

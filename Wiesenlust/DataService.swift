@@ -25,9 +25,10 @@ public class DataService {
     var REF_REWARDCLAIMS = baseData.child("rewardClaims")
     var REF_COUPONREPORT = baseData.child("couponReport")
     var REF_STAMPREPORT = baseData.child("stampReport")
+    var REF_STAMPITEMS = baseData.child("stampItems")
     
     
-    func logInAnonymously(completion: (result: Bool) -> Void) {
+    func logInAnonymously(completion: (result: Bool) -> Void){
         
         
         FIRAuth.auth()!.signInAnonymouslyWithCompletion({ (user, error) in

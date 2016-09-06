@@ -302,8 +302,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
   func downloadCategories() {
         DataService.ds.logInAnonymously { (result) in
-            
-    }
+        }
     
     var changes: Int = 0
     

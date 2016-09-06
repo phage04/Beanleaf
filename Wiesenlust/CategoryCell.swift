@@ -79,7 +79,7 @@ class CategoryCell: UITableViewCell {
             foodImg.hidden = true
         }
         
-        price.text = "\(item.price)"
+        price.text = "\(currencyShort)\(item.price)"
         
         DataService.ds.REF_ITEM.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(item.postRef)").observeSingleEventOfType(.Value, withBlock:
             { snapshot in

@@ -88,7 +88,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         
         price.textColor = UIColor.whiteColor()
         price.font = UIFont(name: font1Light, size: 20)
-        price.text = "\(dish.price)"
+        price.text = "\(currencyShort)\(dish.price)"
         
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = COLOR2

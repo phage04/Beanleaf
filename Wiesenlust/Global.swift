@@ -13,6 +13,9 @@ import SystemConfiguration
 import Contentful
 import CoreData
 import Alamofire
+import Firebase
+import FirebaseDatabase
+
 
 let storeName = "Onion Apps"
 let minimumReceipt = "10€"
@@ -21,10 +24,15 @@ let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "EL
 let contacts:[String] = ["028961989", "024319360", "027711706", "027711706", "027711706"]
 let storeHours:[String] = ["Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM"]
 
+var freeItems = [String]()
+
 let radiusOfInterest = 100.0
 
 let defaultFree = "Free coffee"
 let distanceToClaim = 300000
+let currencyShort = "P"
+let currencyLong = "Php"
+let freeItemMax = 6
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
@@ -227,6 +235,31 @@ func randomStringWithLength (len : Int) -> NSString {
     }
     
     return randomString
+}
+
+func downloadFreeItems(completion: (result: Bool) -> Void){
+    var index = 0
+    
+    DataService.ds.REF_STAMPITEMS.observeSingleEventOfType(.Value, withBlock: { (
+        snapshot) in
+        freeItems.removeAll()
+        if snapshot.exists() {
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    
+                    if let val = snap.value as? String {
+                        freeItems.append(val)
+                        index += 1
+                        if index == freeItemMax {
+                            completion(result: true)
+                        }
+                    }
+                   
+                }
+            }
+        }
+    })
+   
 }
 
 
