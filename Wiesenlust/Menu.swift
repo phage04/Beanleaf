@@ -43,9 +43,14 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         scrollView.auk.settings.pageControl.pageIndicatorTintColor = COLOR2
         scrollView.auk.settings.pageControl.currentPageIndicatorTintColor = COLOR1
         
-        scrollView.auk.show(url: "http://eblogfa.com/wp-content/uploads/2014/01/burger-chesseburger-fastfood.jpg")
-        scrollView.auk.show(url: "http://robertsboxedmeats.ca/wp-content/uploads/2011/07/TGIF_Stacked-Burger-LR-1.jpg")
-        scrollView.auk.show(url: "http://eatburgerburger.com/wp-content/uploads/2016/01/burger-slide-1.jpg")
+        
+        if announcementsData.count > 0 {
+            for data in announcementsData {
+                scrollView.auk.show(image: UIImage(data: data.valueForKey("image") as! NSData)!)
+               
+            }
+            
+        }
         scrollView.auk.startAutoScroll(delaySeconds: 2)
         
         self.collectionView.delegate = self
