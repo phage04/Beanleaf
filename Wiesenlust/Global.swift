@@ -28,6 +28,8 @@ let distanceToClaim = 300000
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
+var announcementsData = [NSManagedObject]()
+var announcements = [Announcements]()
 var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
 var validForLocationOffer = false
@@ -202,7 +204,7 @@ func deleteCoreDataNil(entity: String) {
     let coord = appDel.persistentStoreCoordinator
     
     let fetchRequest = NSFetchRequest(entityName: entity)
-    fetchRequest.predicate = NSPredicate(format: "name == %@", "")
+    fetchRequest.predicate = NSPredicate(format: "id == %@", "")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
     do {

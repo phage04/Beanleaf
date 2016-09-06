@@ -160,17 +160,23 @@ class Home: UIViewController, CLLocationManagerDelegate {
             if result {
                 self.fetchDataFood({ (result) in
                     if result {
-                        if (foodItemsData.count == 0 || categoriesData.count == 0 ) && self.firstload{
+                        self.fetchDataAnn({ (result) in
+                            if result {
+                                if (foodItemsData.count == 0 || categoriesData.count == 0 ) && self.firstload{
+                                    
+                                    SwiftSpinner.show(LoadingMsgGlobal)
+                                    self.firstload = false
+                                }
+                                
+                                if !checkConnectivity() {
+                                    SwiftSpinner.hide()
+                                    showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
+                                }
+                                self.downloadCategories()
+                            }
                             
-                            SwiftSpinner.show(LoadingMsgGlobal)
-                            self.firstload = false
-                        }
+                        })
                         
-                        if !checkConnectivity() {
-                            SwiftSpinner.hide()
-                            showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
-                        }
-                        self.downloadCategories()
                     }
                 })
             }
@@ -279,11 +285,19 @@ class Home: UIViewController, CLLocationManagerDelegate {
         clearCoreDataFoodMenu()
         print("Cleared core data.")
     }
+    
     func clearDataExCat() {
         
         foodItemsData.removeAll()
         clearCoreDataFoodMenuExCat()
         print("Cleared core data Ex Cat.")
+    }
+    
+    func clearDataAnn() {
+        
+        announcementsData.removeAll()
+        deleteCoreData("Announcements")
+        print("Cleared core data Announcements.")
     }
     
   func downloadCategories() {
@@ -295,6 +309,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
+        deleteCoreDataNil("Announcements")
         
         let myGroupCat = dispatch_group_create()
         let myGroupCat2 = dispatch_group_create()
@@ -622,13 +637,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                 
                                 self.saveFood(food)
                             }
-                            print("Update Check Complete.")
-                            self.setupLocationNotifications()
-                            SwiftSpinner.hide()
+                            
+                            self.downloadAnnouncements()
                         })
                     }
                     else {
-                        SwiftSpinner.hide()
+                        self.downloadAnnouncements()
                         print("No changes in FOOD detected.")
                     }
                 })
@@ -680,10 +694,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
                         
                         self.saveFood(food)
                     }
-                    print("Update Check Complete.")
-                    self.setupLocationNotifications()
                     
-                    SwiftSpinner.hide()
+                    self.downloadAnnouncements()
                 })
             }
  
@@ -692,7 +704,171 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
     }
     
- 
+    func downloadAnnouncements() {
+        
+        var changes: Int = 0
+        
+        let myGroupCat = dispatch_group_create()
+        let myGroupCat2 = dispatch_group_create()
+        
+        
+        client.fetchEntries(["content_type": "announcements"]).1.next {
+            
+            announcements.removeAll()
+            let data = $0.items
+            if data.count < announcementsData.count {
+                print("Data: \(data.count) DataFromCore:\(announcementsData.count)")
+                self.clearDataAnn()
+                
+            }
+            
+            if announcementsData.count > 0 {
+                print("Checking for data changes in ANNOUNCEMENTS...")
+                //IF DATA IS EXISTING, CHECK IF THERE ARE CHANGES. IF YES, REDOWNLOAD EVERYTHING. Else, do nothing.
+                for entry in data{
+                    dispatch_group_enter(myGroupCat)
+                    if let dataURL = entry.fields["image"] as? Asset{
+                        do {
+                            imgURL = try dataURL.URL()
+                            
+                            print("Checking: \(entry.fields["title"]!)")
+                            
+                            for item in announcementsData {
+                                
+                                
+                                print("with...\(item.valueForKey("title")!)")
+                                if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" && "\(item.valueForKey("imageURL")!)" != "\(imgURL)" {
+                                
+                                        
+                                        print("Did detect change in ANNOUNCEMENTS: \(item.valueForKey("title")!)")
+                                        changes += 1
+                                        
+                                    
+                                }
+                                
+                            }
+                            
+                            dispatch_group_leave(myGroupCat)
+                        } catch {
+                            dispatch_group_leave(myGroupCat)
+                        }
+                        
+                    } else {
+                       dispatch_group_leave(myGroupCat)
+                    }
+                    
+                    
+                }
+                
+                dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
+                    
+                    if changes > 0 {
+                        self.clearDataAnn()
+                        changes = 0
+                        SwiftSpinner.show(LoadingMsgGlobal)
+                        //DOWNLOAD FRESH
+                        print("Downloading fresh data...")
+                        if categoriesData.count == 0 {
+                            for entry in data{
+                                dispatch_group_enter(myGroupCat2)
+                                if let data = entry.fields["image"] as? Asset{
+                                    do {
+                                        imgURL = try data.URL()
+                                        
+                                        //If zero data yet saved in client
+                                        downloadImage(imgURL, completionHandler: { (isResponse) in
+                                            print(entry.identifier)
+                                            announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                            dispatch_group_leave(myGroupCat2)
+                                        })
+                                        
+                                        
+                                    } catch {
+                                        
+                                        dispatch_group_leave(myGroupCat2)
+                                    }
+                                    
+                                } else {
+                                    //If no image is uploaded for this item, user default or blank
+                                    announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: UIImage(), imgURL: ""))
+                                    dispatch_group_leave(myGroupCat2)
+                                }
+                                
+                            }
+                            
+                            dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
+                                
+                                print("Download complete.")
+                                
+                                for ann in announcements {
+                                    
+                                    self.saveAnnouncement(ann)
+                                }
+                                print("Update Check Complete.")
+                                self.setupLocationNotifications()
+                                SwiftSpinner.hide()
+                            })
+                        }
+                        
+                    }else {
+                        print("No changes in ANNOUNCEMENTS detected.")
+                        print("Update Check Complete.")
+                        self.setupLocationNotifications()
+                        SwiftSpinner.hide()
+                    }
+                })
+            }else {
+                //DOWNLOAD FRESH
+                SwiftSpinner.show(LoadingMsgGlobal)
+                print("Downloading fresh data...")
+                if announcementsData.count == 0 {
+                    for entry in data{
+                        dispatch_group_enter(myGroupCat2)
+                        if let data = entry.fields["image"] as? Asset{
+                            do {
+                                imgURL = try data.URL()
+                                
+                                //If zero data yet saved in client
+                                downloadImage(imgURL, completionHandler: { (isResponse) in
+                                    print(entry.identifier)
+                                    announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                    dispatch_group_leave(myGroupCat2)
+                                })
+                                
+                                
+                            } catch {
+                                
+                                dispatch_group_leave(myGroupCat2)
+                            }
+                            
+                        } else {
+                            //If no image is uploaded for this item, user default or blank
+                            announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: UIImage(), imgURL: ""))
+                            dispatch_group_leave(myGroupCat2)
+                        }
+                        
+                    }
+                    
+                    dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
+                        
+                        print("Download complete.")
+         
+                        for ann in announcements {
+                            self.saveAnnouncement(ann)
+                        }
+                        print("Update Check Complete.")
+                        self.setupLocationNotifications()
+                        SwiftSpinner.hide()
+                    })
+                }
+            }
+            
+            
+        }
+        
+        
+    }
+
     
     func saveCategory(category: Category) {
         let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
@@ -819,6 +995,62 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         
     }
+    
+    func saveAnnouncement(announcement: Announcements) {
+        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("Announcements", inManagedObjectContext:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let fetchRequest = NSFetchRequest(entityName: "Announcements")
+        
+        
+        fetchRequest.predicate = NSPredicate(format: "id = %@", announcement.id)
+        do {
+            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    fetchResults.first?.setValue(announcement.id, forKey: "id")
+                    fetchResults.first?.setValue(announcement.title, forKey: "title")
+                    fetchResults.first?.setValue(announcement.img, forKey: "image")
+                    fetchResults.first?.setValue(announcement.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try fetchResults.first?.managedObjectContext?.save()
+                        fetchDataAnn({ (result) in
+                      
+                        })
+                        
+                        
+                    } catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                    
+                    
+                } else {
+                    
+                    categoryTemp.setValue(announcement.id, forKey: "id")
+                    categoryTemp.setValue(announcement.title, forKey: "title")
+                    categoryTemp.setValue(announcement.img, forKey: "image")
+                    categoryTemp.setValue(announcement.imgURL, forKey: "imageURL")
+                    
+                    do {
+                        try managedContext.save()
+                        announcementsData.append(categoryTemp)
+                        print("Saved \(announcementsData.count) announcements")
+                        
+                    }catch let error as NSError {
+                        print("Could not fetch \(error), \(error.userInfo)")
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
+    }
+
 
     func fetchDataCat(completion: (result: Bool) -> Void) {
         categoriesData.removeAll()
@@ -870,6 +1102,34 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 completion(result: true)
             }else{
                 print("FoodNo data available in local.")
+                completion(result: true)
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func fetchDataAnn(completion: (result: Bool) -> Void) {
+        announcementsData.removeAll()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Announcements")
+        fetchRequest.predicate = NSPredicate(format: "id != %@", "")
+        
+        
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            
+            announcementsData = results as! [NSManagedObject]
+            if announcementsData.count > 0 {
+                print("Announcements: Local data fetched.")
+                completion(result: true)
+            }else{
+                print("Announcements: No data available in local.")
                 completion(result: true)
             }
             

@@ -34,6 +34,7 @@
 		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
 		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
 		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
+		DEBAE06F1D7E7D8300FCB246 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */; };
 		DEBC25411D355B3D00997EB1 /* Rewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25401D355B3D00997EB1 /* Rewards.swift */; };
 		DEBC25431D3561A000997EB1 /* LabelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25421D3561A000997EB1 /* LabelHome.swift */; };
 		DEBC25451D3563A700997EB1 /* LabelRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC25441D3563A700997EB1 /* LabelRewards.swift */; };
@@ -81,6 +82,7 @@
 		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
 		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		DEBC25401D355B3D00997EB1 /* Rewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rewards.swift; sourceTree = "<group>"; };
 		DEBC25421D3561A000997EB1 /* LabelHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelHome.swift; sourceTree = "<group>"; };
 		DEBC25441D3563A700997EB1 /* LabelRewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelRewards.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				DE2BF0421D2FDDE40049F662 /* FoodItem.swift */,
 				DE2BF0481D33CFD80049F662 /* Coupon.swift */,
 				DED4A00C1D390407006FEB2C /* LocationsModel.swift */,
+				DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				DE2BF0491D33CFD80049F662 /* Coupon.swift in Sources */,
 				DE5BACBB1D26BB08006C3C7C /* Wiesenlust.xcdatamodeld in Sources */,
 				DEBC254F1D356D1100997EB1 /* ButtonAnimate.swift in Sources */,
+				DEBAE06F1D7E7D8300FCB246 /* Announcements.swift in Sources */,
 				DE27E5E31D2C0EF9005780BE /* CategoryCell.swift in Sources */,
 				DEBC25431D3561A000997EB1 /* LabelHome.swift in Sources */,
 				DED4A00F1D391DD4006FEB2C /* LocationsMapView.swift in Sources */,
