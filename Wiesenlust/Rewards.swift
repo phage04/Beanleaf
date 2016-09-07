@@ -573,7 +573,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             
             var stampTrack = 0
             
-            if numberOfStamps > 12 {
+            if numberOfStamps >= 12 {
                 stampTrack = 0
             }else {
                 stampTrack = numberOfStamps

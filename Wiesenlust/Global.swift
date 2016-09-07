@@ -29,7 +29,8 @@ var freeItems = [String]()
 let radiusOfInterest: Double = 150.0
 
 let defaultFree = "Free coffee"
-let distanceToClaim: Int = 300000
+let distanceToClaim: Int = 30000000
+
 let currencyShort = "P"
 let currencyLong = "Php"
 let freeItemMax = 6
