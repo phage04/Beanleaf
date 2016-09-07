@@ -26,10 +26,10 @@ let storeHours:[String] = ["Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10A
 
 var freeItems = [String]()
 
-let radiusOfInterest = 100.0
+let radiusOfInterest: Double = 150.0
 
 let defaultFree = "Free coffee"
-let distanceToClaim = 300000
+let distanceToClaim: Int = 300000
 let currencyShort = "P"
 let currencyLong = "Php"
 let freeItemMax = 6
