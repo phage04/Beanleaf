@@ -81,18 +81,19 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         activityIndicator.color = COLOR1
         activityIndicator.hidden = true
         
-        gift1.text = ""
+        gift1.text = "Loading..."
         gift2.text = ""
-        gift3.text = ""
+        gift3.text = "Loading..."
         gift4.text = ""
         gift5.text = ""
-        gift6.text = ""
+        gift6.text = "Loading..."
         gift7.text = ""
-        gift8.text = ""
+        gift8.text = "Loading..."
         gift9.text = ""
-        gift10.text = ""
+        gift10.text = "Loading..."
         gift11.text = ""
-        gift12.text = ""
+        gift12.text = "Loading..."
+        
         
         numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps")
         numberOfClaims = NSUserDefaults.standardUserDefaults().integerForKey("claims")
@@ -120,21 +121,32 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        activityIndicator.startAnimating()
+        activityIndicator.hidden = false
+        self.addBtn.userInteractionEnabled = false
+        self.addBtn.enabled = false
             downloadFreeItems({ (result) in
-                print("Free items downloaded.")
-                self.gift1.text = freeItems[0]
-                self.gift2.text = ""
-                self.gift3.text = freeItems[1]
-                self.gift4.text = ""
-                self.gift5.text = ""
-                self.gift6.text = freeItems[2]
-                self.gift7.text = ""
-                self.gift8.text = freeItems[3]
-                self.gift9.text = ""
-                self.gift10.text = freeItems[4]
-                self.gift11.text = ""
-                self.gift12.text = freeItems[5]
+                if result {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidden = true
+                    self.addBtn.userInteractionEnabled = true
+                    self.addBtn.enabled = true
+                    
+                    print("Free items downloaded.")
+                    self.gift1.text = freeItems[0]
+                    self.gift2.text = ""
+                    self.gift3.text = freeItems[1]
+                    self.gift4.text = ""
+                    self.gift5.text = ""
+                    self.gift6.text = freeItems[2]
+                    self.gift7.text = ""
+                    self.gift8.text = freeItems[3]
+                    self.gift9.text = ""
+                    self.gift10.text = freeItems[4]
+                    self.gift11.text = ""
+                    self.gift12.text = freeItems[5]
+                }
+               
             })
     }
     
