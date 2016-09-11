@@ -21,7 +21,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = COLOR1
+        self.tableView.backgroundColor = UIColor.clearColor()
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = COLOR2
         refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -60,6 +60,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? CategoryCell {
             cell.layer.anchorPointZ = CGFloat(indexPath.row)
             cell.contentView.clipsToBounds = false
+            cell.backgroundColor = cell.contentView.backgroundColor
             cell.clipsToBounds = false
             cell.selectionStyle = .None
             cell.configureCell(dishes[indexPath.row])

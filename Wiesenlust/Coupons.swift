@@ -44,6 +44,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = COLOR2
+        
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = COLOR1
         refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -102,6 +103,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
         if let cell = tableView.dequeueReusableCellWithIdentifier("CouponCell") as? CouponCell {
          
             cell.selectionStyle = .None
+            cell.backgroundColor = cell.contentView.backgroundColor
             let couponNow = couponsData[indexPath.row]
             
             cell.configureCell("\(couponNow.valueForKey("title")!)", discountTxt: couponNow.valueForKey("discount")! as? Int, validityTxt: "\(couponNow.valueForKey("validity")!)", termsTxt: "\(couponNow.valueForKey("terms")!)", discType: "\(couponNow.valueForKey("discountType")!)", desc: "\(couponNow.valueForKey("descriptionInfo")!)", locFlag: (couponNow.valueForKey("locFlag") as? Bool)!)
