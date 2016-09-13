@@ -26,6 +26,7 @@ class CategoryCell: UITableViewCell {
     
     @IBOutlet weak var foodImg: UIImageView!
   
+    @IBOutlet weak var viewCover: UIView!
 
     let gradientLayer = CAGradientLayer()
     var post: FoodItem!
@@ -40,12 +41,22 @@ class CategoryCell: UITableViewCell {
         barView.backgroundColor = UIColor.clearColor()
         gradientLayer.frame = barView.bounds
         let color1 = COLOR1.CGColor as CGColorRef
-        let color2 = UIColor.clearColor().CGColor as CGColorRef
-        gradientLayer.colors = [color1, color2]
-        gradientLayer.locations = [0.30, 0.70]
-        gradientLayer.startPoint = CGPointMake(0,0.5)
-        gradientLayer.endPoint = CGPointMake(1,0.5)
-        barView.layer.addSublayer(gradientLayer)
+        if listView {
+            let color2 = UIColor.lightGrayColor().CGColor as CGColorRef
+            gradientLayer.colors = [color1, color2]
+            gradientLayer.locations = [0.30, 0.70]
+            gradientLayer.startPoint = CGPointMake(0,0.5)
+            gradientLayer.endPoint = CGPointMake(1,0.5)
+            barView.layer.addSublayer(gradientLayer)
+        }else {
+            let color2 = UIColor.clearColor().CGColor as CGColorRef
+            gradientLayer.colors = [color1, color2]
+            gradientLayer.locations = [0.30, 0.70]
+            gradientLayer.startPoint = CGPointMake(0,0.5)
+            gradientLayer.endPoint = CGPointMake(1,0.5)
+            barView.layer.addSublayer(gradientLayer)
+        }
+    
         
         star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         star.tintColor = COLOR_YELLOW
@@ -59,6 +70,14 @@ class CategoryCell: UITableViewCell {
         price.font = UIFont(name: font1Light, size: 20)
         foodLbl.textColor = COLOR2
         foodLbl.font = UIFont(name: font1Light, size: 20)
+        
+        if listView{
+            viewCover.hidden = true
+            foodImg.hidden = true
+        }else {
+            viewCover.hidden = false
+            foodImg.hidden = false
+        }
         
 
     }

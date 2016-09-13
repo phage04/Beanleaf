@@ -1711,6 +1711,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-gQ-vgD">
+                                <rect key="frame" x="150" y="200.5" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="rJy-ds-mEk"/>
+                                </constraints>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="125" y="0.0" width="300" height="440"/>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="25" y="0.0" width="300" height="240"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="25" y="0.0" width="300" height="440"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="225" y="0.0" width="300" height="440"/>
+                                </variation>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M09-ZT-gLo">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1903,6 +1921,7 @@
                                             <outlet property="price" destination="FNz-qP-pjv" id="Imx-Iv-iuf"/>
                                             <outlet property="star" destination="pnR-Sx-8UP" id="R33-Jq-Zao"/>
                                             <outlet property="starCount" destination="ul8-3S-dhL" id="4Kb-t5-DTb"/>
+                                            <outlet property="viewCover" destination="VFz-XT-7aU" id="W6W-ed-3Su"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1911,12 +1930,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5zA-Mv-muO" firstAttribute="top" secondItem="M09-ZT-gLo" secondAttribute="bottom" id="4LX-vN-nno"/>
+                            <constraint firstItem="a8k-gQ-vgD" firstAttribute="centerY" secondItem="NLZ-q8-iES" secondAttribute="centerY" id="EQ2-FA-k7o"/>
                             <constraint firstItem="M09-ZT-gLo" firstAttribute="top" secondItem="l0C-2Z-xHg" secondAttribute="bottom" id="F3V-N2-8UM"/>
+                            <constraint firstItem="a8k-gQ-vgD" firstAttribute="centerX" secondItem="NLZ-q8-iES" secondAttribute="centerX" id="Qau-Iv-xcz"/>
+                            <constraint firstItem="a8k-gQ-vgD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NLZ-q8-iES" secondAttribute="leadingMargin" constant="20" id="dBY-Sh-Lh7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M09-ZT-gLo" secondAttribute="trailing" constant="-20" id="fX7-jU-hoT"/>
                             <constraint firstItem="M09-ZT-gLo" firstAttribute="leading" secondItem="NLZ-q8-iES" secondAttribute="leadingMargin" constant="-20" id="g2g-de-yDB"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="a8k-gQ-vgD" secondAttribute="trailing" constant="20" id="pK7-f1-2XY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logo" destination="a8k-gQ-vgD" id="RdU-qW-vCZ"/>
+                        <outlet property="mainView" destination="NLZ-q8-iES" id="KgN-B8-B4f"/>
                         <outlet property="tableView" destination="M09-ZT-gLo" id="CRS-m5-iqi"/>
                         <segue destination="2eA-5i-yWa" kind="show" identifier="itemSegue" id="zZ4-V6-PRo"/>
                         <segue destination="DIk-IS-28r" kind="presentation" identifier="menuSegue" id="aWk-Aa-VjO"/>

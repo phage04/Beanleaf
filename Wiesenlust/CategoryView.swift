@@ -12,6 +12,8 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var logo: UIImageView!
     var dishes = [FoodItem]()
     var categorySelected = ""
     var refreshControl: UIRefreshControl!
@@ -21,7 +23,16 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = UIColor.clearColor()
+        if listView {
+            self.logo.hidden = false
+            self.mainView.backgroundColor = UIColor.lightGrayColor()
+            self.tableView.backgroundColor = UIColor.clearColor()
+        }else {
+            self.logo.hidden = true
+            self.mainView.backgroundColor = UIColor.whiteColor()
+            self.tableView.backgroundColor = COLOR1
+        }
+        
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = COLOR2
         refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -53,6 +64,14 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("itemSegue", sender: dishes[indexPath.row])
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if listView {
+            return 120
+        } else {
+            return 249
+        }
     }
     
     
