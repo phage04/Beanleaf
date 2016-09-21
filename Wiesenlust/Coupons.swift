@@ -43,7 +43,7 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
   
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = COLOR2
+        self.tableView.backgroundColor = UIColor.clearColor()
         
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = COLOR1
