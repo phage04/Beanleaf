@@ -106,7 +106,7 @@ let mailGunOwnerEmail = "jover.lyle@gmail.com"
 let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
 let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"
 let CFId = "cvjq6nv76z9n"
-let client = Client(spaceIdentifier: CFId, accessToken: CFTokenProduction)
+let client = Clent(spaceIdentifier: CFId, accessToken: CFTokenProduction)
 
 open class Reachability {
     
