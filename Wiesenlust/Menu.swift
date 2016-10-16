@@ -13,14 +13,15 @@ import SwiftSpinner
 import SideMenu
 import Auk
 
-class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
 
-
+    var inSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,15 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(Menu.showMenu))
         
         navigationController?.isNavigationBarHidden = false
+        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
+        searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
+        
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        
+        textFieldInsideSearchBar?.font = UIFont(name: "\(font1Light)", size: 14)
+        
         
         scrollView.delegate = self
         scrollView.auk.settings.contentMode = .scaleAspectFill
@@ -63,9 +73,49 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchBar.showsCancelButton = true
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            //tableView.reloadData()
+            print("Not searching")
+        } else {
+            inSearchMode = true
+            //filterContentForSearchText(searchBar.text!)
+            print("\(searchBar.text)")
+            
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        inSearchMode = false
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        view.endEditing(true)
+        
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     func showMenu() {
         performSegue(withIdentifier: "menuSegue", sender: nil)
     }
+    
     override func viewWillLayoutSubviews() {
      collectionView.collectionViewLayout.invalidateLayout()    
     }

@@ -320,14 +320,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-KA-2LM">
-                                <rect key="frame" x="0.0" y="-99" width="600" height="799"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="hu6-KA-2LM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="799"/>
                                 </variation>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GOV-2y-S3b">
-                                <rect key="frame" x="0.0" y="276" width="600" height="324"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GOV-2y-S3b">
+                                <rect key="frame" x="0.0" y="277" width="600" height="323"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LQK-Nx-XfL">
                                     <size key="itemSize" width="285" height="285"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -378,7 +378,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJX-Dt-b8j">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJX-Dt-b8j">
                                 <rect key="frame" x="0.0" y="64" width="600" height="212"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -386,26 +386,42 @@
                                     <constraint firstAttribute="height" constant="212" id="BFP-V6-cjR"/>
                                 </constraints>
                             </scrollView>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Dish" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-2n-JTf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="oQj-2n-JTf" firstAttribute="top" secondItem="HoE-x4-XRU" secondAttribute="bottom" symbolic="YES" id="4WY-9n-LOe"/>
+                            <constraint firstAttribute="trailing" secondItem="oQj-2n-JTf" secondAttribute="trailing" id="5YQ-UJ-qc6"/>
+                            <constraint firstItem="oQj-2n-JTf" firstAttribute="top" secondItem="HoE-x4-XRU" secondAttribute="bottom" id="Bkp-2d-fUo"/>
                             <constraint firstItem="GOV-2y-S3b" firstAttribute="leading" secondItem="8OV-IZ-ZyB" secondAttribute="leadingMargin" constant="-20" id="G66-dx-2Pa"/>
                             <constraint firstAttribute="trailing" secondItem="hu6-KA-2LM" secondAttribute="trailing" id="HUp-qu-Fgv"/>
                             <constraint firstItem="GOV-2y-S3b" firstAttribute="top" secondItem="eJX-Dt-b8j" secondAttribute="bottom" constant="1" id="Thm-is-PLd"/>
                             <constraint firstItem="eJX-Dt-b8j" firstAttribute="top" secondItem="HoE-x4-XRU" secondAttribute="bottom" id="YpT-G1-BzG"/>
+                            <constraint firstItem="eJX-Dt-b8j" firstAttribute="top" secondItem="oQj-2n-JTf" secondAttribute="bottom" id="a8u-iY-hxl"/>
                             <constraint firstItem="eJX-Dt-b8j" firstAttribute="leading" secondItem="8OV-IZ-ZyB" secondAttribute="leadingMargin" constant="-20" id="bUL-KV-0xn"/>
                             <constraint firstAttribute="bottom" secondItem="hu6-KA-2LM" secondAttribute="bottom" id="d6P-Aa-DHp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eJX-Dt-b8j" secondAttribute="trailing" constant="-20" id="dwI-iy-ud7"/>
+                            <constraint firstItem="oQj-2n-JTf" firstAttribute="leading" secondItem="8OV-IZ-ZyB" secondAttribute="leading" id="kXX-6C-iwo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GOV-2y-S3b" secondAttribute="trailing" constant="-20" id="s37-gf-Icr"/>
                             <constraint firstItem="hu6-KA-2LM" firstAttribute="leading" secondItem="8OV-IZ-ZyB" secondAttribute="leading" id="sXJ-5Q-pf0"/>
                             <constraint firstItem="hu6-KA-2LM" firstAttribute="top" secondItem="8OV-IZ-ZyB" secondAttribute="top" id="uXa-tt-FYb"/>
                             <constraint firstItem="rdB-e4-53f" firstAttribute="top" secondItem="GOV-2y-S3b" secondAttribute="bottom" id="ze0-XO-ZJS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4WY-9n-LOe"/>
+                                <exclude reference="YpT-G1-BzG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="0ef-zP-HH6"/>
                     <connections>
                         <outlet property="collectionView" destination="GOV-2y-S3b" id="65j-2y-qug"/>
                         <outlet property="mainView" destination="8OV-IZ-ZyB" id="Hgc-LX-bDX"/>
                         <outlet property="scrollView" destination="eJX-Dt-b8j" id="Hdb-yG-PSB"/>
+                        <outlet property="searchBar" destination="oQj-2n-JTf" id="52A-L8-Smt"/>
                         <segue destination="AtX-WJ-VEY" kind="show" identifier="categorySegue" id="4Er-YX-SFZ"/>
                         <segue destination="DIk-IS-28r" kind="presentation" identifier="menuSegue" id="Mgx-aW-hM6"/>
                     </connections>
@@ -2593,8 +2609,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="2ZN-dn-pfc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Branch" translatesAutoresizingMaskIntoConstraints="NO" id="2ZN-dn-pfc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NcV-dn-qPR"/>
                                 </constraints>
@@ -2607,7 +2623,7 @@
                                 </constraints>
                             </mapView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-2J-Swn">
-                                <rect key="frame" x="282" y="170.5" width="37" height="37"/>
+                                <rect key="frame" x="282" y="170" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-hB-jpd">
                                 <rect key="frame" x="0.0" y="294" width="600" height="242"/>
@@ -2880,13 +2896,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mgx-aW-hM6"/>
+        <segue reference="2pr-FC-ebc"/>
         <segue reference="lSl-5G-diZ"/>
-        <segue reference="Tu6-Hc-ynB"/>
+        <segue reference="PAO-9Z-2j9"/>
         <segue reference="T4D-LV-E4T"/>
         <segue reference="08p-oD-Qpd"/>
         <segue reference="3Oq-v4-3gT"/>
-        <segue reference="2pr-FC-ebc"/>
         <segue reference="4GZ-W5-5yC"/>
-        <segue reference="PAO-9Z-2j9"/>
     </inferredMetricsTieBreakers>
 </document>
