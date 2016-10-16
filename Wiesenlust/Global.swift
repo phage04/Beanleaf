@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 import SystemConfiguration
-import Contentful
 import CoreData
 import Alamofire
 import Firebase
@@ -19,7 +18,7 @@ import FirebaseDatabase
 
 let storeName = "Onion Apps"
 let minimumReceipt = "10€"
-var managerPin = NSUserDefaults.standardUserDefaults().valueForKey("managerPin")
+var managerPin = UserDefaults.standard.value(forKey: "managerPin")
 let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ELJCC Bldg. Mother Ignacia Ave., South Triangle 4, Quezon City, Philippines", "C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "11 Aguirre Avenue, BF Homes, Paranaque City, Philippines"]
 let contacts:[String] = ["028961989", "024319360", "027711706", "027711706", "027711706"]
 let storeHours:[String] = ["Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM"]
@@ -46,7 +45,7 @@ var foodItems = [FoodItem]()
 var validForLocationOffer = false
 
 
-var imgURL: NSURL!
+var imgURL: URL!
 
 //let COLOR1 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
 //let COLOR2 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
@@ -109,21 +108,29 @@ let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0
 let CFId = "cvjq6nv76z9n"
 let client = Client(spaceIdentifier: CFId, accessToken: CFTokenProduction)
 
-public class Reachability {
+open class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
         zeroAddress.sin_family = sa_family_t(AF_INET)
-        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }
-        var flags = SCNetworkReachabilityFlags()
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
             return false
         }
-        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
-        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
         return (isReachable && !needsConnection)
     }
     
@@ -139,53 +146,59 @@ func checkConnectivity() -> Bool {
     }
 }
 
-func showErrorAlert(title: String, msg: String, VC: UIViewController) {
-    let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
-    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+func showErrorAlert(_ title: String, msg: String, VC: UIViewController) {
+    let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
     alert.addAction(action)
     
-    VC.presentViewController(alert, animated: true, completion: nil)
+    VC.present(alert, animated: true, completion: nil)
     
 }
 
-func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
-    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.rawValue), 0)) {
+func backgroundThread(_ delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
+    DispatchQueue.global(qos: .background).async  {
         if(background != nil){ background!(); }
         
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(popTime, dispatch_get_main_queue()) {
+        let popTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: popTime) {
             if(completion != nil){ completion!(); }
         }
     }
 }
 
-func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, String)) -> Void)) {
+func downloadImage(_ URL: Foundation.URL, completionHandler : @escaping ((_ isResponse : (UIImage, String)) -> Void)) {
     
     
     
         var imgData: UIImage!
-        let myGroupImg = dispatch_group_create()
+        let myGroupImg = DispatchGroup()
         
         
-        if let urlLink = URL as NSURL? {
+        if let urlLink = URL as Foundation.URL? {
             
-            dispatch_group_enter(myGroupImg)
-            Alamofire.request(.GET, urlLink).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+            myGroupImg.enter()
+            
+          
+            
+            
+            Alamofire.request(urlLink).validate(contentType: ["image/*"]).responseData(completionHandler: { (response) in
                 
-                if err == nil {
-                    imgData = UIImage(data: data!)!
-                    
-                } else {
+                switch response.result{
+                case .success:
+                    imgData = UIImage(data: response.data!)!
+                    break
+                case .failure:
                     imgData = UIImage()
+                    break
                 }
-                dispatch_group_leave(myGroupImg)
-                
+                myGroupImg.leave()
             })
+    
             
-            dispatch_group_notify(myGroupImg, dispatch_get_main_queue(), {
+            myGroupImg.notify(queue: DispatchQueue.main, execute: {
                 
                 
-                completionHandler(isResponse : (imgData, "\(URL)"))
+                completionHandler((imgData, "\(URL)"))
                 
             })
         }
@@ -193,57 +206,57 @@ func downloadImage(URL: NSURL, completionHandler : ((isResponse : (UIImage, Stri
     
 }
 
-func deleteCoreData(entity: String) {
-    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+func deleteCoreData(_ entity: String) {
+    let appDel = UIApplication.shared.delegate as! AppDelegate
     let context = appDel.managedObjectContext
     let coord = appDel.persistentStoreCoordinator
     
-    let fetchRequest = NSFetchRequest(entityName: entity)
+    let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "\(entity)")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
     do {
-        try coord.executeRequest(deleteRequest, withContext: context)
+        try coord.execute(deleteRequest, with: context)
         print("Deleted: \(entity)")
     } catch let error as NSError {
         debugPrint(error)
     }
 }
 
-func deleteCoreDataNil(entity: String) {
-    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+func deleteCoreDataNil(_ entity: String) {
+    let appDel = UIApplication.shared.delegate as! AppDelegate
     let context = appDel.managedObjectContext
     let coord = appDel.persistentStoreCoordinator
     
-    let fetchRequest = NSFetchRequest(entityName: entity)
+    let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "\(entity)")
     fetchRequest.predicate = NSPredicate(format: "id == %@", "")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
     do {
-        try coord.executeRequest(deleteRequest, withContext: context)
+        try coord.execute(deleteRequest, with: context)
     } catch let error as NSError {
         debugPrint(error)
     }
 }
 
-func randomStringWithLength (len : Int) -> NSString {
+func randomStringWithLength (_ len : Int) -> NSString {
     
     let letters : NSString = "0123456789"
     
-    var randomString : NSMutableString = NSMutableString(capacity: len)
+    let randomString : NSMutableString = NSMutableString(capacity: len)
     
-    for (var i=0; i < len; i += 1){
+    for _ in 0 ..< len{
         let length = UInt32 (letters.length)
         let rand = arc4random_uniform(length)
-        randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        randomString.appendFormat("%C", letters.character(at: Int(rand)))
     }
     
     return randomString
 }
 
-func downloadFreeItems(completion: (result: Bool) -> Void){
+func downloadFreeItems(_ completion: @escaping (_ result: Bool) -> Void){
     var index = 0
     
-    DataService.ds.REF_STAMPITEMS.observeSingleEventOfType(.Value, withBlock: { (
+    DataService.ds.REF_STAMPITEMS.observeSingleEvent(of: .value, with: { (
         snapshot) in
         freeItems.removeAll()
         if snapshot.exists() {
@@ -254,7 +267,7 @@ func downloadFreeItems(completion: (result: Bool) -> Void){
                         freeItems.append(val)
                         index += 1
                         if index == freeItemMax {
-                            completion(result: true)
+                            completion(true)
                         }
                     }
                    
@@ -267,8 +280,7 @@ func downloadFreeItems(completion: (result: Bool) -> Void){
 
 
 
-let currentDate = NSDate()
-let dateFormatter = NSDateFormatter()
-
+let currentDate = Date()
+let dateFormatter = DateFormatter()
 
 

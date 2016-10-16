@@ -12,11 +12,11 @@ import MapKit
 extension LocationsVC: MKMapViewDelegate {
     
    
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? Locations {
             let identifier = "pin"
             var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
                 as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
@@ -25,18 +25,18 @@ extension LocationsVC: MKMapViewDelegate {
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             }
             return view
         }
         return nil
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! Locations
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+        location.mapItem().openInMaps(launchOptions: launchOptions)
     }
 
 }

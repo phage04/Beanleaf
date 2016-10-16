@@ -14,10 +14,10 @@ import FirebaseAuth
 
 let baseData = FIRDatabase.database().reference()
 
-public class DataService {
+open class DataService {
     
     
-    public static let ds = DataService()
+    open static let ds = DataService()
     
     var REF_ITEM = baseData.child("item")
     var REF_LIKES = baseData.child("likes")
@@ -28,12 +28,12 @@ public class DataService {
     var REF_STAMPITEMS = baseData.child("stampItems")
     
     
-    func logInAnonymously(completion: (result: Bool) -> Void){
+    func logInAnonymously(_ completion: @escaping (_ result: Bool) -> Void){
         
         
-        FIRAuth.auth()!.signInAnonymouslyWithCompletion({ (user, error) in
-            completion(result: true)
-            NSUserDefaults.standardUserDefaults().setValue(user?.uid, forKey: "userId")
+        FIRAuth.auth()!.signInAnonymously(completion: { (user, error) in
+            completion(true)
+            UserDefaults.standard.setValue(user?.uid, forKey: "userId")
             print("Firebase log in successful ID: \(user?.uid)")
             
         })

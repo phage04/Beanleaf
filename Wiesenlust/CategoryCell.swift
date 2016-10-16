@@ -38,85 +38,85 @@ class CategoryCell: UITableViewCell {
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = COLOR2
         
-        barView.backgroundColor = UIColor.clearColor()
+        barView.backgroundColor = UIColor.clear
         gradientLayer.frame = barView.bounds
-        let color1 = COLOR1.CGColor as CGColorRef
+        let color1 = COLOR1.cgColor as CGColor
         if listView {
-            let color2 = UIColor.lightGrayColor().CGColor as CGColorRef
+            let color2 = UIColor.lightGray.cgColor as CGColor
             gradientLayer.colors = [color1, color2]
             gradientLayer.locations = [0.30, 0.70]
-            gradientLayer.startPoint = CGPointMake(0,0.5)
-            gradientLayer.endPoint = CGPointMake(1,0.5)
+            gradientLayer.startPoint = CGPoint(x: 0,y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
             barView.layer.addSublayer(gradientLayer)
         }else {
-            let color2 = UIColor.clearColor().CGColor as CGColorRef
+            let color2 = UIColor.clear.cgColor as CGColor
             gradientLayer.colors = [color1, color2]
             gradientLayer.locations = [0.30, 0.70]
-            gradientLayer.startPoint = CGPointMake(0,0.5)
-            gradientLayer.endPoint = CGPointMake(1,0.5)
+            gradientLayer.startPoint = CGPoint(x: 0,y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
             barView.layer.addSublayer(gradientLayer)
         }
     
         
-        star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        star.setImage(UIImage(named: "starEmpty1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
         star.tintColor = COLOR_YELLOW
         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryCell.likeTapped(_:)))
         tap.numberOfTapsRequired = 1
         star.addGestureRecognizer(tap)
-        star.userInteractionEnabled = true
+        star.isUserInteractionEnabled = true
         starCount.font = UIFont(name: font1Light, size: 12)
-        starCount.textColor = UIColor.whiteColor()
-        price.textColor = UIColor.whiteColor()
+        starCount.textColor = UIColor.white
+        price.textColor = UIColor.white
         price.font = UIFont(name: font1Light, size: 20)
         foodLbl.textColor = COLOR2
         foodLbl.font = UIFont(name: font1Light, size: 20)
         
         if listView{
-            viewCover.hidden = true
-            foodImg.hidden = true
+            viewCover.isHidden = true
+            foodImg.isHidden = true
         }else {
-            viewCover.hidden = false
-            foodImg.hidden = false
+            viewCover.isHidden = false
+            foodImg.isHidden = false
         }
         
 
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func configureCell(item: FoodItem) {
+    func configureCell(_ item: FoodItem) {
         
         foodLbl.text = item.name
         
-        if let imageDish = item.img as NSData? {
+        if let imageDish = item.img as Data? {
             foodImg.image = UIImage(data: imageDish)
             
         } else {
             
-            foodImg.hidden = true
+            foodImg.isHidden = true
         }
         
         price.text = "\(currencyShort)\(item.price)"
         
-        DataService.ds.REF_ITEM.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(item.postRef)").observeSingleEventOfType(.Value, withBlock:
+        DataService.ds.REF_ITEM.child("\(UserDefaults.standard.value(forKey: "userId")!)/\(item.postRef)").observeSingleEvent(of: .value, with:
             { snapshot in
                 
                 
                 if snapshot.value is NSNull {
-                    self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.setImage(UIImage(named: "starEmpty1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                     self.star.tintColor = COLOR_YELLOW
                 } else {
-                    self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.star.setImage(UIImage(named: "starFull1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                     self.star.tintColor = COLOR_YELLOW
                 }
                 
         })
         
-        DataService.ds.REF_LIKES.child("\(item.postRef)/likes").observeSingleEventOfType(.Value, withBlock:
+        DataService.ds.REF_LIKES.child("\(item.postRef)/likes").observeSingleEvent(of: .value, with:
             { snapshot in
                 if snapshot.value is NSNull {
                     self.starCount.text = "0"
@@ -131,28 +131,28 @@ class CategoryCell: UITableViewCell {
         
     }
     
-    func likeTapped(sender: UITapGestureRecognizer) {
+    func likeTapped(_ sender: UITapGestureRecognizer) {
         
         if checkConnectivity() {
         
-       let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
+       let user = UserDefaults.standard.value(forKey: "userId")!
         
         
         if let _ = self.post {
             let ref = self.post.postRef
-            DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
+            DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEvent(of: .value, with:
                 { snapshot in
                     
                     
                     if snapshot.value is NSNull {
                         self.post.adjustLikes(true, key: ref)
-                        self.star.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                        self.star.setImage(UIImage(named: "starFull1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                         self.star.tintColor = COLOR_YELLOW
                         self.starCount.text = "\(Int(self.starCount.text!)! + 1)"
                         DataService.ds.REF_ITEM.child("\(user)/\(self.post.postRef)").setValue(true)
                     } else {
                         self.post.adjustLikes(false, key: ref)
-                        self.star.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                        self.star.setImage(UIImage(named: "starEmpty1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                         self.star.tintColor = COLOR_YELLOW
                         self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
                         DataService.ds.REF_ITEM.child("\(user)/\(ref)").removeValue()

@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-public class Category {
-    private var _name: String!
-    private var _order: Int!
-    private var _img: NSData!
-    private var _imgURL: String!
-    private var _id: String!
+open class Category {
+    fileprivate var _name: String!
+    fileprivate var _order: Int!
+    fileprivate var _img: Data!
+    fileprivate var _imgURL: String!
+    fileprivate var _id: String!
     
     var id: String {
         if _id == nil {
@@ -39,7 +39,7 @@ public class Category {
         return _order
     }
     
-    var img: NSData {
+    var img: Data {
         get {
             return _img
         }

@@ -12,16 +12,16 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-public class FoodItem {
-    private var _category: String!
-    private var _name: String!
-    private var _descriptionInfo: String!
-    private var _price: Double!
-    private var _img: NSData!
-    private var _imgURL: String!
-    private var _postLikes: Int!
-    private var _postRef: String!
-    private var _id: String!
+open class FoodItem {
+    fileprivate var _category: String!
+    fileprivate var _name: String!
+    fileprivate var _descriptionInfo: String!
+    fileprivate var _price: Double!
+    fileprivate var _img: Data!
+    fileprivate var _imgURL: String!
+    fileprivate var _postLikes: Int!
+    fileprivate var _postRef: String!
+    fileprivate var _id: String!
     
     var id: String {
         if _id == nil {
@@ -78,7 +78,7 @@ public class FoodItem {
         return _price
     }
     
-    var img: NSData {
+    var img: Data {
         
         get {
             if _img == nil {
@@ -126,7 +126,7 @@ public class FoodItem {
         
     }
     
-    func adjustLikes(addLike: Bool, key: String) {
+    func adjustLikes(_ addLike: Bool, key: String) {
        
         DataService.ds.REF_LIKES.child("\(key)/likes").runTransactionBlock({
             (currentData:FIRMutableData!) in
@@ -143,7 +143,7 @@ public class FoodItem {
             }
             
             
-            return FIRTransactionResult.successWithValue(currentData)
+            return FIRTransactionResult.success(withValue: currentData)
         })
     }
     

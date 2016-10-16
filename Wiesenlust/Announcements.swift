@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-public class Announcements {
-    private var _title: String!
-    private var _img: NSData!
-    private var _imgURL: String!
-    private var _id: String!
+open class Announcements {
+    fileprivate var _title: String!
+    fileprivate var _img: Data!
+    fileprivate var _imgURL: String!
+    fileprivate var _id: String!
     
     var id: String {
         if _id == nil {
@@ -30,7 +30,7 @@ public class Announcements {
         return _title
     }
     
-    var img: NSData {
+    var img: Data {
         get {
             return _img
         }

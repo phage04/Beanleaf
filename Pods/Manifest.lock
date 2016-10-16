@@ -1,114 +1,93 @@
 PODS:
-  - Alamofire (3.4.1)
-  - Auk (2.1.5):
-    - moa (~> 3.0)
-  - Contentful (0.2.2):
-    - Decodable (~> 0.4.2)
-    - Interstellar (~> 1.4.0)
-    - "\U0001F555 (= 0.0.1)"
-  - Decodable (0.4.3)
-  - Firebase (3.4.0):
-    - Firebase/Core (= 3.4.0)
-  - Firebase/Analytics (3.4.0):
-    - FirebaseAnalytics (~> 3.3)
-  - Firebase/Auth (3.4.0):
-    - Firebase/Analytics
-    - FirebaseAuth (= 3.0.4)
-  - Firebase/Core (3.4.0):
-    - Firebase/Analytics
-  - Firebase/Database (3.4.0):
-    - Firebase/Analytics
-    - FirebaseDatabase (= 3.0.2)
-  - Firebase/Messaging (3.4.0):
-    - Firebase/Analytics
-    - FirebaseMessaging (= 1.1.1)
-  - FirebaseAnalytics (3.3.0):
+  - Alamofire (4.0.1)
+  - Auk (7.0.1):
+    - moa
+  - Firebase (3.7.1):
+    - Firebase/Core (= 3.7.1)
+  - Firebase/Auth (3.7.1):
+    - Firebase/Core
+    - FirebaseAuth (= 3.0.5)
+  - Firebase/Core (3.7.1):
+    - FirebaseAnalytics (= 3.4.4)
+    - FirebaseCore (= 3.4.3)
+  - Firebase/Database (3.7.1):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.0.3)
+  - Firebase/Messaging (3.7.1):
+    - Firebase/Core
+    - FirebaseMessaging (= 1.2.0)
+  - FirebaseAnalytics (3.4.4):
+    - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.2)
-  - FirebaseAuth (3.0.4):
-    - FirebaseAnalytics (~> 3.2)
+  - FirebaseAuth (3.0.5):
+    - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
-    - GoogleParsingUtilities (~> 1.1)
     - GoogleUtilities (~> 1.2)
-  - FirebaseDatabase (3.0.2):
-    - FirebaseAnalytics (~> 3.2)
+  - FirebaseCore (3.4.3):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseDatabase (3.0.3):
+    - FirebaseAnalytics (~> 3.3)
   - FirebaseInstanceID (1.0.8)
-  - FirebaseMessaging (1.1.1):
+  - FirebaseMessaging (1.2.0):
     - FirebaseAnalytics (~> 3.3)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleIPhoneUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-  - GoogleInterchangeUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - GoogleIPhoneUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleParsingUtilities (1.1.1):
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.1.1)
-  - GoogleUtilities (1.3.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - Interstellar (1.4.0):
-    - Interstellar/Core (= 1.4.0)
-    - Interstellar/Warpdrive (= 1.4.0)
-  - Interstellar/Core (1.4.0)
-  - Interstellar/Warpdrive (1.4.0):
-    - Interstellar/Core
-  - IQKeyboardManagerSwift (4.0.4)
-  - moa (3.0.0)
-  - OAuthSwift (0.5.2)
+  - GoogleNetworkingUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleUtilities (1.3.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - IQKeyboardManagerSwift (4.0.6)
+  - moa (8.0.2)
   - pop (1.0.9)
-  - SideMenu (1.1.9)
-  - SwiftSpinner (0.9.5)
-  - "\U0001F555 (0.0.1)"
+  - SideMenu (2.0.3)
+  - SwiftSpinner (1.0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.4)
-  - Auk (~> 2.1)
-  - Contentful
+  - Alamofire (~> 4.0)
+  - Auk (~> 7.0)
   - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
-  - IQKeyboardManagerSwift
-  - OAuthSwift (~> 0.5.0)
+  - IQKeyboardManagerSwift (= 4.0.6)
+  - moa (~> 8.0)
   - pop (~> 1.0)
   - SideMenu
   - SwiftSpinner
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Auk: 25fe0c1ac0d22b387eca4c5ea9de48c9caea5c05
-  Contentful: 6d36bfcaaa655c2649b95f5da7d48b3292a4b6cb
-  Decodable: ab6c7d02a5df949d3ab16b2696528a3241e37c76
-  Firebase: 754562547af419cc2f4b15247fee419081924bc2
-  FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
-  FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
-  FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Auk: 6f8c4e93427d0d02641263776dd3b66ae4050903
+  Firebase: be473484f0d515e72ffd04acf22f981773c23e58
+  FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
+  FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
+  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseDatabase: 750a4a0fe18ef114318876fd654b2d9c671e0992
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
-  FirebaseMessaging: 6bc7cd2ecb875c1a9c0f8b94956398aa3145bbb8
-  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  FirebaseMessaging: 789d23fd796594dfb55dcf36cd325541df887c22
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
-  GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
-  GoogleParsingUtilities: 30b3896f9ee167dc78747f013d3de157ced1cadf
-  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
-  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  Interstellar: 40fc666872436d6c1b3524c59437ebdb5dec1c6a
-  IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
-  moa: 32ca142e67accf6124087abba94ff5c288ad1d7e
-  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
+  GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  moa: 73d2dd56fe838a31e255c64b7873d2c2fbc71076
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  SideMenu: e4ecb0f1061e19230e53079edb2b300081446f80
-  SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
-  "\U0001F555": 2a41c1f9b76698cb697b8ec9a1db1087f5621187
+  SideMenu: f179260f85c68ed9b283b4a505600f2e6cbdfb10
+  SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
 
-PODFILE CHECKSUM: 6e4c87f5e2a7df86187eb0183db9a85f5d78656a
+PODFILE CHECKSUM: b18db07ab6484e2266f0c84f2c71ad6eddc309e7
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

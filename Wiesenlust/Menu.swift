@@ -8,12 +8,10 @@
 
 import UIKit
 import CoreData
-import Auk
-import moa
-import Contentful
 import Alamofire
 import SwiftSpinner
 import SideMenu
+import Auk
 
 class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -29,16 +27,16 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
 
              
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Menu.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Menu.showMenu))
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(Menu.showMenu))
         
-        navigationController?.navigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
         
         scrollView.delegate = self
-        scrollView.auk.settings.contentMode = .ScaleAspectFill
-        scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.30)
+        scrollView.auk.settings.contentMode = .scaleAspectFill
+        scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray.withAlphaComponent(0.30)
         scrollView.auk.settings.pageControl.marginToScrollViewBottom = 4.0
         scrollView.auk.settings.pageControl.pageIndicatorTintColor = COLOR2
         scrollView.auk.settings.pageControl.currentPageIndicatorTintColor = COLOR1
@@ -46,7 +44,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         
         if announcementsData.count > 0 {
             for data in announcementsData {
-                scrollView.auk.show(image: UIImage(data: data.valueForKey("image") as! NSData)!)
+                scrollView.auk.show(image: UIImage(data: data.value(forKey: "image") as! Data)!)
                
             }
             
@@ -66,7 +64,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         
     }
     func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
     override func viewWillLayoutSubviews() {
      collectionView.collectionViewLayout.invalidateLayout()    
@@ -74,35 +72,35 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     
     
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
         self.collectionView.reloadData()
     }
     
 
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoriesData.count
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let catItem = categoriesData[indexPath.row]
+        let catItem = categoriesData[(indexPath as NSIndexPath).row]
         
-        performSegueWithIdentifier("categorySegue", sender: catItem.valueForKey("name"))
+        performSegue(withIdentifier: "categorySegue", sender: catItem.value(forKey: "name"))
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MenuCategoryCell", forIndexPath: indexPath) as? MenuCategoryCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCategoryCell", for: indexPath) as? MenuCategoryCell {
 
-            let catItem = categoriesData[indexPath.row]
+            let catItem = categoriesData[(indexPath as NSIndexPath).row]
             
-            cell.configureCell("\(catItem.valueForKey("name")!)", imgData: catItem.valueForKey("image") as! NSData)
+            cell.configureCell("\(catItem.value(forKey: "name")!)", imgData: catItem.value(forKey: "image") as! Data)
     
             return cell
         } else {
@@ -112,13 +110,13 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         }
     }
     
-    func backButtonPressed(sender:UIButton) {
-        navigationController?.popToRootViewControllerAnimated(true)
+    func backButtonPressed(_ sender:UIButton) {
+       _ = navigationController?.popToRootViewController(animated: true)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categorySegue" {
-            if let selectedCategory = segue.destinationViewController as? CategoryView{
+            if let selectedCategory = segue.destination as? CategoryView{
                 if let catSelect = sender as? String {
                     selectedCategory.categorySelected = catSelect
                 }

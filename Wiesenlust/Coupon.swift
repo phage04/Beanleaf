@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-public class Coupon{
+open class Coupon{
     
-    private var _title: String!
-    private var _subTitle: String!
-    private var _discount: Int!
-    private var _validity: String!
-    private var _terms: String!
-    private var _special: Bool!
-    private var _discountType: String!
-    private var _couponRef: String!
-    private var _couponUses: Int!
-    private var _location: Bool!
+    fileprivate var _title: String!
+    fileprivate var _subTitle: String!
+    fileprivate var _discount: Int!
+    fileprivate var _validity: String!
+    fileprivate var _terms: String!
+    fileprivate var _special: Bool!
+    fileprivate var _discountType: String!
+    fileprivate var _couponRef: String!
+    fileprivate var _couponUses: Int!
+    fileprivate var _location: Bool!
 
     
     var location: Bool {
@@ -120,7 +120,7 @@ public class Coupon{
         
     }
     
-    func changeStatus(status: Bool) {
+    func changeStatus(_ status: Bool) {
     self._location = status
     }
     

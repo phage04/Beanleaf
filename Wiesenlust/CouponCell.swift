@@ -58,14 +58,14 @@ class CouponCell: UITableViewCell {
         targetWidth = couponImg.frame.width
         targetHeight = couponImg.frame.height
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         couponImg.image = scaledImage
     }
     
-    func configureCell(titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?, locFlag: Bool) {
+    func configureCell(_ titleTxt: String, discountTxt: Int!, validityTxt: String?, termsTxt: String?, discType: String, desc: String?, locFlag: Bool) {
         
         title.text = titleTxt
         
@@ -92,15 +92,15 @@ class CouponCell: UITableViewCell {
         terms.text = termsTxt
         
         if locFlag {
-            special.hidden = false
+            special.isHidden = false
             special.text = "JUST FOR YOU"
             starImg.image = UIImage(named: "starFull1x")
-            starImg.image = starImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            starImg.image = starImg.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             starImg.tintColor = COLOR_YELLOW
             
         } else {
-            special.hidden = true
-            starImg.hidden = true
+            special.isHidden = true
+            starImg.isHidden = true
         }
         
 

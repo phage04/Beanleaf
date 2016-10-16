@@ -34,7 +34,7 @@ class Locations: NSObject, MKAnnotation {
         super.init()
     }
     
-    func addDistance(distance: CLLocationDistance) {
+    func addDistance(_ distance: CLLocationDistance) {
         self.distance = distance
     }
     

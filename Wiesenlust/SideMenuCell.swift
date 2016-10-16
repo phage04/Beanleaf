@@ -16,18 +16,18 @@ class SideMenuCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        menuLbl.textColor = UIColor.whiteColor()
+        menuLbl.textColor = UIColor.white
         menuLbl.font = UIFont(name: font1Medium, size: 17)
 
 
     }
     
-    func configureCell(titleVal: String, image: String) {
+    func configureCell(_ titleVal: String, image: String) {
         
         menuLbl.text = titleVal
         if image != "" {
             menuImg.image = UIImage(named: image)
-            menuImg.image = menuImg.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            menuImg.image = menuImg.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             menuImg.tintColor = COLOR1
         }
        

@@ -31,19 +31,19 @@ class Reservations: UIViewController{
     
     @IBOutlet weak var sendBtn: UIButton!
     
-    let userCalendar = NSCalendar.currentCalendar()
+    let userCalendar = Calendar.current
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.backButtonPressed(_:)))
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Reservations.backButtonPressed(_:)))
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Reservations.showMenu))
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(Reservations.showMenu))
 
-        navigationController?.navigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
         
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
@@ -77,56 +77,56 @@ class Reservations: UIViewController{
         
     }
     
-    func showErrorAlertAction(title: String, msg: String, VC: UIViewController) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+    func showErrorAlertAction(_ title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
-        let actionOK = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            self.navigationController?.popToRootViewController(animated: true)
             
         })
         alert.addAction(actionOK)
-        VC.presentViewController(alert, animated: true, completion: nil)
+        VC.present(alert, animated: true, completion: nil)
         
     }
 
     func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
 
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
     }
 
-    @IBAction func editingBegunDateTime(sender: UITextField) {
-        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
+    @IBAction func editingBegunDateTime(_ sender: UITextField) {
+        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
   
-        let datePickerView  : UIDatePicker = UIDatePicker(frame: CGRectMake((self.view.frame.size.width/2) - (320/2), 40, 0, 0))
+        let datePickerView  : UIDatePicker = UIDatePicker(frame: CGRect(x: (self.view.frame.size.width/2) - (320/2), y: 40, width: 0, height: 0))
         
-        datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
+        datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         datePickerView.minuteInterval = 15
         
-        let dateFromNow = userCalendar.dateByAddingUnit(
-            [.Day],
+        let dateFromNow = (userCalendar as NSCalendar).date(
+            byAdding: [.day],
             value: 90,
-            toDate: NSDate(),
+            to: Date(),
             options: [])
         
         datePickerView.maximumDate = dateFromNow
-        datePickerView.minimumDate = NSDate()
+        datePickerView.minimumDate = Date()
         
         inputView.addSubview(datePickerView)
-        inputView.backgroundColor = UIColor.whiteColor()
-        datePickerView.backgroundColor = UIColor.whiteColor()
+        inputView.backgroundColor = UIColor.white
+        datePickerView.backgroundColor = UIColor.white
         
 
         sender.inputView = inputView
-        datePickerView.addTarget(self, action: #selector(Reservations.handleDatePicker(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: #selector(Reservations.handleDatePicker(_:)), for: UIControlEvents.valueChanged)
         
-        let timeFromNow = userCalendar.dateByAddingUnit(
-            [.Hour],
+        let timeFromNow = (userCalendar as NSCalendar).date(
+            byAdding: [.hour],
             value: 1,
-            toDate: NSDate(),
+            to: Date(),
             options: [])
         
         if let unwrappedDate = timeFromNow {
@@ -138,11 +138,11 @@ class Reservations: UIViewController{
         
     }
     
-    func handleDatePicker(sender: UIDatePicker) {
+    func handleDatePicker(_ sender: UIDatePicker) {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DATE_FORMAT2
-        dateTimeTxt.text = dateFormatter.stringFromDate(sender.date)
+        dateTimeTxt.text = dateFormatter.string(from: sender.date)
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = COLOR2
     }
@@ -150,7 +150,7 @@ class Reservations: UIViewController{
     
 
 
-    @IBAction func sendBtnPressed(sender: AnyObject) {
+    @IBAction func sendBtnPressed(_ sender: AnyObject) {
      
         
         if checkConnectivity()  {
@@ -163,20 +163,19 @@ class Reservations: UIViewController{
                     "Authorization" : "api:\(key)",
                     "from": "info@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
-                    "subject": "Reservation Request: \(NSDate())",
+                    "subject": "Reservation Request: \(Date())",
                     "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"
                 ]
                 
-                _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)
-                    .authenticate(user: "api", password: key)
-                    .response { (request, response, data, error) in
-                        if response?.statusCode == 200 {
+                _ = Alamofire.request("https://api.mailgun.net/v3/\(mailGunURL)/messages", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).authenticate(user: "api", password: key).response { response in
+                    
+                        if response.error == nil{
                            self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
                         } else {
                            showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
                         }
-                        print(response!)
-                }
+                        
+                    }
 
             } else {
                 
@@ -200,8 +199,8 @@ class Reservations: UIViewController{
         view.endEditing(true)
     }
     
-    func backButtonPressed(sender:UIButton) {
-        navigationController?.popToRootViewControllerAnimated(true)
+    func backButtonPressed(_ sender:UIButton) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     

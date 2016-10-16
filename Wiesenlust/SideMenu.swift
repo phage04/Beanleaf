@@ -31,18 +31,18 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItem.count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("SideMenuCell") as? SideMenuCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell") as? SideMenuCell {
             
-            cell.configureCell(menuItem[indexPath.row], image: "\(menuImages[indexPath.row])")
+            cell.configureCell(menuItem[(indexPath as NSIndexPath).row], image: "\(menuImages[(indexPath as NSIndexPath).row])")
             cell.backgroundColor = COLOR2
             return cell
             
@@ -52,14 +52,14 @@ class SideMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        performSegueWithIdentifier("\(indexPath.row)", sender: nil)
+        performSegue(withIdentifier: "\((indexPath as NSIndexPath).row)", sender: nil)
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 

@@ -17,13 +17,13 @@ class ImageStarStamp: UIImageView {
         let targetHeight : CGFloat = 75
         var scaledImage = imageStamp
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        imageStamp!.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        imageStamp!.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         image = scaledImage
-        image = self.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        tintColor = UIColor.grayColor()
+        image = self.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        tintColor = UIColor.gray
     }
 
 }

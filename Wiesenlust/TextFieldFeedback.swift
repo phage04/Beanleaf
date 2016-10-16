@@ -14,7 +14,7 @@ class TextFieldFeedback: UITextField {
        
        font = UIFont(name: font1Regular, size: 18)
        textColor = COLOR2
-       layer.borderColor = COLOR2.CGColor
+       layer.borderColor = COLOR2.cgColor
        layer.borderWidth = 1.0
        layer.cornerRadius = 10.0
         

@@ -23,7 +23,7 @@ class CustomImageFlowLayout: UICollectionViewFlowLayout {
     func setupLayout() {
         minimumInteritemSpacing = 1
         minimumLineSpacing = 1
-        scrollDirection = .Vertical
+        scrollDirection = .vertical
     }
     
     override var itemSize: CGSize {
@@ -33,8 +33,8 @@ class CustomImageFlowLayout: UICollectionViewFlowLayout {
         get {
             let numberOfColumns: CGFloat = 2
             
-            let itemWidth = (CGRectGetWidth(self.collectionView!.frame) - (numberOfColumns - 1)) / numberOfColumns
-            return CGSizeMake(itemWidth, itemWidth)
+            let itemWidth = (self.collectionView!.frame.width - (numberOfColumns - 1)) / numberOfColumns
+            return CGSize(width: itemWidth, height: itemWidth)
         }
     }
 }

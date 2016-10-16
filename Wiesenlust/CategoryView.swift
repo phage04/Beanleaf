@@ -24,49 +24,49 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView.delegate = self
         self.tableView.dataSource = self
         if listView {
-            self.logo.hidden = false
-            self.mainView.backgroundColor = UIColor.lightGrayColor()
-            self.tableView.backgroundColor = UIColor.clearColor()
+            self.logo.isHidden = false
+            self.mainView.backgroundColor = UIColor.lightGray
+            self.tableView.backgroundColor = UIColor.clear
         }else {
-            self.logo.hidden = true
-            self.mainView.backgroundColor = UIColor.whiteColor()
+            self.logo.isHidden = true
+            self.mainView.backgroundColor = UIColor.white
             self.tableView.backgroundColor = COLOR1
         }
         
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = COLOR2
-        refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         navigationItem.title = categorySelected
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(CategoryView.showMenu))
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(CategoryView.showMenu))
 
         
         for each in foodItemsData {
             
-            if "\(each.valueForKey("category")!)" == categorySelected {
+            if "\(each.value(forKey: "category")!)" == categorySelected {
                 
-                dishes.append(FoodItem(id: "\(each.valueForKey("id"))",cat: each.valueForKey("category")! as! String, name: each.valueForKey("name")! as! String, desc: each.valueForKey("descriptionInfo")! as? String, price: each.valueForKey("price")! as! Double, image: UIImage(data: each.valueForKey("image") as! NSData), imgURL: each.valueForKey("imageURL")! as? String, key: each.valueForKey("key")! as! String, likes: each.valueForKey("likes") as? Int))
+                dishes.append(FoodItem(id: "\(each.value(forKey: "id"))",cat: each.value(forKey: "category")! as! String, name: each.value(forKey: "name")! as! String, desc: each.value(forKey: "descriptionInfo")! as? String, price: each.value(forKey: "price")! as! Double, image: UIImage(data: each.value(forKey: "image") as! Data), imgURL: each.value(forKey: "imageURL")! as? String, key: each.value(forKey: "key")! as! String, likes: each.value(forKey: "likes") as? Int))
             }
         }
 
    
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("itemSegue", sender: dishes[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "itemSegue", sender: dishes[(indexPath as NSIndexPath).row])
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if listView {
             return 120
         } else {
@@ -75,14 +75,14 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? CategoryCell {
-            cell.layer.anchorPointZ = CGFloat(indexPath.row)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell {
+            cell.layer.anchorPointZ = CGFloat((indexPath as NSIndexPath).row)
             cell.contentView.clipsToBounds = false
             cell.backgroundColor = cell.contentView.backgroundColor
             cell.clipsToBounds = false
-            cell.selectionStyle = .None
-            cell.configureCell(dishes[indexPath.row])
+            cell.selectionStyle = .none
+            cell.configureCell(dishes[(indexPath as NSIndexPath).row])
             
             return cell
             
@@ -93,13 +93,13 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "itemSegue" {
-            if let selectedItem = segue.destinationViewController as? ItemView{
+            if let selectedItem = segue.destination as? ItemView{
                 if let itemSelect = sender as? FoodItem {
                     selectedItem.dish = itemSelect
                 }
@@ -107,7 +107,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func refresh(sender:AnyObject) {
+    func refresh(_ sender:AnyObject) {
         tableView.reloadData()
         self.refreshControl.endRefreshing()
     }

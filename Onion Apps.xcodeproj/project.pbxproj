@@ -31,7 +31,6 @@
 		DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317231D3CB61700B1E2AE /* SideMenu.swift */; };
 		DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */; };
 		DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317271D3CBF8900B1E2AE /* Feedback.swift */; };
-		DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */; };
 		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
 		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
 		DEBAE06F1D7E7D8300FCB246 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */; };
@@ -79,7 +78,6 @@
 		DE6317231D3CB61700B1E2AE /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		DE6317271D3CBF8900B1E2AE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
-		DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
 		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		DE5DC5CD1D2A77C3002871B9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				DEB470711D2AAD9800218AE1 /* YelpAPIClient.swift */,
 				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
 				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
@@ -255,12 +252,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = OnionApps;
 				TargetAttributes = {
 					DE5BACAE1D26BB07006C3C7C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = WE9UD96DQ3;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -332,7 +330,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		86C496EC654F536586434C0A /* [CP] Copy Pods Resources */ = {
@@ -387,7 +385,6 @@
 				DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */,
 				DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */,
 				DE57B7531D509EF6009F1296 /* DataService.swift in Sources */,
-				DEB470721D2AAD9800218AE1 /* YelpAPIClient.swift in Sources */,
 				DEBC25471D35659700997EB1 /* ImageStarStamp.swift in Sources */,
 				DEF3063D1D38F5D5004682EE /* Locations.swift in Sources */,
 				DE2BF0471D33CEEB0049F662 /* CouponCell.swift in Sources */,
@@ -431,8 +428,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -481,8 +480,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -504,6 +505,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -514,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -542,6 +545,7 @@
 				PRODUCT_NAME = "Onion Apps";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -550,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -577,6 +582,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
 				PRODUCT_NAME = "Onion Apps";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

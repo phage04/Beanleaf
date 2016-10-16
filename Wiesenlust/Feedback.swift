@@ -29,17 +29,17 @@ class Feedback: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(Feedback.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Feedback.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(Feedback.showMenu))
-        navigationController?.navigationBarHidden = false
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(Feedback.showMenu))
+        navigationController?.isNavigationBarHidden = false
         
         msgLbl.text = msgPlaceholder
-        msgLbl.textColor = UIColor.lightGrayColor()
+        msgLbl.textColor = UIColor.lightGray
         msgLbl.font = UIFont(name: font1Regular, size: 18)
         msgLbl.layer.borderWidth = 1.0
-        msgLbl.layer.borderColor = COLOR2.CGColor
+        msgLbl.layer.borderColor = COLOR2.cgColor
         msgLbl.layer.cornerRadius = 10.0
         
         self.msgLbl.delegate = self
@@ -49,30 +49,30 @@ class Feedback: UIViewController, UITextViewDelegate {
      
     }
     
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
     }
     
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        if textView.textColor == UIColor.lightGrayColor() {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = COLOR2
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = msgPlaceholder
-            textView.textColor = UIColor.lightGrayColor()
+            textView.textColor = UIColor.lightGray
         }
     }
 
-    func backButtonPressed(sender:UIButton) {
-        navigationController?.popToRootViewControllerAnimated(true)
+    func backButtonPressed(_ sender:UIButton) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
-    @IBAction func sendBtn(sender: AnyObject) {
+    @IBAction func sendBtn(_ sender: AnyObject) {
         
         
         if checkConnectivity()  {
@@ -86,22 +86,19 @@ class Feedback: UIViewController, UITextViewDelegate {
                     "Authorization" : "api:\(key)",
                     "from": "info@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
-                    "subject": "Customer Feedback: \(NSDate())",
+                    "subject": "Customer Feedback: \(Date())",
                     "text": "\(Message)"
                 ]
                 
-                _ = Alamofire.request(.POST, "https://api.mailgun.net/v3/\(mailGunURL)/messages", parameters:parameters)
-                    .authenticate(user: "api", password: key)
-                    .response { (request, response, data, error) in
-                        if response?.statusCode == 200 {
-                            self.showErrorAlertAction("Thank You", msg: "We take customer feedback very seriously. We appreciate you taking time to send this to us.", VC: self)
-                            
-                        } else {
-                            showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
-                        }
-                        print(response!)
+                _ = Alamofire.request("https://api.mailgun.net/v3/\(mailGunURL)/messages", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).authenticate(user: "api", password: key).response { response in
+                    
+                    if response.error == nil{
+                        self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
+                    } else {
+                        showErrorAlert("Something Went Wrong", msg: "We're working on it. Please try again later.", VC: self)
+                    }
+                    
                 }
-                
             } else {
                 
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
@@ -116,19 +113,19 @@ class Feedback: UIViewController, UITextViewDelegate {
         
     }
     
-    func showErrorAlertAction(title: String, msg: String, VC: UIViewController) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+    func showErrorAlertAction(_ title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
-        let actionOK = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            self.navigationController?.popToRootViewController(animated: true)
             
         })
         alert.addAction(actionOK)
-        VC.presentViewController(alert, animated: true, completion: nil)
+        VC.present(alert, animated: true, completion: nil)
         
     }
     func showMenu() {        
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
 }

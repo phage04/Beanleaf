@@ -26,14 +26,14 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
     var dish: FoodItem!
 
     
-    private let kTableHeaderHeight: CGFloat = 300.0
+    fileprivate let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        self.tableView.backgroundColor = UIColor.white
         
         headerView = self.tableView.tableHeaderView
         self.tableView.tableHeaderView = nil
@@ -48,29 +48,29 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         navigationItem.title = dish.name
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(ItemView.showMenu))
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(ItemView.showMenu))
 
         
-        if let image = dish.img as NSData? {
+        if let image = dish.img as Data? {
             dishImg.image = UIImage(data: image)
         } else {
-            dishImg.hidden = true
+            dishImg.isHidden = true
         }
-        DataService.ds.REF_ITEM.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(dish.postRef)").observeSingleEventOfType(.Value, withBlock:
+        DataService.ds.REF_ITEM.child("\(UserDefaults.standard.value(forKey: "userId")!)/\(dish.postRef)").observeSingleEvent(of: .value, with:
             { snapshot in
                 
                 
                 if snapshot.value is NSNull {
-                    self.starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.starBtn.setImage(UIImage(named: "starEmpty1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                     self.starBtn.tintColor = COLOR_YELLOW
                 } else {
-                    self.starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                    self.starBtn.setImage(UIImage(named: "starFull1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                     self.starBtn.tintColor = COLOR_YELLOW
                 }
                 
         })
         
-        DataService.ds.REF_LIKES.child("\(dish.postRef)/likes").observeSingleEventOfType(.Value, withBlock:
+        DataService.ds.REF_LIKES.child("\(dish.postRef)/likes").observeSingleEvent(of: .value, with:
             { snapshot in
                 if snapshot.value is NSNull {
                     self.starCount.text = "0"
@@ -84,9 +84,9 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         
         
         starCount.font = UIFont(name: font1Light, size: 12)
-        starCount.textColor = UIColor.whiteColor()
+        starCount.textColor = UIColor.white
         
-        price.textColor = UIColor.whiteColor()
+        price.textColor = UIColor.white
         price.font = UIFont(name: font1Light, size: 20)
         price.text = "\(currencyShort)\(dish.price)"
         
@@ -95,7 +95,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         updateHeaderView()
     }
     func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -107,7 +107,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         updateHeaderView()
     }    
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateHeaderView()
     }
     
@@ -122,16 +122,16 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         headerView.frame = headerRect
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell") as? ItemCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemCell {
             cell.contentView.clipsToBounds = false
             cell.clipsToBounds = false
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
             cell.configureCell(dish.name, dishDesc: dish.descriptionInfo)
             return cell
             
@@ -141,39 +141,39 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    @IBAction func starBtnPressed(sender: AnyObject) {
+    @IBAction func starBtnPressed(_ sender: AnyObject) {
         if checkConnectivity() {
             
-            let user = NSUserDefaults.standardUserDefaults().valueForKey("userId")!
+            let user = UserDefaults.standard.value(forKey: "userId")!
             
             
             if let _ = self.dish {
                 let ref = self.dish.postRef
-                DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEventOfType(.Value, withBlock:
+                DataService.ds.REF_ITEM.child("\(user)/\(ref)").observeSingleEvent(of: .value, with:
                     { snapshot in
                         
                         
                         if snapshot.value is NSNull {
                             self.dish.adjustLikes(true, key: ref)
-                            self.starBtn.setImage(UIImage(named: "starFull1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                            self.starBtn.setImage(UIImage(named: "starFull1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                             self.starBtn.tintColor = COLOR_YELLOW
                             self.starCount.text = "\(Int(self.starCount.text!)! + 1)"
                             DataService.ds.REF_ITEM.child("\(user)/\(self.dish.postRef)").setValue(true)
                         } else {
                             self.dish.adjustLikes(false, key: ref)
-                            self.starBtn.setImage(UIImage(named: "starEmpty1x")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                            self.starBtn.setImage(UIImage(named: "starEmpty1x")!.withRenderingMode(.alwaysTemplate), for: UIControlState())
                             self.starBtn.tintColor = COLOR_YELLOW
                             self.starCount.text = "\(Int(self.starCount.text!)! - 1)"
                             DataService.ds.REF_ITEM.child("\(user)/\(ref)").removeValue()

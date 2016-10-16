@@ -23,17 +23,17 @@ class LocationsCell: UITableViewCell {
         super.awakeFromNib()
         title.textColor = COLOR2
         title.font = UIFont(name: font1Medium, size: 15)
-        address.textColor = UIColor.darkGrayColor()
+        address.textColor = UIColor.darkGray
         address.font = UIFont(name: font1Light, size: 15)
-        contact.textColor = UIColor.darkGrayColor()
+        contact.textColor = UIColor.darkGray
         contact.font = UIFont(name: font1Light, size: 15)
-        storeHours.textColor = UIColor.darkGrayColor()
+        storeHours.textColor = UIColor.darkGray
         storeHours.font = UIFont(name: font1Light, size: 15)
     
         
     }
     
-    func configureCell(titleVal: String, addressVal: String, contactVal: String, storeHoursVal: String, row: Int) {
+    func configureCell(_ titleVal: String, addressVal: String, contactVal: String, storeHoursVal: String, row: Int) {
         
         title.text = titleVal
         address.text = addressVal
@@ -45,17 +45,17 @@ class LocationsCell: UITableViewCell {
         let targetHeight : CGFloat = 40
         var scaledImage = image
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        callBtn.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        callBtn.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         callBtn.tintColor = COLOR2
         
-        self.callBtn.removeTarget(LocationsVC(), action: #selector(LocationsVC.callClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.callBtn.removeTarget(LocationsVC(), action: #selector(LocationsVC.callClicked(_:)), for: UIControlEvents.touchUpInside)
         
         self.callBtn.tag = row
-        self.callBtn.addTarget(LocationsVC(), action: #selector(LocationsVC.callClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.callBtn.addTarget(LocationsVC(), action: #selector(LocationsVC.callClicked(_:)), for: UIControlEvents.touchUpInside)
     }
    
 

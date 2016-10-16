@@ -21,17 +21,17 @@ class ItemCell: UITableViewCell {
         itemTitle.textColor = COLOR2
         itemTitle.font = UIFont(name: font1Regular, size: 20)
         
-        itemDesc.textColor = UIColor.darkGrayColor()
+        itemDesc.textColor = UIColor.darkGray
         itemDesc.font = UIFont(name: font1Light, size: 14)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func configureCell(dishName: String, dishDesc: String) {
+    func configureCell(_ dishName: String, dishDesc: String) {
         itemTitle.text = dishName
         itemDesc.text = dishDesc
     }

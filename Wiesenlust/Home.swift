@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Contentful
 import Alamofire
 import SwiftSpinner
 import Firebase
@@ -66,24 +65,24 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         homeSetup()
         
-        navigationController?.navigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         
         backgroundImg.image = UIImage(named: "bg")
-        backgroundView.backgroundColor = UIColor.whiteColor()
+        backgroundView.backgroundColor = UIColor.white
         backgroundImg.alpha = 0.25
         
-        socialButton.backgroundColor = UIColor.clearColor()
+        socialButton.backgroundColor = UIColor.clear
         socialButton.layer.cornerRadius = 5
         socialButton.layer.borderWidth = 1
-        socialButton.layer.borderColor = COLOR1.CGColor
-        socialButton.setTitle(socialButtonTitle, forState: .Normal)
-        socialButton.setTitleColor(COLOR2, forState: .Normal)
+        socialButton.layer.borderColor = COLOR1.cgColor
+        socialButton.setTitle(socialButtonTitle, for: UIControlState())
+        socialButton.setTitleColor(COLOR2, for: UIControlState())
         socialButton.titleLabel?.font = UIFont(name: font1Regular, size: 18)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -93,48 +92,48 @@ class Home: UIViewController, CLLocationManagerDelegate {
         let targetHeight : CGFloat = 92
         var scaledImage = image
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem1.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem1.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         
         image = menuIcon2!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem2.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem2.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         
         image = menuIcon3!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem3.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem3.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         image = menuIcon4!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem4.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem4.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         image = menuIcon5!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem5.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem5.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         image = menuIcon6!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight),false,0)
-        image.drawInRect(CGRectMake(0, 0, targetWidth, targetHeight))
-        scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
+        image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
+        scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem6.setImage(scaledImage.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        menuItem6.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
         
         
         menuItem1.tintColor = COLOR1
@@ -154,7 +153,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         downloadManagerPin()
         fetchDataCat { (result) in
             if result {
@@ -188,9 +187,9 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     
     func setupLocationNotifications(){
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
          //Check if location is set to enabled always
-        if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
+        if CLLocationManager.authorizationStatus() != .authorizedAlways {
             showErrorAlert("Location Services Disabled", msg: "Please enable location services for Onion Apps in your device settings.", VC: self)
         } else {
             print("Location Auth Confirmed: Always")
@@ -206,7 +205,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
                 if let placeMark = placemarks?[0] {
                     
-                    if let long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                    if let long = placeMark.location?.coordinate.longitude, let lat = placeMark.location?.coordinate.latitude   {
                         
                         
                         if let name = placeMark.thoroughfare as String? {
@@ -220,10 +219,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
                         region.notifyOnExit = false
                         print("Name:\(self.nameTitle) Long:\(long) Lat:\(lat)")
                         
-                        if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion) {
+                        if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
                             showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
                         } else {
-                            self.locationManager.startMonitoringForRegion(region)
+                            self.locationManager.startMonitoring(for: region)
                             //print("Region monitoring started for \(self.nameTitle)")
                         }
                         
@@ -235,22 +234,22 @@ class Home: UIViewController, CLLocationManagerDelegate {
             })
         }
 
-        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        let settings = UIUserNotificationSettings(types: .alert, categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
         
         
         
     }
     
 
-    @IBAction func socialBtnPressed(sender: AnyObject) {
-        if let appURL = NSURL(string: socialURLApp) {
-            let canOpen = UIApplication.sharedApplication().canOpenURL(appURL)
+    @IBAction func socialBtnPressed(_ sender: AnyObject) {
+        if let appURL = URL(string: socialURLApp) {
+            let canOpen = UIApplication.shared.canOpenURL(appURL)
             
             if canOpen {
-                UIApplication.sharedApplication().openURL(NSURL(string: socialURLApp)!)
+                UIApplication.shared.openURL(URL(string: socialURLApp)!)
             } else {
-                UIApplication.sharedApplication().openURL(NSURL(string: socialURLWeb)!)
+                UIApplication.shared.openURL(URL(string: socialURLWeb)!)
             }
         }
     }
@@ -310,8 +309,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
         deleteCoreDataNil("FoodItem")
         deleteCoreDataNil("Announcements")
         
-        let myGroupCat = dispatch_group_create()
-        let myGroupCat2 = dispatch_group_create()
+        let myGroupCat = DispatchGroup()
+        let myGroupCat2 = DispatchGroup()
         
         
         client.fetchEntries(["content_type": "category"]).1.next {
@@ -339,10 +338,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
                             
                             
                             print("with...\(item.valueForKey("name")!)")
-                            if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
+                            if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
                                 
                                 
-                                if let _ = item.valueForKey("name"), _ = item.valueForKey("imageURL"), _ = imgURL, _ = item.valueForKey("order"), _ = entry.fields["order"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                if let _ = item.valueForKey("name"), let _ = item.valueForKey("imageURL"), let _ = imgURL, let _ = item.valueForKey("order"), let _ = entry.fields["order"] , "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
                                     "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" || "\(item.valueForKey("name")!)" != "\(entry.fields["categoryName"]!)" {
                                     
                                     print("Did detect change in CATEGORIES: \(item.valueForKey("name")!)")
@@ -365,10 +364,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
                             
                             
                             print("with...\(item.valueForKey("name")!)")
-                            if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
+                            if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
                                 
                                 
-                                if let _ = item.valueForKey("name"), _ = item.valueForKey("order"), _ = entry.fields["order"] where
+                                if let _ = item.valueForKey("name"), let _ = item.valueForKey("order"), let _ = entry.fields["order"] ,
                                     "\(item.valueForKey("order")!)" != "\(entry.fields["order"]!)" || "\(item.valueForKey("name")!)" != "\(entry.fields["categoryName"]!)" {
                                     
                                     print("Did detect change in CATEGORIES: \(item.valueForKey("name")!)")
@@ -496,8 +495,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
     func downloadFoodItems() {
         
         var categoryFood: String!
-        let myGroupFood = dispatch_group_create()
-        let myGroupFood2 = dispatch_group_create()
+        let myGroupFood = DispatchGroup()
+        let myGroupFood2 = DispatchGroup()
         var likes: Int = 0
         var changes: Int = 0
         
@@ -540,10 +539,10 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                             categoryFood = cat.fields["categoryName"] as! String
                                         }
                                         print("with...\(item.valueForKey("name")!)")
-                                        if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
+                                        if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
                                             
                                             
-                                            if let _ = item.valueForKey("imageURL") as? String, _ = imgURL, _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
+                                            if let _ = item.valueForKey("imageURL") as? String, let _ = imgURL, let _ = item.valueForKey("price"), let _ = entry.fields["price"] , "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
                                                 "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
                                                 "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
                                                 "\(item.valueForKey("category")!)" != "\(categoryFood)" || "\(item.valueForKey("name")!)" != "\(entry.fields["itemName"]!)" {
@@ -567,8 +566,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                     if let cat = entry.fields["category"] as? Entry {
                                         categoryFood = cat.fields["categoryName"] as! String
                                     }
-                                    if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
-                                        if let _ = item.valueForKey("price"), _ = entry.fields["price"] where "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
+                                    if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
+                                        if let _ = item.valueForKey("price"), let _ = entry.fields["price"] , "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
                                             "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
                                             "\(item.valueForKey("category")!)" != "\(categoryFood)" || "\(item.valueForKey("name")!)" != "\(entry.fields["itemName"]!)" || (entry.fields["image"] == nil && "\(item.valueForKey("imageURL")!)" != "") {
                                             
@@ -707,8 +706,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         var changes: Int = 0
         
-        let myGroupCat = dispatch_group_create()
-        let myGroupCat2 = dispatch_group_create()
+        let myGroupCat = DispatchGroup()
+        let myGroupCat2 = DispatchGroup()
         
         
         client.fetchEntries(["content_type": "announcements"]).1.next {
@@ -736,7 +735,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                 
                                 
                                 print("with...\(item.valueForKey("title")!)")
-                                if let _ = item.valueForKey("id") where "\(item.valueForKey("id")!)" == "\(entry.identifier)" && "\(item.valueForKey("imageURL")!)" != "\(imgURL)" {
+                                if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" && "\(item.valueForKey("imageURL")!)" != "\(imgURL)" {
                                 
                                         
                                         print("Did detect change in ANNOUNCEMENTS: \(item.valueForKey("title")!)")
@@ -869,17 +868,17 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
 
     
-    func saveCategory(category: Category) {
-        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+    func saveCategory(_ category: Category) {
+        let appDelegate =  UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext:managedContext)
-        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let entity =  NSEntityDescription.entity(forEntityName: "Category", in:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertInto: managedContext)
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Category")
         
         
         fetchRequest.predicate = NSPredicate(format: "id = %@", category.id)
         do {
-            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+            if let fetchResults = try appDelegate.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
                     fetchResults.first?.setValue(category.id, forKey: "id")
@@ -928,17 +927,18 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func saveFood(foodItem: FoodItem) {
-        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+    func saveFood(_ foodItem: FoodItem) {
+        let appDelegate =  UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("FoodItem", inManagedObjectContext:managedContext)
-        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        let fetchRequest = NSFetchRequest(entityName: "FoodItem")
+        let entity =  NSEntityDescription.entity(forEntityName: "FoodItem", in:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertInto: managedContext)
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FoodItem")
+        
         
         
         fetchRequest.predicate = NSPredicate(format: "id = %@", foodItem.id)
         do {
-            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+            if let fetchResults = try appDelegate.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
                     fetchResults.first?.setValue(foodItem.id, forKey: "id")
@@ -995,17 +995,17 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func saveAnnouncement(announcement: Announcements) {
-        let appDelegate =  UIApplication.sharedApplication().delegate as! AppDelegate
+    func saveAnnouncement(_ announcement: Announcements) {
+        let appDelegate =  UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let entity =  NSEntityDescription.entityForName("Announcements", inManagedObjectContext:managedContext)
-        let categoryTemp = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        let fetchRequest = NSFetchRequest(entityName: "Announcements")
+        let entity =  NSEntityDescription.entity(forEntityName: "Announcements", in:managedContext)
+        let categoryTemp = NSManagedObject(entity: entity!, insertInto: managedContext)
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Announcements")
         
         
         fetchRequest.predicate = NSPredicate(format: "id = %@", announcement.id)
         do {
-            if let fetchResults = try appDelegate.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+            if let fetchResults = try appDelegate.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
                     fetchResults.first?.setValue(announcement.id, forKey: "id")
@@ -1051,57 +1051,57 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
 
 
-    func fetchDataCat(completion: (result: Bool) -> Void) {
+    func fetchDataCat(_ completion: (_ result: Bool) -> Void) {
         categoriesData.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Category")
         fetchRequest.predicate = NSPredicate(format: "id != %@", "")
         
         
         do {
             let results =
-                try managedContext.executeFetchRequest(fetchRequest)
+                try managedContext.fetch(fetchRequest)
             
             categoriesData = results as! [NSManagedObject]
             if categoriesData.count > 0 {
                 print("Category: Local data fetched.")
-                completion(result: true)
+                completion(true)
             }else{
                 print("Category: No data available in local.")
-                completion(result: true)
+                completion(true)
             }
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
-    func fetchDataFood(completion: (result: Bool) -> Void) {
+    func fetchDataFood(_ completion: (_ result: Bool) -> Void) {
         
         foodItemsData.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
      
-        let fetchRequestFood = NSFetchRequest(entityName: "FoodItem")
-        fetchRequestFood.predicate = NSPredicate(format: "id != %@", "")
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FoodItem")
+        fetchRequest.predicate = NSPredicate(format: "id != %@", "")
         
         do {
          
             
             let resultsFood =
-                try managedContext.executeFetchRequest(fetchRequestFood)
+                try managedContext.fetch(fetchRequest)
             
             foodItemsData = resultsFood as! [NSManagedObject]
             if foodItemsData.count > 0 {
                 print("Food: Local data fetched.")
-                completion(result: true)
+                completion(true)
             }else{
                 print("FoodNo data available in local.")
-                completion(result: true)
+                completion(true)
             }
             
         } catch let error as NSError {
@@ -1109,27 +1109,27 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func fetchDataAnn(completion: (result: Bool) -> Void) {
+    func fetchDataAnn(_ completion: (_ result: Bool) -> Void) {
         announcementsData.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Announcements")
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Announcements")
         fetchRequest.predicate = NSPredicate(format: "id != %@", "")
         
         
         do {
             let results =
-                try managedContext.executeFetchRequest(fetchRequest)
+                try managedContext.fetch(fetchRequest)
             
             announcementsData = results as! [NSManagedObject]
             if announcementsData.count > 0 {
                 print("Announcements: Local data fetched.")
-                completion(result: true)
+                completion(true)
             }else{
                 print("Announcements: No data available in local.")
-                completion(result: true)
+                completion(true)
             }
             
         } catch let error as NSError {

@@ -21,7 +21,7 @@ class MenuCategoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        categoryName.textColor = UIColor.whiteColor()
+        categoryName.textColor = UIColor.white
         categoryName.font = UIFont(name: font1Light, size: 20)
     }
 
@@ -32,7 +32,7 @@ class MenuCategoryCell: UICollectionViewCell {
     }
     
 
-    func configureCell(catName: String, imgData: NSData) {
+    func configureCell(_ catName: String, imgData: Data) {
         
         categoryName.text = catName
         categoryImg.image = UIImage(data:imgData)

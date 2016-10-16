@@ -21,7 +21,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var mapView: MKMapView!
     
-    private let kTableHeaderHeight: CGFloat = 300.0
+    fileprivate let kTableHeaderHeight: CGFloat = 300.0
     var headerView: UIView!
     var regionRadius: CLLocationDistance = 1000
     var userLocNow: Locations!
@@ -41,12 +41,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
+            UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.Plain, target:self, action:#selector(LocationsVC.showMenu))
+            UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(LocationsVC.showMenu))
 
-        navigationController?.navigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
 
         self.locationManager.requestAlwaysAuthorization()
         
@@ -54,37 +54,37 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            UIApplication.shared.cancelAllLocalNotifications()
         }
         
         mapView.delegate = self
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.Search
-        searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
+        searchBar.returnKeyType = UIReturnKeyType.search
+        searchBar.keyboardAppearance = UIKeyboardAppearance.dark
 
-        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.font = UIFont(name: font1Regular, size: 14)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         activityIndicator.color = COLOR1
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         plotLocations()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         plotLocations()
         locationManager.startUpdatingLocation()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
@@ -106,7 +106,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 if let placeMark = placemarks?[0] {
                
-                    if let long = placeMark.location?.coordinate.longitude, lat = placeMark.location?.coordinate.latitude   {
+                    if let long = placeMark.location?.coordinate.longitude, let lat = placeMark.location?.coordinate.latitude   {
                         
                         if let name = placeMark.thoroughfare as String? {
                             self.nameTitle = name
@@ -139,12 +139,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchBar.showsCancelButton = true
         
@@ -158,12 +158,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
     
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         inSearchMode = false
         searchBar.text = ""
         searchBar.showsCancelButton = false
@@ -171,20 +171,20 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         tableView.reloadData()
     }
     
-    func filterContentForSearchText(searchText: String) {
+    func filterContentForSearchText(_ searchText: String) {
         
         filteredBranchesLoc = branchesLoc.filter { branches in
             
-            return branches.address.lowercaseString.containsString(searchText.lowercaseString) || branches.locationName.lowercaseString.containsString(searchText.lowercaseString)
+            return branches.address.lowercased().contains(searchText.lowercased()) || branches.locationName.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         view.endEditing(true)
     }
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let longitude = userLocation.coordinate.longitude
         let latitude = userLocation.coordinate.latitude
@@ -196,7 +196,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
     
-    func callClicked(sender:UIButton) {
+    func callClicked(_ sender:UIButton) {
         
         let buttonRow = sender.tag
         if buttonRow != 9999 {
@@ -206,16 +206,16 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func callNumber(phoneNumber:String) {
-        if let phoneCallURL:NSURL = NSURL(string: "tel://\(phoneNumber)") {
-            let application:UIApplication = UIApplication.sharedApplication()
+    func callNumber(_ phoneNumber:String) {
+        if let phoneCallURL:URL = URL(string: "tel://\(phoneNumber)") {
+            let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
             }
         }
     }
 
-    func getNearest(userloc: CLLocation!){
+    func getNearest(_ userloc: CLLocation!){
         self.index = 0
         
         var x = 0
@@ -223,7 +223,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         for locationX in self.branchesLoc {
             
             
-            let distance = locationX.location.distanceFromLocation(userloc)
+            let distance = locationX.location.distance(from: userloc)
             
             locationX.addDistance(distance)
             
@@ -241,9 +241,9 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             x += 1
             print("\(x) \(self.branchesLoc.count)")
-            if let nearest = self.nearest.location as CLLocation! where x == self.branchesLoc.count-1{
+            if let nearest = self.nearest.location as CLLocation! , x == self.branchesLoc.count-1{
                 self.centerMapOnLocation(nearest)
-                self.activityIndicator.hidden = true
+                self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
                 self.locationManager.stopUpdatingLocation()
             }
@@ -255,12 +255,12 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.tableView.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
@@ -273,7 +273,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label : UILabel = UILabel()
         if(section == 0){
             label.textColor = COLOR2
@@ -293,44 +293,44 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         return label
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.regionRadius = 500
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             self.centerMapOnLocation(nearest.location)
-        } else if indexPath.section == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 {
             if inSearchMode {
-                self.centerMapOnLocation(filteredBranchesLoc[indexPath.row].location)
+                self.centerMapOnLocation(filteredBranchesLoc[(indexPath as NSIndexPath).row].location)
             } else {
-                self.centerMapOnLocation(branchesLoc[indexPath.row].location)
+                self.centerMapOnLocation(branchesLoc[(indexPath as NSIndexPath).row].location)
             }
             
         }
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("LocationsCell") as? LocationsCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "LocationsCell") as? LocationsCell {
             
-            cell.selectionStyle = .None
+            cell.selectionStyle = .none
                 
             
-            if indexPath.section == 0 {
+            if (indexPath as NSIndexPath).section == 0 {
                 if let locNow = nearest {
                     cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: 9999)
                 } else {
                     return UITableViewCell()
                 }
-            } else if indexPath.section == 1 {
+            } else if (indexPath as NSIndexPath).section == 1 {
                 
                 if inSearchMode {
-                    if let locNow = filteredBranchesLoc[indexPath.row] as Locations? {
-                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: indexPath.row)
+                    if let locNow = filteredBranchesLoc[(indexPath as NSIndexPath).row] as Locations? {
+                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: (indexPath as NSIndexPath).row)
                     } else {
                         return UITableViewCell()
                     }
                 } else {
-                    if let locNow = branchesLoc[indexPath.row] as Locations? {
-                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: indexPath.row)
+                    if let locNow = branchesLoc[(indexPath as NSIndexPath).row] as Locations? {
+                        cell.configureCell(locNow.locationName, addressVal: locNow.address, contactVal: locNow.contact, storeHoursVal: locNow.storeHours, row: (indexPath as NSIndexPath).row)
                     } else {
                         return UITableViewCell()
                     }
@@ -346,16 +346,16 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
     
-    func backButtonPressed(sender:UIButton) {
-        navigationController?.popToRootViewControllerAnimated(true)
+    func backButtonPressed(_ sender:UIButton) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func showMenu() {
-        performSegueWithIdentifier("menuSegue", sender: nil)
+        performSegue(withIdentifier: "menuSegue", sender: nil)
     }
     
     
