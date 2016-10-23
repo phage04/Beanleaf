@@ -337,7 +337,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     //IF DATA IS EXISTING, CHECK IF THERE ARE CHANGES. IF YES, REDOWNLOAD EVERYTHING. Else, do nothing.
                     for entry in data{
                         
-                        if let fields = entry["fields"] as? Dictionary<String, AnyObject>{
+                        if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let catID = sysTop["id"] as? String{
                             
                             if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
                                 
@@ -351,7 +351,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                 
                                                 
                                                 print("with...\(item.value(forKey: "name")!)")
-                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(idRef)" {
+                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(catID)" {
                                                     
                                                     
                                                     if let _ = item.value(forKey: "name"), let _ = item.value(forKey: "imageURL"), let _ = imgURL, let _ = item.value(forKey: "order"), let _ = fields["order"] , "\(item.value(forKey: "imageURL")!)" != "\(imgURL!)" ||
@@ -373,7 +373,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                 
                                                 
                                                 print("with...\(item.value(forKey: "name")!)")
-                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(idRef)" {
+                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(catID)" {
                                                     
                                                     
                                                     if let _ = item.value(forKey: "name"), let _ = item.value(forKey: "order"), let _ = fields["order"] ,
@@ -407,7 +407,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                         if categoriesData.count == 0 {
                             for entry in data{
                                 myGroupCat2.enter()
-                                if let fields = entry["fields"] as? Dictionary<String, AnyObject>{
+                                if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let catID = sysTop["id"] as? String{
    
                                   if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
                                         
@@ -419,12 +419,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                     //If zero data yet saved in client
                                                     downloadImage(imgURL, completionHandler: { (isResponse) in
                                                         print(idRef)
-                                                        categories.append(Category(id: "\(idRef)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                                        categories.append(Category(id: "\(catID)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                                         myGroupCat2.leave()
                                                     })
                                                 }else{
                                                     //If no image is uploaded for this item, user default or blank
-                                                    categories.append(Category(id: "\(id)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                                                    categories.append(Category(id: "\(catID)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: UIImage(), imgURL: ""))
                                                     myGroupCat2.leave()
                                                 }
                                             }
@@ -464,7 +464,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                     if categoriesData.count == 0 {
                         for entry in data{
                             myGroupCat2.enter()
-                            if let fields = entry["fields"] as? Dictionary<String, AnyObject>{
+                            if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let catID = sysTop["id"] as? String{
                                 
                                 if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
                                     
@@ -476,12 +476,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                 //If zero data yet saved in client
                                                 downloadImage(imgURL, completionHandler: { (isResponse) in
                                                     print(idRef)
-                                                    categories.append(Category(id: "\(idRef)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                                    categories.append(Category(id: "\(catID)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: isResponse.0, imgURL: "\(isResponse.1)"))
                                                     myGroupCat2.leave()
                                                 })
                                             }else{
                                                 //If no image is uploaded for this item, user default or blank
-                                                categories.append(Category(id: "\(id)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: UIImage(), imgURL: ""))
+                                                categories.append(Category(id: "\(catID)", name: "\(fields["categoryName"]!)", order: Int("\(fields["order"]!)")!, image: UIImage(), imgURL: ""))
                                                 myGroupCat2.leave()
                                             }
                                         }
@@ -554,12 +554,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                             
                                             myGroupFood1.enter()
                                             //setup likes
-                                            DataService.ds.REF_LIKES.child("\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
+                                            DataService.ds.REF_LIKES.child("\(foodItemID)").observeSingleEvent(of: .value, with: { (snapshot) in
                                                 
                                                 if snapshot.children.allObjects is [FIRDataSnapshot] {
                                                     if snapshot.value is NSNull {
                                                         likes = 0
-                                                        DataService.ds.REF_LIKES.child("\(id)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
+                                                        DataService.ds.REF_LIKES.child("\(foodItemID)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
                                                         })
                                                     }
                                                     
