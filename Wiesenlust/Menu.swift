@@ -36,10 +36,10 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         navigationController?.isNavigationBarHidden = false
         
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.Done
-        searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
+        searchBar.returnKeyType = UIReturnKeyType.done
+        searchBar.keyboardAppearance = UIKeyboardAppearance.dark
         
-        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         
         textFieldInsideSearchBar?.font = UIFont(name: "\(font1Light)", size: 14)
         
