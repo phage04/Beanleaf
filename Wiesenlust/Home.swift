@@ -313,8 +313,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         deleteCoreDataNil("Category")
         deleteCoreDataNil("FoodItem")
         deleteCoreDataNil("Announcements")
-        
-        let myGroupCat = DispatchGroup()
+    
         let myGroupCat2 = DispatchGroup()
         
          //CONTENTFULTHING
@@ -520,211 +519,280 @@ class Home: UIViewController, CLLocationManagerDelegate {
     func downloadFoodItems() {
         
         var categoryFood: String!
-        let myGroupFood = DispatchGroup()
         let myGroupFood2 = DispatchGroup()
         var likes: Int = 0
         var changes: Int = 0
-//        
-//        client.fetchEntries(["content_type": "menuItem"]).1.next {
-//            
-//            foodItems.removeAll()
-//            let data = $0.items
-//            if data.count < foodItemsData.count {
-//                print("Data \(data.count) DataLocal: \(foodItemsData.count)")
-//                categoriesData.removeAll()
-//                foodItemsData.removeAll()
-//                self.clearCoreDataFoodMenu()
-//                print("Cleared core data.")
-//            }
-//            if foodItemsData.count > 0 {
-//                print("Checking for data changes...")
-//                for entry in data{
-//                    dispatch_group_enter(myGroupFood)
-//                    //setup likes
-//                    DataService.ds.REF_LIKES.child("\(entry.identifier)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-//                        
-//                        if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//                            if snapshot.value is NSNull {
-//                                likes = 0
-//                                DataService.ds.REF_LIKES.child("\(entry.identifier)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
-//                                })
-//                            }
-//                            
-//                            //download data
-//                            if let dataURL = entry.fields["image"] as? Asset{
-//                                
-//                                do {
-//                                    imgURL = try dataURL.URL()
-//                                    //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
-//                                    
-//                                    print("Checking: \(entry.fields["itemName"]!)")
-//                                    for item in foodItemsData {
-//                                        
-//                                        if let cat = entry.fields["category"] as? Entry {
-//                                            categoryFood = cat.fields["categoryName"] as! String
-//                                        }
-//                                        print("with...\(item.valueForKey("name")!)")
-//                                        if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
-//                                            
-//                                            
-//                                            if let _ = item.valueForKey("imageURL") as? String, let _ = imgURL, let _ = item.valueForKey("price"), let _ = entry.fields["price"] , "\(item.valueForKey("imageURL")!)" != "\(imgURL)" ||
-//                                                "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
-//                                                "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
-//                                                "\(item.valueForKey("category")!)" != "\(categoryFood)" || "\(item.valueForKey("name")!)" != "\(entry.fields["itemName"]!)" {
-//                                                
-//                                                print("Did detect change in FOOD ITEM: \(item.valueForKey("name")!)")
-//                                                changes += 1
-//                                            }
-//                                        }
-//                                        
-//                                    }
-//                                    dispatch_group_leave(myGroupFood)
-//                                    
-//                                } catch {
-//                                    dispatch_group_leave(myGroupFood)
-//                                }
-//                                
-//                            }else {
-//                                print("Checking NoImage: \(entry.fields["itemName"]!)")
-//                                for item in foodItemsData {
-//                                    
-//                                    if let cat = entry.fields["category"] as? Entry {
-//                                        categoryFood = cat.fields["categoryName"] as! String
-//                                    }
-//                                    if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" {
-//                                        if let _ = item.valueForKey("price"), let _ = entry.fields["price"] , "\(item.valueForKey("price")!)" != "\(entry.fields["price"]!)" ||
-//                                            "\(item.valueForKey("descriptionInfo")!)" != "\(entry.fields["itemDescription"]!)" ||
-//                                            "\(item.valueForKey("category")!)" != "\(categoryFood)" || "\(item.valueForKey("name")!)" != "\(entry.fields["itemName"]!)" || (entry.fields["image"] == nil && "\(item.valueForKey("imageURL")!)" != "") {
-//                                            
-//                                            print("Did detect change in FOOD ITEM: \(item.valueForKey("name")!) \(item.valueForKey("imageURL"))")
-//                                            changes += 1
-//                                        }
-//                                        
-//                                    }
-//                                    
-//                                }
-//                                dispatch_group_leave(myGroupFood)
-//                            }
-//                            
-//                        }
-//                    })
-//                }
-//                dispatch_group_notify(myGroupFood, dispatch_get_main_queue(), {
-//                    if changes > 0 {
-//                        self.clearDataExCat()
-//                        changes = 0
-//                        print("Downloading fresh data...")
-//                        SwiftSpinner.show(LoadingMsgGlobal)
-//                        if foodItemsData.count == 0 {
-//                            for entry in data{
-//                                dispatch_group_enter(myGroupFood2)
-//                                if let dataURL = entry.fields["image"] as? Asset{
-//                                    do {
-//                                        imgURL = try dataURL.URL()
-//                                        
-//                                        downloadImage(imgURL, completionHandler: { (isResponse) in
-//                                            
-//                                            if let cat = entry.fields["category"] as? Entry {
-//                                                categoryFood = cat.fields["categoryName"] as! String
-//                                            }
-//                                            
-//                                            foodItems.append(FoodItem(id: "\(entry.identifier)", cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier, likes: likes))
-//                                            
-//                                            dispatch_group_leave(myGroupFood2)
-//                                        })
-//                                        
-//                                        
-//                                    } catch {
-//                                        
-//                                        dispatch_group_leave(myGroupFood2)
-//                                    }
-//                                    
-//                                } else {
-//                                    //If no image is uploaded for this item, user default or blank
-//                                    if let cat = entry.fields["category"] as? Entry {
-//                                        categoryFood = cat.fields["categoryName"] as! String
-//                                    }
-//                                   
-//                                    foodItems.append(FoodItem(id: "\(entry.identifier)", cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil, key: entry.identifier, likes: likes))
-//                                    dispatch_group_leave(myGroupFood2)
-//                                }
-//                                
-//                            }
-//                        }
-//                        dispatch_group_notify(myGroupFood2, dispatch_get_main_queue(), {
-//                            
-//                            print("Download complete.")
-//                            foodItems.sortInPlace({ $0.price < $1.price })
-//                            
-//                            for food in foodItems {
-//                                
-//                                self.saveFood(food)
-//                            }
-//                            
-//                            self.downloadAnnouncements()
-//                        })
-//                    }
-//                    else {
-//                        self.downloadAnnouncements()
-//                        print("No changes in FOOD detected.")
-//                    }
-//                })
-//            } else {
-//                print("Downloading fresh data...")
-//                SwiftSpinner.show(LoadingMsgGlobal)
-//                if foodItemsData.count == 0 {
-//                    for entry in data{
-//                        dispatch_group_enter(myGroupFood2)
-//                        if let dataURL = entry.fields["image"] as? Asset{
-//                            do {
-//                                imgURL = try dataURL.URL()
-//                                
-//                                downloadImage(imgURL, completionHandler: { (isResponse) in
-//                                    
-//                                    if let cat = entry.fields["category"] as? Entry {
-//                                        categoryFood = cat.fields["categoryName"] as! String
-//                                    }
-//                                    
-//                                    foodItems.append(FoodItem(id: "\(entry.identifier)", cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: isResponse.0, imgURL: "\(isResponse.1)", key: entry.identifier, likes: likes))
-//                                    
-//                                    dispatch_group_leave(myGroupFood2)
-//                                })
-//                                
-//                                
-//                            } catch {
-//                                
-//                                dispatch_group_leave(myGroupFood2)
-//                            }
-//                            
-//                        } else {
-//                            //If no image is uploaded for this item, user default or blank
-//                            if let cat = entry.fields["category"] as? Entry {
-//                                categoryFood = cat.fields["categoryName"] as! String
-//                            }
-//                            
-//                            foodItems.append(FoodItem(id: "\(entry.identifier)", cat: "\(categoryFood)", name: "\(entry.fields["itemName"]!)", desc: "\(entry.fields["itemDescription"]!)" , price: (entry.fields["price"]! as? Double)!, image: nil, imgURL: nil, key: entry.identifier, likes: likes))
-//                            dispatch_group_leave(myGroupFood2)
-//                        }
-//                        
-//                    }
-//                }
-//                dispatch_group_notify(myGroupFood2, dispatch_get_main_queue(), {
-//                    
-//                    print("Download complete.")
-//                    foodItems.sortInPlace({ $0.price < $1.price })
-//                    
-//                    for food in foodItems {
-//                        
-//                        self.saveFood(food)
-//                    }
-//                    
-//                    self.downloadAnnouncements()
-//                })
-//            }
-// 
-//        }
-//        
         
+        Alamofire.request("https://cdn.contentful.com/spaces/\(CFSpaceId)/entries?access_token=\(CFTokenProduction)&content_type=menuItem").responseJSON { (result) in
+                
+            if let dataResult = result.result.value as? Dictionary<String, AnyObject>{
+                    
+                if let items = dataResult["items"] as? [Dictionary<String, AnyObject>]{
+                
+                foodItems.removeAll()
+                let data = items
+                if data.count < foodItemsData.count {
+                    print("Data \(data.count) DataLocal: \(foodItemsData.count)")
+                    categoriesData.removeAll()
+                    foodItemsData.removeAll()
+                    self.clearCoreDataFoodMenu()
+                    print("Cleared core data.")
+                }
+                if foodItemsData.count > 0 {
+                    print("Checking for data changes...")
+                    for entry in data{
+                        if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let foodItemID = sysTop["id"] as? String{
+                            
+                            if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                
+                                for asset in assets{
+                                    if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                        if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                            imgURL = URL(string: "https:\(imageURL)")
+                                            
+                                            
+                                            //setup likes
+                                            DataService.ds.REF_LIKES.child("\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
+                                                
+                                                if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                                                    if snapshot.value is NSNull {
+                                                        likes = 0
+                                                        DataService.ds.REF_LIKES.child("\(id)").setValue(["likes": 0], withCompletionBlock: { (error, FIRDatabaseReference) in
+                                                        })
+                                                    }
+                                                    
+                                                    //download data
+                                                    imgURL = URL(string: "https:\(imageURL)")
+                                                        //CHECKING FOR UPDATES FROM SERVER, SKIP IF STILL UPDATED
+                                                 
+                                                        print("Checking: \(fields["itemName"]!)")
+                                                        for item in foodItemsData {
+                                                            
+                                                            if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                                                
+                                                                for entry in entries{
+                                                                    if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                                        categoryFood = categoryName
+                                                                    }
+                                                                }
+                                                                
+                                                            }
+                                                            print("with...\(item.value(forKey: "name")!)")
+                                                            if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(foodItemID)" {
+                                                                
+                                                                
+                                                                if let _ = item.value(forKey: "imageURL") as? String, let _ = imgURL, let _ = item.value(forKey: "price"), let _ = fields["price"] , "\(item.value(forKey: "imageURL")!)" != "\(imgURL!)" ||
+                                                                    "\(item.value(forKey: "price")!)" != "\(fields["price"]!)" ||
+                                                                    "\(item.value(forKey: "descriptionInfo")!)" != "\(fields["itemDescription"]!)" ||
+                                                                    "\(item.value(forKey: "category")!)" != "\(categoryFood)" || "\(item.value(forKey: "name")!)" != "\(fields["itemName"]!)" {
+                                                                    
+                                                                    print("Did detect change in FOOD ITEM: \(item.value(forKey: "name")!)")
+                                                                    changes += 1
+                                                                }
+                                                            }
+                                                            
+                                                        }
+                                                    
+                                                }
+                                            })
+                                        }else {
+                                            print("Checking NoImage: \(fields["itemName"]!)")
+                                            for item in foodItemsData {
+                                                
+                                                if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                                    
+                                                    for entry in entries{
+                                                        if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                            categoryFood = categoryName
+                                                        }
+                                                    }
+                                                    
+                                                }
+                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(foodItemID)" {
+                                                    if let _ = item.value(forKey: "price"), let _ = fields["price"] , "\(item.value(forKey: "price")!)" != "\(fields["price"]!)" ||
+                                                        "\(item.value(forKey: "descriptionInfo")!)" != "\(fields["itemDescription"]!)" ||
+                                                        "\(item.value(forKey: "category")!)" != "\(categoryFood)" || "\(item.value(forKey: "name")!)" != "\(fields["itemName"]!)" || (fields["image"] == nil && "\(item.value(forKey: "imageURL")!)" != "") {
+                                                        
+                                                        print("Did detect change in FOOD ITEM: \(item.value(forKey: "name")!) \(item.value(forKey: "imageURL"))")
+                                                        changes += 1
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
+                                            
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                        if changes > 0 {
+                            self.clearDataExCat()
+                            changes = 0
+                            print("Downloading fresh data...")
+                            SwiftSpinner.show(LoadingMsgGlobal)
+                            if foodItemsData.count == 0 {
+                                for entry in data{
+                                    myGroupFood2.enter()
+                                    if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let foodItemID = sysTop["id"] as? String{
+                                        
+                                        if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                            
+                                            for asset in assets{
+                                                if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                                    if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                                        imgURL = URL(string: "https:\(imageURL)")
+                                            
+                                                        downloadImage(imgURL, completionHandler: { (isResponse) in
+                                                            
+                                                            if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                                                
+                                                                for entry in entries{
+                                                                    if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                                        categoryFood = categoryName
+                                                                        foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
+                                                                    }
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            
+                                                            myGroupFood2.leave()
+                                                        })
+                                                    }else {
+                                                        //If no image is uploaded for this item, user default or blank
+                                                        if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                                            
+                                                            for entry in entries{
+                                                                if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                                    categoryFood = categoryName
+                                                                    foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
+                                                                }
+                                                            }
+                                                            
+                                                        }
+                                                        
+                                                        myGroupFood2.leave()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                       
+                                        
+                                }
+                                    
+                            }
+                            
+                  
+                            myGroupFood2.notify(queue: DispatchQueue.main, execute: {
+
+                                
+                                        print("Download complete.")
+                                        foodItems.sort(by: { $0.price < $1.price })
+                                        
+                                        for food in foodItems {
+                                            
+                                            self.saveFood(food)
+                                        }
+                                        
+                                        self.downloadAnnouncements()
+                            })
+                        }
+                        else {
+                            self.downloadAnnouncements()
+                            print("No changes in FOOD detected.")
+                        }
+            
+            
+                } else {
+                    
+                    print("Downloading fresh data...")
+                    print("Food Item Count: \(data.count)")
+                    SwiftSpinner.show(LoadingMsgGlobal)
+                    if foodItemsData.count == 0 {
+                        
+                        for entry in data{
+                            myGroupFood2.enter()
+                            
+                            if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let foodItemID = sysTop["id"] as? String{
+                                
+                                if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                    
+                                    for asset in assets{
+                                        if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                            if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                                imgURL = URL(string: "https:\(imageURL)")
+                                    
+                                                downloadImage(imgURL, completionHandler: { (isResponse) in
+                                                    
+                                                    if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                                        
+                                                        for entry in entries{
+                                                            if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                                categoryFood = categoryName
+                                                                foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
+                                                            }
+                                                        }
+                                                        
+                                                    }
+                                                   
+                                                    myGroupFood2.leave()
+                                                    
+                                                })
+                                    
+                                            }
+                                        }
+                                    }
+                                }else {
+                                    //If no image is uploaded for this item, user default or blank
+                                    if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                        
+                                        for entry in entries{
+                                            if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                categoryFood = categoryName
+                                                foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
+                                            }
+                                        }
+                                        
+                                    }
+                                    
+                                   
+                                    
+                                    myGroupFood2.leave()
+                                    
+                                }
+
+                                
+                            }
+                        }
+                        
+                    }
+                    
+                    myGroupFood2.notify(queue: DispatchQueue.main, execute: {
+
+                        
+                        print("Download complete.")
+                        foodItems.sort(by: { $0.name < $1.name })
+                        
+                        for food in foodItems {
+                            
+                            self.saveFood(food)
+                        }
+                        
+                        self.downloadAnnouncements()
+                    })
+                }
+     
+                }
+            
+        }
+    }
     }
     
     func downloadAnnouncements() {
@@ -733,7 +801,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         let myGroupCat = DispatchGroup()
         let myGroupCat2 = DispatchGroup()
-        
+        SwiftSpinner.hide()
          //CONTENTFULTHING
 //       client.fetchEntries(["content_type": "announcements"]).1.next {
 //            
