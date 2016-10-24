@@ -213,18 +213,22 @@ class Home: UIViewController, CLLocationManagerDelegate {
                         } else if let name = placeMark.subLocality as String? {
                             self.nameTitle = name
                         }
-                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
-                            lat, longitude: long), radius: radiusOfInterest, identifier: self.nameTitle)
-                        region.notifyOnEntry = true
-                        region.notifyOnExit = false
-                        print("Name:\(self.nameTitle) Long:\(long) Lat:\(lat)")
                         
-                        if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-                            showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
-                        } else {
-                            self.locationManager.startMonitoring(for: region)
-                            //print("Region monitoring started for \(self.nameTitle)")
+                        if let _ = self.nameTitle {
+                            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude:
+                                lat, longitude: long), radius: radiusOfInterest, identifier: self.nameTitle!)
+                            region.notifyOnEntry = true
+                            region.notifyOnExit = false
+                            print("Name:\(self.nameTitle!) Long:\(long) Lat:\(lat)")
+                            
+                            if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+                                showErrorAlert("Location Services Disabled", msg: "Geo-location is not supported on this device.", VC: self)
+                            } else {
+                                self.locationManager.startMonitoring(for: region)
+                                //print("Region monitoring started for \(self.nameTitle)")
+                            }
                         }
+                        
                         
                         
                     }
