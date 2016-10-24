@@ -811,162 +811,174 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         let myGroupCat = DispatchGroup()
         let myGroupCat2 = DispatchGroup()
-        SwiftSpinner.hide()
+        
          //CONTENTFULTHING
-//       client.fetchEntries(["content_type": "announcements"]).1.next {
-//            
-//            announcements.removeAll()
-//            let data = $0.items
-//            if data.count < announcementsData.count {
-//                print("Data: \(data.count) DataFromCore:\(announcementsData.count)")
-//                self.clearDataAnn()
-//                
-//            }
-//            
-//            if announcementsData.count > 0 {
-//                print("Checking for data changes in ANNOUNCEMENTS...")
-//                //IF DATA IS EXISTING, CHECK IF THERE ARE CHANGES. IF YES, REDOWNLOAD EVERYTHING. Else, do nothing.
-//                for entry in data{
-//                    dispatch_group_enter(myGroupCat)
-//                    if let dataURL = entry.fields["image"] as? Asset{
-//                        do {
-//                            imgURL = try dataURL.URL()
-//                            
-//                            print("Checking: \(entry.fields["title"]!)")
-//                            
-//                            for item in announcementsData {
-//                                
-//                                
-//                                print("with...\(item.valueForKey("title")!)")
-//                                if let _ = item.valueForKey("id") , "\(item.valueForKey("id")!)" == "\(entry.identifier)" && "\(item.valueForKey("imageURL")!)" != "\(imgURL)" {
-//                                
-//                                        
-//                                        print("Did detect change in ANNOUNCEMENTS: \(item.valueForKey("title")!)")
-//                                        changes += 1
-//                                        
-//                                    
-//                                }
-//                                
-//                            }
-//                            
-//                            dispatch_group_leave(myGroupCat)
-//                        } catch {
-//                            dispatch_group_leave(myGroupCat)
-//                        }
-//                        
-//                    } else {
-//                       dispatch_group_leave(myGroupCat)
-//                    }
-//                    
-//                    
-//                }
-//                
-//                dispatch_group_notify(myGroupCat, dispatch_get_main_queue(), {
-//                    
-//                    if changes > 0 {
-//                        self.clearDataAnn()
-//                        changes = 0
-//                        SwiftSpinner.show(LoadingMsgGlobal)
-//                        //DOWNLOAD FRESH
-//                        print("Downloading fresh data...")
-//                        if categoriesData.count == 0 {
-//                            for entry in data{
-//                                dispatch_group_enter(myGroupCat2)
-//                                if let data = entry.fields["image"] as? Asset{
-//                                    do {
-//                                        imgURL = try data.URL()
-//                                        
-//                                        //If zero data yet saved in client
-//                                        downloadImage(imgURL, completionHandler: { (isResponse) in
-//                                            print(entry.identifier)
-//                                            announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
-//                                            dispatch_group_leave(myGroupCat2)
-//                                        })
-//                                        
-//                                        
-//                                    } catch {
-//                                        
-//                                        dispatch_group_leave(myGroupCat2)
-//                                    }
-//                                    
-//                                } else {
-//                                    //If no image is uploaded for this item, user default or blank
-//                                    announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: UIImage(), imgURL: ""))
-//                                    dispatch_group_leave(myGroupCat2)
-//                                }
-//                                
-//                            }
-//                            
-//                            dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
-//                                
-//                                print("Download complete.")
-//                                
-//                                for ann in announcements {
-//                                    
-//                                    self.saveAnnouncement(ann)
-//                                }
-//                                print("Update Check Complete.")
-//                                self.setupLocationNotifications()
-//                                SwiftSpinner.hide()
-//                            })
-//                        }
-//                        
-//                    }else {
-//                        print("No changes in ANNOUNCEMENTS detected.")
-//                        print("Update Check Complete.")
-//                        self.setupLocationNotifications()
-//                        SwiftSpinner.hide()
-//                    }
-//                })
-//            }else {
-//                //DOWNLOAD FRESH
-//                SwiftSpinner.show(LoadingMsgGlobal)
-//                print("Downloading fresh data...")
-//                if announcementsData.count == 0 {
-//                    for entry in data{
-//                        dispatch_group_enter(myGroupCat2)
-//                        if let data = entry.fields["image"] as? Asset{
-//                            do {
-//                                imgURL = try data.URL()
-//                                
-//                                //If zero data yet saved in client
-//                                downloadImage(imgURL, completionHandler: { (isResponse) in
-//                                    print(entry.identifier)
-//                                    announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
-//                                    dispatch_group_leave(myGroupCat2)
-//                                })
-//                                
-//                                
-//                            } catch {
-//                                
-//                                dispatch_group_leave(myGroupCat2)
-//                            }
-//                            
-//                        } else {
-//                            //If no image is uploaded for this item, user default or blank
-//                            announcements.append(Announcements(id: "\(entry.identifier)", title: "\(entry.fields["title"]!)", image: UIImage(), imgURL: ""))
-//                            dispatch_group_leave(myGroupCat2)
-//                        }
-//                        
-//                    }
-//                    
-//                    dispatch_group_notify(myGroupCat2, dispatch_get_main_queue(), {
-//                        
-//                        print("Download complete.")
-//         
-//                        for ann in announcements {
-//                            self.saveAnnouncement(ann)
-//                        }
-//                        print("Update Check Complete.")
-//                        self.setupLocationNotifications()
-//                        SwiftSpinner.hide()
-//                    })
-//                }
-//            }
-//            
-//            
-//        }
-//        
+        Alamofire.request("https://cdn.contentful.com/spaces/\(CFSpaceId)/entries?access_token=\(CFTokenProduction)&content_type=announcements").responseJSON { (result) in
+            
+            if let dataResult = result.result.value as? Dictionary<String, AnyObject>{
+                
+            if let items = dataResult["items"] as? [Dictionary<String, AnyObject>]{
+            
+                announcements.removeAll()
+                let data = items
+                if data.count < announcementsData.count {
+                    print("Data: \(data.count) DataFromCore:\(announcementsData.count)")
+                    self.clearDataAnn()
+                    
+                }
+                
+                if announcementsData.count > 0 {
+                    print("Checking for data changes in ANNOUNCEMENTS...")
+                    //IF DATA IS EXISTING, CHECK IF THERE ARE CHANGES. IF YES, REDOWNLOAD EVERYTHING. Else, do nothing.
+                    for entry in data{
+                        if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let annID = sysTop["id"] as? String{
+                            
+                            if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                
+                                for asset in assets{
+                                    if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                        if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                            imgURL = URL(string: "https:\(imageURL)")
+                                            print("Checking: \(fields["title"]!)")
+                                            
+                                            for item in announcementsData {
+                                                
+                                                print("with...\(item.value(forKey: "title")!)")
+                                                if let _ = item.value(forKey: "id") , "\(item.value(forKey: "id")!)" == "\(annID)" && "\(item.value(forKey: "imageURL")!)" != "\(imgURL!)" {
+                                                    
+                                                    
+                                                    print("Did detect change in ANNOUNCEMENTS: \(item.value(forKey: "title")!)")
+                                                    changes += 1
+                                                    
+                                                    
+                                                }
+                                                
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
+                        
+                    }
+                    
+                   
+                        
+                        if changes > 0 {
+                            self.clearDataAnn()
+                            changes = 0
+                            SwiftSpinner.show(LoadingMsgGlobal)
+                            //DOWNLOAD FRESH
+                            print("Downloading fresh data...")
+                            if categoriesData.count == 0 {
+                                for entry in data{
+                                    
+                                    for entry in data{
+                                        myGroupCat2.enter()
+                                        if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let annID = sysTop["id"] as? String{
+                                            
+                                            if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                                
+                                                for asset in assets{
+                                                    if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                                        if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                                            imgURL = URL(string: "https:\(imageURL)")
+                                                            
+                                                            //If zero data yet saved in client
+                                                            downloadImage(imgURL, completionHandler: { (isResponse) in
+                                                                print(annID)
+                                                                announcements.append(Announcements(id: "\(annID)", title: "\(fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                                                myGroupCat2.leave()
+                                                            })
+
+                                                        }else {
+                                                            //If no image is uploaded for this item, user default or blank
+                                                            announcements.append(Announcements(id: "\(annID)", title: "\(fields["title"]!)", image: UIImage(), imgURL: ""))
+                                                            myGroupCat2.leave()
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                myGroupCat2.notify(queue: DispatchQueue.main, execute: {
+                                    print("Download complete.")
+                                    
+                                    for ann in announcements {
+                                        
+                                        self.saveAnnouncement(ann)
+                                    }
+                                    print("Update Check Complete.")
+                                    self.setupLocationNotifications()
+                                    SwiftSpinner.hide()
+                                })
+                            }
+                            
+                        }else {
+                            print("No changes in ANNOUNCEMENTS detected.")
+                            print("Update Check Complete.")
+                            self.setupLocationNotifications()
+                            SwiftSpinner.hide()
+                        }
+                    
+                }else {
+                    //DOWNLOAD FRESH
+                    SwiftSpinner.show(LoadingMsgGlobal)
+                    print("Downloading fresh data...")
+                    if announcementsData.count == 0 {
+                        for entry in data{
+                            myGroupCat2.enter()
+                            if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let annID = sysTop["id"] as? String{
+                                
+                                if let dataURL = fields["image"] as? Dictionary<String, AnyObject>,let sysItem = dataURL["sys"] as? Dictionary<String, AnyObject>, let id = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let assets = includes["Asset"] as? [Dictionary<String, AnyObject>]{
+                                    
+                                    for asset in assets{
+                                        if let sys = asset["sys"] as? Dictionary<String, AnyObject>, let idRef = sys["id"] as? String, idRef == id{
+                                            if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
+                                                imgURL = URL(string: "https:\(imageURL)")
+                                                //If zero data yet saved in client
+                                                downloadImage(imgURL, completionHandler: { (isResponse) in
+                                                    print(annID)
+                                                    announcements.append(Announcements(id: "\(annID)", title: "\(fields["title"]!)", image: isResponse.0, imgURL: "\(isResponse.1)"))
+                                                    myGroupCat2.leave()
+                                                })
+                                            }else {
+                                                //If no image is uploaded for this item, user default or blank
+                                                announcements.append(Announcements(id: "\(annID)", title: "\(fields["title"]!)", image: UIImage(), imgURL: ""))
+                                                myGroupCat2.leave()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                     
+                            
+                        }
+                        
+                        myGroupCat2.notify(queue: DispatchQueue.main, execute: {
+                            
+                            print("Download complete.")
+             
+                            for ann in announcements {
+                                self.saveAnnouncement(ann)
+                            }
+                            print("Update Check Complete.")
+                            self.setupLocationNotifications()
+                            SwiftSpinner.hide()
+                        })
+                    }
+                }
+                }
+            }
+            
+            
+        }
         
     }
 
