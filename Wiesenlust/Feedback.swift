@@ -21,6 +21,7 @@ class Feedback: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var msgLbl: UITextView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //THESE ARE ACTUALLY TEXTFIELDS
     
     let msgPlaceholder = "What would you like to tell us?"
@@ -41,6 +42,8 @@ class Feedback: UIViewController, UITextViewDelegate {
         msgLbl.layer.borderWidth = 1.0
         msgLbl.layer.borderColor = COLOR2.cgColor
         msgLbl.layer.cornerRadius = 10.0
+        activityIndicator.color = COLOR1
+        activityIndicator.isHidden = true
         
         self.msgLbl.delegate = self
         
@@ -74,7 +77,8 @@ class Feedback: UIViewController, UITextViewDelegate {
     
     @IBAction func sendBtn(_ sender: AnyObject) {
         
-        
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         if checkConnectivity()  {
             
             if nameLbl.text! != "" && emailLbl.text! != "" && msgLbl.text! != "" {
@@ -91,7 +95,8 @@ class Feedback: UIViewController, UITextViewDelegate {
                 ]
                 
                 _ = Alamofire.request("https://api.mailgun.net/v3/\(mailGunURL)/messages", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).authenticate(user: "api", password: key).response { response in
-                    
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                     if response.error == nil{
                         self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
                     } else {
@@ -100,12 +105,14 @@ class Feedback: UIViewController, UITextViewDelegate {
                     
                 }
             } else {
-                
+                activityIndicator.stopAnimating()
+                activityIndicator.isHidden = true
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
                 
             }
         } else {
-            
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
             
         }

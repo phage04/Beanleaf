@@ -2269,6 +2269,7 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tig-Dk-KFE"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2276,6 +2277,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="eNG-Wq-syl" secondAttribute="trailing" id="CSo-lU-7Qh"/>
                             <constraint firstItem="wEs-7P-qam" firstAttribute="top" secondItem="tdX-Pu-lUT" secondAttribute="bottom" constant="20" id="Pzk-72-qMa"/>
                             <constraint firstItem="kwN-73-fmn" firstAttribute="top" secondItem="wEs-7P-qam" secondAttribute="bottom" constant="20" id="aBf-We-yYp"/>
+                            <constraint firstItem="tig-Dk-KFE" firstAttribute="centerY" secondItem="4Ot-PB-Wal" secondAttribute="centerY" id="dgN-T3-dqR"/>
                             <constraint firstAttribute="trailing" secondItem="eNG-Wq-syl" secondAttribute="trailing" id="hyk-f6-k62"/>
                             <constraint firstItem="eNG-Wq-syl" firstAttribute="leading" secondItem="4Ot-PB-Wal" secondAttribute="leadingMargin" id="kx7-hs-ac7"/>
                             <constraint firstItem="eNG-Wq-syl" firstAttribute="top" secondItem="4Ot-PB-Wal" secondAttribute="topMargin" id="l2u-Xs-ehW"/>
@@ -2283,6 +2285,7 @@
                             <constraint firstItem="kwN-73-fmn" firstAttribute="top" secondItem="wEs-7P-qam" secondAttribute="bottom" id="tzF-T4-TIS"/>
                             <constraint firstItem="wEs-7P-qam" firstAttribute="trailing" secondItem="4Ot-PB-Wal" secondAttribute="trailingMargin" id="uVy-9F-t5L"/>
                             <constraint firstItem="wEs-7P-qam" firstAttribute="leading" secondItem="4Ot-PB-Wal" secondAttribute="leadingMargin" id="xqZ-l3-8eC"/>
+                            <constraint firstItem="tig-Dk-KFE" firstAttribute="centerX" secondItem="4Ot-PB-Wal" secondAttribute="centerX" id="zHO-aw-ZJi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -2294,6 +2297,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Feedback" id="ou8-R4-Ax0"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="tig-Dk-KFE" id="5Xt-u2-Yoh"/>
                         <outlet property="emailLbl" destination="2HE-SG-9vg" id="0UL-qm-C3j"/>
                         <outlet property="headerLbl" destination="gPI-sF-t8A" id="Vth-ae-bgz"/>
                         <outlet property="msgLbl" destination="5N1-pf-R6W" id="1Lk-0a-oTR"/>
@@ -2316,12 +2320,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lSl-5G-diZ"/>
-        <segue reference="dpe-os-CX0"/>
-        <segue reference="PAO-9Z-2j9"/>
+        <segue reference="uc4-ff-jb2"/>
+        <segue reference="4GZ-W5-5yC"/>
         <segue reference="T4D-LV-E4T"/>
         <segue reference="3Oq-v4-3gT"/>
         <segue reference="2pr-FC-ebc"/>
+        <segue reference="PAO-9Z-2j9"/>
         <segue reference="08p-oD-Qpd"/>
-        <segue reference="4GZ-W5-5yC"/>
     </inferredMetricsTieBreakers>
 </document>
