@@ -406,7 +406,9 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rY-Pg-fIw">
                                                     <frame key="frameInset" minX="20" minY="192" width="445" height="21"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="6KN-FU-uVq"/>
                                                         <constraint firstAttribute="width" constant="376" id="KYg-RD-I5b"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="275" id="x9s-nK-cDf"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -419,7 +421,7 @@
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="VdS-kZ-gT0">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
                                                             <frame key="frameInset" width="60" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2098,7 +2100,12 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Paz-wf-zfa"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Paz-wf-zfa">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="FkJ-zX-pcz"/>
+                                                        <constraint firstAttribute="height" constant="40" id="dsC-20-xrV"/>
+                                                    </constraints>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="35d-vX-KMq" firstAttribute="top" secondItem="uSu-ph-Lmc" secondAttribute="topMargin" id="7Fj-U5-NhD"/>
@@ -2322,10 +2329,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lSl-5G-diZ"/>
-        <segue reference="Mgx-aW-hM6"/>
-        <segue reference="2pr-FC-ebc"/>
+        <segue reference="Tu6-Hc-ynB"/>
         <segue reference="T4D-LV-E4T"/>
         <segue reference="3Oq-v4-3gT"/>
+        <segue reference="2pr-FC-ebc"/>
         <segue reference="PAO-9Z-2j9"/>
         <segue reference="08p-oD-Qpd"/>
         <segue reference="4GZ-W5-5yC"/>
