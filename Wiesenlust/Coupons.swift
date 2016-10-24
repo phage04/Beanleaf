@@ -133,110 +133,119 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                 activityIndicator.isHidden = false
             }
 
-//            //CONTENTFULTHING
-//        client.fetchEntries(["content_type": "coupon"]).1.next {
-//            self.coupons.removeAll()
-//            
-//            let myGroupCoup = DispatchGroup()
-//            let myGroupCoup2 = dispatch_group_create()
-//            
-//            for entry in $0.items{
-//                dispatch_group_enter(myGroupCoup)
-//                var desc: String = ""
-//                var locationFlag: Bool = false
-//                
-//                if let descTxt = entry.fields["description"] as? String {
-//                    desc = descTxt
-//                }
-//                
-//                if let locVal = entry.fields["locationCoupon"] as? Bool , locVal == true{
-//                    locationFlag = locVal
-//                }
-//                
-//                if let date = entry.fields["validUntil"] {
-//                    dateFormatter.dateFormat = DATE_FULL_FORMAT
-//                    let dateFormatted = dateFormatter.dateFromString("\(date) 00:00:00 +0000")!
-//                    dateFormatter.dateFormat = DATE_FORMAT1
-//                    let dateDateFormattedVal = dateFormatter.stringFromDate(dateFormatted)
-//                    
-//                    
-//                    
-//                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
-//                    
-//                    dispatch_group_leave(myGroupCoup)
-//                   
-//                } else {
-//                    
-//                    
-//                    self.coupons.append(Coupon(titleTxt: "\(entry.fields["title"]!)", discountTxt: (entry.fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(entry.fields["termsConditions"] as! String)", discType: "\(entry.fields["discountType"]!)", subtitle: desc, identifier: "\(entry.identifier)", uses: (entry.fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
-//                    
-//                    dispatch_group_leave(myGroupCoup)
-//                    
-//                }     
-//                
-//            }
-//            
-//            dispatch_group_notify(myGroupCoup, dispatch_get_main_queue(), {
-//                
-//                
-//                deleteCoreData("Coupons")
-//                self.couponsData.removeAll()
-//                
-//                for each in self.coupons {
-//                    dispatch_group_enter(myGroupCoup2)
-//                    DataService.ds.REF_COUPONUSES.child("\(NSUserDefaults.standardUserDefaults().valueForKey("userId")!)/\(each.couponRef)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-//                        
-//                        if snapshot.exists() {
-//                            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//                                
-//                                if each.location == false {
-//                                    if snapshots.count >= each.couponUses && each.couponUses > 0 {
-//                                        print("EXCLUDED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
-//                                    } else if snapshots.count < each.couponUses || each.couponUses == 0{
-//                                        print("SAVED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
-//                                        self.saveCoupon(each)
-//                                    }
-//                                } else if each.location == true && validForLocationOffer == true {
-//                                    print("SAVED LOC COUPON CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
-//                                    self.saveCoupon(each)
-//                                }
-//                               
-//                                
-//                                
-//                                dispatch_group_leave(myGroupCoup2)
-//                                
-//                                
-//                                
-//                            }
-//
-//                        } else {
-//                            if each.location == true && validForLocationOffer == true {
-//                                print("SAVED LOCATION COUPON.")
-//                                self.saveCoupon(each)
-//                            } else if each.location == false {
-//                                self.saveCoupon(each)
-//                            }
-//                            
-//                            dispatch_group_leave(myGroupCoup2)
-//                           
-//                        }
-//                        
-//                    })
-//                    
-//                }
-//                dispatch_group_notify(myGroupCoup2, dispatch_get_main_queue(), {
-//                    self.tableView.allowsSelection = true
-//                    self.activityIndicator.stopAnimating()
-//                    self.activityIndicator.hidden = true
-//                    self.refreshControl.endRefreshing()
-//                    self.tableView.reloadData()
-//                })
-//            })
-//           
-//           
-//            
-//        }
-//        
+           //CONTENTFULTHING
+        Alamofire.request("https://cdn.contentful.com/spaces/\(CFSpaceId)/entries?access_token=\(CFTokenProduction)&content_type=coupon").responseJSON { (result) in
+                
+            if let dataResult = result.result.value as? Dictionary<String, AnyObject>{
+                    
+                    if let items = dataResult["items"] as? [Dictionary<String, AnyObject>]{
+                        self.coupons.removeAll()
+                        
+                        let myGroupCoup = DispatchGroup()
+                        let myGroupCoup2 = DispatchGroup()
+                        
+                        for entry in items{
+                            myGroupCoup.enter()
+                           
+                            var desc: String = ""
+                            var locationFlag: Bool = false
+                            
+                            if let fields = entry["fields"] as? Dictionary<String, AnyObject>, let sysTop = entry["sys"] as? Dictionary<String, AnyObject>, let coupID = sysTop["id"] as? String{
+                                
+                                if let descTxt = fields["description"] as? String {
+                                    desc = descTxt
+                                }
+                                
+                                if let locVal = fields["locationCoupon"] as? Bool , locVal == true{
+                                    locationFlag = locVal
+                                }
+                                
+                                if let date = fields["validUntil"] {
+                                    dateFormatter.dateFormat = DATE_FULL_FORMAT
+                                    let dateFormatted = dateFormatter.date(from: "\(date) 00:00:00 +0000")!
+                                    dateFormatter.dateFormat = DATE_FORMAT1
+                                    let dateDateFormattedVal = dateFormatter.string(from: dateFormatted)
+                                    
+                                    
+                                    
+                                    self.coupons.append(Coupon(titleTxt: "\(fields["title"]!)", discountTxt: (fields["discountValue"]! as? Int)!, validityTxt: dateDateFormattedVal, termsTxt: "\(fields["termsConditions"] as! String)", discType: "\(fields["discountType"]!)", subtitle: desc, identifier: "\(coupID)", uses: (fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
+                                    
+                                    myGroupCoup.leave()
+                                    
+                                } else {
+                                    
+                                    
+                                    self.coupons.append(Coupon(titleTxt: "\(fields["title"]!)", discountTxt: (fields["discountValue"]! as? Int)!, validityTxt: nil, termsTxt: "\(fields["termsConditions"] as! String)", discType: "\(fields["discountType"]!)", subtitle: desc, identifier: "\(coupID)", uses: (fields["usesAllowedPerPerson"] as? Int)!, location: locationFlag))
+                                    
+                                    myGroupCoup.leave()
+                                    
+                                }
+                            }
+                            
+                           
+                            
+                        }
+                        
+                         myGroupCoup2.notify(queue: DispatchQueue.main, execute: {
+                            
+                            
+                            deleteCoreData("Coupons")
+                            self.couponsData.removeAll()
+                            
+                            for each in self.coupons {
+                                myGroupCoup2.enter()
+                                DataService.ds.REF_COUPONUSES.child("\(UserDefaults.standard.value(forKey: "userId")!)/\(each.couponRef)").observeSingleEvent(of: .value, with: { (snapshot) in
+                                    
+                                    if snapshot.exists() {
+                                        if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                                            
+                                            if each.location == false {
+                                                if snapshots.count >= each.couponUses && each.couponUses > 0 {
+                                                    print("EXCLUDED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                                } else if snapshots.count < each.couponUses || each.couponUses == 0{
+                                                    print("SAVED CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                                    self.saveCoupon(each)
+                                                }
+                                            } else if each.location == true && validForLocationOffer == true {
+                                                print("SAVED LOC COUPON CouponID: \(each.couponRef) User Count: \(snapshots.count) User Limit: \(each.couponUses)")
+                                                self.saveCoupon(each)
+                                            }
+                                            
+                                            
+                                            
+                                            myGroupCoup2.leave()
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                    } else {
+                                        if each.location == true && validForLocationOffer == true {
+                                            print("SAVED LOCATION COUPON.")
+                                            self.saveCoupon(each)
+                                        } else if each.location == false {
+                                            self.saveCoupon(each)
+                                        }
+                                        
+                                        myGroupCoup2.leave()
+                                        
+                                    }
+                                    
+                                })
+                                
+                            }
+                             myGroupCoup2.notify(queue: DispatchQueue.main, execute: {
+                                self.tableView.allowsSelection = true
+                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator.isHidden = true
+                                self.refreshControl.endRefreshing()
+                                self.tableView.reloadData()
+                            })
+                        })
+                    }
+            }
+        }
+           
         }
     
     }

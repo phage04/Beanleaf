@@ -71,11 +71,11 @@ class CouponCell: UITableViewCell {
         
         switch(discType) {
             case "Percentage":
-            discount.text = "\(discountTxt)%"
+            discount.text = "\(discountTxt!)%"
             break
             
             case "Amount":
-            discount.text = "\(currencyShort)\(discountTxt)"
+            discount.text = "\(currencyShort)\(discountTxt!)"
             break
             
             default:
