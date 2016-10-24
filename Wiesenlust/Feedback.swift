@@ -25,7 +25,8 @@ class Feedback: UIViewController, UITextViewDelegate {
     //THESE ARE ACTUALLY TEXTFIELDS
     
     let msgPlaceholder = "What would you like to tell us?"
-
+    let placeholderColor = UIColor.darkGray
+    let textColor = UIColor.darkGray
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,13 +38,22 @@ class Feedback: UIViewController, UITextViewDelegate {
         navigationController?.isNavigationBarHidden = false
         
         msgLbl.text = msgPlaceholder
-        msgLbl.textColor = UIColor.lightGray
+        msgLbl.textColor = placeholderColor
         msgLbl.font = UIFont(name: font1Regular, size: 18)
         msgLbl.layer.borderWidth = 1.0
         msgLbl.layer.borderColor = COLOR2.cgColor
         msgLbl.layer.cornerRadius = 10.0
         activityIndicator.color = COLOR1
         activityIndicator.isHidden = true
+        
+        nameLbl.attributedPlaceholder = NSAttributedString(string:"Name",
+                                                           attributes:[NSForegroundColorAttributeName: placeholderColor])
+        emailLbl.attributedPlaceholder = NSAttributedString(string:"Email",
+                                                            attributes:[NSForegroundColorAttributeName: placeholderColor])
+        nameLbl.layer.borderColor = COLOR2.cgColor
+        emailLbl.layer.borderColor = COLOR2.cgColor
+        nameLbl.textColor = textColor
+        emailLbl.textColor = textColor
         
         self.msgLbl.delegate = self
         
@@ -58,21 +68,21 @@ class Feedback: UIViewController, UITextViewDelegate {
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == placeholderColor {
             textView.text = nil
-            textView.textColor = COLOR2
+            textView.textColor = textColor
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = msgPlaceholder
-            textView.textColor = UIColor.lightGray
+            textView.textColor = placeholderColor
         }
     }
 
     func backButtonPressed(_ sender:UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+       _ = navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func sendBtn(_ sender: AnyObject) {

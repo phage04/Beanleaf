@@ -33,7 +33,8 @@ class Reservations: UIViewController{
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let userCalendar = Calendar.current
-
+    let textColor = UIColor.white
+    let placeholderColor = UIColor.darkGray
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,26 +47,34 @@ class Reservations: UIViewController{
 
         navigationController?.isNavigationBarHidden = false
         
+        
+        
         titleLbl.font = UIFont(name: font1Thin, size: 48)
         titleLbl.textColor = COLOR2
         titleLbl.text = "Make a free reservation"
         
         nameView.backgroundColor = COLOR2
-        nameTxt.placeholder = "Name"
+        
+        nameTxt.attributedPlaceholder = NSAttributedString(string:"Name",
+                                                           attributes:[NSForegroundColorAttributeName: placeholderColor])
         nameTxt.font = UIFont(name: font1Regular, size: 18)
-        nameTxt.textColor = COLOR2
+        nameTxt.textColor = textColor
         peopleView.backgroundColor = COLOR2
-        peopleTxt.placeholder = "Number of people"
+        
+        peopleTxt.attributedPlaceholder = NSAttributedString(string:"Number of people",
+                                                             attributes:[NSForegroundColorAttributeName: placeholderColor])
         peopleTxt.font = UIFont(name: font1Regular, size: 18)
-        peopleTxt.textColor = COLOR2
+        peopleTxt.textColor = textColor
         dateTimeView.backgroundColor = COLOR2
-        mobileTxt.placeholder = "Mobile number"
+        mobileTxt.attributedPlaceholder = NSAttributedString(string:"Mobile number",
+                                                             attributes:[NSForegroundColorAttributeName: placeholderColor])
         mobileTxt.font = UIFont(name: font1Regular, size: 18)
-        mobileTxt.textColor = COLOR2
+        mobileTxt.textColor = textColor
         mobileView.backgroundColor = COLOR2
-        dateTimeTxt.placeholder = "Reservation date"
+        dateTimeTxt.attributedPlaceholder = NSAttributedString(string:"Reservation Date/Time",
+                                                               attributes:[NSForegroundColorAttributeName: placeholderColor])
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
-        dateTimeTxt.textColor = COLOR2
+        dateTimeTxt.textColor = textColor
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
         bottomLbl.textColor = COLOR2
         bottomLbl.text = "You'll receive a call/sms from us once your reservation is confirmed."
@@ -85,7 +94,7 @@ class Reservations: UIViewController{
         
         let actionOK = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
             
-            self.navigationController?.popToRootViewController(animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
             
         })
         alert.addAction(actionOK)
@@ -147,7 +156,7 @@ class Reservations: UIViewController{
         dateFormatter.dateFormat = DATE_FORMAT2
         dateTimeTxt.text = dateFormatter.string(from: sender.date)
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
-        dateTimeTxt.textColor = COLOR2
+        dateTimeTxt.textColor = textColor
     }
     
     

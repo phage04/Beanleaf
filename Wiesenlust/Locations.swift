@@ -260,11 +260,37 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.tableView.reloadData()
     }
     
+
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
-
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return " "
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label : UILabel = UILabel()
+        if section == 0 {
+            label.textColor = COLOR2
+            label.text = "  Nearest Location"
+            label.backgroundColor = COLOR1
+            label.font = UIFont(name: font1Medium, size: 17)
+        } else if section == 1 {
+            label.textColor = COLOR2
+            label.backgroundColor = COLOR1
+            label.font = UIFont(name: font1Medium, size: 17)
+            if inSearchMode {
+                label.text = "  Search Results"
+            } else {
+                label.text = "  Our Locations"
+            }
+        }
+        return label
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -278,25 +304,10 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label : UILabel = UILabel()
-        if(section == 0){
-            label.textColor = COLOR2
-            label.text = "  Nearest Location"
-            label.backgroundColor = COLOR1
-            label.font = UIFont(name: font1Medium, size: 17)
-        } else if (section == 1){
-            label.textColor = COLOR2
-            label.backgroundColor = COLOR1
-            label.font = UIFont(name: font1Medium, size: 17)
-            if inSearchMode {
-                label.text = "  Search Results"
-            } else {
-                label.text = "  Our Locations"
-            }
-        }
-        return label
-    }
+    
+    
+ 
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.regionRadius = 500
@@ -356,7 +367,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func backButtonPressed(_ sender:UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+       _ = navigationController?.popToRootViewController(animated: true)
     }
     
     func showMenu() {
