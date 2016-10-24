@@ -28,7 +28,7 @@ class Feedback: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.leftBarButtonItem =
+        navigationItem.backBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Feedback.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =

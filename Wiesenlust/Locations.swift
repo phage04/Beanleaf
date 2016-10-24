@@ -40,7 +40,7 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         super.viewDidLoad()
         
         
-        navigationItem.leftBarButtonItem =
+        navigationItem.backBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(LocationsVC.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =

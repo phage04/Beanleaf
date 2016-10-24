@@ -31,13 +31,14 @@ class Reservations: UIViewController{
     
     @IBOutlet weak var sendBtn: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let userCalendar = Calendar.current
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem =
+        navigationItem.backBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Reservations.backButtonPressed(_:)))
         
         navigationItem.rightBarButtonItem =
@@ -68,6 +69,8 @@ class Reservations: UIViewController{
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
         bottomLbl.textColor = COLOR2
         bottomLbl.text = "You'll receive a call/sms from us once your reservation is confirmed."
+        activityIndicator.color = COLOR1
+        activityIndicator.isHidden = true
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Reservations.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -152,7 +155,8 @@ class Reservations: UIViewController{
 
     @IBAction func sendBtnPressed(_ sender: AnyObject) {
      
-        
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         if checkConnectivity()  {
            
             if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" && mobileTxt.text! != "" {
@@ -168,7 +172,8 @@ class Reservations: UIViewController{
                 ]
                 
                 _ = Alamofire.request("https://api.mailgun.net/v3/\(mailGunURL)/messages", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).authenticate(user: "api", password: key).response { response in
-                    
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                         if response.error == nil{
                            self.showErrorAlertAction("Thank You", msg: "In a few moments, we will contact you to confirm your request.", VC: self)
                         } else {
@@ -178,12 +183,14 @@ class Reservations: UIViewController{
                     }
 
             } else {
-                
+                activityIndicator.stopAnimating()
+                activityIndicator.isHidden = true
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
                 
             }
         } else {
-            
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
             showErrorAlert("Network Error", msg: "Please check your internet connection.", VC: self)
             
         }

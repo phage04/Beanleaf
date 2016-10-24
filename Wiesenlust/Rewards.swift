@@ -67,7 +67,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         bottomLbl.textColor = COLOR2
         bottomLbl.text = "For every transaction with minimum amount of \(minimumReceipt), earn one stamp. Uninstalling \(storeName) will cause stamps to be lost."
         
-        navigationItem.leftBarButtonItem =
+        navigationItem.backBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "backBtn1x.png"), style:.plain, target:self, action:#selector(Rewards.backButtonPressed(_:)));
         
         navigationItem.rightBarButtonItem =
