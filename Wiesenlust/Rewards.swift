@@ -558,6 +558,20 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    func showErrorAlertAction(_ title: String, msg: String, VC: UIViewController) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            
+            self.addBtn.isUserInteractionEnabled = true
+            self.addBtn.isEnabled = true
+            
+        })
+        alert.addAction(actionOK)
+        VC.present(alert, animated: true, completion: nil)
+        
+    }
+    
     func addStamp(){
         
         if let _ = self.long as Double?, let _ = self.lat as Double?{
@@ -665,21 +679,6 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
          }
         
         
-//        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Subtract One Stamp", style: .Default)
-//        { action -> Void in
-//            self.numberOfStamps = NSUserDefaults.standardUserDefaults().integerForKey("numberOfStamps") - 1
-//            
-//            if self.numberOfStamps >= 0 {
-//                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-//            } else {
-//                self.numberOfStamps = 0
-//                NSUserDefaults.standardUserDefaults().setInteger(self.numberOfStamps, forKey: "numberOfStamps")
-//            }
-//            
-//            self.updateStamps(self.numberOfStamps)
-//
-//        }
-//        actionSheetControllerIOS8.addAction(deleteActionButton)
         
         let claimActionButton: UIAlertAction = UIAlertAction(title: "Claim Reward", style: .default)
         { action -> Void in
@@ -806,7 +805,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 } else {
                     self.activityIndicator.isHidden = true
                     self.activityIndicator.stopAnimating()
-                    self.showErrorAlert("Incorrect PIN", msg: "", VC: self)
+                    self.showErrorAlertAction("Incorrect PIN", msg: "", VC: self)
                 }
             } else {
                 // user did not fill field
