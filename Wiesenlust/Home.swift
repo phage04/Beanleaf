@@ -49,7 +49,12 @@ class Home: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var menuLbl6: UILabel!
     
     @IBOutlet weak var socialButton: UIButton!
+   
+    @IBOutlet weak var homeView: UIView!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var firstload = true
     let locationManager = CLLocationManager()
     var nameTitle: String!
@@ -60,8 +65,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-  
-
+        
+        homeView.alpha = 0.0
         
         homeSetup()
         
@@ -82,8 +87,13 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        homeView.alpha = 0.0
+        self.topConstraint.isActive = true
+        self.bottomConstraint.isActive = true
         navigationController?.isNavigationBarHidden = true
     }
+    
+    
     
     
     func homeSetup(){
@@ -154,6 +164,19 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.homeView.alpha = 1.0           
+            self.topConstraint.isActive = false
+            self.bottomConstraint.isActive = true
+            
+            // Make the animation happen
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            
+            
+        })
+        
         downloadManagerPin()
         fetchDataCat { (result) in
             if result {
@@ -322,7 +345,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
          //CONTENTFULTHING
     
-    Alamofire.request("https://cdn.contentful.com/spaces/\(CFSpaceId)/entries?select=fields&access_token=\(CFTokenProduction)&content_type=category").responseJSON { (result) in
+    Alamofire.request("https://cdn.contentful.com/spaces/\(CFSpaceId)/entries?access_token=\(CFTokenProduction)&content_type=category").responseJSON { (result) in
         
         if let dataResult = result.result.value as? Dictionary<String, AnyObject>{
             

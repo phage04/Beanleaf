@@ -21,188 +21,199 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys">
-                                <frame key="frameInset" width="600" height="799"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-kd-CtO">
-                                <frame key="frameInset" minX="25" minY="20" width="333" height="627"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-0L-lys"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhQ-KQ-CqJ">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="Z7w-SX-JRq">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="5IM-kz-DUD"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Eie-HJ-lL4"/>
-                                            <constraint firstAttribute="height" constant="22" id="Ej2-af-tE8"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="pjC-XM-P1q"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="saM-4T-YhU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <inset key="titleEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <state key="normal" title="VISIT US ON YELP!">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Ej2-af-tE8"/>
-                                                <exclude reference="pjC-XM-P1q"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="socialBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xX-H8-z7w"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="e7U-gV-hSy">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yjH-kd-CtO">
+                                        <frame key="frameInset" minX="5" minY="10" width="333" height="592"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nbv-bH-5qZ">
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-pt-mDS">
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="105" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="r5c-Qa-54z"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="Jrz-do-ggR" kind="show" id="2pr-FC-ebc"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="105" height="21"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="avR-MO-dNC">
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="104" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="g1P-up-POl"/>
-                                                                </constraints>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="TSb-jX-W01" kind="show" id="T4D-LV-E4T"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="104" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Wk-INs">
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="105" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="LHN-Ld-as9"/>
-                                                                </constraints>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="NJz-j9-Ghq" kind="show" id="08p-oD-Qpd"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="105" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="Z7w-SX-JRq">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="112" id="Agi-Ti-hIf"/>
+                                                    <constraint firstAttribute="width" constant="300" id="5IM-kz-DUD"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="250" id="C6a-Ey-rDT"/>
                                                 </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tOy-NH-egg">
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Eie-HJ-lL4"/>
+                                                    <constraint firstAttribute="height" constant="22" id="Ej2-af-tE8"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="pjC-XM-P1q"/>
+                                                    <constraint firstAttribute="height" constant="40" id="saM-4T-YhU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="titleEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <state key="normal" title="VISIT US ON YELP!">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Ej2-af-tE8"/>
+                                                        <exclude reference="pjC-XM-P1q"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="socialBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xX-H8-z7w"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="e7U-gV-hSy">
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ji3-mX-Jkh">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nbv-bH-5qZ">
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="105" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="CgF-0P-f7c"/>
-                                                                </constraints>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="leS-uA-puM" kind="show" id="PAO-9Z-2j9"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="105" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-pt-mDS">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="105" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="r5c-Qa-54z"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="Jrz-do-ggR" kind="show" id="2pr-FC-ebc"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="105" height="21"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="avR-MO-dNC">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="104" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="g1P-up-POl"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="TSb-jX-W01" kind="show" id="T4D-LV-E4T"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="104" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Wk-INs">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="105" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="LHN-Ld-as9"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="NJz-j9-Ghq" kind="show" id="08p-oD-Qpd"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="105" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="112" id="Agi-Ti-hIf"/>
+                                                        </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uye-uM-a4a">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tOy-NH-egg">
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="104" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="PQo-vG-apI"/>
-                                                                </constraints>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="0HQ-vq-Zk4" kind="show" id="3Oq-v4-3gT"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="104" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ji3-mX-Jkh">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="105" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="CgF-0P-f7c"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="leS-uA-puM" kind="show" id="PAO-9Z-2j9"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="105" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uye-uM-a4a">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="104" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="PQo-vG-apI"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="0HQ-vq-Zk4" kind="show" id="3Oq-v4-3gT"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="104" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IO6-46-SmC">
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" width="105" height="92"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="92" id="2sB-em-eWr"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="menuIcon"/>
+                                                                        <connections>
+                                                                            <segue destination="5EP-Nc-R5w" kind="show" id="4GZ-W5-5yC"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                        <frame key="frameInset" minY="92" width="105" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IO6-46-SmC">
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" width="105" height="92"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="92" id="2sB-em-eWr"/>
-                                                                </constraints>
-                                                                <state key="normal" image="menuIcon"/>
-                                                                <connections>
-                                                                    <segue destination="5EP-Nc-R5w" kind="show" id="4GZ-W5-5yC"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
-                                                                <frame key="frameInset" minY="92" width="105" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="112" id="1Hb-qY-Fup"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="112" id="1Hb-qY-Fup"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="255" id="TdP-5H-Mcv"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="255" id="TdP-5H-Mcv"/>
+                                            <constraint firstItem="e7U-gV-hSy" firstAttribute="leading" secondItem="yjH-kd-CtO" secondAttribute="leading" id="SQe-sO-JPO"/>
+                                            <constraint firstAttribute="trailing" secondItem="e7U-gV-hSy" secondAttribute="trailing" id="bLv-pz-Ml9"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="e7U-gV-hSy" firstAttribute="leading" secondItem="yjH-kd-CtO" secondAttribute="leading" id="SQe-sO-JPO"/>
-                                    <constraint firstAttribute="trailing" secondItem="e7U-gV-hSy" secondAttribute="trailing" id="bLv-pz-Ml9"/>
+                                    <constraint firstItem="yjH-kd-CtO" firstAttribute="leading" secondItem="VhQ-KQ-CqJ" secondAttribute="leading" constant="5" id="1ai-Zu-BjF"/>
+                                    <constraint firstAttribute="trailing" secondItem="yjH-kd-CtO" secondAttribute="trailing" constant="5" id="CB0-hj-By5"/>
+                                    <constraint firstAttribute="bottom" secondItem="yjH-kd-CtO" secondAttribute="bottom" constant="30" id="egC-dx-KR9"/>
+                                    <constraint firstItem="yjH-kd-CtO" firstAttribute="top" secondItem="VhQ-KQ-CqJ" secondAttribute="top" constant="5" id="fLg-Qh-ApS"/>
+                                    <constraint firstItem="yjH-kd-CtO" firstAttribute="centerX" secondItem="VhQ-KQ-CqJ" secondAttribute="centerX" id="szF-RK-huE"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -210,15 +221,14 @@
                             <constraint firstItem="6XI-0L-lys" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="7x6-gd-W86"/>
                             <constraint firstItem="6XI-0L-lys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Aql-xp-FfG"/>
                             <constraint firstAttribute="trailing" secondItem="6XI-0L-lys" secondAttribute="trailing" id="GK5-gu-LH7"/>
-                            <constraint firstItem="yjH-kd-CtO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Gdg-eB-Utb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yjH-kd-CtO" secondAttribute="trailing" constant="5" id="JXB-8B-1lc"/>
                             <constraint firstItem="6XI-0L-lys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LEj-uk-olZ"/>
-                            <constraint firstItem="yjH-kd-CtO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVN-T8-V3M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VhQ-KQ-CqJ" secondAttribute="trailing" id="LtV-T6-jwl"/>
+                            <constraint firstItem="VhQ-KQ-CqJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PF1-Vu-O6g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VhQ-KQ-CqJ" secondAttribute="bottom" id="W2g-Xs-eMb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6XI-0L-lys" secondAttribute="trailing" id="Wgd-LZ-jxr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6XI-0L-lys" secondAttribute="bottom" id="fvp-7a-9zq"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yjH-kd-CtO" secondAttribute="bottom" constant="20" id="hNw-QD-w1a"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6XI-0L-lys" secondAttribute="bottom" id="i7v-D0-i6F"/>
-                            <constraint firstItem="yjH-kd-CtO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="l5N-dz-sgD"/>
+                            <constraint firstItem="VhQ-KQ-CqJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="uu0-hR-p7j"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -233,6 +243,8 @@
                     <connections>
                         <outlet property="backgroundImg" destination="6XI-0L-lys" id="cVI-Gz-mF8"/>
                         <outlet property="backgroundView" destination="8bC-Xf-vdC" id="amQ-Xd-eH2"/>
+                        <outlet property="bottomConstraint" destination="W2g-Xs-eMb" id="eXP-dd-g0L"/>
+                        <outlet property="homeView" destination="VhQ-KQ-CqJ" id="sRg-Q3-Enh"/>
                         <outlet property="logo" destination="Z7w-SX-JRq" id="O4e-gx-dMs"/>
                         <outlet property="menuItem1" destination="oeq-jE-VdD" id="ijv-vz-gab"/>
                         <outlet property="menuItem2" destination="t6O-5G-eko" id="9Qt-so-DZR"/>
@@ -247,11 +259,12 @@
                         <outlet property="menuLbl5" destination="U0S-23-4v1" id="VjW-ok-29K"/>
                         <outlet property="menuLbl6" destination="cDr-2M-uQH" id="FQO-4x-cXr"/>
                         <outlet property="socialButton" destination="tj8-AL-R3P" id="96O-FH-Ami"/>
+                        <outlet property="topConstraint" destination="uu0-hR-p7j" id="79B-o7-OP4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336" y="389"/>
+            <point key="canvasLocation" x="335.19999999999999" y="388.15592203898052"/>
         </scene>
         <!--Menu-->
         <scene sceneID="3MU-Af-lHR">
@@ -421,14 +434,12 @@
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="VdS-kZ-gT0">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
-                                                            <frame key="frameInset" width="60" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-qs-RCf">
-                                                            <frame key="frameInset" minY="153" width="60" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-qs-RCf">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="sA7-yH-Mmg"/>
                                                             </constraints>
@@ -639,13 +650,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-gJ-XxT">
-                                <frame key="frameInset" minX="20" minY="130" width="343" height="403"/>
+                                <frame key="frameInset" minX="20" minY="130" width="343" height="405"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
-                                        <frame key="frameInset" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
@@ -689,8 +698,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="2DM-7Y-Y5W"/>
                                                         </constraints>
@@ -705,8 +713,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
@@ -750,8 +757,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="KuR-AP-D89"/>
                                                         </constraints>
@@ -766,8 +772,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
@@ -811,8 +816,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="eUI-Vh-OrK"/>
                                                         </constraints>
@@ -829,14 +833,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
-                                        <frame key="frameInset" minY="103" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="MVt-ij-HzP"/>
                                                             <constraint firstAttribute="width" constant="75" id="cvs-Ot-gOn"/>
@@ -858,8 +859,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="fNS-Gw-6Pe"/>
                                                         </constraints>
@@ -874,11 +874,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="NAi-2k-7hQ"/>
                                                             <constraint firstAttribute="width" constant="150" id="gKr-II-gaX"/>
@@ -900,8 +898,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ry8-Cs-NGm"/>
                                                         </constraints>
@@ -916,11 +913,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="WFq-pj-5Do"/>
                                                             <constraint firstAttribute="width" constant="150" id="YmY-L3-taD"/>
@@ -942,8 +937,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="0pP-bE-NTb"/>
                                                         </constraints>
@@ -960,14 +954,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
-                                        <frame key="frameInset" minY="205" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="1Jq-YI-0kT"/>
                                                             <constraint firstAttribute="height" constant="150" id="1RA-dt-IAt"/>
@@ -989,8 +980,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="OyR-ag-WjH"/>
                                                         </constraints>
@@ -1005,11 +995,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="ELU-nI-0sL"/>
                                                             <constraint firstAttribute="height" constant="75" id="OSe-KB-Csk"/>
@@ -1031,8 +1019,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="XNc-As-ExO"/>
                                                         </constraints>
@@ -1047,11 +1034,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="3l9-v4-q04"/>
                                                             <constraint firstAttribute="height" constant="150" id="J15-CR-At2"/>
@@ -1073,8 +1058,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="7Rr-rP-hOb"/>
                                                         </constraints>
@@ -1091,14 +1075,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
-                                        <frame key="frameInset" minY="308" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="KGy-JA-tMO"/>
                                                             <constraint firstAttribute="height" constant="75" id="ZBI-5C-feP"/>
@@ -1120,8 +1101,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="dKd-YY-Pfb"/>
                                                         </constraints>
@@ -1136,11 +1116,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="KvW-3h-7LK"/>
                                                             <constraint firstAttribute="height" constant="150" id="bpF-2R-pqj"/>
@@ -1162,8 +1140,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="g4L-9d-Iik"/>
                                                         </constraints>
@@ -1178,11 +1155,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="0OK-jP-aeJ"/>
                                                             <constraint firstAttribute="height" constant="150" id="4pL-cG-KOf"/>
@@ -1204,8 +1179,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="XE6-t3-D25"/>
                                                         </constraints>
@@ -1568,8 +1542,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-ku-FAQ">
-                                            <frame key="frameInset" width="45" height="56"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-ku-FAQ">
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-xw-J5z" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
                                                     <constraints>
@@ -1660,13 +1633,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-yI-rBo">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-Ux-QKc">
-                                                            <frame key="frameInset" width="568" height="82"/>
+                                                            <frame key="frameInset" width="568" height="81"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vsm-kJ-TB9">
-                                                            <frame key="frameInset" minY="82" width="568" height="21"/>
+                                                            <frame key="frameInset" minY="81" width="568" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1852,27 +1825,22 @@
                                 <frame key="frameInset" minY="-99" width="600" height="799"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="n07-fr-xTJ">
-                                <frame key="frameInset" minX="20" width="343" height="361"/>
+                                <frame key="frameInset" minX="20" width="343" height="362"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvS-yr-6IJ">
-                                        <frame key="frameInset" width="343" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvS-yr-6IJ">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VuI-kP-4h7">
-                                        <frame key="frameInset" minY="39" width="343" height="216"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VuI-kP-4h7">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-rX-lkX">
-                                                <frame key="frameInset" width="343" height="25"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-rX-lkX">
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qht-FI-eg4">
-                                                        <frame key="frameInset" width="343" height="19"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qht-FI-eg4">
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-ZW-Yqk">
-                                                        <frame key="frameInset" minY="24" width="343" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-ZW-Yqk">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="lhs-ox-3De"/>
@@ -1880,16 +1848,13 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kAp-8q-kX6">
-                                                <frame key="frameInset" minY="65" width="343" height="25"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kAp-8q-kX6">
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BYi-Tx-ErU">
-                                                        <frame key="frameInset" width="343" height="19"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BYi-Tx-ErU">
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EbT-az-3GS">
-                                                        <frame key="frameInset" minY="24" width="343" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbT-az-3GS">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="1B8-iJ-L31"/>
@@ -1897,19 +1862,16 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="icv-A0-jWB">
-                                                <frame key="frameInset" minY="130" width="343" height="23"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="icv-A0-jWB">
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aau-Wm-hbv">
-                                                        <frame key="frameInset" width="343" height="17"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aau-Wm-hbv">
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
                                                             <action selector="editingBegunDateTime:" destination="leS-uA-puM" eventType="editingDidBegin" id="rwP-w2-6AJ"/>
                                                         </connections>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="El4-h7-99h">
-                                                        <frame key="frameInset" minY="22" width="343" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="El4-h7-99h">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="x0r-gN-tlT"/>
@@ -1917,16 +1879,13 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjD-2L-Ngo">
-                                                <frame key="frameInset" minY="193" width="343" height="23"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjD-2L-Ngo">
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xn8-yk-lB1">
-                                                        <frame key="frameInset" width="343" height="17"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xn8-yk-lB1">
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INO-bp-9WW">
-                                                        <frame key="frameInset" minY="22" width="343" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INO-bp-9WW">
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="wet-Fa-xul"/>
@@ -1936,8 +1895,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
-                                        <frame key="frameInset" minY="273" width="343" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YpD-xz-yzD"/>
                                         </constraints>
@@ -1948,8 +1906,7 @@
                                             <action selector="sendBtnPressed:" destination="leS-uA-puM" eventType="touchUpInside" id="Xyt-AW-Gto"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeE-rR-8Gf">
-                                        <frame key="frameInset" minY="341" width="343" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeE-rR-8Gf">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2073,7 +2030,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJb-a9-g6f" id="uSu-ph-Lmc">
-                                            <frame key="frameInset" width="600" height="119.5"/>
+                                            <frame key="frameInset" width="600" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="35d-vX-KMq">
@@ -2329,10 +2286,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lSl-5G-diZ"/>
-        <segue reference="Tu6-Hc-ynB"/>
+        <segue reference="Mgx-aW-hM6"/>
+        <segue reference="2pr-FC-ebc"/>
         <segue reference="T4D-LV-E4T"/>
         <segue reference="3Oq-v4-3gT"/>
-        <segue reference="2pr-FC-ebc"/>
         <segue reference="PAO-9Z-2j9"/>
         <segue reference="08p-oD-Qpd"/>
         <segue reference="4GZ-W5-5yC"/>

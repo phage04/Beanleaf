@@ -69,12 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // Register for remote notifications
     
-            // [START register_for_notifications]
+        // [START register_for_notifications]
 
         
         // [END register_for_notifications]
         
         FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
         IQKeyboardManager.sharedManager().enable = true
         
         // Add observer for InstanceID token refresh callback.
