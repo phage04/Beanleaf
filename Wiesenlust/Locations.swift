@@ -114,21 +114,26 @@ class LocationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             self.nameTitle = name
                         }
                         
-                        let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle) Branch", address: loc, contact: "\(contacts[index])", storeHours: "\(storeHours[index])", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
-                        
-                        
-                        print(locNow.locationName)
-                        
-                        if branches.count > self.branchesLoc.count {
-                            self.branchesLoc.append(locNow)
-                        }
-                        
-
-                        self.mapView.addAnnotation(locNow)
-                        if self.branchesLoc.count == branches.count {
+                        if let _ = self.nameTitle as? String {
+                            let locNow = Locations(title: "\(storeName)", locationName: "\(self.nameTitle!) Branch", address: loc, contact: "\(contacts[index])", storeHours: "\(storeHours[index])", coordinates: CLLocationCoordinate2DMake( (lat), (long)), location: CLLocation(latitude: lat, longitude: long))
                             
-                            self.tableView.reloadData()
+                            print(locNow.locationName)
+                            
+                            if branches.count > self.branchesLoc.count {
+                                self.branchesLoc.append(locNow)
+                            }
+                            
+                            
+                            self.mapView.addAnnotation(locNow)
+                            if self.branchesLoc.count == branches.count {
+                                
+                                self.tableView.reloadData()
+                            }
+
                         }
+                        
+                        
+                        
                     }
                 
                 }
