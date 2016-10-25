@@ -26,6 +26,7 @@ let branchPickerData = ["Jupiter Branch", "ABSCBN Branch", "Fort Branch", "BF Br
 
 var freeItems = [String]()
 
+
 let radiusOfInterest: Double = 150.0
 
 let listView: Bool = false
@@ -45,7 +46,7 @@ var foodItemsData = [NSManagedObject]()
 var foodItems = [FoodItem]()
 var validForLocationOffer = false
 
-
+var dishesMain = [FoodItem]()
 var imgURL: URL!
 
 //let COLOR1 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)

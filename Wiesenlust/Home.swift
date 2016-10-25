@@ -203,7 +203,17 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 })
             }
         }
+        backgroundThread(0, background: { 
+            for each in foodItemsData {
+                
+                dishesMain.append(FoodItem(id: "\(each.value(forKey: "id"))",cat: each.value(forKey: "category")! as! String, name: each.value(forKey: "name")! as! String, desc: each.value(forKey: "descriptionInfo")! as? String, price: each.value(forKey: "price")! as! Double, image: UIImage(data: each.value(forKey: "image") as! Data), imgURL: each.value(forKey: "imageURL")! as? String, key: each.value(forKey: "key")! as! String, likes: each.value(forKey: "likes") as? Int))
+                
+            }
 
+            }) {
+                //DO NOTHING
+        }
+        
      
 
     }

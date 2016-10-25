@@ -25,7 +25,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
 
     var inSearchMode = false
     var refreshControl: UIRefreshControl!
-    var dishes = [FoodItem]()
+    
     var filteredDishes = [FoodItem]()
     
     override func viewDidLoad() {
@@ -67,6 +67,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         textFieldInsideSearchBar?.font = UIFont(name: "\(font1Light)", size: 14)
         
         scrollView.delegate = self
+        
         scrollView.auk.settings.contentMode = .scaleAspectFill
         scrollView.auk.settings.pageControl.pageIndicatorTintColor = COLOR2
         scrollView.auk.settings.pageControl.currentPageIndicatorTintColor = COLOR1
@@ -80,17 +81,12 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = CustomImageFlowLayout.init()
         self.collectionView.backgroundColor = COLOR1
+        self.tableView.isHidden = true
         mainView.backgroundColor = COLOR1
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        for each in foodItemsData {
-            
-            dishes.append(FoodItem(id: "\(each.value(forKey: "id"))",cat: each.value(forKey: "category")! as! String, name: each.value(forKey: "name")! as! String, desc: each.value(forKey: "descriptionInfo")! as? String, price: each.value(forKey: "price")! as! Double, image: UIImage(data: each.value(forKey: "image") as! Data), imgURL: each.value(forKey: "imageURL")! as? String, key: each.value(forKey: "key")! as! String, likes: each.value(forKey: "likes") as? Int))
-            
-        }
-    }
+    
     
     func setupPageControl(visible: Bool){
         
@@ -173,7 +169,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     func filterContentForSearchText(_ searchText: String) {
         
-        filteredDishes = dishes.filter { dish in
+        filteredDishes = dishesMain.filter { dish in
             
             return dish.name.lowercased().contains(searchText.lowercased())
             
@@ -190,7 +186,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         if inSearchMode {
             return filteredDishes.count
         }
-        return dishes.count
+        return dishesMain.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -198,7 +194,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         if inSearchMode{
             performSegue(withIdentifier: "itemSegue", sender: filteredDishes[(indexPath as NSIndexPath).row])
         }else{
-            performSegue(withIdentifier: "itemSegue", sender: dishes[(indexPath as NSIndexPath).row])
+            performSegue(withIdentifier: "itemSegue", sender: dishesMain[(indexPath as NSIndexPath).row])
         }
         
     }
@@ -223,7 +219,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
             if inSearchMode{
                 cell.configureCell(filteredDishes[(indexPath as NSIndexPath).row])
             }else{
-                cell.configureCell(dishes[(indexPath as NSIndexPath).row])
+                cell.configureCell(dishesMain[(indexPath as NSIndexPath).row])
             }
             
             
