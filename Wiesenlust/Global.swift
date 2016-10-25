@@ -22,6 +22,7 @@ var managerPin = UserDefaults.standard.value(forKey: "managerPin")
 let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ELJCC Bldg. Mother Ignacia Ave., South Triangle 4, Quezon City, Philippines", "C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "11 Aguirre Avenue, BF Homes, Paranaque City, Philippines"]
 let contacts:[String] = ["028961989", "024319360", "027711706", "027711706", "027711706"]
 let storeHours:[String] = ["Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM", "Mon-Fri: 10AM-10PM Sat/Sun: 9AM-11PM"]
+let branchPickerData = ["Jupiter Branch", "ABSCBN Branch", "Fort Branch", "BF Branch"]
 
 var freeItems = [String]()
 

@@ -11,10 +11,8 @@ import MessageUI
 import Alamofire
 import SideMenu
 
-class Reservations: UIViewController{
-    
-    
-    
+class Reservations: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+  
     @IBOutlet weak var bottomLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var nameTxt: UITextField!
@@ -32,9 +30,17 @@ class Reservations: UIViewController{
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var branch: UITextField!
+    
+    @IBOutlet weak var branchView: UIView!
+    
+    
+    
     let userCalendar = Calendar.current
     let textColor = UIColor.white
     let placeholderColor = UIColor.darkGray
+    var branchPicker = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +79,12 @@ class Reservations: UIViewController{
         mobileView.backgroundColor = COLOR2
         dateTimeTxt.attributedPlaceholder = NSAttributedString(string:"Reservation Date/Time",
                                                                attributes:[NSForegroundColorAttributeName: placeholderColor])
+        branch.attributedPlaceholder = NSAttributedString(string:"Branch",
+                                                          attributes:[NSForegroundColorAttributeName: placeholderColor])
+        branchView.backgroundColor = COLOR2
+        branch.font = UIFont(name: font1Regular, size: 18)
+        branch.textColor = textColor
+        
         dateTimeTxt.font = UIFont(name: font1Regular, size: 18)
         dateTimeTxt.textColor = textColor
         bottomLbl.font = UIFont(name: font1Regular, size: 14)
@@ -168,7 +180,7 @@ class Reservations: UIViewController{
         activityIndicator.isHidden = false
         if checkConnectivity()  {
            
-            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" && mobileTxt.text! != "" {
+            if nameTxt.text! != "" && peopleTxt.text! != "" && dateTimeTxt.text! != "" && mobileTxt.text! != "" && branch.text! != "" {
                 
                 let key = mailGunKey
                 
@@ -177,7 +189,7 @@ class Reservations: UIViewController{
                     "from": "info@\(mailGunURL)",
                     "to": "\(mailGunOwnerEmail)",
                     "subject": "Reservation Request: \(Date())",
-                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"
+                    "text": "Hi! My name is \(nameTxt.text!). I'd like to make a reservation for \(peopleTxt.text!) on \(dateTimeTxt.text!) at your \(branch.text!). Please confirm my reservation by calling or sending me an sms at \(mobileTxt.text!) Thanks!"
                 ]
                 
                 _ = Alamofire.request("https://api.mailgun.net/v3/\(mailGunURL)/messages", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).authenticate(user: "api", password: key).response { response in
@@ -192,8 +204,8 @@ class Reservations: UIViewController{
                     }
 
             } else {
-                activityIndicator.stopAnimating()
-                activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
                 showErrorAlert("Incomplete Information", msg: "Please complete all required information.", VC: self)
                 
             }
@@ -216,8 +228,42 @@ class Reservations: UIViewController{
     }
     
     func backButtonPressed(_ sender:UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+       _ = navigationController?.popToRootViewController(animated: true)
     }
     
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return branchPickerData.count;
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return branchPickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        branch.text = branchPickerData[row]
+    }
+
+    
+    @IBAction func editingBegunBranches(_ sender: UITextField) {
+        
+        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
+        
+        let rect = CGRect(x: (self.view.frame.size.width/2) - (320/2), y: 0, width: 0, height: 0)
+        branchPicker = UIPickerView(frame: rect)
+        branchPicker.delegate = self
+        branchPicker.dataSource = self
+        
+        inputView.backgroundColor = UIColor.white
+        branchPicker.backgroundColor = UIColor.white
+        branch.text = branchPickerData[0]
+        inputView.addSubview(branchPicker)
+        sender.inputView = inputView
+        
+    }
     
 }
