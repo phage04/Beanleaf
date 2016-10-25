@@ -21,6 +21,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var logo: UIImageView!
 
     var inSearchMode = false
     var refreshControl: UIRefreshControl!
@@ -65,22 +66,14 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         
         textFieldInsideSearchBar?.font = UIFont(name: "\(font1Light)", size: 14)
         
-        
         scrollView.delegate = self
         scrollView.auk.settings.contentMode = .scaleAspectFill
-        scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray.withAlphaComponent(0.30)
-        scrollView.auk.settings.pageControl.marginToScrollViewBottom = 4.0
         scrollView.auk.settings.pageControl.pageIndicatorTintColor = COLOR2
         scrollView.auk.settings.pageControl.currentPageIndicatorTintColor = COLOR1
+        scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray.withAlphaComponent(0.30)
+        scrollView.auk.settings.pageControl.marginToScrollViewBottom = 4.0
+        setupPageControl(visible: true)
         
-        
-        if announcementsData.count > 0 {
-            for data in announcementsData {
-                scrollView.auk.show(image: UIImage(data: data.value(forKey: "image") as! Data)!)
-               
-            }
-            
-        }
         scrollView.auk.startAutoScroll(delaySeconds: 2)
         
         self.collectionView.delegate = self
@@ -89,15 +82,36 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.backgroundColor = COLOR1
         mainView.backgroundColor = COLOR1
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         for each in foodItemsData {
             
             dishes.append(FoodItem(id: "\(each.value(forKey: "id"))",cat: each.value(forKey: "category")! as! String, name: each.value(forKey: "name")! as! String, desc: each.value(forKey: "descriptionInfo")! as? String, price: each.value(forKey: "price")! as! Double, image: UIImage(data: each.value(forKey: "image") as! Data), imgURL: each.value(forKey: "imageURL")! as? String, key: each.value(forKey: "key")! as! String, likes: each.value(forKey: "likes") as? Int))
-          
+            
         }
+    }
+    
+    func setupPageControl(visible: Bool){
         
-        
-        
-        
+
+        if visible{
+            
+            if announcementsData.count > 0 {
+                for data in announcementsData {
+                    scrollView.auk.show(image: UIImage(data: data.value(forKey: "image") as! Data)!)
+                    
+                }
+                scrollView.auk.settings.pageControl.visible = true
+            }
+            
+           
+        } else{
+            scrollView.auk.removeAll()
+            scrollView.auk.settings.pageControl.visible = false
+        }
+       
+       
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -107,12 +121,20 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     
     func hideMenuScroll() {
         collectionView.isHidden = true
+        setupPageControl(visible: false)
         scrollView.isHidden = true
+        tableView.isHidden = false
+        
+    
     }
     
     func showMenuScroll() {
         collectionView.isHidden = false
+        setupPageControl(visible: true)
         scrollView.isHidden = false
+        tableView.isHidden = true
+        
+       
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -121,7 +143,7 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
-           // tableView.reloadData()
+            tableView.reloadData()
         } else {
             inSearchMode = true
             filterContentForSearchText(searchBar.text!)
