@@ -8,15 +8,21 @@
 
 import UIKit
 import SideMenu
-class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+    
     var dishes = [FoodItem]()
+    var filteredDishes = [FoodItem]()
     var categorySelected = ""
     var refreshControl: UIRefreshControl!
+    var inSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +46,9 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationItem.title = categorySelected
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(image:UIImage(named: "menuBtn1x.png"), style:.plain, target:self, action:#selector(CategoryView.showMenu))
-
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.search
+        searchBar.keyboardAppearance = UIKeyboardAppearance.dark
         
         for each in foodItemsData {
             if "\(each.value(forKey: "category")!)" == categorySelected {
@@ -54,15 +62,64 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchBar.showsCancelButton = true
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            tableView.reloadData()
+        } else {
+            inSearchMode = true
+            filterContentForSearchText(searchBar.text!)
+            
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        inSearchMode = false
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        view.endEditing(true)
+        tableView.reloadData()
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        
+        filteredDishes = dishes.filter { dish in
+            
+            return dish.name.lowercased().contains(searchText.lowercased())
+            
+        }
+        tableView.reloadData()
+    }
+    
+    
+    
     func showMenu() {
         performSegue(withIdentifier: "menuSegue", sender: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if inSearchMode {
+            return filteredDishes.count
+        }
         return dishes.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "itemSegue", sender: dishes[(indexPath as NSIndexPath).row])
+       
+        if inSearchMode{
+            performSegue(withIdentifier: "itemSegue", sender: filteredDishes[(indexPath as NSIndexPath).row])
+        }else{
+            performSegue(withIdentifier: "itemSegue", sender: dishes[(indexPath as NSIndexPath).row])
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,7 +138,13 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell.backgroundColor = cell.contentView.backgroundColor
             cell.clipsToBounds = false
             cell.selectionStyle = .none
-            cell.configureCell(dishes[(indexPath as NSIndexPath).row])
+            
+            if inSearchMode{
+                 cell.configureCell(filteredDishes[(indexPath as NSIndexPath).row])
+            }else{
+                 cell.configureCell(dishes[(indexPath as NSIndexPath).row])
+            }
+           
             
             return cell
             

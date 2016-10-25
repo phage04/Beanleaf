@@ -338,8 +338,7 @@
                                     <constraint firstAttribute="height" constant="212" id="BFP-V6-cjR"/>
                                 </constraints>
                             </scrollView>
-                            <searchBar contentMode="redraw" misplaced="YES" barStyle="black" placeholder="Search Dish" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-2n-JTf">
-                                <frame key="frameInset" minY="20" width="600" height="44"/>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Dish" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-2n-JTf">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -1373,24 +1372,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="zTP-BD-ZUq">
-                                <frame key="frameInset" width="600" height="600"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-gQ-vgD">
-                                <frame key="frameInset" minX="150" minY="200" width="300" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="zTP-BD-ZUq"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-gQ-vgD">
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="rJy-ds-mEk"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M09-ZT-gLo">
-                                <frame key="frameInset" minY="64" width="600" height="536"/>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Dish" translatesAutoresizingMaskIntoConstraints="NO" id="5Ss-Hc-z81">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9It-Yi-o9B"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M09-ZT-gLo">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Onion_Apps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="249"/>
+                                        <rect key="frame" x="0.0" y="28" width="383" height="249"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cF3-jT-lYy" id="cb6-o0-x7A">
-                                            <frame key="frameInset" width="600" height="249"/>
+                                            <frame key="frameInset" width="383" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2FR-XQ-KBc">
@@ -1526,16 +1527,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5Ss-Hc-z81" secondAttribute="trailing" id="26F-mb-rna"/>
                             <constraint firstItem="5zA-Mv-muO" firstAttribute="top" secondItem="M09-ZT-gLo" secondAttribute="bottom" id="4LX-vN-nno"/>
                             <constraint firstItem="a8k-gQ-vgD" firstAttribute="centerY" secondItem="NLZ-q8-iES" secondAttribute="centerY" id="EQ2-FA-k7o"/>
-                            <constraint firstItem="M09-ZT-gLo" firstAttribute="top" secondItem="l0C-2Z-xHg" secondAttribute="bottom" id="F3V-N2-8UM"/>
                             <constraint firstItem="zTP-BD-ZUq" firstAttribute="leading" secondItem="NLZ-q8-iES" secondAttribute="leading" id="I6h-bY-BEn"/>
                             <constraint firstItem="zTP-BD-ZUq" firstAttribute="top" secondItem="NLZ-q8-iES" secondAttribute="top" id="IdS-vW-pMX"/>
                             <constraint firstAttribute="bottom" secondItem="zTP-BD-ZUq" secondAttribute="bottom" id="Lbw-6N-ylJ"/>
+                            <constraint firstItem="M09-ZT-gLo" firstAttribute="top" secondItem="5Ss-Hc-z81" secondAttribute="bottom" id="Mvf-Y7-XCo"/>
                             <constraint firstItem="a8k-gQ-vgD" firstAttribute="centerX" secondItem="NLZ-q8-iES" secondAttribute="centerX" id="Qau-Iv-xcz"/>
+                            <constraint firstItem="5Ss-Hc-z81" firstAttribute="leading" secondItem="NLZ-q8-iES" secondAttribute="leading" id="V9X-Kq-UYN"/>
                             <constraint firstItem="a8k-gQ-vgD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NLZ-q8-iES" secondAttribute="leadingMargin" constant="20" id="dBY-Sh-Lh7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M09-ZT-gLo" secondAttribute="trailing" constant="-20" id="fX7-jU-hoT"/>
                             <constraint firstItem="M09-ZT-gLo" firstAttribute="leading" secondItem="NLZ-q8-iES" secondAttribute="leadingMargin" constant="-20" id="g2g-de-yDB"/>
+                            <constraint firstItem="5Ss-Hc-z81" firstAttribute="top" secondItem="l0C-2Z-xHg" secondAttribute="bottom" id="hDV-A0-2eC"/>
                             <constraint firstAttribute="trailing" secondItem="zTP-BD-ZUq" secondAttribute="trailing" id="mHb-lV-K8Y"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="a8k-gQ-vgD" secondAttribute="trailing" constant="20" id="pK7-f1-2XY"/>
                         </constraints>
@@ -1543,6 +1547,7 @@
                     <connections>
                         <outlet property="logo" destination="a8k-gQ-vgD" id="RdU-qW-vCZ"/>
                         <outlet property="mainView" destination="NLZ-q8-iES" id="KgN-B8-B4f"/>
+                        <outlet property="searchBar" destination="5Ss-Hc-z81" id="etk-HN-gmW"/>
                         <outlet property="tableView" destination="M09-ZT-gLo" id="CRS-m5-iqi"/>
                         <segue destination="2eA-5i-yWa" kind="show" identifier="itemSegue" id="zZ4-V6-PRo"/>
                         <segue destination="DIk-IS-28r" kind="presentation" identifier="menuSegue" id="aWk-Aa-VjO"/>
@@ -1550,7 +1555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rel-0z-XwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4692" y="-1276"/>
+            <point key="canvasLocation" x="4692" y="-1276.0119940029986"/>
         </scene>
         <!--Item View-->
         <scene sceneID="rF5-nB-m7R">
@@ -2352,13 +2357,13 @@
         <image name="starFull1x" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSl-5G-diZ"/>
-        <segue reference="dpe-os-CX0"/>
-        <segue reference="PAO-9Z-2j9"/>
-        <segue reference="3Oq-v4-3gT"/>
-        <segue reference="T4D-LV-E4T"/>
         <segue reference="2pr-FC-ebc"/>
-        <segue reference="4GZ-W5-5yC"/>
+        <segue reference="lSl-5G-diZ"/>
+        <segue reference="aWk-Aa-VjO"/>
         <segue reference="08p-oD-Qpd"/>
+        <segue reference="PAO-9Z-2j9"/>
+        <segue reference="T4D-LV-E4T"/>
+        <segue reference="3Oq-v4-3gT"/>
+        <segue reference="4GZ-W5-5yC"/>
     </inferredMetricsTieBreakers>
 </document>
