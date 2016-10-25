@@ -90,6 +90,10 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     func filterContentForSearchText(_ searchText: String) {
         
         filteredDishes = dishes.filter { dish in
@@ -105,6 +109,7 @@ class CategoryView: UIViewController, UITableViewDelegate, UITableViewDataSource
     func showMenu() {
         performSegue(withIdentifier: "menuSegue", sender: nil)
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if inSearchMode {
             return filteredDishes.count

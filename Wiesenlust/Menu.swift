@@ -13,15 +13,19 @@ import SwiftSpinner
 import SideMenu
 import Auk
 
-class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
+class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
 
     var inSearchMode = false
+    var refreshControl: UIRefreshControl!
+    var dishes = [FoodItem]()
+    var filteredDishes = [FoodItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +40,26 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         navigationController?.isNavigationBarHidden = false
         
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.done
+        searchBar.returnKeyType = UIReturnKeyType.search
         searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        if listView {
+            self.logo.isHidden = false
+            self.mainView.backgroundColor = UIColor.lightGray
+            self.tableView.backgroundColor = UIColor.clear
+        }else {
+            self.logo.isHidden = true
+            self.mainView.backgroundColor = UIColor.white
+            self.tableView.backgroundColor = COLOR1
+        }
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = COLOR2
+        refreshControl.addTarget(self, action: #selector(Coupons.refresh(_:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
         
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         
@@ -67,7 +89,11 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         self.collectionView.backgroundColor = COLOR1
         mainView.backgroundColor = COLOR1
         
-
+        for each in foodItemsData {
+            
+            dishes.append(FoodItem(id: "\(each.value(forKey: "id"))",cat: each.value(forKey: "category")! as! String, name: each.value(forKey: "name")! as! String, desc: each.value(forKey: "descriptionInfo")! as? String, price: each.value(forKey: "price")! as! Double, image: UIImage(data: each.value(forKey: "image") as! Data), imgURL: each.value(forKey: "imageURL")! as? String, key: each.value(forKey: "key")! as! String, likes: each.value(forKey: "likes") as? Int))
+          
+        }
         
         
         
@@ -79,41 +105,122 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         return true;
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func hideMenuScroll() {
+        collectionView.isHidden = true
+        scrollView.isHidden = true
+    }
+    
+    func showMenuScroll() {
+        collectionView.isHidden = false
+        scrollView.isHidden = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchBar.showsCancelButton = true
         
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
-            //tableView.reloadData()
-            print("Not searching")
+           // tableView.reloadData()
         } else {
             inSearchMode = true
-            //filterContentForSearchText(searchBar.text!)
-            print("\(searchBar.text)")
+            filterContentForSearchText(searchBar.text!)
             
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        hideMenuScroll()
     }
     
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         inSearchMode = false
         searchBar.text = ""
         searchBar.showsCancelButton = false
+        showMenuScroll()
         view.endEditing(true)
-        
+        tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        hideMenuScroll()
         view.endEditing(true)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        
+        filteredDishes = dishes.filter { dish in
+            
+            return dish.name.lowercased().contains(searchText.lowercased())
+            
+        }
+        tableView.reloadData()
     }
     
     func showMenu() {
         performSegue(withIdentifier: "menuSegue", sender: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if inSearchMode {
+            return filteredDishes.count
+        }
+        return dishes.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if inSearchMode{
+            performSegue(withIdentifier: "itemSegue", sender: filteredDishes[(indexPath as NSIndexPath).row])
+        }else{
+            performSegue(withIdentifier: "itemSegue", sender: dishes[(indexPath as NSIndexPath).row])
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if listView {
+            return 120
+        } else {
+            return 249
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell {
+            cell.layer.anchorPointZ = CGFloat((indexPath as NSIndexPath).row)
+            cell.contentView.clipsToBounds = false
+            cell.backgroundColor = cell.contentView.backgroundColor
+            cell.clipsToBounds = false
+            cell.selectionStyle = .none
+            
+            if inSearchMode{
+                cell.configureCell(filteredDishes[(indexPath as NSIndexPath).row])
+            }else{
+                cell.configureCell(dishes[(indexPath as NSIndexPath).row])
+            }
+            
+            
+            return cell
+            
+        } else {
+            return UITableViewCell()
+        }
+        
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func refresh(_ sender:AnyObject) {
+        tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     override func viewWillLayoutSubviews() {
@@ -126,6 +233,8 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
         navigationController?.isNavigationBarHidden = false
         self.collectionView.reloadData()
     }
+    
+
     
 
     
@@ -165,6 +274,14 @@ class Menu: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "itemSegue" {
+            if let selectedItem = segue.destination as? ItemView{
+                if let itemSelect = sender as? FoodItem {
+                    selectedItem.dish = itemSelect
+                }
+            }
+        }
         if segue.identifier == "categorySegue" {
             if let selectedCategory = segue.destination as? CategoryView{
                 if let catSelect = sender as? String {
