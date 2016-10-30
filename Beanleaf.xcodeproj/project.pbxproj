@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BAE662408C35C6B1B008A242 /* Pods_Onion_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */; };
+		93184A679E10E79F2ABA959D /* Pods_Beanleaf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09410C4E3D8A3FC1A53BDCE6 /* Pods_Beanleaf.framework */; };
 		DE19AD721D75A695009BDA27 /* ButtonStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19AD711D75A695009BDA27 /* ButtonStandard.swift */; };
 		DE27E5DF1D2BCC0B005780BE /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */; };
 		DE27E5E11D2BF422005780BE /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */; };
@@ -49,9 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.release.xcconfig"; sourceTree = "<group>"; };
-		AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onion_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onion Apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps.debug.xcconfig"; sourceTree = "<group>"; };
+		09410C4E3D8A3FC1A53BDCE6 /* Pods_Beanleaf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Beanleaf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83DA61B91DBCCF3A2E651172 /* Pods-Beanleaf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beanleaf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Beanleaf/Pods-Beanleaf.release.xcconfig"; sourceTree = "<group>"; };
+		C6BDB06B804E5EA34ED75763 /* Pods-Beanleaf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beanleaf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Beanleaf/Pods-Beanleaf.debug.xcconfig"; sourceTree = "<group>"; };
 		DE19AD711D75A695009BDA27 /* ButtonStandard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStandard.swift; sourceTree = "<group>"; };
 		DE27E5DE1D2BCC0B005780BE /* MenuCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
 		DE27E5E01D2BF422005780BE /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		DE37851A1D6CAC1600B0F455 /* Onion Apps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Onion Apps-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE57B7521D509EF6009F1296 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		DE57B7541D522885009F1296 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Onion Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE5BACAF1D26BB07006C3C7C /* Beanleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beanleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DE5BACB71D26BB08006C3C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE662408C35C6B1B008A242 /* Pods_Onion_Apps.framework in Frameworks */,
+				93184A679E10E79F2ABA959D /* Pods_Beanleaf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +110,8 @@
 		80E806E9E07DD33566C3A96E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */,
-				56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */,
+				C6BDB06B804E5EA34ED75763 /* Pods-Beanleaf.debug.xcconfig */,
+				83DA61B91DBCCF3A2E651172 /* Pods-Beanleaf.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 		85C481B389672D5D74895909 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AE35093EACAAE017CD3DBEED /* Pods_Onion_Apps.framework */,
+				09410C4E3D8A3FC1A53BDCE6 /* Pods_Beanleaf.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,7 +127,7 @@
 		DE5BACA61D26BB07006C3C7C = {
 			isa = PBXGroup;
 			children = (
-				DE5BACB11D26BB08006C3C7C /* OnionApps */,
+				DE5BACB11D26BB08006C3C7C /* Beanleaf */,
 				DE5BACB01D26BB07006C3C7C /* Products */,
 				80E806E9E07DD33566C3A96E /* Pods */,
 				85C481B389672D5D74895909 /* Frameworks */,
@@ -137,12 +137,12 @@
 		DE5BACB01D26BB07006C3C7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */,
+				DE5BACAF1D26BB07006C3C7C /* Beanleaf.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DE5BACB11D26BB08006C3C7C /* OnionApps */ = {
+		DE5BACB11D26BB08006C3C7C /* Beanleaf */ = {
 			isa = PBXGroup;
 			children = (
 				DE5DC5CA1D2A77A9002871B9 /* Model */,
@@ -150,7 +150,7 @@
 				DE5DC5CC1D2A77BC002871B9 /* Controller */,
 				DE5DC5CD1D2A77C3002871B9 /* Utilities */,
 			);
-			name = OnionApps;
+			name = Beanleaf;
 			path = Wiesenlust;
 			sourceTree = "<group>";
 		};
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DE5BACAE1D26BB07006C3C7C /* Onion Apps */ = {
+		DE5BACAE1D26BB07006C3C7C /* Beanleaf */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */;
+			buildConfigurationList = DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Beanleaf" */;
 			buildPhases = (
 				6073ECCBA18470C6EFBDCE82 /* [CP] Check Pods Manifest.lock */,
 				DE5BACAB1D26BB07006C3C7C /* Sources */,
@@ -240,9 +240,9 @@
 			);
 			dependencies = (
 			);
-			name = "Onion Apps";
+			name = Beanleaf;
 			productName = Wiesenlust;
-			productReference = DE5BACAF1D26BB07006C3C7C /* Onion Apps.app */;
+			productReference = DE5BACAF1D26BB07006C3C7C /* Beanleaf.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */;
+			buildConfigurationList = DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Beanleaf" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -283,7 +283,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE5BACAE1D26BB07006C3C7C /* Onion Apps */,
+				DE5BACAE1D26BB07006C3C7C /* Beanleaf */,
 			);
 		};
 /* End PBXProject section */
@@ -315,7 +315,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Beanleaf/Pods-Beanleaf-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6073ECCBA18470C6EFBDCE82 /* [CP] Check Pods Manifest.lock */ = {
@@ -345,7 +345,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onion Apps/Pods-Onion Apps-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Beanleaf/Pods-Beanleaf-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -514,7 +514,7 @@
 		};
 		DE5BACC51D26BB08006C3C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB30687A7B8FA01FD988AB9E /* Pods-Onion Apps.debug.xcconfig */;
+			baseConfigurationReference = C6BDB06B804E5EA34ED75763 /* Pods-Beanleaf.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -541,8 +541,8 @@
 				INFOPLIST_FILE = Wiesenlust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
-				PRODUCT_NAME = "Onion Apps";
+				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Beanleaf;
+				PRODUCT_NAME = Beanleaf;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -552,7 +552,7 @@
 		};
 		DE5BACC61D26BB08006C3C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C52D6F6E40D6BDD315AAB6 /* Pods-Onion Apps.release.xcconfig */;
+			baseConfigurationReference = 83DA61B91DBCCF3A2E651172 /* Pods-Beanleaf.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -579,8 +579,8 @@
 				INFOPLIST_FILE = Wiesenlust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Onion;
-				PRODUCT_NAME = "Onion Apps";
+				PRODUCT_BUNDLE_IDENTIFIER = io.OnionApps.Beanleaf;
+				PRODUCT_NAME = Beanleaf;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiesenlust/Onion Apps-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -590,7 +590,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Onion Apps" */ = {
+		DE5BACAA1D26BB07006C3C7C /* Build configuration list for PBXProject "Beanleaf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE5BACC21D26BB08006C3C7C /* Debug */,
@@ -599,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Onion Apps" */ = {
+		DE5BACC41D26BB08006C3C7C /* Build configuration list for PBXNativeTarget "Beanleaf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE5BACC51D26BB08006C3C7C /* Debug */,

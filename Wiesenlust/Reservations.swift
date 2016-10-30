@@ -39,7 +39,7 @@ class Reservations: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     let userCalendar = Calendar.current
     let textColor = UIColor.white
-    let placeholderColor = UIColor.darkGray
+    let placeholderColor = UIColor.lightText
     var branchPicker = UIPickerView()
     
     override func viewDidLoad() {

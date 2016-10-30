@@ -21,7 +21,7 @@ class LocationsCell: UITableViewCell {
     override func awakeFromNib() {
      
         super.awakeFromNib()
-        title.textColor = COLOR2
+        title.textColor = COLOR3
         title.font = UIFont(name: font1Medium, size: 15)
         address.textColor = UIColor.darkGray
         address.font = UIFont(name: font1Light, size: 15)
@@ -50,7 +50,7 @@ class LocationsCell: UITableViewCell {
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         callBtn.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
-        callBtn.tintColor = COLOR2
+        callBtn.tintColor = COLOR3
         
         self.callBtn.removeTarget(LocationsVC(), action: #selector(LocationsVC.callClicked(_:)), for: UIControlEvents.touchUpInside)
         

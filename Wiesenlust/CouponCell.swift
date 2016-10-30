@@ -31,23 +31,23 @@ class CouponCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        title.textColor = COLOR2
+        title.textColor = COLOR3
         title.font = UIFont(name: font1Regular, size: 36)
         
-        discount.textColor = COLOR2
+        discount.textColor = COLOR3
         discount.font = UIFont(name: font1Medium, size: 24)
         
-        terms.textColor = COLOR2
+        terms.textColor = COLOR3
         terms.font = UIFont(name: font1Light, size: 10)
         
-        validity.textColor = COLOR2
+        validity.textColor = COLOR3
         validity.font = UIFont(name: font1Light, size: 14)
         
         
-        subTitle.textColor = COLOR2
+        subTitle.textColor = COLOR3
         subTitle.font = UIFont(name: font1Light, size: 12)
         
-        special.textColor = COLOR2
+        special.textColor = COLOR3
         special.font = UIFont(name: font1Light, size: 12)
         
         let image = UIImage(named: "coupon")!

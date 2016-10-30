@@ -12,7 +12,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="Home" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="Home" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -30,10 +30,10 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo02" translatesAutoresizingMaskIntoConstraints="NO" id="Z7w-SX-JRq">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="5IM-kz-DUD"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="250" id="C6a-Ey-rDT"/>
+                                                    <constraint firstAttribute="height" priority="750" constant="250" id="C6a-Ey-rDT"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-AL-R3P" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Eie-HJ-lL4"/>
                                                     <constraint firstAttribute="height" constant="22" id="Ej2-af-tE8"/>
@@ -62,7 +62,7 @@
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-pt-mDS">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeq-jE-VdD" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="105" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="r5c-Qa-54z"/>
@@ -73,7 +73,7 @@
                                                                             <segue destination="Jrz-do-ggR" kind="show" id="2pr-FC-ebc"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-gP-29L" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="105" height="21"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,7 +83,7 @@
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="avR-MO-dNC">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6O-5G-eko" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="104" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="g1P-up-POl"/>
@@ -93,7 +93,7 @@
                                                                             <segue destination="TSb-jX-W01" kind="show" id="T4D-LV-E4T"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-zI-pQy" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="104" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,7 +103,7 @@
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-Wk-INs">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-sU-8hF" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="105" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="LHN-Ld-as9"/>
@@ -113,7 +113,7 @@
                                                                             <segue destination="NJz-j9-Ghq" kind="show" id="08p-oD-Qpd"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-6w-1iD" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="105" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,7 +130,7 @@
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ji3-mX-Jkh">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-5S-uNQ" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="105" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="CgF-0P-f7c"/>
@@ -140,7 +140,7 @@
                                                                             <segue destination="leS-uA-puM" kind="show" id="PAO-9Z-2j9"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-zV-Ieb" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="105" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,7 +150,7 @@
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uye-uM-a4a">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-PK-NtV" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="104" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="PQo-vG-apI"/>
@@ -160,7 +160,7 @@
                                                                             <segue destination="0HQ-vq-Zk4" kind="show" id="3Oq-v4-3gT"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-23-4v1" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="104" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -170,7 +170,7 @@
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IO6-46-SmC">
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-Qa-vjo" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" width="105" height="92"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="92" id="2sB-em-eWr"/>
@@ -180,7 +180,7 @@
                                                                             <segue destination="5EP-Nc-R5w" kind="show" id="4GZ-W5-5yC"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="Onion_Apps" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDr-2M-uQH" customClass="LabelHome" customModule="Beanleaf" customModuleProvider="target">
                                                                         <frame key="frameInset" minY="92" width="105" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -271,7 +271,7 @@
         <!--Menu-->
         <scene sceneID="3MU-Af-lHR">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jrz-do-ggR" customClass="Menu" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jrz-do-ggR" customClass="Menu" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HoE-x4-XRU"/>
                         <viewControllerLayoutGuide type="bottom" id="rdB-e4-53f"/>
@@ -289,7 +289,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="biC-rD-u1f">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="bNQ-70-3I6" customClass="CategoryCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="bNQ-70-3I6" customClass="CategoryCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="249"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNQ-70-3I6" id="s4V-XZ-D7B">
@@ -314,7 +314,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-vN-k8c">
                                                     <frame key="frameInset" minX="8" minY="8" width="45" height="56"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1C-ei-sU9" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1C-ei-sU9" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="XgE-AP-Nla"/>
                                                                 <constraint firstAttribute="width" constant="45" id="ofO-Vx-9z9"/>
@@ -402,12 +402,12 @@
                                                 <mask key="constraints">
                                                     <exclude reference="8lZ-9z-7qK"/>
                                                     <exclude reference="F77-eM-eL2"/>
-                                                    <exclude reference="r4l-Uh-eap"/>
                                                     <exclude reference="X1O-rD-sqQ"/>
-                                                    <exclude reference="paS-Po-fGG"/>
+                                                    <exclude reference="r4l-Uh-eap"/>
+                                                    <exclude reference="4nM-Su-Bxx"/>
                                                     <exclude reference="bpM-Xx-Uh6"/>
                                                     <exclude reference="hEu-xP-4fB"/>
-                                                    <exclude reference="4nM-Su-Bxx"/>
+                                                    <exclude reference="paS-Po-fGG"/>
                                                     <exclude reference="ZK8-fU-l9j"/>
                                                 </mask>
                                             </variation>
@@ -435,7 +435,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCategoryCell" id="E8p-1f-Vvh" customClass="MenuCategoryCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCategoryCell" id="E8p-1f-Vvh" customClass="MenuCategoryCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="285"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -512,8 +512,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4WY-9n-LOe"/>
                                 <exclude reference="YpT-G1-BzG"/>
+                                <exclude reference="4WY-9n-LOe"/>
                             </mask>
                         </variation>
                     </view>
@@ -537,7 +537,7 @@
         <!--Coupons-->
         <scene sceneID="Zpb-fW-ylA">
             <objects>
-                <viewController storyboardIdentifier="Coupons" id="TSb-jX-W01" customClass="Coupons" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Coupons" id="TSb-jX-W01" customClass="Coupons" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4dD-F9-Khb"/>
                         <viewControllerLayoutGuide type="bottom" id="CKx-U5-8u0"/>
@@ -554,7 +554,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponCell" rowHeight="229" id="krk-De-hzN" customClass="CouponCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CouponCell" rowHeight="229" id="krk-De-hzN" customClass="CouponCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="229"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krk-De-hzN" id="XYC-Tx-14k">
@@ -588,14 +588,12 @@
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="VdS-kZ-gT0">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
-                                                            <frame key="frameInset" width="60" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-qw-2ya">
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-qs-RCf">
-                                                            <frame key="frameInset" minY="153" width="60" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-qs-RCf">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="sA7-yH-Mmg"/>
                                                             </constraints>
@@ -766,7 +764,7 @@
         <!--Stamps-->
         <scene sceneID="bmD-D5-4ln">
             <objects>
-                <viewController id="NJz-j9-Ghq" customClass="Rewards" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NJz-j9-Ghq" customClass="Rewards" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N1C-JR-ENH"/>
                         <viewControllerLayoutGuide type="bottom" id="Xll-fc-wys"/>
@@ -806,15 +804,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-gJ-XxT">
-                                <frame key="frameInset" minX="20" minY="130" width="343" height="403"/>
+                                <frame key="frameInset" minX="20" minY="130" width="343" height="405"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
-                                        <frame key="frameInset" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-rd-RVY">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-z4-OF5">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-wd-F8q" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="75" id="EWm-5K-kdI"/>
                                                             <constraint firstAttribute="width" constant="150" id="FjS-Jq-PjH"/>
@@ -856,8 +852,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Qo-bAH" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="2DM-7Y-Y5W"/>
                                                         </constraints>
@@ -872,10 +867,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-2f-bMp">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="FkU-aR-mFr" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="8Ov-CP-edy"/>
                                                             <constraint firstAttribute="width" constant="60" id="Fbw-eB-zRZ"/>
@@ -917,8 +911,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doo-IA-0sP" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="KuR-AP-D89"/>
                                                         </constraints>
@@ -933,10 +926,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-QR-ojU">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-Vp-wNz" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="C7F-SV-LAZ"/>
                                                             <constraint firstAttribute="height" constant="75" id="K0r-GJ-F4d"/>
@@ -978,8 +970,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-ow-F2z" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="eUI-Vh-OrK"/>
                                                         </constraints>
@@ -996,14 +987,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
-                                        <frame key="frameInset" minY="103" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-Zp-Z1D">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yAj-5f-i81">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="r2M-ac-Tzh" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="MVt-ij-HzP"/>
                                                             <constraint firstAttribute="width" constant="75" id="cvs-Ot-gOn"/>
@@ -1025,8 +1013,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTk-DD-Rpp" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="fNS-Gw-6Pe"/>
                                                         </constraints>
@@ -1041,11 +1028,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPN-cb-WoK">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="C1q-nP-zCf" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="NAi-2k-7hQ"/>
                                                             <constraint firstAttribute="width" constant="150" id="gKr-II-gaX"/>
@@ -1067,8 +1052,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5H-9J-Twc" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ry8-Cs-NGm"/>
                                                         </constraints>
@@ -1083,11 +1067,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcv-0c-tfu">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-ls-N5J" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="WFq-pj-5Do"/>
                                                             <constraint firstAttribute="width" constant="150" id="YmY-L3-taD"/>
@@ -1109,8 +1091,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNo-cY-Qjo" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="0pP-bE-NTb"/>
                                                         </constraints>
@@ -1127,14 +1108,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
-                                        <frame key="frameInset" minY="205" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-8v-BIB">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-yM-glE">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="4kn-Xm-8Eg" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="75" id="1Jq-YI-0kT"/>
                                                             <constraint firstAttribute="height" constant="150" id="1RA-dt-IAt"/>
@@ -1156,8 +1134,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-Gv-n9a" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="OyR-ag-WjH"/>
                                                         </constraints>
@@ -1172,11 +1149,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ylg-34-9CH">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-br-h5g" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="ELU-nI-0sL"/>
                                                             <constraint firstAttribute="height" constant="75" id="OSe-KB-Csk"/>
@@ -1198,8 +1173,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-SM-8yh" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="XNc-As-ExO"/>
                                                         </constraints>
@@ -1214,11 +1188,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nc-Xb7">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="v4g-JS-LC0" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="3l9-v4-q04"/>
                                                             <constraint firstAttribute="height" constant="150" id="J15-CR-At2"/>
@@ -1240,8 +1212,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7X-8e-Cdq" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="7Rr-rP-hOb"/>
                                                         </constraints>
@@ -1258,14 +1229,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
-                                        <frame key="frameInset" minY="308" width="343" height="96"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G2A-xT-kSy">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
-                                                <frame key="frameInset" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gSg-Oa-Nil">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="ZMi-z1-wQw" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="KGy-JA-tMO"/>
                                                             <constraint firstAttribute="height" constant="75" id="ZBI-5C-feP"/>
@@ -1287,8 +1255,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqq-7f-aH9" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="dKd-YY-Pfb"/>
                                                         </constraints>
@@ -1303,11 +1270,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
-                                                <frame key="frameInset" minX="134" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-aC-XNC">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-gZ-UWe" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="KvW-3h-7LK"/>
                                                             <constraint firstAttribute="height" constant="150" id="bpF-2R-pqj"/>
@@ -1329,8 +1294,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6d-Id-cQr" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="g4L-9d-Iik"/>
                                                         </constraints>
@@ -1345,11 +1309,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
-                                                <frame key="frameInset" minX="268" width="75" height="96"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-XL-lrF">
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" width="75" height="75"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFull1x" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Fh-hGG" customClass="ImageStarStamp" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="0OK-jP-aeJ"/>
                                                             <constraint firstAttribute="height" constant="150" id="4pL-cG-KOf"/>
@@ -1371,8 +1333,7 @@
                                                             </mask>
                                                         </variation>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Onion_Apps" customModuleProvider="target">
-                                                        <frame key="frameInset" minY="75" width="75" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECI-3Z-ufe" customClass="LabelRewards" customModule="Beanleaf" customModuleProvider="target">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="XE6-t3-D25"/>
                                                         </constraints>
@@ -1399,7 +1360,7 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Onion_Apps" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-gF-zxx" customClass="ButtonRewards" customModule="Beanleaf" customModuleProvider="target">
                                 <frame key="frameInset" minX="20" minY="10" width="560" height="570"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="m7w-OZ-8h0"/>
@@ -1516,7 +1477,7 @@
         <!--Category View-->
         <scene sceneID="aBT-hU-sk3">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AtX-WJ-VEY" customClass="CategoryView" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AtX-WJ-VEY" customClass="CategoryView" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l0C-2Z-xHg"/>
                         <viewControllerLayoutGuide type="bottom" id="5zA-Mv-muO"/>
@@ -1540,7 +1501,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M09-ZT-gLo">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="249" id="cF3-jT-lYy" customClass="CategoryCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="383" height="249"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cF3-jT-lYy" id="cb6-o0-x7A">
@@ -1565,7 +1526,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-C8-Np8">
                                                     <frame key="frameInset" minX="8" minY="8" width="45" height="56"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-Sx-8UP" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnR-Sx-8UP" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="hi0-Cj-n8p"/>
                                                                 <constraint firstAttribute="width" constant="45" id="mkC-tG-UnS"/>
@@ -1713,7 +1674,7 @@
         <!--Item View-->
         <scene sceneID="rF5-nB-m7R">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2eA-5i-yWa" customClass="ItemView" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2eA-5i-yWa" customClass="ItemView" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vjl-3M-TVz"/>
                         <viewControllerLayoutGuide type="bottom" id="fGK-io-vYb"/>
@@ -1743,7 +1704,7 @@
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-ku-FAQ">
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-xw-J5z" customClass="ButtonAnimate" customModule="Onion_Apps" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUq-xw-J5z" customClass="ButtonAnimate" customModule="Beanleaf" customModuleProvider="target">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="2fV-Ug-SOH"/>
                                                         <constraint firstAttribute="width" constant="45" id="xxp-80-yt1"/>
@@ -1822,7 +1783,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="148" id="1W1-PI-Aml" customClass="ItemCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="148" id="1W1-PI-Aml" customClass="ItemCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="600" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1W1-PI-Aml" id="KHP-Y7-UzP">
@@ -1832,13 +1793,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-yI-rBo">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-Ux-QKc">
-                                                            <frame key="frameInset" width="568" height="82"/>
+                                                            <frame key="frameInset" width="568" height="81"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vsm-kJ-TB9">
-                                                            <frame key="frameInset" minY="82" width="568" height="21"/>
+                                                            <frame key="frameInset" minY="81" width="568" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1905,7 +1866,7 @@
         <!--Side Menu-->
         <scene sceneID="ppV-eb-9W9">
             <objects>
-                <viewController id="ZUH-3r-ee4" customClass="SideMenu" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZUH-3r-ee4" customClass="SideMenu" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wcw-Xm-oqZ"/>
                         <viewControllerLayoutGuide type="bottom" id="1WQ-hp-95P"/>
@@ -1922,7 +1883,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuCell" id="HnL-Ch-YIC" customClass="SideMenuCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuCell" id="HnL-Ch-YIC" customClass="SideMenuCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HnL-Ch-YIC" id="JkN-t8-dXY">
@@ -2011,7 +1972,7 @@
         <!--Reservations-->
         <scene sceneID="OHE-Jn-tfz">
             <objects>
-                <viewController id="leS-uA-puM" customClass="Reservations" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="leS-uA-puM" customClass="Reservations" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Ab-De-aX4"/>
                         <viewControllerLayoutGuide type="bottom" id="jeS-ev-gJk"/>
@@ -2115,7 +2076,7 @@
                                         </subviews>
                                         <variation key="widthClass=compact" spacing="30"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-iX-nVa" customClass="ButtonStandard" customModule="Beanleaf" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YpD-xz-yzD"/>
                                         </constraints>
@@ -2219,7 +2180,7 @@
         <!--Locations-->
         <scene sceneID="fXS-eg-Ypt">
             <objects>
-                <viewController id="0HQ-vq-Zk4" customClass="LocationsVC" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0HQ-vq-Zk4" customClass="LocationsVC" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CSU-H9-xaE"/>
                         <viewControllerLayoutGuide type="bottom" id="eiL-2z-7R9"/>
@@ -2251,11 +2212,11 @@
                                     <constraint firstAttribute="height" constant="492" id="UNI-9v-HnN"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationsCell" rowHeight="120" id="zJb-a9-g6f" customClass="LocationsCell" customModule="Onion_Apps" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationsCell" rowHeight="120" id="zJb-a9-g6f" customClass="LocationsCell" customModule="Beanleaf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJb-a9-g6f" id="uSu-ph-Lmc">
-                                            <frame key="frameInset" width="600" height="119.5"/>
+                                            <frame key="frameInset" width="600" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="35d-vX-KMq">
@@ -2370,7 +2331,7 @@
         <!--Feedback-->
         <scene sceneID="ajj-jn-gMX">
             <objects>
-                <viewController id="5EP-Nc-R5w" customClass="Feedback" customModule="Onion_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5EP-Nc-R5w" customClass="Feedback" customModule="Beanleaf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tdX-Pu-lUT"/>
                         <viewControllerLayoutGuide type="bottom" id="kwN-73-fmn"/>
@@ -2395,7 +2356,7 @@
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="175-4F-Vn0">
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcz-Rw-u6f" customClass="TextFieldFeedback" customModule="Beanleaf" customModuleProvider="target">
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="y2O-2U-Tmr"/>
@@ -2403,7 +2364,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Onion_Apps" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2HE-SG-9vg" customClass="TextFieldFeedback" customModule="Beanleaf" customModuleProvider="target">
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Ss0-re-Rfw"/>
@@ -2431,7 +2392,7 @@
                                             </mask>
                                         </variation>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-N3-QRE" customClass="ButtonStandard" customModule="Onion_Apps" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-N3-QRE" customClass="ButtonStandard" customModule="Beanleaf" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="BBz-xW-woS"/>
                                         </constraints>
@@ -2502,9 +2463,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="1500" height="1500"/>
+        <image name="bg" width="1004" height="1504"/>
         <image name="coupon" width="708" height="500"/>
-        <image name="logo02" width="750" height="200"/>
+        <image name="logo02" width="1920" height="1440"/>
         <image name="menuIcon" width="92" height="92"/>
         <image name="starEmpty1x" width="25" height="25"/>
         <image name="starFull1x" width="25" height="25"/>

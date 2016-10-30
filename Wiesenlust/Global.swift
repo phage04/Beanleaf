@@ -54,22 +54,22 @@ var imgURL: URL!
 //let COLOR2_DARK = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
 //let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
 //WIESEN
-let COLOR1 = UIColor(red: CGFloat(24.0 / 255.0), green: CGFloat(188.0 / 255.0), blue: CGFloat(156.0 / 255.0), alpha: 1.0)
-let COLOR2 = UIColor(red: CGFloat(103.0 / 255.0), green: CGFloat(58.0 / 255.0), blue: CGFloat(183.0 / 255.0), alpha: 1.0)
-let COLOR2_DARK = UIColor(red: CGFloat(78.0 / 255.0), green: CGFloat(31.0 / 255.0), blue: CGFloat(160.0 / 255.0), alpha: 1.0)
+let COLOR1 = UIColor(red: CGFloat(52.0 / 255.0), green: CGFloat(138.0 / 255.0), blue: CGFloat(1.0 / 255.0), alpha: 1.0)
+let COLOR2 = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(246.0 / 255.0), blue: CGFloat(205.0 / 255.0), alpha: 1.0)
+let COLOR2_DARK = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(246.0 / 255.0), blue: CGFloat(205.0 / 255.0), alpha: 1.0)
+let COLOR3 = UIColor(red: CGFloat(52.0 / 255.0), green: CGFloat(28.0 / 255.0), blue: CGFloat(16.0 / 255.0), alpha: 1.0)
 let COLOR_YELLOW = UIColor(red: CGFloat(255.0 / 255.0), green: CGFloat(255.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: 1.0)
-
 let SHADOW_COLOR: CGFloat = 30.0 / 255.0
 
 let logo1 = UIImage(named: "logo02.png")
 let stampIcon = UIImage(named: "stamp")
 let phoneIcon = UIImage(named: "phone")
-let menuIcon1 = UIImage(named: "menuIcon1.png")
-let menuIcon2 = UIImage(named: "menuIcon2.png")
-let menuIcon3 = UIImage(named: "menuIcon3.png")
-let menuIcon4 = UIImage(named: "menuIcon4.png")
-let menuIcon5 = UIImage(named: "menuIcon5.png")
-let menuIcon6 = UIImage(named: "menuIcon6.png")
+let menuIcon1 = UIImage(named: "menuIcon1_A.png")
+let menuIcon2 = UIImage(named: "menuIcon2_A.png")
+let menuIcon3 = UIImage(named: "menuIcon3_A.png")
+let menuIcon4 = UIImage(named: "menuIcon4_A.png")
+let menuIcon5 = UIImage(named: "menuIcon5_A.png")
+let menuIcon6 = UIImage(named: "menuIcon6_A.png")
 
 
 let font1Thin = "HelveticaNeue-Thin"
@@ -82,7 +82,7 @@ let font1UltraLight = "HelveticaNeue-UltraLight"
 
 let menuLblText1 = "Menu"
 let menuLblText2 = "Coupons"
-let menuLblText3 = "Rewards"
+let menuLblText3 = "Stamps"
 let menuLblText4 = "Reservations"
 let menuLblText5 = "Locations"
 let menuLblText6 = "Feedback"
@@ -105,9 +105,9 @@ let mailGunURL = "onionapps.com"
 let mailGunOwnerEmail = "jover.lyle@gmail.com"
 
 //CONTENTFUL
-let CFTokenPreview = "02859c62f9d05747157b7e53486c50c1ccade9161802faa8a5362e4372d1d601"
-let CFTokenProduction = "13d7f8a3b6f5a0e0c19b6ea11221332ea16fa23321e653afdd019e0085b77194"
-let CFSpaceId = "cvjq6nv76z9n"
+let CFTokenPreview = "01e09e565954cd3d532fe34754df994af56f1383e5127af2fa557d6911d01a17"
+let CFTokenProduction = "b2b23a23e151a00f9b14ceb3c5310c7e7122f43ec323762d9ac787d4138bd675"
+let CFSpaceId = "28btij1w5a1l"
 //let client = Clent(spaceIdentifier: CFId, accessToken: CFTokenProduction)
 
 open class Reachability {

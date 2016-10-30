@@ -1,0 +1,6 @@
+framework module Pods_Beanleaf {
+  umbrella header "Pods-Beanleaf-umbrella.h"
+
+  export *
+  module * { export * }
+}

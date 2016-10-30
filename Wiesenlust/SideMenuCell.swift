@@ -16,7 +16,7 @@ class SideMenuCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        menuLbl.textColor = UIColor.white
+        menuLbl.textColor = COLOR3
         menuLbl.font = UIFont(name: font1Medium, size: 17)
 
 

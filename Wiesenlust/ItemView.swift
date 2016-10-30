@@ -86,7 +86,7 @@ class ItemView: UIViewController, UITableViewDelegate, UITableViewDataSource,  U
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.white
         
-        price.textColor = UIColor.white
+        price.textColor = COLOR3
         price.font = UIFont(name: font1Light, size: 20)
         price.text = "\(currencyShort)\(Int(dish.price))"
         

@@ -74,7 +74,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         
         backgroundImg.image = UIImage(named: "bg")
         backgroundView.backgroundColor = UIColor.white
-        backgroundImg.alpha = 0.25
+        backgroundImg.alpha = 1.0
         
         socialButton.backgroundColor = UIColor.clear
         socialButton.layer.cornerRadius = 5
@@ -106,7 +106,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem1.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem1.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         
         image = menuIcon2!
@@ -114,7 +114,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem2.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem2.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         
         image = menuIcon3!
@@ -122,28 +122,28 @@ class Home: UIViewController, CLLocationManagerDelegate {
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem3.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem3.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         image = menuIcon4!
         UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem4.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem4.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         image = menuIcon5!
         UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem5.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem5.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         image = menuIcon6!
         UIGraphicsBeginImageContextWithOptions(CGSize(width: targetWidth, height: targetHeight),false,0)
         image.draw(in: CGRect(x: 0, y: 0, width: targetWidth, height: targetHeight))
         scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        menuItem6.setImage(scaledImage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        menuItem6.setImage(scaledImage.withRenderingMode(.automatic), for: UIControlState())
         
         
         menuItem1.tintColor = COLOR1

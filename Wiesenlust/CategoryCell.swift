@@ -66,7 +66,7 @@ class CategoryCell: UITableViewCell {
         star.isUserInteractionEnabled = true
         starCount.font = UIFont(name: font1Light, size: 12)
         starCount.textColor = UIColor.white
-        price.textColor = UIColor.white
+        price.textColor = COLOR3
         price.font = UIFont(name: font1Light, size: 20)
         foodLbl.textColor = COLOR2
         foodLbl.font = UIFont(name: font1Light, size: 20)

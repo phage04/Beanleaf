@@ -3,7 +3,7 @@ platform :ios, ‘10.0’
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target ‘Onion Apps’ do
+target ‘Beanleaf’ do
 
 pod 'Alamofire', '~> 4.0'
 pod 'moa', '~> 8.0'

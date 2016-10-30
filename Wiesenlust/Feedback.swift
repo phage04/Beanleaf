@@ -25,8 +25,8 @@ class Feedback: UIViewController, UITextViewDelegate {
     //THESE ARE ACTUALLY TEXTFIELDS
     
     let msgPlaceholder = "What would you like to tell us?"
-    let placeholderColor = UIColor.darkGray
-    let textColor = UIColor.darkGray
+    let placeholderColor = UIColor.lightText
+    let textColor = UIColor.white
     override func viewDidLoad() {
         super.viewDidLoad()
 
