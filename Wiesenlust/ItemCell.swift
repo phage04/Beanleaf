@@ -18,7 +18,7 @@ class ItemCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        itemTitle.textColor = COLOR2
+        itemTitle.textColor = COLOR3
         itemTitle.font = UIFont(name: font1Regular, size: 20)
         
         itemDesc.textColor = UIColor.darkGray
