@@ -383,7 +383,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                         if let fieldAss = asset["fields"] as? Dictionary<String, AnyObject>, let file = fieldAss["file"] as? Dictionary<String, AnyObject>, let imageURL = file["url"] as? String{
                                             imgURL = URL(string: "https:\(imageURL)")
                                             print("Checking: \(fields["categoryName"]!)")
-                                            var count = 0
+                                            
                                             for item in categoriesData {
                                                 
                                                 
@@ -399,19 +399,13 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                         changes += 1
                                                         
                                                     }
-                                                }else{
-                                                    //didnt find any matches therefore new addition
-                                                    count += 1
-                                                    if count == categoriesData.count-1{
-                                                        changes += 1
-                                                    }
                                                 }
                                                 
                                             }
 
                                         }else {
                                             print("Checking NoImage: \(fields["categoryName"]!)")
-                                            var count = 0
+                                           
                                             for item in categoriesData {
                                                 
                                                 
@@ -425,12 +419,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                         print("Did detect change in CATEGORIES: \(item.value(forKey: "name")!)")
                                                         changes += 1
                                                         
-                                                    }
-                                                }else{
-                                                    //didnt find any matches therefore new addition
-                                                    count += 1
-                                                    if count == categoriesData.count-1{
-                                                        changes += 1
                                                     }
                                                 }
                                                 
@@ -620,7 +608,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                         for item in foodItemsData {
                                                             
                                                             if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
-                                                                var count = 0
+                                                              
                                                                 for entry in entries{
                                                                     if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
                                                                         categoryFood = categoryName
@@ -636,12 +624,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                                                 
                                                                                 print("Did detect change in FOOD ITEM: \(item.value(forKey: "name")!)")
                                                                                 
-                                                                                changes += 1
-                                                                            }
-                                                                        }else{
-                                                                            //didnt find any matches therefore new addition
-                                                                            count += 1
-                                                                            if count == entries.count-1{
                                                                                 changes += 1
                                                                             }
                                                                         }
@@ -662,7 +644,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                             for item in foodItemsData {
                                                 
                                                 if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
-                                                    var count = 0
+                                                 
                                                     for entry in entries{
                                                         if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
                                                             categoryFood = categoryName
@@ -676,14 +658,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                                     changes += 1
                                                                 }
                                                                 
-                                                            }else{
-                                                                //didnt find any matches therefore new addition
-                                                                count += 1
-                                                                if count == entries.count-1{
-                                                                    changes += 1
-                                                                }
-                                                            }
-                                                        }
+                                                            }                                                        }
                                                     }
                                                     
                                                 }
@@ -735,28 +710,29 @@ class Home: UIViewController, CLLocationManagerDelegate {
                                                         
                                                         myGroupFood2.leave()
                                                     })
-                                                }else {
-                                                    //If no image is uploaded for this item, user default or blank
-                                                    if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
-                                                        
-                                                        for entry in entries{
-                                                            if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
-                                                                categoryFood = categoryName
-                                                                foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
-                                                            }
-                                                        }
-                                                        
-                                                    }
-                                                    
-                                                    myGroupFood2.leave()
                                                 }
                                             }
                                         }
+                                    }else {
+                                        //If no image is uploaded for this item, user default or blank
+                                        if let cat = fields["category"] as? Dictionary<String, AnyObject>,let sysItem = cat["sys"] as? Dictionary<String, AnyObject>, let catID1 = sysItem["id"] as? String, let includes = dataResult["includes"] as? Dictionary<String, AnyObject>, let entries = includes["Entry"] as? [Dictionary<String, AnyObject>] {
+                                            
+                                            for entry in entries{
+                                                if let fieldEntry = entry["fields"] as? Dictionary<String, AnyObject>, let categoryName = fieldEntry["categoryName"] as? String, let sysEntry = entry["sys"] as? Dictionary<String, AnyObject>, let catID2 = sysEntry["id"] as? String, catID1 == catID2{
+                                                    categoryFood = categoryName
+                                                    foodItems.append(FoodItem(id: "\(foodItemID)", cat: "\(categoryFood!)", name: "\(fields["itemName"]!)", desc: "\(fields["itemDescription"]!)" , price: (fields["price"]! as? Double)!, image: nil, imgURL: nil, key: foodItemID, likes: likes))
+                                                }
+                                            }
+                                            
+                                        }
+                                        
+                                        myGroupFood2.leave()
                                     }
+
                                 }
                                 
-                                   
-                                    
+                                
+                                
                             }
                                 
                         }
