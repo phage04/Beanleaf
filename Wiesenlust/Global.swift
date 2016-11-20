@@ -29,7 +29,7 @@ var freeItems = [String]()
 
 let radiusOfInterest: Double = 150.0
 
-let listView: Bool = false
+let listView: Bool = true
 
 let defaultFree = "Free coffee"
 let distanceToClaim: Int = 9000000
