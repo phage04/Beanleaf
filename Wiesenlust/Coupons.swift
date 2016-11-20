@@ -160,9 +160,13 @@ class Coupons: UIViewController, UITableViewDelegate, UITableViewDataSource, CLL
                                     locationFlag = locVal
                                 }
                                 
-                                if let date = fields["validUntil"] {
+                                if let date = fields["validUntil"] as? String {
+                                    
+                                    let endOfDomain = date.index(date.startIndex, offsetBy: 10)
+                                    let rangeOfDomain = date.startIndex ..< endOfDomain
+                    
                                     dateFormatter.dateFormat = DATE_FULL_FORMAT
-                                    let dateFormatted = dateFormatter.date(from: "\(date) 00:00:00 +0000")!
+                                    let dateFormatted = dateFormatter.date(from: "\(date[rangeOfDomain]) 00:00:00 +0000")!
                                     dateFormatter.dateFormat = DATE_FORMAT1
                                     let dateDateFormattedVal = dateFormatter.string(from: dateFormatted)
                                     

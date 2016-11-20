@@ -1,6 +1,0 @@
-framework module Pods_Wiesenlust {
-  umbrella header "Pods-Wiesenlust-umbrella.h"
-
-  export *
-  module * { export * }
-}

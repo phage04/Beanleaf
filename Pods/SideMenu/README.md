@@ -1,9 +1,9 @@
-# SideMenu
+# ▤ SideMenu
 [![Version](https://img.shields.io/cocoapods/v/SideMenu.svg?style=flat)](http://cocoapods.org/pods/SideMenu)
 [![License](https://img.shields.io/cocoapods/l/SideMenu.svg?style=flat)](http://cocoapods.org/pods/SideMenu)
 [![Platform](https://img.shields.io/cocoapods/p/SideMenu.svg?style=flat)](http://cocoapods.org/pods/SideMenu)
 
-**If you like SideMenu, give it a ★ at the top right of its [GitHub](https://github.com/jonkykong/SideMenu) page.**
+### If you like SideMenu, give it a ★ at the top right of its [GitHub](https://github.com/jonkykong/SideMenu) page.
 
 ## Overview
 
@@ -26,7 +26,6 @@ Check out the example project to see it in action!
 * iOS 8 or higher
 
 ## Installation
-
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -158,6 +157,9 @@ open static var menuParallaxStrength: Int = 0
 
 /// Draws the `menuAnimationBackgroundColor` behind the status bar. Default is true.
 open static var menuFadeStatusBar = true
+
+/// When true, pushViewController called within the menu it will push the new view controller inside of the menu. Otherwise, it is pushed on the menu's presentingViewController. Default is false.
+open static var menuAllowSubmenus: Bool = false
 ```
 
 ## Known Issues
