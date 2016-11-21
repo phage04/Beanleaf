@@ -280,15 +280,9 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
 
     @IBAction func socialBtnPressed(_ sender: AnyObject) {
-        if let appURL = URL(string: socialURLApp) {
-            let canOpen = UIApplication.shared.canOpenURL(appURL)
-            
-            if canOpen {
-                UIApplication.shared.openURL(URL(string: socialURLApp)!)
-            } else {
-                UIApplication.shared.openURL(URL(string: socialURLWeb)!)
-            }
-        }
+      
+        UIApplication.shared.openURL(URL(string: socialURLWeb)!)
+      
     }
    
 

@@ -87,8 +87,8 @@ let menuLblText4 = "Reservations"
 let menuLblText5 = "Locations"
 let menuLblText6 = "Feedback"
 
-let socialURLApp = "yelp4:///biz/wiesenlust-frankfurt-am-main"
-let socialURLWeb = "http://yelp.com/biz/wiesenlust-frankfurt-am-main"
+let socialURLApp = ""
+let socialURLWeb = "https://www.facebook.com/beanleafcoffeeandtea/"
 let socialButtonTitle = "WRITE US A REVIEW"
 
 let LoadingMsgTapToExit = "Tap anytime to exit"
