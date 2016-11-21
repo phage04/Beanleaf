@@ -53,7 +53,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     var long: Double = 0.0
     var claimValid = false
     var firstLoad = true
-    let maxRewards = 6
+    let maxRewards = 3
     let maxStamps = 12
    
     override func viewDidLoad() {
@@ -81,16 +81,16 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         activityIndicator.color = COLOR1
         activityIndicator.isHidden = true
         
-        gift1.text = "Loading..."
+        gift1.text = ""
         gift2.text = ""
-        gift3.text = "Loading..."
-        gift4.text = ""
+        gift3.text = ""
+        gift4.text = "Loading..."
         gift5.text = ""
-        gift6.text = "Loading..."
+        gift6.text = ""
         gift7.text = ""
         gift8.text = "Loading..."
         gift9.text = ""
-        gift10.text = "Loading..."
+        gift10.text = ""
         gift11.text = ""
         gift12.text = "Loading..."
         
@@ -133,18 +133,18 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                     self.addBtn.isEnabled = true
                     
                     print("Free items downloaded.")
-                    self.gift1.text = freeItems[0]
+                    self.gift1.text = ""
                     self.gift2.text = ""
-                    self.gift3.text = freeItems[1]
-                    self.gift4.text = ""
+                    self.gift3.text = ""
+                    self.gift4.text = freeItems[0]
                     self.gift5.text = ""
-                    self.gift6.text = freeItems[2]
+                    self.gift6.text = ""
                     self.gift7.text = ""
-                    self.gift8.text = freeItems[3]
+                    self.gift8.text = freeItems[1]
                     self.gift9.text = ""
-                    self.gift10.text = freeItems[4]
+                    self.gift10.text = ""
                     self.gift11.text = ""
-                    self.gift12.text = freeItems[5]
+                    self.gift12.text = freeItems[2]
                 }
                
             })
@@ -214,12 +214,12 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
     func updateClaim(){
  
         switch numberOfClaims {
-        case maxRewards-5:
-            if numberOfStamps >= 1 {
+        case maxRewards-2:
+            if numberOfStamps >= 4 {
           
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion: { (result) in
                     if result {
-                        self.star1.tintColor = UIColor.green
+                        self.star4.tintColor = UIColor.green
                         
                     } else {
                         
@@ -231,12 +231,12 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
  
-        case maxRewards-4:
-            if numberOfStamps >= 3 {
+        case maxRewards-1:
+            if numberOfStamps >= 8 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
-                        self.star1.tintColor = UIColor.green
-                        self.star3.tintColor = UIColor.green
+                        self.star4.tintColor = UIColor.green
+                        self.star8.tintColor = UIColor.green
                         
                     }else {
                         self.showErrorAlert("Network Error", msg: "Please check your internet connection and try again.", VC: self)
@@ -247,13 +247,13 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
                 self.needMoreStamps()
             }
 
-        case maxRewards-3:
-            if numberOfStamps >= 6 {
+        case maxRewards:
+            if numberOfStamps >= 12 {
                 logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
                     if result {
-                        self.star1.tintColor = UIColor.green
-                        self.star3.tintColor = UIColor.green
-                        self.star6.tintColor = UIColor.green
+                        self.star4.tintColor = UIColor.green
+                        self.star8.tintColor = UIColor.green
+                        self.star12.tintColor = UIColor.green
                         
                     }else {
                         self.showErrorAlert("Network Error", msg: "Please check your internet connection and try again.", VC: self)
@@ -265,63 +265,7 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
             }
 
             
-        case maxRewards-2:
-            if numberOfStamps >= 8 {
-                logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
-                    if result {
-                        self.star1.tintColor = UIColor.green
-                        self.star3.tintColor = UIColor.green
-                        self.star6.tintColor = UIColor.green
-                        self.star8.tintColor = UIColor.green
-                        
-                    }else {
-                        self.showErrorAlert("Network Error", msg: "Please check your internet connection and try again.", VC: self)
-                    }
-                })
-            
-            } else {
-                self.needMoreStamps()
-            }
-
-        case maxRewards-1:
-            if numberOfStamps >= 10 {
-                logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
-                    if result {
-                        self.star1.tintColor = UIColor.green
-                        self.star3.tintColor = UIColor.green
-                        self.star6.tintColor = UIColor.green
-                        self.star8.tintColor = UIColor.green
-                        self.star10.tintColor = UIColor.green
-                        
-                    }else {
-                        self.showErrorAlert("Network Error", msg: "Please check your internet connection and try again.", VC: self)
-                    }
-                })
-                
-            } else {
-                self.needMoreStamps()
-            }
-
-        case maxRewards:
-            if numberOfStamps >= 12 {
-                logTransaction(numberOfClaims, firstLoadVal: self.firstLoad, completion:{ (result) in
-                    if result {
-                        self.star1.tintColor = UIColor.green
-                        self.star3.tintColor = UIColor.green
-                        self.star6.tintColor = UIColor.green
-                        self.star8.tintColor = UIColor.green
-                        self.star10.tintColor = UIColor.green
-                        self.star12.tintColor = UIColor.green
-                        
-                    }else {
-                        self.showErrorAlert("Network Error", msg: "Please check your internet connection and try again.", VC: self)
-                    }
-                })
-                
-            } else {
-                self.needMoreStamps()
-            }
-
+        
 
         default:
             numberOfClaims = 0
@@ -692,30 +636,30 @@ class Rewards: UIViewController, CLLocationManagerDelegate {
         }
         
         
-        let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .default)
-        { action -> Void in
-            
-            self.resetFirebase({ (result) in
-                
-                if result {
-                    self.numberOfClaims = 0
-                    
-                    UserDefaults.standard.set(self.numberOfStamps, forKey: "claims")
-                    self.numberOfStamps = 0
-                    
-                    UserDefaults.standard.set(self.numberOfStamps, forKey: "numberOfStamps")
-                    
-                    
-                    
-                    self.updateStamps(self.numberOfStamps)
-                } else {
-                    self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
-                }
-            })
-
-
-        }
-        actionSheetControllerIOS8.addAction(resetActionButton)
+//        let resetActionButton: UIAlertAction = UIAlertAction(title: "Reset", style: .default)
+//        { action -> Void in
+//            
+//            self.resetFirebase({ (result) in
+//                
+//                if result {
+//                    self.numberOfClaims = 0
+//                    
+//                    UserDefaults.standard.set(self.numberOfStamps, forKey: "claims")
+//                    self.numberOfStamps = 0
+//                    
+//                    UserDefaults.standard.set(self.numberOfStamps, forKey: "numberOfStamps")
+//                    
+//                    
+//                    
+//                    self.updateStamps(self.numberOfStamps)
+//                } else {
+//                    self.showErrorAlert("Something Went Wrong", msg: "Please try again and verify that you have an internet connection.", VC: self)
+//                }
+//            })
+//
+//
+//        }
+//        actionSheetControllerIOS8.addAction(resetActionButton)
         
         
         

@@ -36,7 +36,7 @@ let distanceToClaim: Int = 150
 
 let currencyShort = "P"
 let currencyLong = "Php"
-let freeItemMax = 6
+let freeItemMax = 3
 
 var categoriesData = [NSManagedObject]()
 var categories = [Category]()
