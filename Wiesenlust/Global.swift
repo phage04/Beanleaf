@@ -16,8 +16,8 @@ import Firebase
 import FirebaseDatabase
 
 
-let storeName = "Onion Apps"
-let minimumReceipt = "10€"
+let storeName = "Beanleaf"
+let minimumReceipt = "Php150"
 var managerPin = UserDefaults.standard.value(forKey: "managerPin")
 let branches:[String] = ["28 Jupiter St. Bel-Air, Makati City, Philippines", "ELJCC Bldg. Mother Ignacia Ave., South Triangle 4, Quezon City, Philippines", "C-403 Central Precint, Filinvest Ave, Alabang, Muntinlupa City, Philippines", "The Fort Strip, Fort Bonifacio, Taguig City, Philippines", "11 Aguirre Avenue, BF Homes, Paranaque City, Philippines"]
 let contacts:[String] = ["028961989", "024319360", "027711706", "027711706", "027711706"]
@@ -32,7 +32,7 @@ let radiusOfInterest: Double = 150.0
 let listView: Bool = true
 
 let defaultFree = "Free coffee"
-let distanceToClaim: Int = 9000000
+let distanceToClaim: Int = 150
 
 let currencyShort = "P"
 let currencyLong = "Php"

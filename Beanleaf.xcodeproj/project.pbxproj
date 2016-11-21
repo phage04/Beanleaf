@@ -20,7 +20,6 @@
 		DE2BF0471D33CEEB0049F662 /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0461D33CEEB0049F662 /* CouponCell.swift */; };
 		DE2BF0491D33CFD80049F662 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2BF0481D33CFD80049F662 /* Coupon.swift */; };
 		DE57B7531D509EF6009F1296 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57B7521D509EF6009F1296 /* DataService.swift */; };
-		DE57B7551D522885009F1296 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE57B7541D522885009F1296 /* GoogleService-Info.plist */; };
 		DE5BACB31D26BB08006C3C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */; };
 		DE5BACB51D26BB08006C3C7C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5BACB41D26BB08006C3C7C /* Home.swift */; };
 		DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5BACB61D26BB08006C3C7C /* Main.storyboard */; };
@@ -31,6 +30,7 @@
 		DE6317241D3CB61700B1E2AE /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317231D3CB61700B1E2AE /* SideMenu.swift */; };
 		DE6317261D3CB8D300B1E2AE /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */; };
 		DE6317281D3CBF8900B1E2AE /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6317271D3CBF8900B1E2AE /* Feedback.swift */; };
+		DE82CC421DE27A29007E9646 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE82CC411DE27A29007E9646 /* GoogleService-Info.plist */; };
 		DEB470751D2BA9B300218AE1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB470741D2BA9B300218AE1 /* Menu.swift */; };
 		DEB4DFEA1D2E782500816A2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4DFE91D2E782500816A2F /* Category.swift */; };
 		DEBAE06F1D7E7D8300FCB246 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */; };
@@ -65,7 +65,6 @@
 		DE2BF0481D33CFD80049F662 /* Coupon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		DE37851A1D6CAC1600B0F455 /* Onion Apps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Onion Apps-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE57B7521D509EF6009F1296 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		DE57B7541D522885009F1296 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE5BACAF1D26BB07006C3C7C /* Beanleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beanleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5BACB41D26BB08006C3C7C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -78,6 +77,8 @@
 		DE6317231D3CB61700B1E2AE /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		DE6317251D3CB8D300B1E2AE /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		DE6317271D3CBF8900B1E2AE /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		DE82CC411DE27A29007E9646 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE82CC431DE27A3F007E9646 /* Beanleaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Beanleaf.entitlements; sourceTree = SOURCE_ROOT; };
 		DEB470741D2BA9B300218AE1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		DEB4DFE91D2E782500816A2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DEBAE06E1D7E7D8300FCB246 /* Announcements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		DE5BACB11D26BB08006C3C7C /* Beanleaf */ = {
 			isa = PBXGroup;
 			children = (
+				DE82CC431DE27A3F007E9646 /* Beanleaf.entitlements */,
 				DE5DC5CA1D2A77A9002871B9 /* Model */,
 				DE5DC5CB1D2A77B0002871B9 /* View */,
 				DE5DC5CC1D2A77BC002871B9 /* Controller */,
@@ -213,8 +215,8 @@
 			children = (
 				DE5DC5CE1D2A78DC002871B9 /* Global.swift */,
 				DE5BACB21D26BB08006C3C7C /* AppDelegate.swift */,
+				DE82CC411DE27A29007E9646 /* GoogleService-Info.plist */,
 				DE5BACC11D26BB08006C3C7C /* Info.plist */,
-				DE57B7541D522885009F1296 /* GoogleService-Info.plist */,
 				DE5BACB91D26BB08006C3C7C /* Wiesenlust.xcdatamodeld */,
 				DE57B7521D509EF6009F1296 /* DataService.swift */,
 				DE37851A1D6CAC1600B0F455 /* Onion Apps-Bridging-Header.h */,
@@ -294,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE5BACC01D26BB08006C3C7C /* LaunchScreen.storyboard in Resources */,
-				DE57B7551D522885009F1296 /* GoogleService-Info.plist in Resources */,
+				DE82CC421DE27A29007E9646 /* GoogleService-Info.plist in Resources */,
 				DE5BACBD1D26BB08006C3C7C /* Assets.xcassets in Resources */,
 				DE5BACB81D26BB08006C3C7C /* Main.storyboard in Resources */,
 			);
@@ -520,6 +522,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Beanleaf.entitlements;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +561,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Beanleaf.entitlements;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
